@@ -23,7 +23,7 @@ class Main extends Sprite
 
 	public static var fps:FpsDisplay;
 
-	public static var applicationName:String = "Friday Night Funkin' | Dave Engine";
+	public static var applicationName:String = "Friday Night Funkin' | Vs. Foxa";
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
