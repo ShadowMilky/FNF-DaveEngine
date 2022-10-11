@@ -3,7 +3,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' Dave Engine" file="DaveEngine" packageName="dnbteam.daveengine" package="dnbteam.daveengine" main="Main" version="3.0.0" company="dnbteam"/>
+	<app title="Friday Night Funkin' | Vs. Foxa" file="VsFoxa" packageName="dnbteam.daveengine" package="dnbteam.daveengine" main="Main" version="3.0.0" company="dnbteam"/>
 	<app preloader="flixel.system.FlxPreloader"/>
 
 	<set name="APP_ID" value="0x0100f6c013bbc000"/>
