@@ -247,11 +247,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'Sing Down', 24);
 				animation.addByPrefix('singLEFT', 'Sing Left', 24);
 
-				addOffset('idle', 0,0 );
-				addOffset("singUP", -6, 50);
-				addOffset("singRIGHT", 0, 27);
-				addOffset("singLEFT", -10, 10);
-				addOffset("singDOWN", 0, -30);
+				loadOffsetFile(curCharacter);
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
