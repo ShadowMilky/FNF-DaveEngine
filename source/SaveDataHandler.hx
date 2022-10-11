@@ -53,5 +53,8 @@ class SaveDataHandler
 		if (FlxG.save.data.disableFps == null)
 			FlxG.save.data.disableFps = false;
 
+		if (FlxG.save.data.botplay == null)
+			FlxG.save.data.botplay = false;
+
     }
 }

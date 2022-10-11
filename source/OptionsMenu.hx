@@ -62,6 +62,7 @@ class OptionsMenu extends MusicBeatState
 			+ "\n" + LanguageManager.getTextString('option_change_langauge')
 			+ "\n" + (FlxG.save.data.disableFps ? LanguageManager.getTextString('option_enable_fps') : LanguageManager.getTextString('option_disable_fps'))
 			+ "\n" + (CompatTool.save.data.compatMode ? LanguageManager.getTextString('option_disable_compat') : LanguageManager.getTextString('option_enable_compat'))
+			+ "\n" + (FlxG.save.data.botplay ? LanguageManager.getTextString('option_botplay_on') : LanguageManager.getTextString('option_botplay_off'))
 			);
 			
 		grpControls = new FlxTypedGroup<Alphabet>();
@@ -158,6 +159,9 @@ class OptionsMenu extends MusicBeatState
 				case 9:
 					CompatTool.save.data.compatMode = !CompatTool.save.data.compatMode;
 					updateGroupControls(CompatTool.save.data.compatMode ? LanguageManager.getTextString('option_disable_compat') : LanguageManager.getTextString('option_enable_compat'), 10, 'Vertical');
+				case 10:
+					FlxG.save.data.botplay = !FlxG.save.data.botplay;
+					updateGroupControls(CompatTool.save.data.compatMode ? LanguageManager.getTextString('option_botplay_off') : LanguageManager.getTextString('option_botplay_on'), 10, 'Vertical');
 			}
 		}
 	}

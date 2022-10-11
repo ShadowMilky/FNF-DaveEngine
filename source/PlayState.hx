@@ -2597,7 +2597,7 @@ class PlayState extends MusicBeatState
 		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
 		var releaseArray:Array<Bool> = [leftR, downR, upR, rightR];
 
-		#if botplay
+		if (FlxG.save.data.botplay){
 		var BOTPLAY_pressed_anything = false;
 
 		notes.forEachAlive(function(daNote:Note)
@@ -2640,7 +2640,7 @@ class PlayState extends MusicBeatState
 		{
 			releaseArray = [true, true, true, true];
 		}
-		#end
+	    }
 
 		if (noteLimbo != null)
 		{
