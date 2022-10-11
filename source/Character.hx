@@ -241,11 +241,11 @@ class Character extends FlxSprite
 			case 'foxa': // foxa regular
 				frames = Paths.getSparrowAtlas('foxa', 'characters/foxa');
 
-				animation.addByPrefix('idle', 'Idle instance 1', 24);
-				animation.addByPrefix('singUP', 'Sing Up instance 1', 24);
-				animation.addByPrefix('singRIGHT', 'Sing Right instance 1', 24);
-				animation.addByPrefix('singDOWN', 'Sing Down instance 1', 24);
-				animation.addByPrefix('singLEFT', 'Sing Left instance 1', 24);
+				animation.addByPrefix('idle', 'Idle', 24);
+				animation.addByPrefix('singUP', 'Sing Up', 24);
+				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
+				animation.addByPrefix('singDOWN', 'Sing Down', 24);
+				animation.addByPrefix('singLEFT', 'Sing Left', 24);
 
 				addOffset('idle', 0,0 );
 				addOffset("singUP", -6, 50);
