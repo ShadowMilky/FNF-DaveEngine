@@ -239,8 +239,8 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'foxa': // foxa regular
-				tex = Paths.getSparrowAtlas('foxa', 'characters/foxa');
-				frames = tex;
+				frames = Paths.getSparrowAtlas('foxa', 'characters/foxa');
+
 				animation.addByPrefix('idle', 'Idle', 24);
 				animation.addByPrefix('singUP', 'Sing Up', 24);
 				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
@@ -252,6 +252,10 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 0, 27);
 				addOffset("singLEFT", -10, 10);
 				addOffset("singDOWN", 0, -30);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');
 			case 'spooky':
 				frames = Paths.getSparrowAtlas('characters/spooky_kids_assets', 'shared');
 
