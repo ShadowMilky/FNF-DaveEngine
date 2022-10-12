@@ -195,17 +195,17 @@ class CharacterEditorState extends MusicBeatState
 				playerYDifference = 220;
 			}
 
-			var bgSky:BGSprite = new BGSprite('weeb/weebSky', OFFSET_X - (playerXDifference / 2) - 300, 0 - playerYDifference, 0.1, 0.1);
+			var bgSky:BGSpriteOther = new BGSpriteOther('weeb/weebSky', OFFSET_X - (playerXDifference / 2) - 300, 0 - playerYDifference, 0.1, 0.1);
 			bgLayer.add(bgSky);
 			bgSky.antialiasing = false;
 
 			var repositionShit = -200 + OFFSET_X - playerXDifference;
 
-			var bgSchool:BGSprite = new BGSprite('weeb/weebSchool', repositionShit, -playerYDifference + 6, 0.6, 0.90);
+			var bgSchool:BGSpriteOther = new BGSpriteOther('weeb/weebSchool', repositionShit, -playerYDifference + 6, 0.6, 0.90);
 			bgLayer.add(bgSchool);
 			bgSchool.antialiasing = false;
 
-			var bgStreet:BGSprite = new BGSprite('weeb/weebStreet', repositionShit, -playerYDifference, 0.95, 0.95);
+			var bgStreet:BGSpriteOther = new BGSpriteOther('weeb/weebStreet', repositionShit, -playerYDifference, 0.95, 0.95);
 			bgLayer.add(bgStreet);
 			bgStreet.antialiasing = false;
 
@@ -229,10 +229,10 @@ class CharacterEditorState extends MusicBeatState
 			bgTrees.updateHitbox();
 			changeBGbutton.text = "Regular BG";
 		} else {
-			var bg:BGSprite = new BGSprite('stageback', -600 + OFFSET_X - playerXDifference, -300, 0.9, 0.9);
+			var bg:BGSpriteOther = new BGSpriteOther('stageback', -600 + OFFSET_X - playerXDifference, -300, 0.9, 0.9);
 			bgLayer.add(bg);
 
-			var stageFront:BGSprite = new BGSprite('stagefront', -650 + OFFSET_X - playerXDifference, 500, 0.9, 0.9);
+			var stageFront:BGSpriteOther = new BGSpriteOther('stagefront', -650 + OFFSET_X - playerXDifference, 500, 0.9, 0.9);
 			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 			stageFront.updateHitbox();
 			bgLayer.add(stageFront);
@@ -368,7 +368,7 @@ class CharacterEditorState extends MusicBeatState
 			}
 		});
 
-		healthIconInputText = new FlxUIInputText(15, imageInputText.y + 35, 75, leHealthIcon.getCharacter(), 8);
+		healthIconInputText = new FlxUIInputText(15, imageInputText.y + 35, 75, leHealthIcon.getChar(), 8);
 
 		singDurationStepper = new FlxUINumericStepper(15, healthIconInputText.y + 45, 0.1, 4, 0, 999, 1);
 
@@ -768,7 +768,7 @@ class CharacterEditorState extends MusicBeatState
 	function updatePresence() {
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Character Editor", "Character: " + daAnim, leHealthIcon.getCharacter());
+		DiscordClient.changePresence("Character Editor", "Character: " + daAnim);
 		#end
 	}
 
@@ -793,18 +793,8 @@ class CharacterEditorState extends MusicBeatState
 
 		if(!charDropDown.dropPanel.visible) {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				var songName:String = PlayState.SONG.song.toLowerCase();
-				for (week in 0...WeekData.songsNames.length) {
-					var weekSongs:Array<String> = WeekData.songsNames[week];
-					for (i in 0...weekSongs.length) {
-						if(weekSongs[i].toLowerCase() == songName) {
-							PlayState.storyWeek = week;
-						}
-					}
-				}
-				LoadingState.loadAndSwitchState(new PlayState());
+				LoadingState.loadAndSwitchState(new FreeplayState());
 				FlxG.mouse.visible = false;
-				return;
 			}
 
 			if (FlxG.keys.pressed.E && FlxG.camera.zoom < 5) {
