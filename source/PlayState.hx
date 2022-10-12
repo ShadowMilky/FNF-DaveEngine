@@ -115,9 +115,27 @@ class PlayState extends MusicBeatState
 
 	public var dadCombo:Int = 0;
 
-	public var dadGroup:FlxGroup;
-	public var bfGroup:FlxGroup;
-	public var gfGroup:FlxGroup;
+	#if (haxe >= "4.0.0")
+	public var boyfriendMap:Map<String, Boyfriend> = new Map();
+	public var dadMap:Map<String, Character> = new Map();
+	public var gfMap:Map<String, Character> = new Map();
+	#else
+	public var boyfriendMap:Map<String, Boyfriend> = new Map<String, Boyfriend>();
+	public var dadMap:Map<String, Character> = new Map<String, Character>();
+	public var gfMap:Map<String, Character> = new Map<String, Character>();
+	#end
+
+	// DONT CHANGE THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+	var BF_X:Float = 770;
+	var BF_Y:Float = 100;
+	var DAD_X:Float = 100;
+	var DAD_Y:Float = 100;
+	var GF_X:Float = 400;
+	var GF_Y:Float = 130;
+
+	public var boyfriendGroup:FlxTypedGroup<Boyfriend>;
+	public var dadGroup:FlxTypedGroup<Character>;
+	public var gfGroup:FlxTypedGroup<Character>;
 
 	public var stupidx:Float = 0;
 	public var stupidy:Float = 0; // stupid velocities for cutscene

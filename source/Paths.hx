@@ -26,7 +26,21 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>)
+	inline static public function fileExists(key:String, type:AssetType, ?ignoreMods:Bool = false, ?library:String)
+		{
+			if(OpenFlAssets.exists(Paths.getPath(key, type))) {
+				return true;
+			}
+	
+			#if MODS_ALLOWED
+			if(FileSystem.exists(mods(key))) {
+				return true;
+			}
+			#end
+			return false;
+		}
+
+	public static function getPath(file:String, type:AssetType, ?library:Null<String>)
 	{
 		if (library != null)
 			return getLibraryPath(file, library);
@@ -59,7 +73,7 @@ class Paths
 		return '$library:assets/$library/$file';
 	}
 
-	inline static function getPreloadPath(file:String)
+	inline public static function getPreloadPath(file:String)
 	{
 		return 'assets/$file';
 	}
@@ -130,6 +144,11 @@ class Paths
 	{
 		return getPath('data/charts/$key.json', TEXT, library);
 	}
+
+	inline static public function character(key:String, ?library:String)
+		{
+			return getPath('data/characters/$key.json', TEXT, library);
+		}
 
 	static public function sound(key:String, ?library:String)
 	{
