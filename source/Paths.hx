@@ -32,11 +32,6 @@ class Paths
 				return true;
 			}
 	
-			#if MODS_ALLOWED
-			if(FileSystem.exists(mods(key))) {
-				return true;
-			}
-			#end
 			return false;
 		}
 
