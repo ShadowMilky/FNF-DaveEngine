@@ -133,9 +133,9 @@ class PlayState extends MusicBeatState
 	var GF_X:Float = 400;
 	var GF_Y:Float = 130;
 
-	public var boyfriendGroup:FlxTypedGroup<Boyfriend>;
-	public var dadGroup:FlxTypedGroup<Character>;
-	public var gfGroup:FlxTypedGroup<Character>;
+	public var dadGroup:FlxGroup;
+	public var bfGroup:FlxGroup;
+	public var gfGroup:FlxGroup;
 
 	public var stupidx:Float = 0;
 	public var stupidy:Float = 0; // stupid velocities for cutscene
@@ -1919,9 +1919,9 @@ class PlayState extends MusicBeatState
 			FlxG.switchState(new CharacterDebug(gf.curCharacter));
 		}
 		if (FlxG.keys.justPressed.EIGHT)
-			FlxG.switchState(new AnimationDebug(dad.curCharacter));
+			FlxG.switchState(new CharacterEditorState(dad.curCharacter));
 		if (FlxG.keys.justPressed.SIX)
-			FlxG.switchState(new AnimationDebug(boyfriend.curCharacter));
+			FlxG.switchState(new CharacterEditorState(boyfriend.curCharacter));
 		if (FlxG.keys.justPressed.TWO) // Go 10 seconds into the future :O
 		{
 			FlxG.sound.music.pause();
@@ -1964,7 +1964,7 @@ class PlayState extends MusicBeatState
 			boyfriend.stunned = false;
 		}
 		if (FlxG.keys.justPressed.THREE)
-			FlxG.switchState(new AnimationDebug(gf.curCharacter));
+			FlxG.switchState(new CharacterEditorState(gf.curCharacter));
 		#end
 
 		if (startingSong)
