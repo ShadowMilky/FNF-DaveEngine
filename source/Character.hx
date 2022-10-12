@@ -58,7 +58,7 @@ class Character extends FlxSprite
 	public var heyTimer:Float = 0;
 	public var specialAnim:Bool = false;
 	public var animationNotes:Array<Dynamic> = [];
-	public var stunnedLol:Bool = false;
+	public var stunned2:Bool = false;
 	public var singDuration:Float = 4; //Multiplier of how long a character holds the sing pose
 	public var idleSuffix:String = '';
 	public var danceIdle:Bool = false; //Character use "danceLeft" and "danceRight" instead of "idle"
