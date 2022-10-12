@@ -9,12 +9,9 @@ import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
-#if FEATURE_MODDING
 import sys.io.File;
 import sys.FileSystem;
-#else
 import openfl.utils.Assets;
-#end
 import haxe.Json;
 import haxe.format.JsonParser;
 
@@ -639,26 +636,26 @@ class Character extends FlxSprite
 				flipX = true;
 			default:
 					var characterPath:String = 'data/characters/' + curCharacter + '.json';
-					#if FEATURE_MODDING
+					/*#if FEATURE_MODDING
 					var path:String = Paths.mods(characterPath);
 					if (!FileSystem.exists(path)) {
 						path = Paths.getPreloadPath(characterPath);
 					}
 	
 					if (!FileSystem.exists(path))
-					#else
+					#else*/
 					var path:String = Paths.getPreloadPath(characterPath);
 					if (!Assets.exists(path))
-					#end
+					//#end
 					{
 						path = Paths.getPreloadPath('data/characters/' + DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
 					}
 	
-					#if FEATURE_MODDING
+					/*#if FEATURE_MODDING
 					var rawJson = File.getContent(path);
-					#else
+					#else*/
 					var rawJson = Assets.getText(path);
-					#end
+					//#end
 	
 					var json:CharacterFile = cast Json.parse(rawJson);
 					if(Assets.exists(Paths.getPath('images/' + json.image + '.txt', TEXT, 'shared'))) {
