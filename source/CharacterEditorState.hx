@@ -38,6 +38,7 @@ using StringTools;
 
 /**
 	*DEBUG MODE
+	taken from psych engine 0.3
  */
 class CharacterEditorState extends MusicBeatState
 {

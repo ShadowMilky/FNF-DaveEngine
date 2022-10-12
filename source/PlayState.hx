@@ -1901,7 +1901,6 @@ class PlayState extends MusicBeatState
 		else
 			iconP2.changeState('normal');
 
-		#if debug
 		if (FlxG.keys.justPressed.FOUR)
 		{
 			trace('DUMP LOL:\nDAD POSITION: ${dad.getPosition()}\nBOYFRIEND POSITION: ${boyfriend.getPosition()}\nGF POSITION: ${gf.getPosition()}\nCAMERA POSITION: ${camFollow.getPosition()}');
@@ -1965,7 +1964,6 @@ class PlayState extends MusicBeatState
 		}
 		if (FlxG.keys.justPressed.THREE)
 			FlxG.switchState(new CharacterEditorState(gf.curCharacter));
-		#end
 
 		if (startingSong)
 		{
