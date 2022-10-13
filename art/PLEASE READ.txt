@@ -1,0 +1,11 @@
+nobodys safe from foxa
+
+uhhhh yeah thanks for downloading the engine and go ahead and do stuff with it (if you can).
+
+anyway if you cant code with this thing
+in the meantime heres what you need to read (remember that!)
+get started: https://haxeflixel.com/documentation/getting-started/
+tutorial: https://haxeflixel.com/documentation/tutorial/
+handbook: https://haxeflixel.com/documentation/haxeflixel-handbook/
+resources: https://haxeflixel.com/documentation/resources/
+cheat sheet: https://haxeflixel.com/documentation/cheat-sheet/
