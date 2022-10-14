@@ -1106,6 +1106,61 @@ class PlayState extends MusicBeatState
 				bg.scale.set(6, 6);
 				sprites.add(bg);
 				add(bg);
+				case 'alley':
+					{
+						defaultCamZoom = 0.9;
+						curStage = 'whitty';
+
+						var wBg:FlxSprite;
+
+						wBg = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/alley/whittyBack'));
+			
+						/*if (SONG.stage == 'ballisticAlley')
+						{
+						  trace('pogging');
+						  wBg.antialiasing = true;
+						  var bgTex = Paths.getSparrowAtlas('BallisticBackground', 'bonusWeek');
+						  nwBg = new FlxSprite(-600, -200);
+						  nwBg.frames = bgTex;
+						  nwBg.antialiasing = true;
+						  nwBg.scrollFactor.set(0.9, 0.9);
+						  nwBg.active = true;
+						  nwBg.animation.addByPrefix('start', 'Background Whitty Start', 24, false);
+						  nwBg.animation.addByPrefix('gaming', 'Background Whitty Startup', 24, false);
+						  nwBg.animation.addByPrefix('gameButMove', 'Background Whitty Moving', 16, true);
+						  add(wBg);
+						  add(nwBg);
+						  nwBg.alpha = 0;
+						  wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('whittyFront', 'bonusWeek'));
+						  wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
+						  wstageFront.updateHitbox();
+						  wstageFront.antialiasing = true;
+						  wstageFront.scrollFactor.set(0.9, 0.9);
+						  wstageFront.active = false;
+						  add(wBg);
+						  add(wstageFront);
+						}
+						else
+						{*/
+						  wBg.antialiasing = true;
+						  wBg.scrollFactor.set(0.9, 0.9);
+						  wBg.active = false;
+
+						  var wstageFront:FlxSprite;
+
+						  wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/alley/whittyFront'));
+						  wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
+						  wstageFront.updateHitbox();
+						  wstageFront.antialiasing = true;
+						  wstageFront.scrollFactor.set(0.9, 0.9);
+						  wstageFront.active = false;
+						  add(wBg);
+						  add(wstageFront);
+						//}
+						// bg.setGraphicSize(Std.int(bg.width * 2.5));
+						// bg.updateHitbox();   
+					
+					}
 			default:
 				bgZoom = 0.9;
 				stageName = 'stage';
