@@ -96,6 +96,7 @@ class CharacterSelectState extends MusicBeatState
 			new CharacterForm('bf', 'Boyfriend', [1,1,1,1]),
 			new CharacterForm('bf-pixel', 'Pixel Boyfriend', [1,1,1,1]),
 			new CharacterForm('bf-christmas', 'Christmas Boyfriend', [1,1,1,1])
+			new CharacterForm('foxa', 'Foxa', [1,1,1,1])
 		])
 	];
 	#if SHADERS_ENABLED
@@ -460,6 +461,7 @@ class CharacterSelectState extends MusicBeatState
 		unlockCharacter('bf');
 		unlockCharacter('bf-pixel');
 		unlockCharacter('bf-christmas');
+		unlockCharacter('foxa');
 		FlxG.save.flush();
 	}
 
