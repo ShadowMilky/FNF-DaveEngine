@@ -1,6 +1,7 @@
 internal,tutorial,gf,good
 internal,bubbles,foxa,good
 internal,burning-flames,foxa,bad
+internal,christmas-blitz,foxa,good
 internal,bopeebo,dad,good
 internal,fresh,dad,good
 internal,dadbattle,dad,bad

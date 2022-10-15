@@ -311,7 +311,7 @@ class TitleState extends MusicBeatState
 				case 6:
 					createCoolText(['Based on Kade Engine']);
 				case 7:
-					addMoreText('for the funnies');
+					addMoreText('idk i have to say just kade engine only');
 				case 8:
 					deleteCoolText();
 				case 9:
@@ -323,9 +323,9 @@ class TitleState extends MusicBeatState
 				case 12:
 					addMoreText("Friday Night Funkin'");
 				case 13:
-					addMoreText('Dave');
+					addMoreText('Vs');
 				case 14:
-					addMoreText('Engine');
+					addMoreText('Foxa');
 				case 16:
 					skipIntro();
 			}
