@@ -126,7 +126,7 @@ class PauseSubState extends MusicBeatSubstate
 		{
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, LanguageManager.getTextString('pause_${menuItems[i].optionName}'), true, false);
 			songText.isMenuItem = true;
-			songText.itemType = 'C-Shape';
+			songText.itemType = 'D-Shape';
 			songText.targetY = i;
 			grpMenuShit.add(songText);
 		}
