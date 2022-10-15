@@ -2363,8 +2363,38 @@ class PlayState extends MusicBeatState
 				}
 				switch (curSong.toLowerCase())
 				{
+					case 'milf':
+						CharacterSelectState.unlockCharacter('foxa');
+						CharacterSelectState.unlockCharacter('foxa-angy');
+					/*case 'maze' | 'old-maze' | 'beta-maze':
+						canPause = false;
+						FlxG.sound.music.volume = 0;
+						vocals.volume = 0;
+						generatedMusic = false; // stop the game from trying to generate anymore music and to just cease attempting to play the music in general
+						boyfriend.stunned = true;
+						var doof:DialogueBox = new DialogueBox(false, CoolUtil.coolTextFile(Paths.txt('maze/endDialogue')));
+						doof.scrollFactor.set();
+						doof.finishThing = function()
+						{
+							FlxG.switchState(new StoryMenuState());
+						};
+						doof.cameras = [camDialogue];
+						schoolIntro(doof, false);
+					case 'splitathon' | 'old-splitathon':
+						canPause = false;
+						FlxG.sound.music.volume = 0;
+						vocals.volume = 0;
+						generatedMusic = false; // stop the game from trying to generate anymore music and to just cease attempting to play the music in general
+						boyfriend.stunned = true;
+						var doof:DialogueBox = new DialogueBox(false, CoolUtil.coolTextFile(Paths.txt('splitathon/splitathonDialogueEnd')));
+						doof.scrollFactor.set();
+						doof.finishThing = function()
+						{
+							FlxG.switchState(new StoryMenuState());
+						};
+						doof.cameras = [camDialogue];
+						schoolIntro(doof, false);*/
 					default:
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 						FlxG.switchState(new StoryMenuState());
 				}
 				transIn = FlxTransitionableState.defaultTransIn;
