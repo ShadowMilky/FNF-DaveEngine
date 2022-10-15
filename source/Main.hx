@@ -10,6 +10,16 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import flixel.system.FlxSound;
 import flixel.FlxG;
+import lime.app.Application;
+import openfl.events.UncaughtErrorEvent;
+import haxe.CallStack;
+import haxe.io.Path;
+import Discord.DiscordClient;
+import sys.FileSystem;
+import sys.io.File;
+import sys.io.Process;
+
+using StringTools;
 
 class Main extends Sprite
 {
@@ -121,7 +131,7 @@ class Main extends Sprite
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
 		Application.current.window.alert(errMsg, "Error!");
-		DiscordClient.shutdown();
+		//DiscordClient.shutdown();
 		Sys.exit(1);
 	}
 	//#end
