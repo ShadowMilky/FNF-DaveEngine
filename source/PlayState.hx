@@ -3581,6 +3581,7 @@ class PlayState extends MusicBeatState
 
 	function fastCarDrive()
 	{
+		trace('car go vroom');
 		FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
 
 		fastCar.velocity.x = (FlxG.random.int(170, 220) / FlxG.elapsed) * 3;
