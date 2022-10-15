@@ -2363,7 +2363,7 @@ class PlayState extends MusicBeatState
 				}
 				switch (curSong.toLowerCase())
 				{
-					case 'milf':
+					case 'burning-flames':
 						CharacterSelectState.unlockCharacter('foxa');
 						CharacterSelectState.unlockCharacter('foxa-angy');
 						FlxG.switchState(new StoryMenuState());
@@ -2426,6 +2426,10 @@ class PlayState extends MusicBeatState
 		{
 			switch (SONG.song.toLowerCase())
 			{
+				case 'burning-flames':
+					CharacterSelectState.unlockCharacter('foxa');
+					CharacterSelectState.unlockCharacter('foxa-angy');
+					FlxG.switchState(new FreeplayState());
 				default:
 					FlxG.switchState(new FreeplayState());
 			}
@@ -2449,8 +2453,16 @@ class PlayState extends MusicBeatState
 
 		switch (curSong.toLowerCase())
 		{
-			default:
-				LoadingState.loadAndSwitchState(new PlayState());
+			switch(curSong)
+			{
+				case "Bubbles":
+					LoadingState.loadAndSwitchState(new VideoState("assets/videos/burningflamesCutscene.webm", 
+					new PlayState()));	
+				default:	
+						LoadingState.loadAndSwitchState(new PlayState());
+
+
+			}
 		}
 	}
 

@@ -67,15 +67,15 @@ class MainMenuState extends MusicBeatState
 
 	public static var finishedFunnyMove:Bool = false;
 
-	public static var daRealEngineVer:String = 'Dave';
+	public static var daRealEngineVer:String = 'Foxa';
 	public static var engineVer:String = '0.1 ALPHA';
 
 	public static var engineVers:Array<String> =
 	[
-		'Dave'
+		'Foxa'
 	];
 
-	public static var kadeEngineVer:String = "DAVE";
+	public static var kadeEngineVer:String = "FOXA";
 	public static var gameVer:String = "0.2.7.1";
 	
 	var bg:FlxSprite;
@@ -85,6 +85,7 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	public static var bgPaths:Array<String> = [
 		'menu',
+		'dorito',
 	];
 
 	var logoBl:FlxSprite;

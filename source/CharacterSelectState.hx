@@ -138,7 +138,7 @@ class CharacterSelectState extends MusicBeatState
 		}
 		currentSelectedCharacter = characters[current];
 
-		FlxG.sound.playMusic(Paths.music("goodEnding"), 1, true);
+		FlxG.sound.playMusic(Paths.music("cityStreets"), 1, true);
 
 		//create BG
 
