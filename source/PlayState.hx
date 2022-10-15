@@ -1914,13 +1914,7 @@ class PlayState extends MusicBeatState
 			iconP1.changeState('winning');
 		    iconP2.changeState('losing');
 		}
-		else 
-		{
-			iconP1.changeState('normal');
-		    iconP2.changeState('normal');
-		}
-
-		if (healthBar.percent > 80)
+		else if (healthBar.percent > 80)
 		{
 			iconP2.changeState('losing');
 		    iconP1.changeState('winning');
