@@ -77,6 +77,7 @@ class MusicPlayerState extends MusicBeatState
         {
             var songText:Alphabet = new Alphabet(0, 0, songs[i].songName + (songs[i].hasVocals ? "" : ((songs[i].songName != 'tutorial') ? "-Inst" : "")), true, false);
             songText.isMenuItem = true;
+            songText.itemType = 'C-Shape';
             songText.targetY = i;
             grpSongs.add(songText);
 
