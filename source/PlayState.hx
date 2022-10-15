@@ -1910,18 +1910,25 @@ class PlayState extends MusicBeatState
 			health = 2;
 
 		if (healthBar.percent < 20)
+		{
 			iconP1.changeState('losing');
 		    iconP2.changeState('winning');
-		else
+		}
+		else 
+		{
 			iconP1.changeState('normal');
 		    iconP2.changeState('normal');
+		}
 
 		if (healthBar.percent > 80)
+		{
 			iconP2.changeState('losing');
 		    iconP1.changeState('winning');
-		else
+		}
+		else {
 			iconP2.changeState('normal');
 		    iconP1.changeState('normal');
+		}
 
 		if (FlxG.keys.justPressed.FOUR)
 		{
