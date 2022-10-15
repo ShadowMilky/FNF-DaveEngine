@@ -372,8 +372,6 @@ class Character extends FlxSprite
 					playAnim('idle');
 
 					nativelyPlayable = true;
-	
-					flipX = true;
 			case 'spooky':
 				frames = Paths.getSparrowAtlas('characters/spooky_kids_assets', 'shared');
 
