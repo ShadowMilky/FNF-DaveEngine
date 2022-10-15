@@ -17,6 +17,6 @@ senpai-angry:senpai-pixel:#ffaa6f
 spirit:spirit-pixel:#ff3c6e
 tankman:tankman:#e1e1e1
 foxa:foxa:#ffd0ff
-foxa-angy:foxa:#ffd0ff
+foxa-angy:foxa-angy:#ffd0ff
 whitty-christmas:dad:#af66ce
 foxa-christmas:foxa:#ffd0ff
