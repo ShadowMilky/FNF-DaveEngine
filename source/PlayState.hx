@@ -2366,6 +2366,7 @@ class PlayState extends MusicBeatState
 					case 'milf':
 						CharacterSelectState.unlockCharacter('foxa');
 						CharacterSelectState.unlockCharacter('foxa-angy');
+						FlxG.switchState(new StoryMenuState());
 					/*case 'maze' | 'old-maze' | 'beta-maze':
 						canPause = false;
 						FlxG.sound.music.volume = 0;

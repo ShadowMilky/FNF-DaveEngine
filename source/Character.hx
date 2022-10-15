@@ -307,7 +307,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'foxa-angy': // foxa angy
-				frames = Paths.getSparrowAtlas('characters/foxa-angy', 'shared');
+				frames = Paths.getSparrowAtlas('characters/foxa_angy', 'shared');
 
 				animation.addByPrefix('idle', 'Idle', 24);
 				animation.addByPrefix('singUP', 'Sing Up', 24);
