@@ -16,5 +16,5 @@ senpai:senpai-pixel:#ffaa6f
 senpai-angry:senpai-pixel:#ffaa6f
 spirit:spirit-pixel:#ff3c6e
 tankman:tankman:#e1e1e1
-foxa:foxa:#d8558e
-foxa-angy:foxa:#d8558e
+foxa:foxa:#ffd0ff
+foxa-angy:foxa:#ffd0ff
