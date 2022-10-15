@@ -51,16 +51,16 @@ class HealthIcon extends FlxSprite
 				var reqIcon:String = Paths.image('ui/iconGrid/' + theChar, 'preload');
 				if(FileSystem.exists(reqIcon))
 				{
-					loadGraphic(reqIcon, true, 150, 150);
+					loadGraphic(reqIcon, true, 150, 150, 150);
 				}
 				else
 				{
-					loadGraphic(Paths.image('ui/iconGrid/face', 'preload'), true, 150, 150);
+					loadGraphic(Paths.image('ui/iconGrid/face', 'preload'), true, 150, 150, 150);
 				}
 			}
 			else
 			{
-				loadGraphic(Paths.image('ui/iconGrid/face', 'preload'), true, 150, 150);
+				loadGraphic(Paths.image('ui/iconGrid/face', 'preload'), true, 150, 150, 150);
 			}
 
 
