@@ -370,6 +370,8 @@ class Character extends FlxSprite
 					addOffset('scared', -4);
 	
 					playAnim('idle');
+
+					nativelyPlayable = true;
 	
 					flipX = true;
 			case 'spooky':
