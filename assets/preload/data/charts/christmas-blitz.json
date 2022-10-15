@@ -3981,9 +3981,9 @@
 				"mustHitSection": true
 			}
 		],
-		"gfVersion": "invisible",
+		"gfVersion": "gf",
 		"song": "Christmas-Blitz",
-		"stage": "Christmas",
+		"stage": "alley",
 		"validScore": true,
 		"sections": 45,
 		"needsVoices": true,
