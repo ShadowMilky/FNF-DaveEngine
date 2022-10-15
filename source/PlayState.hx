@@ -2453,16 +2453,9 @@ class PlayState extends MusicBeatState
 
 		switch (curSong.toLowerCase())
 		{
-			switch(curSong)
-			{
 				case "Bubbles":
-					LoadingState.loadAndSwitchState(new VideoState("assets/videos/burningflamesCutscene.webm", 
-					new PlayState()));	
-				default:	
-						LoadingState.loadAndSwitchState(new PlayState());
-
-
-			}
+					LoadingState.loadAndSwitchState(new VideoState("assets/videos/burningflamesCutscene.webm", new PlayState()));	
+				default:	LoadingState.loadAndSwitchState(new PlayState());
 		}
 	}
 
