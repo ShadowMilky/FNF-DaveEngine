@@ -187,7 +187,7 @@ class Paths
 	inline static public function image(key:String, ?library:String)
 	{
 		var defaultReturnPath = getPath('images/$key.png', IMAGE, library);
-		trace('image - loaded images/$key.png')
+		trace('image - loaded images/$key.png');
 		if (isLocale())
 		{
 			var langaugeReturnPath = getPath('locale/${LanguageManager.save.data.language}/images/$key.png', IMAGE, library);
