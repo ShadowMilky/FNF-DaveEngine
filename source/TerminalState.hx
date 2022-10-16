@@ -32,7 +32,6 @@ class TerminalState extends MusicBeatState
     public var displayText:FlxText;
     var creationActivated:Bool = false;
     public var CommandList:Array<TerminalCommand> = new Array<TerminalCommand>();
-    public var typeSound:FlxSound;
 
     // [BAD PERSON] was too lazy to finish this lol.
     var unformattedSymbols:Array<String> =
@@ -383,12 +382,10 @@ class TerminalState extends MusicBeatState
             if (keyJustPressed == FlxKey.BACKSPACE)
             {
                 curCommand = curCommand.substr(0,curCommand.length - 1);
-                typeSound.play();
             }
             else if (keyJustPressed == FlxKey.SPACE)
             {
                 curCommand += " ";
-                typeSound.play();
             }
             else
             {
@@ -406,7 +403,6 @@ class TerminalState extends MusicBeatState
                     toShow = toShow.toUpperCase();
                 }
                 curCommand += toShow;
-                typeSound.play();
             }
             UpdateText(curCommand);
         }
