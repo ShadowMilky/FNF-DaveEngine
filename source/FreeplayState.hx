@@ -381,6 +381,10 @@ class FreeplayState extends MusicBeatState
 			{
 				FlxG.switchState(new MainMenuState());
 			}
+			if (controls.CHEAT && canInteract)
+				{
+					FlxG.switchState(new TerminalState());
+				}
 
 			return;
 		}
