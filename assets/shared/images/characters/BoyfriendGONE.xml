@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BoyfriendGONE.png">
+<SubTexture name="BoyfriendLOL BFIdle0000" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0001" x="3511" y="0" width="565" height="684" frameX="-303" frameY="-36" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0002" x="2920" y="2112" width="557" height="697" frameX="-298" frameY="-23" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0003" x="1703" y="2157" width="555" height="709" frameX="-296" frameY="-11" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0004" x="545" y="2157" width="549" height="713" frameX="-296" frameY="-7" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0005" x="1679" y="1440" width="550" height="715" frameX="-296" frameY="-5" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0006" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0007" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0008" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0009" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0010" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFIdle0011" x="0" y="0" width="571" height="720" frameX="-297" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFLeft0000" x="2385" y="0" width="535" height="714" frameX="-313" frameY="-6" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFLeft0001" x="1474" y="720" width="535" height="719" frameX="-307" frameY="-1" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFRight0000" x="0" y="2157" width="545" height="714" frameX="-274" frameY="-6" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFRight0001" x="1141" y="1440" width="538" height="716" frameX="-282" frameY="-4" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFDown0000" x="0" y="2871" width="569" height="682" frameX="-295" frameY="-38" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFDown0001" x="2920" y="1414" width="561" height="698" frameX="-296" frameY="-22" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFUp0000" x="2258" y="2157" width="541" height="709" frameX="-290" frameY="-11" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL BFUp0001" x="2920" y="708" width="541" height="706" frameX="-295" frameY="-14" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissRight0000" x="0" y="1440" width="550" height="717" frameX="-309" frameY="-3" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissRight0001" x="1094" y="2157" width="609" height="712" frameX="-311" frameY="-8" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissLeft0000" x="571" y="0" width="903" height="720" frameX="-273" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissLeft0001" x="0" y="720" width="570" height="720" frameX="-289" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissDown0000" x="550" y="1440" width="591" height="717" frameX="-293" frameY="-3" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissDown0001" x="2920" y="0" width="591" height="708" frameX="-302" frameY="-12" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissUp0000" x="570" y="720" width="579" height="720" frameX="-305" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="BoyfriendLOL MissUp0001" x="1474" y="0" width="911" height="720" frameX="-322" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

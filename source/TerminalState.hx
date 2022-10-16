@@ -219,14 +219,12 @@ class TerminalState extends MusicBeatState
                     tx = "\"Artifact\" 4:\nA weird email, with attached images that use the same cypher as Artifact 3.\nNotes: Who sent this?";
                 case "tristan":
                     tx = "The key to defeating the one whose name shall not be stated.\nA heart of gold that will never become faded.";
-                case "FOXA":
+                case "CREATION":
                     tx = "[FILE DELETED]\n[FUCK YOU!]"; // [THIS AND EXBUNGOS FILE ARE THE ONLY ONES I HAVE ACCESS TO UNFORTUNATELY. I HATE IT]
                 case "deleted":
                     tx = "The unnamable never was a god and never will be. Just an accident.";
-                case "exbungo":
-                    tx = "[FAT AND UGLY.]";
-                case "recurser":
-                    tx = "A being of chaos that wants to spread ORDER.\nDespite this, his sanity is at the border.";
+                case "mistake":
+                    tx = "[SHE IS A COMPLETE MISTAKE]";
                 case "moldy":
                     tx = "Let me show you my DS family!";    
                 case "1":
@@ -270,7 +268,7 @@ class TerminalState extends MusicBeatState
                 case "3D":
                     tx = "He will never be <free>.";
                 case "p.r.a.e.m":
-                    tx = "Name: Power Removal And Extraction Machine\nProgress: Complete\nNotes: Took longer than expected. Tristans 7th BIRTHDAY is in a month.";
+                    tx = "Name: Power Removal And Extraction Machine\nProgress: Complete\nNotes: Took longer than expected. Lol.";
             }
             //case sensitive!!
             switch (arguments[0])
