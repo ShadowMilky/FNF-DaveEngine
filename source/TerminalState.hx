@@ -309,11 +309,6 @@ class TerminalState extends MusicBeatState
                 UpdateText("\n" + "Invalid keys. Valid keys: " + amountofkeys);
             }
         }));
-        CommandList.push(new TerminalCommand("secret mod leak", LanguageManager.getTerminalString("term_leak_ins"), function(arguments:Array<String>)
-        {
-			MathGameState.accessThroughTerminal = true;
-            FlxG.switchState(new MathGameState());
-        }, false, true));
 
         add(displayText);
 
@@ -438,7 +433,7 @@ class TerminalState extends MusicBeatState
         }
     }
 
-	function expungedReignStarts()
+	/*function expungedReignStarts()
 	{
 		var glitch = new FlxSprite(0, 0);
 		glitch.frames = Paths.getSparrowAtlas('ui/glitch/glitch');
@@ -523,7 +518,7 @@ class TerminalState extends MusicBeatState
 				});
 			});
         });
-    }
+    }*/
 }
 
 
