@@ -381,10 +381,6 @@ class FreeplayState extends MusicBeatState
 			{
 				FlxG.switchState(new MainMenuState());
 			}
-			if (controls.CHEAT && canInteract)
-				{
-					FlxG.switchState(new TerminalState());
-				}
 
 			return;
 		}
@@ -406,6 +402,14 @@ class FreeplayState extends MusicBeatState
 				stringKey = 'down';
 				changeSelection(1);
 			}
+            if (controls.LEFT_P && canInteract)
+			{
+				FlxG.switchState(new TerminalState());
+			}
+			if (controls.RIGHT_P && canInteract)
+				{
+					FlxG.switchState(new OptionsMenu());
+				}
 			if (controls.BACK && canInteract)
 			{				
 				loadingPack = true;
