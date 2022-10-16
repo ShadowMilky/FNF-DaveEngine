@@ -404,10 +404,12 @@ class FreeplayState extends MusicBeatState
 			}
             if (controls.LEFT_P && canInteract)
 			{
+				trace('terminal is here');
 				FlxG.switchState(new TerminalState());
 			}
 			if (controls.RIGHT_P && canInteract)
 				{
+					trace('why not use the main menu, dum-dum');
 					FlxG.switchState(new OptionsMenu());
 				}
 			if (controls.BACK && canInteract)
