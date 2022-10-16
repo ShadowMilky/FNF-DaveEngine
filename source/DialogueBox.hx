@@ -397,6 +397,17 @@ class DialogueBox extends FlxSpriteGroup
 						portrait.portraitPath = 'dialogue/gf/gf_happy';
 				}
 				portrait.left = false;
+			case 'foxa':
+				switch (expression)
+				{
+					case 'mad':
+						portrait.portraitPath = 'dialogue/foxa-op/creation0000';
+					case 'angy':
+						portrait.portraitPath = 'dialogue/foxa-op/angy0000';
+					default:
+						portrait.portraitPath = 'dialogue/foxa-op/portait0000';
+				}
+				portrait.left = true;
 		}
 		return portrait;
 	}

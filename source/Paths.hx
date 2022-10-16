@@ -115,6 +115,27 @@ class Paths
 		}
 	}
 
+	inline static public function txtDialogue(key:String, ?library:String)
+		{
+			var defaultReturnPath = getPath('data/dialogue/$key.txt', TEXT, library);
+			/*if (isLocale())
+			{
+				var langaugeReturnPath = getPath('locale/${LanguageManager.save.data.language}/data/$key.txt', TEXT, library);
+				if (FileSystem.exists(langaugeReturnPath))
+				{
+					return langaugeReturnPath;
+				}
+				else
+				{
+					return defaultReturnPath;
+				}
+			}
+			else
+			{*/
+				return defaultReturnPath;
+			//}
+		}
+
 	inline static public function xml(key:String, ?library:String)
 	{
 		return getPath('data/$key.xml', TEXT, library);
