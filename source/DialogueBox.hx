@@ -405,7 +405,7 @@ class DialogueBox extends FlxSpriteGroup
 					case 'angy':
 						portrait.portraitPath = 'dialogue/foxa-op/angy0000';
 					default:
-						portrait.portraitPath = 'dialogue/foxa-op/portait0000';
+						portrait.portraitPath = 'dialogue/foxa-op/portrait0000';
 				}
 				portrait.left = true;
 		}
