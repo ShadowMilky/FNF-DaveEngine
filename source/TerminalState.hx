@@ -353,18 +353,6 @@ class TerminalState extends MusicBeatState
     {
         super.update(elapsed);
         
-        if (expungedActivated)
-        {
-            curExpungedAlpha = Math.min(curExpungedAlpha + elapsed, 1);
-            if (fakeDisplayGroup.exists && fakeDisplayGroup != null)
-            {
-                for (text in fakeDisplayGroup.members)
-                {
-                    text.alpha = curExpungedAlpha;
-                }
-            }
-            return;
-        }
         var keyJustPressed:FlxKey = cast(FlxG.keys.firstJustPressed(), FlxKey);
 
         if (keyJustPressed == FlxKey.ENTER)
