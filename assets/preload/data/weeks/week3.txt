@@ -1,3 +1,0 @@
-Pico:pico
-Philly:pico
-Blammed:pico
