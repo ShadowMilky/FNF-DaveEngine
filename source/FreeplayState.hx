@@ -404,6 +404,7 @@ class FreeplayState extends MusicBeatState
 			}
             if (controls.LEFT_P && canInteract)
 			{
+				FlxG.sound.music.fadeOut(1, 0);
 				trace('terminal is here');
 				FlxG.switchState(new TerminalState());
 			}
