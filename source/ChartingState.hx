@@ -493,13 +493,13 @@ class ChartingState extends MusicBeatState
 
 		UI_box.addGroup(tab_group_note);
 
-		/*player2 = new Character(0,gridBG.y, _song.player2);
+		player2 = new Character(0, gridBG.y, _song.player2);
 		player1 = new Boyfriend(player2.width * 0.2,gridBG.y + player2.height, _song.player1);
 		player1.y = player1.y - player1.height;
 		player2.setGraphicSize(Std.int(player2.width * 0.2));
 		player1.setGraphicSize(Std.int(player1.width * 0.2));
 		UI_box.add(player1);
-		UI_box.add(player2);*/
+		UI_box.add(player2);
 
 	}
 
@@ -540,12 +540,11 @@ class ChartingState extends MusicBeatState
 		// general shit
 		var title:FlxText = new FlxText(UI_box.x + 20, UI_box.y + 20, 0);
 		bullshitUI.add(title);
-		/* 
-			var loopCheck = new FlxUICheckBox(UI_box.x + 10, UI_box.y + 50, null, null, "Loops", 100, ['loop check']);
-			loopCheck.checked = curNoteSelected.doesLoop;
-			tooltips.add(loopCheck, {title: 'Section looping', body: "Whether or not it's a simon says style section", style: tooltipType});
-			bullshitUI.add(loopCheck);
-		 */
+
+		var loopCheck = new FlxUICheckBox(UI_box.x + 10, UI_box.y + 50, null, null, "Loops", 100, ['loop check']);
+		loopCheck.checked = curNoteSelected.doesLoop;
+		//tooltips.add(loopCheck, {title: 'Section looping', body: "Whether or not it's a simon says style section", style: tooltipType});
+		bullshitUI.add(loopCheck);
 	}
 
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
