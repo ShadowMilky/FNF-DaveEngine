@@ -64,7 +64,7 @@ class DialogueBox extends FlxSpriteGroup
 			{
 				case 'bubbles' | 'burning-flames':
 					FlxG.sound.music.stop();
-					FlxG.sound.playMusic(Paths.music('city-streets'), 0);
+					FlxG.sound.playMusic(Paths.music('cityStreets'), 0);
 				default:
 					FlxG.sound.music.stop();
 			}
@@ -180,7 +180,7 @@ class DialogueBox extends FlxSpriteGroup
 			case 'creation':
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/creationDialogue'), 0.6)];	
 			default:
-				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/pixelText'), 0.6)];	
+				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/dialogueDefault'), 0.6)];	
 		}
 
 		if (box.animation.curAnim != null)
@@ -205,7 +205,7 @@ class DialogueBox extends FlxSpriteGroup
 			switch (PlayState.SONG.song.toLowerCase())
 			{
 				default:
-					FlxG.sound.play(Paths.sound('textclickmodern'), 0.8);
+					FlxG.sound.play(Paths.sound('dialougeClose'), 0.8);
 			}
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
