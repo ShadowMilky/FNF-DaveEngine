@@ -21,7 +21,10 @@ class OutdatedSubState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 		var txt:FlxText = null;
-		txt = new FlxText(0, 0, FlxG.width, 'Hello!', 32);
+		txt = new FlxText(0, 0, FlxG.width, "Hello!
+		\nThis mod is unfinished currently.
+		\nYou may experience bugs and crashes.
+		\nEnjoy the mod anyway!", 32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
 		txt.antialiasing = true;

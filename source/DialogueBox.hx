@@ -184,6 +184,10 @@ class DialogueBox extends FlxSpriteGroup
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/bfDialogue'), 0.6)];		
 			case 'gf':
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/gfDialogue'), 0.6)];	
+			case 'foxa':
+				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/foxaDialogue'), 0.6)];	
+			case 'creation':
+				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/creationDialogue'), 0.6)];	
 			default:
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/pixelText'), 0.6)];	
 		}
@@ -397,7 +401,32 @@ class DialogueBox extends FlxSpriteGroup
 						portrait.portraitPath = 'dialogue/gf/gf_happy';
 				}
 				portrait.left = false;
-		}
+			case 'foxa':
+				switch (expression)
+				{
+					case 'mad':
+						portrait.portraitPath = 'dialogue/foxa-op/creation0000';
+					case 'angy':
+						portrait.portraitPath = 'dialogue/foxa-op/angy0000';
+					default:
+						portrait.portraitPath = 'dialogue/foxa-op/portrait0000';
+				}
+				portrait.left = true;
+		case 'reaper':
+			switch (expression)
+			{
+				default:
+					portrait.portraitPath = 'dialogue/reaper/reaper1';
+			}
+			portrait.left = true;
+		case 'creation':
+			switch (expression)
+			{
+				default:
+					portrait.portraitPath = 'dialogue/foxa-op/creation0000';
+			}
+				portrait.left = true;
+	}
 		return portrait;
 	}
 

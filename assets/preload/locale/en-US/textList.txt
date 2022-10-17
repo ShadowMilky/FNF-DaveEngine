@@ -87,8 +87,8 @@ keybind_preset==Keybind Presets:
 story_track==Tracks
 story_weekScore==WEEK SCORE:
 story_week0==Tutorial
-story_week1==Daddy Dearest
-story_week2==Spooky Month
+story_week1==Before the Back Alley Blitz (Ft. Føxa)
+story_week2==Christmas Day
 story_week3==Pico
 story_week4==Mommy Must Murder
 story_week5==Red Snow

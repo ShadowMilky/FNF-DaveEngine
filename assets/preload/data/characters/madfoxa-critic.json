@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				20,
+				10
+			],
+			"indices": [],
+			"fps": 20,
+			"anim": "idle",
+			"loop": true,
+			"name": "MadFox Idle"
+		},
+		{
+			"offsets": [
+				31,
+				10
+			],
+			"indices": [],
+			"fps": 15,
+			"anim": "singLEFT",
+			"loop": true,
+			"name": "MadFox Left"
+		},
+		{
+			"offsets": [
+				20,
+				10
+			],
+			"indices": [],
+			"fps": 15,
+			"anim": "singDOWN",
+			"loop": true,
+			"name": "MadFox Down"
+		},
+		{
+			"offsets": [
+				14,
+				10
+			],
+			"indices": [],
+			"fps": 15,
+			"anim": "singUP",
+			"loop": true,
+			"name": "MadFox Up"
+		},
+		{
+			"offsets": [
+				10,
+				7
+			],
+			"indices": [],
+			"fps": 15,
+			"anim": "singRIGHT",
+			"loop": true,
+			"name": "MadFox Right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/MadFox",
+	"position": [
+		220,
+		0
+	],
+	"healthicon": "MadFox",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		169,
+		255
+	],
+	"camera_position": [
+		-240,
+		110
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1
+}

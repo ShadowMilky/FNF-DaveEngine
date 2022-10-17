@@ -201,7 +201,7 @@ class FreeplayState extends MusicBeatState
 	{
 		switch (Catagories[CurrentPack].toLowerCase())
 		{
-			case 'base':
+			case 'foxa':
 				for(i in 0...weekList.length)
 				{
 					var mainCharacter = createSongArrayFromTxt(weekList[i], 'char');
@@ -222,7 +222,7 @@ class FreeplayState extends MusicBeatState
 		{
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
 			songText.isMenuItem = true;
-			songText.itemType = 'Classic';
+			songText.itemType = 'D-Shape';
 			songText.targetY = i;
 			songText.scrollFactor.set();
 			songText.alpha = 0;
@@ -402,6 +402,17 @@ class FreeplayState extends MusicBeatState
 				stringKey = 'down';
 				changeSelection(1);
 			}
+            if (controls.LEFT_P && canInteract)
+			{
+				FlxG.sound.music.fadeOut(1, 0);
+				trace('terminal is here');
+				FlxG.switchState(new TerminalState());
+			}
+			if (controls.RIGHT_P && canInteract)
+				{
+					trace('why not use the main menu, dum-dum');
+					FlxG.switchState(new OptionsMenu());
+				}
 			if (controls.BACK && canInteract)
 			{				
 				loadingPack = true;

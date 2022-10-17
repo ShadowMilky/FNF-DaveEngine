@@ -13,6 +13,7 @@ import flixel.text.FlxText;
 import flixel.system.FlxSoundGroup;
 import flixel.math.FlxPoint;
 import openfl.geom.Point;
+import flixel.addons.display.FlxBackdrop;
 import flixel.*;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
@@ -71,6 +72,8 @@ class CharacterSelectState extends MusicBeatState
 
 	var strummies:FlxTypedGroup<FlxSprite>;
 
+	var funbg:FlxBackdrop;
+
 	var notestuffs:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
 
 	public var isDebug:Bool = false;
@@ -95,7 +98,11 @@ class CharacterSelectState extends MusicBeatState
 		new CharacterInSelect('bf', [1, 1, 1, 1], [
 			new CharacterForm('bf', 'Boyfriend', [1,1,1,1]),
 			new CharacterForm('bf-pixel', 'Pixel Boyfriend', [1,1,1,1]),
-			new CharacterForm('bf-christmas', 'Christmas Boyfriend', [1,1,1,1])
+			new CharacterForm('bf-christmas', 'Christmas Boyfriend', [1,1,1,1]),
+		]),
+		new CharacterInSelect('foxa', [1, 1, 1, 1], [
+			new CharacterForm('foxa', 'Foxa', [1,1,1,1]),
+			new CharacterForm('foxa-angy', 'Angy Foxa', [1,1,1,1]),
 		])
 	];
 	#if SHADERS_ENABLED
@@ -131,7 +138,7 @@ class CharacterSelectState extends MusicBeatState
 		}
 		currentSelectedCharacter = characters[current];
 
-		FlxG.sound.playMusic(Paths.music("goodEnding"), 1, true);
+		FlxG.sound.playMusic(Paths.music("cityStreets"), 1, true);
 
 		//create BG
 
@@ -157,6 +164,12 @@ class CharacterSelectState extends MusicBeatState
 		stageCurtains.active = false;
 		add(stageCurtains);
 
+		funbg = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), 1, 1, true, true, 1, 1);
+		funbg.alpha = 0;
+		funbg.antialiasing = true;
+		funbg.scrollFactor.set();
+		add(funbg);
+
 		char = new Boyfriend(FlxG.width / 2, FlxG.height / 2, 'bf');
 		char.cameras = [camHUD];
 		char.screenCenter();
@@ -169,6 +182,8 @@ class CharacterSelectState extends MusicBeatState
 		
 		add(strummies);
 		generateStaticArrows(false);
+
+		FlxTween.tween(funbg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		
 		notemodtext = new FlxText((FlxG.width / 3.5) + 80, FlxG.height, 0, "1.00x       1.00x        1.00x       1.00x", 30);
 		notemodtext.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -318,6 +333,10 @@ class CharacterSelectState extends MusicBeatState
 		}
 		#end
 		Conductor.songPosition = FlxG.sound.music.time;
+
+		var scrollSpeed:Float = 50;
+		funbg.x -= scrollSpeed * elapsed;
+		funbg.y -= scrollSpeed * elapsed;
 		
 		var controlSet:Array<Bool> = [controls.LEFT_P, controls.DOWN_P, controls.UP_P, controls.RIGHT_P];
 
@@ -381,6 +400,7 @@ class CharacterSelectState extends MusicBeatState
 			selectedCharacter = true;
 			var heyAnimation:Bool = char.animation.getByName("hey") != null; 
 			char.playAnim(heyAnimation ? 'hey' : 'singUP', true);
+			trace("you selected" + char);
 			FlxG.sound.music.fadeOut(1.9, 0);
 			FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 			new FlxTimer().start(1.9, endIt);

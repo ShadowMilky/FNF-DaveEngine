@@ -71,6 +71,9 @@ option_enable_fps==Contador de FPS OFF
 option_enable_compat==Modo de Compatibilidade OFF
 option_disable_compat==Modo de Compatibilidade ON
 
+option_botplay_on==Reproducao automatica OFF
+option_botplay_off==Reproducao automatica ON
+
 en-US==Inglês
 es-US==Espanhol
 pt-br==Português BR

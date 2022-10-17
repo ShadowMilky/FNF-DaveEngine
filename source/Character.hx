@@ -306,6 +306,72 @@ class Character extends FlxSprite
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
 				playAnim('idle');
+			case 'foxa-angy': // foxa angy
+				frames = Paths.getSparrowAtlas('characters/foxa_angy', 'shared');
+
+				animation.addByPrefix('idle', 'Idle', 24);
+				animation.addByPrefix('singUP', 'Sing Up', 24);
+				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
+				animation.addByPrefix('singDOWN', 'Sing Down', 24);
+				animation.addByPrefix('singLEFT', 'Sing Left', 24);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');
+			case 'whitty-christmas': // whitty christmas, the only whitty sprites in this mod (currently)
+				var tex = Paths.getSparrowAtlas('characters/whitty-christmas', 'shared');
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 24);
+				animation.addByPrefix('singUP', 'Sing Up', 24);
+				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
+				animation.addByPrefix('singDOWN', 'Sing Down', 24);
+				animation.addByPrefix('singLEFT', 'Sing Left', 24);
+
+				addOffset('idle', 0,0 );
+				addOffset("singUP", -6, 50);
+				addOffset("singRIGHT", 0, 27);
+				addOffset("singLEFT", -10, 10);
+				addOffset("singDOWN", 0, -30);
+			case 'foxa-christmas': // 
+					var tex = Paths.getSparrowAtlas('characters/foxa-christmas', 'shared');
+					frames = tex;
+					animation.addByPrefix('idle', 'Foxa idle dance', 24, false);
+					animation.addByPrefix('singUP', 'Foxa NOTE UP', 24, false);
+					animation.addByPrefix('singLEFT', 'Foxa NOTE LEFT', 24, false);
+					animation.addByPrefix('singRIGHT', 'Foxa NOTE RIGHT', 24, false);
+					animation.addByPrefix('singDOWN', 'Foxa NOTE DOWN', 24, false);
+					animation.addByPrefix('singUPmiss', 'Foxa NOTE UP MISS', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'Foxa NOTE LEFT MISS', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'Foxa NOTE RIGHT MISS', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'Foxa NOTE DOWN MISS', 24, false);
+					animation.addByPrefix('hey', 'Foxa HEY!!', 24, false);
+	
+					animation.addByPrefix('firstDeath', "Foxa dies", 24, false);
+					animation.addByPrefix('deathLoop', "Foxa Dead Loop", 24, true);
+					animation.addByPrefix('deathConfirm', "Foxa Dead confirm", 24, false);
+	
+					animation.addByPrefix('scared', 'Foxa idle shaking', 24);
+	
+					addOffset('idle', -5);
+					addOffset("singUP", -29, 27);
+					addOffset("singRIGHT", -38, -7);
+					addOffset("singLEFT", 12, -6);
+					addOffset("singDOWN", -10, -50);
+					addOffset("singUPmiss", -29, 27);
+					addOffset("singRIGHTmiss", -30, 21);
+					addOffset("singLEFTmiss", 12, 24);
+					addOffset("singDOWNmiss", -11, -19);
+					addOffset("hey", 7, 4);
+					addOffset('firstDeath', 37, 11);
+					addOffset('deathLoop', 37, 5);
+					addOffset('deathConfirm', 37, 69);
+					addOffset('scared', -4);
+	
+					playAnim('idle');
+
+					nativelyPlayable = true;
 			case 'spooky':
 				frames = Paths.getSparrowAtlas('characters/spooky_kids_assets', 'shared');
 

@@ -67,7 +67,7 @@ class HealthIcon extends FlxSprite
 			if (char != "none")
 			{
 				antialiasing = !noAaChars.contains(char);
-				animation.add(char, [0, 1], 0, false, isPlayer);
+				animation.add(char, [0, 1, 2], 0, false, isPlayer);
 				animation.play(char);
 			}
 		}
@@ -89,6 +89,8 @@ class HealthIcon extends FlxSprite
 				animation.curAnim.curFrame = 0;
 			case 'losing':
 				animation.curAnim.curFrame = 1;
+			case 'winning':
+				animation.curAnim.curFrame = 2;
 		}
 		state = charState;
 	}

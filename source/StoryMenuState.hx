@@ -46,14 +46,9 @@ class StoryMenuState extends MusicBeatState
 	var weekList:Array<String> = [];
 	var weeks:Array<Week> = [];
 	var bannerNames:Array<String> = [
-		'menu_stage',
-		'menu_stage',
-		'menu_halloween',
-		'menu_philly',
-		'menu_limo',
-		'menu_christmas',
-		'menu_school',
-		'menu_tank'
+		'menu_tut',
+		'menu_alley',
+		'menu_christmas'
 	];
 
 	var weekBanners:Array<FlxSprite> = new Array<FlxSprite>();

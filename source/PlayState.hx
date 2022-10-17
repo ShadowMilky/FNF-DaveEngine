@@ -1106,6 +1106,61 @@ class PlayState extends MusicBeatState
 				bg.scale.set(6, 6);
 				sprites.add(bg);
 				add(bg);
+				case 'alley':
+					{
+						defaultCamZoom = 0.9;
+						curStage = 'whitty';
+
+						var wBg:FlxSprite;
+
+						wBg = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/alley/whittyBack'));
+			
+						/*if (SONG.stage == 'ballisticAlley')
+						{
+						  trace('pogging');
+						  wBg.antialiasing = true;
+						  var bgTex = Paths.getSparrowAtlas('BallisticBackground', 'bonusWeek');
+						  nwBg = new FlxSprite(-600, -200);
+						  nwBg.frames = bgTex;
+						  nwBg.antialiasing = true;
+						  nwBg.scrollFactor.set(0.9, 0.9);
+						  nwBg.active = true;
+						  nwBg.animation.addByPrefix('start', 'Background Whitty Start', 24, false);
+						  nwBg.animation.addByPrefix('gaming', 'Background Whitty Startup', 24, false);
+						  nwBg.animation.addByPrefix('gameButMove', 'Background Whitty Moving', 16, true);
+						  add(wBg);
+						  add(nwBg);
+						  nwBg.alpha = 0;
+						  wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('whittyFront', 'bonusWeek'));
+						  wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
+						  wstageFront.updateHitbox();
+						  wstageFront.antialiasing = true;
+						  wstageFront.scrollFactor.set(0.9, 0.9);
+						  wstageFront.active = false;
+						  add(wBg);
+						  add(wstageFront);
+						}
+						else
+						{*/
+						  wBg.antialiasing = true;
+						  wBg.scrollFactor.set(0.9, 0.9);
+						  wBg.active = false;
+
+						  var wstageFront:FlxSprite;
+
+						  wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/alley/whittyFront'));
+						  wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
+						  wstageFront.updateHitbox();
+						  wstageFront.antialiasing = true;
+						  wstageFront.scrollFactor.set(0.9, 0.9);
+						  wstageFront.active = false;
+						  add(wBg);
+						  add(wstageFront);
+						//}
+						// bg.setGraphicSize(Std.int(bg.width * 2.5));
+						// bg.updateHitbox();   
+					
+					}
 			default:
 				bgZoom = 0.9;
 				stageName = 'stage';
@@ -1881,9 +1936,9 @@ class PlayState extends MusicBeatState
 			FlxG.switchState(new CharacterDebug(gf.curCharacter));
 		}
 		if (FlxG.keys.justPressed.EIGHT)
-			FlxG.switchState(new CharacterEditorState(dad.curCharacter));
+			FlxG.switchState(new AnimationDebug(dad.curCharacter));
 		if (FlxG.keys.justPressed.SIX)
-			FlxG.switchState(new CharacterEditorState(boyfriend.curCharacter));
+			FlxG.switchState(new AnimationDebug(boyfriend.curCharacter));
 		if (FlxG.keys.justPressed.TWO) // Go 10 seconds into the future :O
 		{
 			FlxG.sound.music.pause();
@@ -1926,7 +1981,7 @@ class PlayState extends MusicBeatState
 			boyfriend.stunned = false;
 		}
 		if (FlxG.keys.justPressed.THREE)
-			FlxG.switchState(new CharacterEditorState(gf.curCharacter));
+			FlxG.switchState(new AnimationDebug(gf.curCharacter));
 
 		if (startingSong)
 		{
@@ -2308,8 +2363,39 @@ class PlayState extends MusicBeatState
 				}
 				switch (curSong.toLowerCase())
 				{
+					case 'burning-flames':
+						CharacterSelectState.unlockCharacter('foxa');
+						CharacterSelectState.unlockCharacter('foxa-angy');
+						FlxG.switchState(new StoryMenuState());
+					/*case 'maze' | 'old-maze' | 'beta-maze':
+						canPause = false;
+						FlxG.sound.music.volume = 0;
+						vocals.volume = 0;
+						generatedMusic = false; // stop the game from trying to generate anymore music and to just cease attempting to play the music in general
+						boyfriend.stunned = true;
+						var doof:DialogueBox = new DialogueBox(false, CoolUtil.coolTextFile(Paths.txt('maze/endDialogue')));
+						doof.scrollFactor.set();
+						doof.finishThing = function()
+						{
+							FlxG.switchState(new StoryMenuState());
+						};
+						doof.cameras = [camDialogue];
+						schoolIntro(doof, false);
+					case 'splitathon' | 'old-splitathon':
+						canPause = false;
+						FlxG.sound.music.volume = 0;
+						vocals.volume = 0;
+						generatedMusic = false; // stop the game from trying to generate anymore music and to just cease attempting to play the music in general
+						boyfriend.stunned = true;
+						var doof:DialogueBox = new DialogueBox(false, CoolUtil.coolTextFile(Paths.txt('splitathon/splitathonDialogueEnd')));
+						doof.scrollFactor.set();
+						doof.finishThing = function()
+						{
+							FlxG.switchState(new StoryMenuState());
+						};
+						doof.cameras = [camDialogue];
+						schoolIntro(doof, false);*/
 					default:
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 						FlxG.switchState(new StoryMenuState());
 				}
 				transIn = FlxTransitionableState.defaultTransIn;
@@ -2340,6 +2426,10 @@ class PlayState extends MusicBeatState
 		{
 			switch (SONG.song.toLowerCase())
 			{
+				case 'burning-flames':
+					CharacterSelectState.unlockCharacter('foxa');
+					CharacterSelectState.unlockCharacter('foxa-angy');
+					FlxG.switchState(new FreeplayState());
 				default:
 					FlxG.switchState(new FreeplayState());
 			}
@@ -2363,8 +2453,9 @@ class PlayState extends MusicBeatState
 
 		switch (curSong.toLowerCase())
 		{
-			default:
-				LoadingState.loadAndSwitchState(new PlayState());
+				//case "Bubbles":
+					//LoadingState.loadAndSwitchState(new VideoState("assets/videos/burningflamesCutscene.webm", new PlayState()));	
+				default:	LoadingState.loadAndSwitchState(new PlayState());
 		}
 	}
 
@@ -3490,6 +3581,7 @@ class PlayState extends MusicBeatState
 
 	function fastCarDrive()
 	{
+		trace('car go vroom');
 		FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
 
 		fastCar.velocity.x = (FlxG.random.int(170, 220) / FlxG.elapsed) * 3;

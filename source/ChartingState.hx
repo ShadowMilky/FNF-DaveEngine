@@ -44,6 +44,8 @@ using StringTools;
 
 class ChartingState extends MusicBeatState
 {
+	// sike
+	
 	var _file:FileReference;
 
 	public var playClaps:Bool = false;
@@ -270,7 +272,7 @@ class ChartingState extends MusicBeatState
 			resetSection(true);
 		});
 
-		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'load autosave', loadAutosave);
+		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', loadAutosave);
 		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 65, 0.1, 1, 1.0, 5000.0, 1);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
@@ -336,7 +338,7 @@ class ChartingState extends MusicBeatState
 		});
 		player1DropDown.selectedLabel = _song.player1;
 
-		var player1Label = new FlxText(10,80,64,'Player 1');
+		var player1Label = new FlxText(10,80,64,'BF P1');
 
 		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -344,7 +346,7 @@ class ChartingState extends MusicBeatState
 		});
 		player2DropDown.selectedLabel = _song.player2;
 
-		var player2Label = new FlxText(140,80,64,'Player 2');
+		var player2Label = new FlxText(140,80,64,'Dad P2');
 
 		var stageDropDown = new FlxUIDropDownMenu(140, 200, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
 			{

@@ -46,8 +46,6 @@ class FpsDisplay extends TextField
 		selectable = false;
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 12, color);
-		autoSize = LEFT;
-		multiline = true;
 		text = "FPS: ";
 
 		cacheCount = 0;
@@ -88,7 +86,7 @@ class FpsDisplay extends TextField
 		if (currentCount != cacheCount /*&& visible*/)
 		{
             if (fuckFps)
-			    text = "FPS: -" + (currentFPS * 10000) +  " RVhQVU5HRUQgV0lMTCBUQUtFIE9WRVI= " + (currentFPS * 10000);
+			    text = "FPS: -" + (currentFPS * 10000) +  " NO= " + (currentFPS * 10000);
             else
                 text = "FPS: " + currentFPS;
 				#if openfl
@@ -97,11 +95,11 @@ class FpsDisplay extends TextField
 				if (memoryMegas > 1000)
 				{
 					var memoryGB = (memoryMegas / 1000);
-					text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
+					text += "\nMEM: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
 				}
 				else
 				{
-					text += "\nMemory: " + memoryMegas + " MB";
+					text += "\nMEM: " + memoryMegas + " MB";
 				}
 				#end
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
