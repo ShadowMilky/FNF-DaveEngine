@@ -87,6 +87,8 @@ class SelectLanguageState extends MusicBeatState
 			{
 				accepted = true;
 
+            trace('LETS GO');
+
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
 
 				LanguageManager.save.data.language = langaugeList[curLanguageSelected].pathName;
