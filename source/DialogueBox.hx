@@ -186,7 +186,7 @@ class DialogueBox extends FlxSpriteGroup
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/gfDialogue'), 0.6)];	
 			case 'foxa':
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/foxaDialogue'), 0.6)];	
-			case 'foxa':
+			case 'creation':
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/creationDialogue'), 0.6)];	
 			default:
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/pixelText'), 0.6)];	
