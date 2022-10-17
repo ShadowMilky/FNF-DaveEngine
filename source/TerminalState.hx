@@ -88,7 +88,7 @@ class TerminalState extends MusicBeatState
         Main.fps.visible = false;
         PlayState.isStoryMode = false;
         displayText = new FlxText(0, 0, FlxG.width, previousText, 32);
-		displayText.setFormat(Paths.font("vcr.ttf"), 16);
+		displayText.setFormat(Paths.font("fixedsys.ttf"), 16);
         displayText.size *= 2;
 		displayText.antialiasing = false;
 
@@ -204,7 +204,7 @@ class TerminalState extends MusicBeatState
                 case "whitty":
                     tx = "Forever lost and adrift.\nTrying to change his destiny.\nDespite this, it pulls him by a lead.\nIt doesn't matter to him though.\nHe has a fox to feed.";
                 case "reaper":
-                    tx = "A forgotten GOD.\nThe truth will never be known.\nThe extent of his POWERs won't ever unfold.";
+                    tx = "A forgotten rouge GOD in MIND.\nThe truth will never be known.\nThe extent of his POWERs won't ever unfold.";
                 case "god" | "artifact1":
                     tx = "Artifact 1:\nA stone with symbols and writing carved into it.\nDescription:Its a figure that has hundreds of EYEs all across its body.\nNotes: Why does it look so much like Foxa?";
                 case "eye":
@@ -217,10 +217,10 @@ class TerminalState extends MusicBeatState
                     tx = "Artifact 3:\nA notebook, found on the floor of Foxa's mind.\nNotes: I haven't bothered with the cypher yet.\nI have more important matters.";
                 case "artifact4":
                     tx = "\"Artifact\" 4:\nA weird email, with attached images that use the same cypher as Artifact 3.\nNotes: Who sent this?";
-                case "tristan":
-                    tx = "The key to defeating the one whose name shall not be stated.\nA heart of gold that will never become faded.";
+                case "milky":
+                    tx = "The key to defeating the one whose name shall not be stated.\nA heart of vanilla milk that will never become faded.";
                 case "CREATION":
-                    tx = "[FILE DELETED]\n[FUCK YOU!]"; // [THIS AND EXBUNGOS FILE ARE THE ONLY ONES I HAVE ACCESS TO UNFORTUNATELY. I HATE IT]
+                    tx = "[FILE DELETED]\n[FUCK YOU!]"; // [THIS AND MISTAKEN FOXA'S FILE ARE THE ONLY ONES I HAVE ACCESS TO UNFORTUNATELY. I HATE IT]
                 case "deleted":
                     tx = "The unnamable never was a god and never will be. Just an accident.";
                 case "mistake":

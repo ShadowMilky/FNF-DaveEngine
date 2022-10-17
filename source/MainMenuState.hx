@@ -224,7 +224,8 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, '${daRealEngineVer} Engine v${engineVer}\nFNF v${gameVer}', 12);
+		//var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, '${daRealEngineVer} Engine v${engineVer}\nFNF v${gameVer}', 12);
+		var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, 'Vs. Foxa 3.0 Demo\nFNF v${gameVer}', 12);
 		versionShit.antialiasing = true;
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -354,7 +355,7 @@ class MainMenuState extends MusicBeatState
 					switch (optionShit[curSelected])
 					{
 						case 'discord':
-							fancyOpenURL("https://www.discord.gg/vsdave");
+							fancyOpenURL("https://discord.gg/H4D4Ab8SYp");
 					}
 				}
 				else
@@ -386,9 +387,9 @@ class MainMenuState extends MusicBeatState
 									case 'story mode':
 										FlxG.switchState(new StoryMenuState());
 									case 'freeplay' | 'freeplay glitch':
-										if (FlxG.random.bool(0.05))
+										if (FlxG.random.bool(0.1))
 										{
-											fancyOpenURL("https://www.youtube.com/watch?v=Z7wWa1G9_30%22");
+											fancyOpenURL("https://www.youtube.com/watch?v=8rlukRq8vhw&t=239s");
 										}
 										FlxG.switchState(new FreeplayState());
 									case 'options':
