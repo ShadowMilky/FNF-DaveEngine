@@ -63,6 +63,13 @@ class CreditsMenuState extends MusicBeatState
    var peopleInCredits:Array<Person> = 
    [
       // Developers //
+
+      new Person("Foxa", CreditsType.Dev,
+      [
+         new Social('youtube', 'https://www.youtube.com/channel/UCu0cMjmyVBgUXSieMwbqyjA'),
+         new Social('gamebanana', 'https://gamebanana.com/members/1966904')
+      ]),
+
       new Person("Erizur", CreditsType.Dev,
       [
          new Social('youtube', 'https://www.youtube.com/channel/UCdCAaQzt9yOGfFM0gJDJ4bQ'),
