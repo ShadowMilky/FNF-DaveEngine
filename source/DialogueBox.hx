@@ -62,6 +62,8 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			switch (PlayState.SONG.song.toLowerCase())
 			{
+				case 'bubbles' | 'burning-flames':
+					FlxG.sound.playMusic(Paths.music('city-streets'), 0);
 				default:
 					FlxG.sound.music.stop();
 			}
