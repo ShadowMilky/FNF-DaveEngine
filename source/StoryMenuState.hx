@@ -46,7 +46,7 @@ class StoryMenuState extends MusicBeatState
 	var weekList:Array<String> = [];
 	var weeks:Array<Week> = [];
 	var bannerNames:Array<String> = [
-		'menu_stage',
+		'menu_tut',
 		'menu_alley',
 		'menu_christmas'
 	];
