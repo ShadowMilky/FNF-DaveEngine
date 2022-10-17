@@ -201,7 +201,7 @@ class FreeplayState extends MusicBeatState
 	{
 		switch (Catagories[CurrentPack].toLowerCase())
 		{
-			case 'base':
+			case 'foxa':
 				for(i in 0...weekList.length)
 				{
 					var mainCharacter = createSongArrayFromTxt(weekList[i], 'char');
