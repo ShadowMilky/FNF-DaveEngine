@@ -1706,6 +1706,8 @@ class PlayState extends MusicBeatState
 		return num;
 	}
 
+	var fontFunni:String = Paths.font("vcr.ttf");
+
 	override public function update(elapsed:Float)
 	{
 		elapsedtime += elapsed;
@@ -1729,9 +1731,9 @@ class PlayState extends MusicBeatState
 				insert(members.indexOf(songPosBG), songPosBar);
 	
 				songName = new FlxText(songPosBG.x, songPosBG.y, 0, "0:00", 32);
-				songName.setFormat(font, 32 * fontScaler, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				songName.setFormat(fontFunni, 32 * 1, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 				songName.scrollFactor.set();
-				songName.borderSize = 2.5 * fontScaler;
+				songName.borderSize = 2.5 * 1;
 				songName.antialiasing = true;
 				songName.visible = false;
 	
