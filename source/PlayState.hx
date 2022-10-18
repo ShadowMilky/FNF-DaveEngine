@@ -1432,7 +1432,7 @@ class PlayState extends MusicBeatState
 				songName.scrollFactor.set();
 				songName.borderSize = 2.5 * 1;
 				songName.antialiasing = true;
-				songName.visible = false;
+				songName.visible = true;
 	
 				var xValues = CoolUtil.getMinAndMax(songName.width, songPosBG.width);
 				var yValues = CoolUtil.getMinAndMax(songName.height, songPosBG.height);
