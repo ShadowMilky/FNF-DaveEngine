@@ -634,42 +634,6 @@ class PlayState extends MusicBeatState
 		var font:String = Paths.font("vcr.ttf");
 		var fontScaler:Int = 1;
 
-		if (FlxG.save.data.songPosition /*&& !isGreetingsCutscene && !['five-nights', 'overdrive'].contains(SONG.song.toLowerCase())*/)
-		{
-			var yPos = scrollType == 'downscroll' ? FlxG.height * 0.9 + 20 : strumLine.y - 20;
-
-			songPosBG = new FlxSprite(0, yPos).loadGraphic(Paths.image('ui/timerBar'));
-			songPosBG.antialiasing = true;
-			songPosBG.screenCenter(X);
-			songPosBG.scrollFactor.set();
-			add(songPosBG);
-
-			songPosBar = new FlxBar(songPosBG.x + 4, songPosBG.y + 4, LEFT_TO_RIGHT, Std.int(songPosBG.width - 8), Std.int(songPosBG.height - 8), Conductor,
-				'songPosition', 0, FlxG.sound.music.length);
-			songPosBar.scrollFactor.set();
-			songPosBar.createFilledBar(FlxColor.GRAY, FlxColor.fromRGB(57, 255, 20));
-			insert(members.indexOf(songPosBG), songPosBar);
-
-			songName = new FlxText(songPosBG.x, songPosBG.y, 0, "0:00", 32);
-			songName.setFormat(font, 32 * fontScaler, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			songName.scrollFactor.set();
-			songName.borderSize = 2.5 * fontScaler;
-			songName.antialiasing = true;
-			songName.visible = false;
-
-			var xValues = CoolUtil.getMinAndMax(songName.width, songPosBG.width);
-			var yValues = CoolUtil.getMinAndMax(songName.height, songPosBG.height);
-
-			songName.x = songPosBG.x - ((xValues[0] - xValues[1]) / 2);
-			songName.y = songPosBG.y + ((yValues[0] - yValues[1]) / 2);
-
-			add(songName);
-
-			songPosBG.cameras = [camHUD];
-			songPosBar.cameras = [camHUD];
-			songName.cameras = [camHUD];
-		}
-
 		var healthBarPath = '';
 		switch (SONG.song.toLowerCase())
 		{
@@ -1446,7 +1410,51 @@ class PlayState extends MusicBeatState
 			+ " | Misses: "
 			+ misses, iconRPC);
 		#end
+
+		if (FlxG.save.data.songPosition /*&& !isGreetingsCutscene && !['five-nights', 'overdrive'].contains(SONG.song.toLowerCase())*/)
+			{
+				var yPos = scrollType == 'downscroll' ? FlxG.height * 0.9 + 20 : strumLine.y - 20;
+	
+				songPosBG = new FlxSprite(0, yPos).loadGraphic(Paths.image('ui/timerBar'));
+				songPosBG.antialiasing = true;
+				songPosBG.screenCenter(X);
+				songPosBG.scrollFactor.set();
+				add(songPosBG);
+	
+				songPosBar = new FlxBar(songPosBG.x + 4, songPosBG.y + 4, LEFT_TO_RIGHT, Std.int(songPosBG.width - 8), Std.int(songPosBG.height - 8), Conductor,
+					'songPosition', 0, FlxG.sound.music.length);
+				songPosBar.scrollFactor.set();
+				songPosBar.createFilledBar(FlxColor.GRAY, FlxColor.fromRGB(57, 255, 20));
+				insert(members.indexOf(songPosBG), songPosBar);
+	
+				songName = new FlxText(songPosBG.x, songPosBG.y, 0, "0:00", 32);
+				songName.setFormat(fontFunni, 32 * 1, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				songName.scrollFactor.set();
+				songName.borderSize = 2.5 * 1;
+				songName.antialiasing = true;
+				songName.visible = false;
+	
+				var xValues = CoolUtil.getMinAndMax(songName.width, songPosBG.width);
+				var yValues = CoolUtil.getMinAndMax(songName.height, songPosBG.height);
+	
+				songName.x = songPosBG.x - ((xValues[0] - xValues[1]) / 2);
+				songName.y = songPosBG.y + ((yValues[0] - yValues[1]) / 2);
+	
+				add(songName);
+	
+				songPosBG.cameras = [camHUD];
+				songPosBar.cameras = [camHUD];
+				songName.cameras = [camHUD];
+
+				if (songName != null)
+					{
+						songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
+					}
+
+			}
+
 		FlxG.sound.music.onComplete = endSong;
+
 		if (songPosBar != null)
 		{
 			songPosBar.setRange(0, FlxG.sound.music.length);
@@ -1742,16 +1750,13 @@ class PlayState extends MusicBeatState
 		return num;
 	}
 
+	var fontFunni:String = Paths.font("vcr.ttf");
+
 	override public function update(elapsed:Float)
 	{
 		elapsedtime += elapsed;
 
 		scriptThing.executeFunc("update", [elapsed]);
-
-		if (songName != null)
-		{
-			songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
-		}
 
 		if (startingSong && startTimer != null && !startTimer.active)
 			startTimer.active = true;

@@ -46,8 +46,8 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var Catagories:Array<String> = ['base'];
-	var translatedCatagory:Array<String> = [LanguageManager.getTextString('freeplay_base')];
+	private var Catagories:Array<String> = ['foxa'];
+	var translatedCatagory:Array<String> = [LanguageManager.getTextString('freeplay_foxa')];
 
 	var weekList:Array<String> = [];
 
@@ -409,10 +409,10 @@ class FreeplayState extends MusicBeatState
 				FlxG.switchState(new TerminalState());
 			}
 			if (controls.RIGHT_P && canInteract)
-				{
-					trace('why not use the main menu, dum-dum');
-					FlxG.switchState(new OptionsMenu());
-				}
+			{
+				trace('why not use the main menu, dum-dum');
+				FlxG.switchState(new OptionsMenu());
+			}
 			if (controls.BACK && canInteract)
 			{				
 				loadingPack = true;

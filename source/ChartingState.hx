@@ -50,6 +50,8 @@ class ChartingState extends MusicBeatState
 
 	public var playClaps:Bool = false;
 
+	static var playBeatClaps:Bool = false;
+
 	public var snap:Int = 1;
 
 	var UI_box:FlxUITabMenu;
@@ -213,7 +215,12 @@ class ChartingState extends MusicBeatState
 		add(curRenderedSustains);
 		add(snapText);
 
-
+		player2 = new Character(0, gridBG.y + 50, _song.player2);
+		player1 = new Boyfriend(player2.width * 0.2, gridBG.y + 150, _song.player1);
+		player2.setGraphicSize(Std.int(player2.width * 0.2));
+		player1.setGraphicSize(Std.int(player1.width * 0.2));
+		UI_box.add(player1);
+		UI_box.add(player2);
 
 		super.create();
 	}
@@ -302,6 +309,14 @@ class ChartingState extends MusicBeatState
 		{
 			playClaps = hitsounds.checked;
 		};
+
+		/*var beatcheck = new FlxUICheckBox(hitsounds.x + 20, 10, null, null, "Play beat claps", 100);
+		beatcheck.checked = playBeatClaps;
+		beatcheck.callback = function()
+		{
+			playBeatClaps = beatcheck.checked;
+			if(playBeatClaps) playClap();
+		};*/
 
 		var stepperSongVolLabel = new FlxText(74, 110, 'Instrumental Volume');
 
@@ -492,15 +507,6 @@ class ChartingState extends MusicBeatState
 		tab_group_note.add(applyLength);
 
 		UI_box.addGroup(tab_group_note);
-
-		/*player2 = new Character(0,gridBG.y, _song.player2);
-		player1 = new Boyfriend(player2.width * 0.2,gridBG.y + player2.height, _song.player1);
-		player1.y = player1.y - player1.height;
-		player2.setGraphicSize(Std.int(player2.width * 0.2));
-		player1.setGraphicSize(Std.int(player1.width * 0.2));
-		UI_box.add(player1);
-		UI_box.add(player2);*/
-
 	}
 
 	function loadSong(daSong:String):Void
@@ -540,12 +546,26 @@ class ChartingState extends MusicBeatState
 		// general shit
 		var title:FlxText = new FlxText(UI_box.x + 20, UI_box.y + 20, 0);
 		bullshitUI.add(title);
-		/* 
-			var loopCheck = new FlxUICheckBox(UI_box.x + 10, UI_box.y + 50, null, null, "Loops", 100, ['loop check']);
-			loopCheck.checked = curNoteSelected.doesLoop;
-			tooltips.add(loopCheck, {title: 'Section looping', body: "Whether or not it's a simon says style section", style: tooltipType});
-			bullshitUI.add(loopCheck);
-		 */
+
+		/*var loopCheck = new FlxUICheckBox(UI_box.x + 10, UI_box.y + 50, null, null, "Loops", 100, ['loop check']);
+		loopCheck.checked = curNoteSelected.doesLoop;
+		tooltips.add(loopCheck, {title: 'Section looping', body: "Whether or not it's a simon says style section", style: tooltipType});
+		bullshitUI.add(loopCheck)*/
+
+/* ⠀⣞⢽⢪⢣⢣⢣⢫⡺⡵⣝⡮⣗⢷⢽⢽⢽⣮⡷⡽⣜⣜⢮⢺⣜⢷⢽⢝⡽⣝
+   ⠸⡸⠜⠕⠕⠁⢁⢇⢏⢽⢺⣪⡳⡝⣎⣏⢯⢞⡿⣟⣷⣳⢯⡷⣽⢽⢯⣳⣫⠇
+ ⠀ ⠀⢀⢀⢄⢬⢪⡪⡎⣆⡈⠚⠜⠕⠇⠗⠝⢕⢯⢫⣞⣯⣿⣻⡽⣏⢗⣗⠏⠀
+  ⠀⠪⡪⡪⣪⢪⢺⢸⢢⢓⢆⢤⢀⠀⠀⠀⠀⠈⢊⢞⡾⣿⡯⣏⢮⠷⠁⠀⠀
+ ⠀ ⠀⠀⠈⠊⠆⡃⠕⢕⢇⢇⢇⢇⢇⢏⢎⢎⢆⢄⠀⢑⣽⣿⢝⠲⠉⠀⠀⠀⠀
+ ⠀ ⠀⠀⠀⠀⡿⠂⠠⠀⡇⢇⠕⢈⣀⠀⠁⠡⠣⡣⡫⣂⣿⠯⢪⠰⠂⠀⠀⠀⠀
+ ⠀ ⠀⠀⠀⡦⡙⡂⢀⢤⢣⠣⡈⣾⡃⠠⠄⠀⡄⢱⣌⣶⢏⢊⠂⠀⠀⠀⠀⠀⠀
+⠀⠀⠀  ⠀⢝⡲⣜⡮⡏⢎⢌⢂⠙⠢⠐⢀⢘⢵⣽⣿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀  ⠀⠨⣺⡺⡕⡕⡱⡑⡆⡕⡅⡕⡜⡼⢽⡻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀ ⠀ ⠀⣼⣳⣫⣾⣵⣗⡵⡱⡡⢣⢑⢕⢜⢕⡝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀⠀ ⠀⣴⣿⣾⣿⣿⣿⡿⡽⡑⢌⠪⡢⡣⣣⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀⠀ ⠀⡟⡾⣿⢿⢿⢵⣽⣾⣼⣘⢸⢸⣞⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀*/
+    //⠀⠀ no loop check?
 	}
 
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
@@ -661,7 +681,9 @@ class ChartingState extends MusicBeatState
 	{
 		updateHeads();
 
-		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Control to disable" : "Snap Disabled, Control to renable") + ")\nAdd Notes: 1-8 (or click)\n";
+		FlxG.mouse.visible = true;
+		
+		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Ctrl to disable" : "Snap Disabled, Ctrl to renable") + ")\nAdd Notes: 1-8 (or click)\n";
 
 		curStep = recalculateSteps();
 
@@ -1030,6 +1052,14 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 		updateSectionUI();
+	}
+
+	static var clapSound:Sound;
+
+	public static function playClap()
+	{
+		if(clapSound == null)clapSound= Sound.fromFile('./assets/shared/sounds/CLAP.ogg');
+		clapSound.play(new flash.media.SoundTransform(50));
 	}
 
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void

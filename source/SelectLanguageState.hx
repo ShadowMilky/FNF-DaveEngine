@@ -36,7 +36,7 @@ class SelectLanguageState extends MusicBeatState
       bg.color = langaugeList[curLanguageSelected].langaugeColor;
       add(bg);
 
-      selectLanguage = new FlxText(0, (FlxG.height / 2) - 300, FlxG.width, "Please Select A Language", 45);
+      selectLanguage = new FlxText(0, (FlxG.height / 2) - 300, FlxG.width, "Please Select a Language", 45);
       selectLanguage.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
       selectLanguage.antialiasing = true;
       selectLanguage.borderSize = 2;
@@ -86,6 +86,8 @@ class SelectLanguageState extends MusicBeatState
 			if (controls.ACCEPT)
 			{
 				accepted = true;
+
+            trace('LETS GO');
 
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
 

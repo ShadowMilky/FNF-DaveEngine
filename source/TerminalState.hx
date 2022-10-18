@@ -203,6 +203,12 @@ class TerminalState extends MusicBeatState
                     tx = "File not found.";
                 case "whitty":
                     tx = "Forever lost and adrift.\nTrying to change his destiny.\nDespite this, it pulls him by a lead.\nIt doesn't matter to him though.\nHe has a fox to feed.";
+                case "backstory":
+                    tx = "backstory: Foxa had gotten her name from a experimental lab, similar to Whitmore.\nShe was captured and sent to the lab because she was the first naturally pink fox to be seen wondering around.\nWhen she was out cold, the scientists ran tests on her,\nand locked her in a special cage so she wouldn't escape.\nHowever, they had poured a mysterious liquid on her as an experiment.\nNothing had happened at the very moment.\nWhen the scientists escorted to the next area to look for more creatures, the action had taken place.\nShe had turned into what seemed to be a more humanized version of herself.\nShe had seen clothing that was untouched, and took them as her own.\nFoxa had broken free from the lab to start a new life,\nfor she had no idea of who she even was, or what happened to her.\n She saw a label on her cage before she left, and took it.\n She learned how to write, spell, and live her life based off of what she saw other people do.\nShe met the dearests, and tried to sing with them, but had backfired due to massive stress.\nFoxa had fled, and that's how Foxa's story had taken it's place now. ";
+                    //this is pretty long tbh so i put down some \n's and yes i have to add this so people can stop talking about how bad this mod is
+                    //also read this below
+                    //FOXA IS NOT A FURRY. SHE IS ONLY CONFIRMED TO BE A FOX.
+                    //GET THAT IN YOUR HEAD, YOU SILLY FNFERS.
                 case "reaper":
                     tx = "A forgotten rouge GOD in MIND.\nThe truth will never be known.\nThe extent of his POWERs won't ever unfold.";
                 case "god" | "artifact1":

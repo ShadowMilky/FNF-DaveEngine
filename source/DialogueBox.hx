@@ -62,6 +62,9 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			switch (PlayState.SONG.song.toLowerCase())
 			{
+				case 'bubbles' | 'burning-flames':
+					FlxG.sound.music.stop();
+					FlxG.sound.playMusic(Paths.music('cityStreets'), 0);
 				default:
 					FlxG.sound.music.stop();
 			}
@@ -69,7 +72,7 @@ class DialogueBox extends FlxSpriteGroup
 		}
 		
 
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFF8A9AF5);
+		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFF58AE7);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		add(bgFade);
@@ -138,27 +141,15 @@ class DialogueBox extends FlxSpriteGroup
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'polygonized' | 'interdimensional':
-				dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-				dropText.font = 'VCR OSD Mono';
-				dropText.color = 0xFFFFFFFF;
-				dropText.antialiasing = true;
-				add(dropText);
-			
-				swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-				swagDialogue.font = 'VCR OSD Mono';
-				swagDialogue.color = 0xFF000000;
-				swagDialogue.antialiasing = true;
-				add(swagDialogue);
 			default:
 				dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-				dropText.font = 'VCR OSD Mono';
-				dropText.color = 0xFF00137F;
+				dropText.font = 'Funkin';
+				dropText.color = 0xFFBB008C;
 				dropText.antialiasing = true;
 				add(dropText);
 		
 				swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-				swagDialogue.font = 'VCR OSD Mono';
+				swagDialogue.font = 'Funkin';
 				swagDialogue.color = 0xFF000000;
 				swagDialogue.antialiasing = true;
 				add(swagDialogue);
@@ -189,7 +180,7 @@ class DialogueBox extends FlxSpriteGroup
 			case 'creation':
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/creationDialogue'), 0.6)];	
 			default:
-				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/pixelText'), 0.6)];	
+				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogueDefault'), 0.6)];	
 		}
 
 		if (box.animation.curAnim != null)
@@ -214,7 +205,7 @@ class DialogueBox extends FlxSpriteGroup
 			switch (PlayState.SONG.song.toLowerCase())
 			{
 				default:
-					FlxG.sound.play(Paths.sound('textclickmodern'), 0.8);
+					FlxG.sound.play(Paths.sound('dialogueClose'), 0.8);
 			}
 
 			if (dialogueList[1] == null && dialogueList[0] != null)

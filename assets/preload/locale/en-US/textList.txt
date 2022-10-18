@@ -22,7 +22,7 @@ desc_options==Adjust game settings and keybinds.
 desc_discord==Join the official Vs. Dave and Bambi Discord!
 
 // Freeplay State //
-freeplay_base==Base
+freeplay_foxa==Main
 
 freeplay_personalBest==PERSONAL BEST:
 freeplay_hard==HARD
