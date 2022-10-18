@@ -50,6 +50,8 @@ class ChartingState extends MusicBeatState
 
 	public var playClaps:Bool = false;
 
+	static var playBeatClaps:Bool = false;
+
 	public var snap:Int = 1;
 
 	var UI_box:FlxUITabMenu;
@@ -303,6 +305,14 @@ class ChartingState extends MusicBeatState
 			playClaps = hitsounds.checked;
 		};
 
+		/*var beatcheck = new FlxUICheckBox(hitsounds.x + 20, 10, null, null, "Play beat claps", 100);
+		beatcheck.checked = playBeatClaps;
+		beatcheck.callback = function()
+		{
+			playBeatClaps = beatcheck.checked;
+			if(playBeatClaps) playClap();
+		};*/
+
 		var stepperSongVolLabel = new FlxText(74, 110, 'Instrumental Volume');
 
 		
@@ -545,6 +555,21 @@ class ChartingState extends MusicBeatState
 		loopCheck.checked = curNoteSelected.doesLoop;
 		tooltips.add(loopCheck, {title: 'Section looping', body: "Whether or not it's a simon says style section", style: tooltipType});
 		bullshitUI.add(loopCheck)*/
+
+/* ⠀⣞⢽⢪⢣⢣⢣⢫⡺⡵⣝⡮⣗⢷⢽⢽⢽⣮⡷⡽⣜⣜⢮⢺⣜⢷⢽⢝⡽⣝
+   ⠸⡸⠜⠕⠕⠁⢁⢇⢏⢽⢺⣪⡳⡝⣎⣏⢯⢞⡿⣟⣷⣳⢯⡷⣽⢽⢯⣳⣫⠇
+ ⠀ ⠀⢀⢀⢄⢬⢪⡪⡎⣆⡈⠚⠜⠕⠇⠗⠝⢕⢯⢫⣞⣯⣿⣻⡽⣏⢗⣗⠏⠀
+  ⠀⠪⡪⡪⣪⢪⢺⢸⢢⢓⢆⢤⢀⠀⠀⠀⠀⠈⢊⢞⡾⣿⡯⣏⢮⠷⠁⠀⠀
+ ⠀ ⠀⠀⠈⠊⠆⡃⠕⢕⢇⢇⢇⢇⢇⢏⢎⢎⢆⢄⠀⢑⣽⣿⢝⠲⠉⠀⠀⠀⠀
+ ⠀ ⠀⠀⠀⠀⡿⠂⠠⠀⡇⢇⠕⢈⣀⠀⠁⠡⠣⡣⡫⣂⣿⠯⢪⠰⠂⠀⠀⠀⠀
+ ⠀ ⠀⠀⠀⡦⡙⡂⢀⢤⢣⠣⡈⣾⡃⠠⠄⠀⡄⢱⣌⣶⢏⢊⠂⠀⠀⠀⠀⠀⠀
+⠀⠀⠀  ⠀⢝⡲⣜⡮⡏⢎⢌⢂⠙⠢⠐⢀⢘⢵⣽⣿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀  ⠀⠨⣺⡺⡕⡕⡱⡑⡆⡕⡅⡕⡜⡼⢽⡻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀ ⠀ ⠀⣼⣳⣫⣾⣵⣗⡵⡱⡡⢣⢑⢕⢜⢕⡝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀⠀ ⠀⣴⣿⣾⣿⣿⣿⡿⡽⡑⢌⠪⡢⡣⣣⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀⠀ ⠀⡟⡾⣿⢿⢿⢵⣽⣾⣼⣘⢸⢸⣞⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀*/
+    //⠀⠀ no loop check?
 	}
 
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
@@ -660,7 +685,7 @@ class ChartingState extends MusicBeatState
 	{
 		updateHeads();
 
-		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Control to disable" : "Snap Disabled, Control to renable") + ")\nAdd Notes: 1-8 (or click)\n";
+		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Ctrl to disable" : "Snap Disabled, Ctrl to renable") + ")\nAdd Notes: 1-8 (or click)\n";
 
 		curStep = recalculateSteps();
 
@@ -1029,6 +1054,14 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 		updateSectionUI();
+	}
+
+	static var clapSound:Sound;
+
+	public static function playClap()
+	{
+		if(clapSound == null)clapSound= Sound.fromFile('./assets/shared/sounds/CLAP.ogg');
+		clapSound.play(new flash.media.SoundTransform(50));
 	}
 
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void
