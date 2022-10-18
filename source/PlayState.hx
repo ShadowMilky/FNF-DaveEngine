@@ -1445,10 +1445,16 @@ class PlayState extends MusicBeatState
 				songPosBG.cameras = [camHUD];
 				songPosBar.cameras = [camHUD];
 				songName.cameras = [camHUD];
+
+				if (songName != null)
+					{
+						songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
+					}
+
 			}
 
 		FlxG.sound.music.onComplete = endSong;
-		
+
 		if (songPosBar != null)
 		{
 			songPosBar.setRange(0, FlxG.sound.music.length);
@@ -1751,11 +1757,6 @@ class PlayState extends MusicBeatState
 		elapsedtime += elapsed;
 
 		scriptThing.executeFunc("update", [elapsed]);
-
-		if (songName != null)
-		{
-			songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
-		}
 
 		if (startingSong && startTimer != null && !startTimer.active)
 			startTimer.active = true;
