@@ -180,7 +180,7 @@ class DialogueBox extends FlxSpriteGroup
 			case 'creation':
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/creationDialogue'), 0.6)];	
 			default:
-				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogue/dialogueDefault'), 0.6)];	
+				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dialogueDefault'), 0.6)];	
 		}
 
 		if (box.animation.curAnim != null)
