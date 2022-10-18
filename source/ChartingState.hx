@@ -681,6 +681,8 @@ class ChartingState extends MusicBeatState
 	{
 		updateHeads();
 
+		FlxG.mouse.visible = true;
+		
 		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Ctrl to disable" : "Snap Disabled, Ctrl to renable") + ")\nAdd Notes: 1-8 (or click)\n";
 
 		curStep = recalculateSteps();
