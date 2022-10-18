@@ -205,7 +205,7 @@ class DialogueBox extends FlxSpriteGroup
 			switch (PlayState.SONG.song.toLowerCase())
 			{
 				default:
-					FlxG.sound.play(Paths.sound('dialougeClose'), 0.8);
+					FlxG.sound.play(Paths.sound('dialogueClose'), 0.8);
 			}
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
