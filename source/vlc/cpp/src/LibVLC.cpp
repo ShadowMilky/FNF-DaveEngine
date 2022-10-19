@@ -251,7 +251,7 @@ int LibVLC::isPlaying()
 void LibVLC::setRepeat(int numRepeats)
 {
 	repeat = numRepeats;
-/*	if (libVlcMediaItem!=nullptr)
+	if (libVlcMediaItem!=nullptr)
 	{
 		std::string sa = "input-repeat=";
 		sa += std::to_string(repeat);
@@ -262,7 +262,7 @@ void LibVLC::setRepeat(int numRepeats)
 			libvlc_media_add_option(libVlcMediaItem, "input-repeat=0" );	
 		//std::cout << "Num repeats: " << sa << std::endl;
 	}
-	*/
+	
 }
 
 int LibVLC::getRepeat()
