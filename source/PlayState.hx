@@ -1346,7 +1346,7 @@ class PlayState extends MusicBeatState
 		inCutscene = true;
 		FlxG.sound.music.stop();
 
-		video = new MP4Handler();
+		video = new VideoHandler();
 		video.finishCallback = function()
 		{
 			switch (curSong.toLowerCase())
@@ -1362,7 +1362,7 @@ class PlayState extends MusicBeatState
 					startCountdown();
 			}
 		}
-		video.playVideo(Paths.video(name), false, false);
+		video.playVideo(Paths.video(name));
 	}
 
 	function playEndCutscene(name:String)
