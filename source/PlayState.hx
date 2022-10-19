@@ -1346,12 +1346,12 @@ class PlayState extends MusicBeatState
 		inCutscene = true;
 		FlxG.sound.music.stop();
 
-		video = new VideoHandler();
+		video = new MP4Handler();
 		video.finishCallback = function()
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'house':
+				case 'bubbles' || 'burning-flames':
 					var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
 					// doof.x += 70;
 					// doof.y = FlxG.height * 0.5;
@@ -1362,7 +1362,7 @@ class PlayState extends MusicBeatState
 					startCountdown();
 			}
 		}
-		video.playVideo(Paths.video(name));
+		video.playVideo(Paths.video(name), false, false);
 	}
 
 	function playEndCutscene(name:String)

@@ -163,6 +163,11 @@ class TitleState extends MusicBeatState
 		titleText.updateHitbox();
 		add(titleText);
 
+		var engineversionText:FlxText = new FlxText(5, FlxG.height - 18, 0, "FNF Vs. Foxa 3.0 ALPHA", 12);
+		engineversionText.scrollFactor.set();
+		engineversionText.setFormat("Funkin", 16, FlxColor.WHITE, LEFT);
+		add(engineversionText);
+
 		credGroup = new FlxGroup();
 		add(credGroup);
 		textGroup = new FlxGroup();
