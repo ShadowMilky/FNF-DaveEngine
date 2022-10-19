@@ -92,6 +92,8 @@ class TerminalState extends MusicBeatState
         displayText.size *= 2;
 		displayText.antialiasing = false;
 
+        FlxG.sound.music.stop();
+
         CommandList.push(new TerminalCommand("help", LanguageManager.getTerminalString("term_help_ins"), function(arguments:Array<String>)
         {
             UpdatePreviousText(false); //resets the text

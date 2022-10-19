@@ -229,6 +229,7 @@ class StoryMenuState extends MusicBeatState
 
 				switch (PlayState.storyWeek)
 				{
+					#if FEATURE_VLC
 					case 1:
 						FlxG.sound.music.stop();
 						var video:MP4Handler = new MP4Handler();
@@ -237,6 +238,7 @@ class StoryMenuState extends MusicBeatState
 							LoadingState.loadAndSwitchState(new PlayState(), true);
 						}
 						video.playVideo(Paths.video('burningflamescut'));
+					#end
 					default:
 						LoadingState.loadAndSwitchState(new PlayState(), true);
 				}

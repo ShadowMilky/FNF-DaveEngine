@@ -1,5 +1,6 @@
 package vlc;
 
+#if FEATURE_VLC
 #if cpp
 import cpp.Pointer;
 import cpp.UInt8;
@@ -123,3 +124,4 @@ extern class LibVLC
 		untyped __cpp__('::delete this');
 	}
 }
+#end

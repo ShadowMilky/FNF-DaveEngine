@@ -7,7 +7,8 @@ import flixel.FlxG;
  * Play a video using cpp.
  * Use bitmap to connect to a graphic or use `MP4Sprite`.
  */
-class MP4Handler extends vlc.VlcBitmap
+#if FEATURE_VLC
+ class MP4Handler extends vlc.VlcBitmap
 {
 	public var readyCallback:Void->Void;
 	public var finishCallback:Void->Void;
@@ -100,7 +101,7 @@ class MP4Handler extends vlc.VlcBitmap
 	 * @param repeat Repeat the video.
 	 * @param pauseMusic Pause music until done video.
 	 */
-	public function playVideo(path:String, ?repeat:Bool = false, pauseMusic:Bool = false)
+	public function playVideo(path:String, pauseMusic:Bool = false)
 	{
 		this.pauseMusic = pauseMusic;
 
@@ -110,9 +111,9 @@ class MP4Handler extends vlc.VlcBitmap
 		#if sys
 		play(checkFile(path));
 
-		this.repeat = repeat ? -1 : 0;
 		#else
 		throw "Doesn't support sys";
 		#end
 	}
 }
+#end
