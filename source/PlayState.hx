@@ -1351,7 +1351,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'bubbles' || 'burning-flames':
+				case 'house':
 					var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
 					// doof.x += 70;
 					// doof.y = FlxG.height * 0.5;
