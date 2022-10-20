@@ -305,6 +305,9 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
+
 				playAnim('idle');
 			case 'foxa-angy-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
@@ -319,6 +322,9 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
+
 				playAnim('idle');	
 			case 'creation-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
@@ -332,6 +338,9 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
 
 				playAnim('idle');
 			case 'foxa': // foxa regular
