@@ -305,7 +305,7 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				setGraphicSize(Std.int(width * 0.7));
+				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
 				playAnim('idle');
@@ -322,7 +322,7 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				setGraphicSize(Std.int(width * 0.7));
+				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
 				playAnim('idle');	
@@ -339,7 +339,7 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				setGraphicSize(Std.int(width * 0.7));
+				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
 				playAnim('idle');
