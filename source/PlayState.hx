@@ -1970,9 +1970,9 @@ class PlayState extends MusicBeatState
 			FlxG.switchState(new CharacterDebug(gf.curCharacter));
 		}
 		if (FlxG.keys.justPressed.EIGHT)
-			FlxG.switchState(new AnimationDebug(dad.curCharacter));
+			FlxG.switchState(new AnimationDebugNew(dad.curCharacter));
 		if (FlxG.keys.justPressed.SIX)
-			FlxG.switchState(new AnimationDebug(boyfriend.curCharacter));
+			FlxG.switchState(new AnimationDebugNew(boyfriend.curCharacter));
 		if (FlxG.keys.justPressed.TWO) // Go 10 seconds into the future :O
 		{
 			FlxG.sound.music.pause();
@@ -2015,7 +2015,7 @@ class PlayState extends MusicBeatState
 			boyfriend.stunned = false;
 		}
 		if (FlxG.keys.justPressed.THREE)
-			FlxG.switchState(new AnimationDebug(gf.curCharacter));
+			FlxG.switchState(new AnimationDebugNew(gf.curCharacter));
 
 		if (startingSong)
 		{
