@@ -89,7 +89,7 @@ class TerminalState extends MusicBeatState
         PlayState.isStoryMode = false;
         displayText = new FlxText(0, 0, FlxG.width, previousText, 32);
 		displayText.setFormat(Paths.font("fixedsys.ttf"), 16);
-        displayText.size *= 2;
+        displayText.size *= 1;
 		displayText.antialiasing = false;
 
         FlxG.sound.music.stop();
@@ -180,6 +180,7 @@ class TerminalState extends MusicBeatState
                             new FlxTimer().start(2, function(timer:FlxTimer)
                             {
                                 fancyOpenURL("https://www.youtube.com/watch?v=HK5TBYf_vrE&t");
+                                WindowsUtil.sendWindowsNotification("Vs. Foxa", "YOU HAVE BEEN FORCED TO WATCH THIS HAHAHAHA");
                                 System.exit(0);
                             });
                     }
