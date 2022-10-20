@@ -10,3 +10,6 @@ foxa-angy:foxa-angy:#ffd0ff
 sadfoxa-critic:foxa:#ffd0ff
 whitty-christmas:dad:#af66ce
 foxa-christmas:foxa:#ffd0ff 
+foxa-new:foxa:#ffd0ff
+foxa-new-angy:foxa-angy:#ffd0ff
+creation-new:foxa-mad:#5f0000

@@ -292,6 +292,62 @@ class Character extends FlxSprite
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
 				playAnim('idle');
+			case 'foxa-new': // foxa regular new
+				frames = Paths.getSparrowAtlas('characters/FoxaNewSprite', 'shared');
+
+				animation.addByPrefix('idle', 'Foxa Idle', 24);
+				animation.addByPrefix('singUP', 'Foxa up', 24);
+				animation.addByPrefix('singRIGHT', 'Foxa right', 24);
+				animation.addByPrefix('singDOWN', 'Foxa down', 24);
+				animation.addByPrefix('singLEFT', 'Foxa up', 24);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');
+			case 'foxa-angy-new': // foxa regular new
+				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
+
+				animation.addByPrefix('idle', 'FoxaMad Idle', 24);
+				animation.addByPrefix('singUP', 'FoxaMad up', 24);
+				animation.addByPrefix('singRIGHT', 'FoxaMad right', 24);
+				animation.addByPrefix('singDOWN', 'FoxaMad down', 24);
+				animation.addByPrefix('singLEFT', 'FoxaMad up', 24);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');
+			case 'foxa-angy-new': // foxa regular new
+				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
+
+				animation.addByPrefix('idle', 'FoxaMad Idle', 24);
+				animation.addByPrefix('singUP', 'FoxaMad up', 24);
+				animation.addByPrefix('singRIGHT', 'FoxaMad right', 24);
+				animation.addByPrefix('singDOWN', 'FoxaMad down', 24);
+				animation.addByPrefix('singLEFT', 'FoxaMad up', 24);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');			
+			case 'creation-new': // foxa regular new
+				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
+
+				animation.addByPrefix('idle', 'FoxaUltra Idle', 24);
+				animation.addByPrefix('singUP', 'FoxaUltra up', 24);
+				animation.addByPrefix('singRIGHT', 'FoxaUltra right', 24);
+				animation.addByPrefix('singDOWN', 'FoxaUltra down', 24);
+				animation.addByPrefix('singLEFT', 'FoxaUltra up', 24);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');
 			case 'foxa': // foxa regular
 				frames = Paths.getSparrowAtlas('characters/foxa', 'shared');
 
