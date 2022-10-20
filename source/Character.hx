@@ -295,11 +295,11 @@ class Character extends FlxSprite
 			case 'foxa-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewSprite', 'shared');
 
-				animation.addByPrefix('idle', 'Foxa Idle', 24);
-				animation.addByPrefix('singUP', 'Foxa up', 24);
-				animation.addByPrefix('singRIGHT', 'Foxa right', 24);
-				animation.addByPrefix('singDOWN', 'Foxa down', 24);
-				animation.addByPrefix('singLEFT', 'Foxa left', 24);
+				animation.addByPrefix('idle', 'Foxa Idle', 24, false);
+				animation.addByPrefix('singUP', 'Foxa up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Foxa right', 24, false);
+				animation.addByPrefix('singDOWN', 'Foxa down', 24, false);
+				animation.addByPrefix('singLEFT', 'Foxa left', 24, false);
 
 				loadOffsetFile(curCharacter);
 
@@ -309,11 +309,11 @@ class Character extends FlxSprite
 			case 'foxa-angy-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
 
-				animation.addByPrefix('idle', 'FoxaMad Idle', 24);
-				animation.addByPrefix('singUP', 'FoxaMad up', 24);
-				animation.addByPrefix('singRIGHT', 'FoxaMad right', 24);
-				animation.addByPrefix('singDOWN', 'FoxaMad down', 24);
-				animation.addByPrefix('singLEFT', 'FoxaMad left', 24);
+				animation.addByPrefix('idle', 'FoxaMad Idle', 24, false);
+				animation.addByPrefix('singUP', 'FoxaMad up', 24, false);
+				animation.addByPrefix('singRIGHT', 'FoxaMad right', 24, false);
+				animation.addByPrefix('singDOWN', 'FoxaMad down', 24, false);
+				animation.addByPrefix('singLEFT', 'FoxaMad left', 24, false);
 
 				loadOffsetFile(curCharacter);
 
