@@ -1453,6 +1453,7 @@ class PlayState extends MusicBeatState
 					{
 						songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
 					}
+			}
 				
 			if (songPosBar != null)
 			{
@@ -1469,7 +1470,7 @@ class PlayState extends MusicBeatState
 			}
 
 			songLength = FlxG.sound.music.length;
-			
+
 			if (updateTime)
 			{
 				var curTime:Float = Conductor.songPosition;
@@ -1484,8 +1485,6 @@ class PlayState extends MusicBeatState
 					secondsTotal = 0;
 
 				songName.text = FlxStringUtil.formatTime(secondsTotal, false);
-			}
-
 			}
 
 		FlxG.sound.music.onComplete = endSong;
