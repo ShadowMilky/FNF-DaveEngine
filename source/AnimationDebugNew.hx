@@ -133,7 +133,7 @@ class AnimationDebugNew extends MusicBeatState
 
 		addHelpText();
 
-		characters = CoolUtil.coolTextFile(Paths.txt('data/characterList'));
+		characters = CoolUtil.coolTextFile(Paths.txt('characterList'));
 
 		var tabs = [{name: "Offsets", label: 'Offset menu'},];
 
@@ -346,6 +346,8 @@ class AnimationDebugNew extends MusicBeatState
 	{
 		textAnim.text = char.animation.curAnim.name;
 
+		FlxG.mouse.visible = true;
+
 		if (FlxG.mouse.overlaps(char) && FlxG.mouse.pressed)
 		{
 			// HOW THE FUCK DO I CONVERT THIS
@@ -360,7 +362,6 @@ class AnimationDebugNew extends MusicBeatState
 
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
-			FlxG.mouse.visible = false;
 			FlxG.switchState(new PlayState());
 		}
 
