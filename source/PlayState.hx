@@ -1380,6 +1380,8 @@ class PlayState extends MusicBeatState
 	var previousFrameTime:Int = 0;
 	var songTime:Float = 0;
 	private var updateTime:Bool = true;
+	var songLength:Float = 0;
+	var songPercent:Float = 0;
 
 	function startSong():Void
 	{
@@ -1466,6 +1468,8 @@ class PlayState extends MusicBeatState
 				// trace('MISSED FRAME');
 			}
 
+			songLength = FlxG.sound.music.length;
+			
 			if (updateTime)
 			{
 				var curTime:Float = Conductor.songPosition;
@@ -1479,7 +1483,7 @@ class PlayState extends MusicBeatState
 				if (secondsTotal < 0)
 					secondsTotal = 0;
 
-				timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+				songName.text = FlxStringUtil.formatTime(secondsTotal, false);
 			}
 
 			}
