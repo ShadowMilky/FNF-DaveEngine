@@ -1450,15 +1450,15 @@ class PlayState extends MusicBeatState
 					{
 						songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
 					}
+				
+				if (songPosBar != null)
+					{
+						songPosBar.setRange(0, FlxG.sound.music.length);
+					}
 
 			}
 
 		FlxG.sound.music.onComplete = endSong;
-
-		if (songPosBar != null)
-		{
-			songPosBar.setRange(0, FlxG.sound.music.length);
-		}
 	}
 
 	var debugNum:Int = 0;
