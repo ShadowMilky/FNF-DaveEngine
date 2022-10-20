@@ -299,7 +299,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singUP', 'Foxa up', 24);
 				animation.addByPrefix('singRIGHT', 'Foxa right', 24);
 				animation.addByPrefix('singDOWN', 'Foxa down', 24);
-				animation.addByPrefix('singLEFT', 'Foxa up', 24);
+				animation.addByPrefix('singLEFT', 'Foxa left', 24);
 
 				loadOffsetFile(curCharacter);
 
@@ -313,7 +313,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singUP', 'FoxaMad up', 24);
 				animation.addByPrefix('singRIGHT', 'FoxaMad right', 24);
 				animation.addByPrefix('singDOWN', 'FoxaMad down', 24);
-				animation.addByPrefix('singLEFT', 'FoxaMad up', 24);
+				animation.addByPrefix('singLEFT', 'FoxaMad left', 24);
 
 				loadOffsetFile(curCharacter);
 
@@ -327,7 +327,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singUP', 'FoxaUltra up', 24);
 				animation.addByPrefix('singRIGHT', 'FoxaUltra right', 24);
 				animation.addByPrefix('singDOWN', 'FoxaUltra down', 24);
-				animation.addByPrefix('singLEFT', 'FoxaUltra up', 24);
+				animation.addByPrefix('singLEFT', 'FoxaUltra left', 24);
 
 				loadOffsetFile(curCharacter);
 
