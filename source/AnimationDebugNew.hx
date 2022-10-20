@@ -27,7 +27,7 @@ import flixel.addons.ui.FlxUITooltip.FlxUITooltipStyle;
  */
 using StringTools;
 
-class AnimationDebug extends MusicBeatState
+class AnimationDebugNew extends MusicBeatState
 {
 	var _file:FileReference;
 	var bf:Boyfriend;
@@ -69,9 +69,9 @@ class AnimationDebug extends MusicBeatState
 
 		FlxG.mouse.visible = true;
 
-		background = new FlxSprite(-600, -525).loadGraphic(Paths.loadImage('stageback', 'shared'));
-		front = new FlxSprite(-650, 325).loadGraphic(Paths.loadImage('stagefront', 'shared'));
-		curt = new FlxSprite(-500, -625).loadGraphic(Paths.loadImage('stagecurtains', 'shared'));
+		background = new FlxSprite(-600, -525).loadGraphic(Paths.image('stageback', 'shared'));
+		front = new FlxSprite(-650, 325).loadGraphic(Paths.image('stagefront', 'shared'));
+		curt = new FlxSprite(-500, -625).loadGraphic(Paths.image('stagecurtains', 'shared'));
 		background.antialiasing = FlxG.save.data.antialiasing;
 		front.antialiasing = FlxG.save.data.antialiasing;
 		curt.antialiasing = FlxG.save.data.antialiasing;
