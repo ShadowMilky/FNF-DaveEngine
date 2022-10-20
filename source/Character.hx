@@ -308,6 +308,8 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
+				globalOffset = [150, 180];
+				
 				playAnim('idle');
 			case 'foxa-angy-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
@@ -325,6 +327,8 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
+				globalOffset = [150, 180];
+
 				playAnim('idle');	
 			case 'creation-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
@@ -341,6 +345,8 @@ class Character extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
+
+				globalOffset = [150, 180];
 
 				playAnim('idle');
 			case 'foxa': // foxa regular
