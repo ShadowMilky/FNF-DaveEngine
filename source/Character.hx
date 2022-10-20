@@ -319,21 +319,7 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				playAnim('idle');
-			case 'foxa-angy-new': // foxa regular new
-				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
-
-				animation.addByPrefix('idle', 'FoxaMad Idle', 24);
-				animation.addByPrefix('singUP', 'FoxaMad up', 24);
-				animation.addByPrefix('singRIGHT', 'FoxaMad right', 24);
-				animation.addByPrefix('singDOWN', 'FoxaMad down', 24);
-				animation.addByPrefix('singLEFT', 'FoxaMad up', 24);
-
-				loadOffsetFile(curCharacter);
-
-				barColor = FlxColor.fromString(getColorCode(curCharacter));
-
-				playAnim('idle');			
+				playAnim('idle');	
 			case 'creation-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
 
