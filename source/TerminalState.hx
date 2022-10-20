@@ -180,7 +180,7 @@ class TerminalState extends MusicBeatState
                             new FlxTimer().start(2, function(timer:FlxTimer)
                             {
                                 fancyOpenURL("https://www.youtube.com/watch?v=HK5TBYf_vrE&t");
-                                WindowsUtil.sendWindowsNotification("Vs. Foxa", "YOU HAVE BEEN FORCED TO WATCH THIS HAHAHAHA");
+                                PlatformUtil.sendWindowsNotification("Vs. Foxa", "YOU HAVE BEEN FORCED TO WATCH THIS HAHAHAHA");
                                 System.exit(0);
                             });
                     }
