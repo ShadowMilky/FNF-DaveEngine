@@ -17,6 +17,7 @@ import openfl.Lib;
 /**
 	The FPS class provides an easy-to-use monitor to display
 	the current frame rate of an OpenFL project
+    also pls credit the vs dave devs if you wanna use this
 **/
 #if !openfl_debug
 @:fileXml('tags="haxe,release"')
