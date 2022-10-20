@@ -1379,6 +1379,7 @@ class PlayState extends MusicBeatState
 
 	var previousFrameTime:Int = 0;
 	var songTime:Float = 0;
+	private var updateTime:Bool = true;
 
 	function startSong():Void
 	{
@@ -1451,10 +1452,35 @@ class PlayState extends MusicBeatState
 						songName.text = FlxStringUtil.formatTime((FlxG.sound.music.length - FlxG.sound.music.time) / 1000);
 					}
 				
-				if (songPosBar != null)
-					{
-						songPosBar.setRange(0, FlxG.sound.music.length);
-					}
+			if (songPosBar != null)
+			{
+				songPosBar.setRange(0, FlxG.sound.music.length);
+			}
+
+			// Interpolation type beat
+			if (Conductor.lastSongPos != Conductor.songPosition)
+			{
+				songTime = (songTime + Conductor.songPosition) / 2;
+				Conductor.lastSongPos = Conductor.songPosition;
+				// Conductor.songPosition += FlxG.elapsed * 1000;
+				// trace('MISSED FRAME');
+			}
+
+			if (updateTime)
+			{
+				var curTime:Float = Conductor.songPosition;
+				if (curTime < 0)
+					curTime = 0;
+				songPercent = (curTime / songLength);
+
+				var songCalc:Float = (songLength - curTime);
+
+				var secondsTotal:Int = Math.floor(songCalc / 1000);
+				if (secondsTotal < 0)
+					secondsTotal = 0;
+
+				timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+			}
 
 			}
 
@@ -2328,6 +2354,7 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 		canPause = false;
+		updateTime = false;
 
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
