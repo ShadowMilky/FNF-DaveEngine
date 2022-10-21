@@ -510,7 +510,7 @@ class PlayState extends MusicBeatState
 		}
 		if (SONG.song.toLowerCase() = 'bubbles' | 'burning-flames' | 'execution' | 'firestorm')
 			{
-				gfVersion = gf-whitty;
+				gfVersion = 'gf-whitty';
 			}
 		if (formoverride == "bf-pixel" || SONG.player1 == "bf-pixel" && pixelStages.contains(curStage))
 		{
