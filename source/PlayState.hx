@@ -508,6 +508,10 @@ class PlayState extends MusicBeatState
 		{
 			gfVersion = SONG.gf;
 		}
+		if (SONG.song.toLowerCase() = 'bubbles' | 'burning-flames' | 'execution' | 'firestorm')
+			{
+				gfVersion = gf-whitty;
+			}
 		if (formoverride == "bf-pixel" || SONG.player1 == "bf-pixel" && pixelStages.contains(curStage))
 		{
 			gfVersion = 'gf-pixel';
