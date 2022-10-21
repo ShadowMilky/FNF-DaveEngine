@@ -438,9 +438,10 @@ class PlayState extends MusicBeatState
 		#end
 		switch (SONG.song.toLowerCase())
 		{
-			case 'execution' || 'firestorm':
+			case 'execution' | 'firestorm':
 				Application.current.window.title = foxaWindowNames[new FlxRandom().int(0, foxaWindowNames.length - 1)];
 		}
+
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
