@@ -280,6 +280,7 @@ class PlayState extends MusicBeatState
 
 	var glitch:FlxSprite;
 	var tweenList:Array<FlxTween> = new Array<FlxTween>();
+	var pauseTweens:Array<FlxTween> = new Array<FlxTween>();
 
 	var bfTween:ColorTween;
 
@@ -452,10 +453,6 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camHUD);
 		FlxG.cameras.add(camDialogue);
 		FlxG.cameras.add(camTransition);
-
-		FlxG.cameras.cameraAdded.add(onCameraAdded);
-		FlxG.cameras.cameraReset.add(onCameraReset);
-		FlxG.cameras.cameraResetPost.add(onCameraResetPost);
 
 		FlxCamera.defaultCameras = [camGame];
 
@@ -2936,7 +2933,6 @@ class PlayState extends MusicBeatState
 						FlxTween.cancelTweensOf(note.MyStrum);
 						note.MyStrum.alpha = 0.01;
 						var noteTween = FlxTween.tween(note.MyStrum, {alpha: 1}, 7, {ease: FlxEase.expoIn});
-						pauseTweens.push(noteTween);
 						health -= 0.07;
 						updateAccuracy();
 						return;
@@ -2946,7 +2942,6 @@ class PlayState extends MusicBeatState
 						FlxTween.cancelTweensOf(note.MyStrum);
 						note.MyStrum.alpha = 0.01;
 						var noteTween = FlxTween.tween(note.MyStrum, {alpha: 1}, 7, {ease: FlxEase.expoIn});
-						pauseTweens.push(noteTween);
 						health -= 0.07;
 						updateAccuracy();
 						return;
