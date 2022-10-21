@@ -32,7 +32,7 @@ jobs:
           haxelib install hxcpp > nul
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --never git flixel https://github.com/YoshiCrafter29/flixel
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -69,11 +69,6 @@ jobs:
         with:
           name: windows32Build
           path: export/32bit/windows/bin
-      - name: Publish Artifact
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: windows32bitBuild
-          path: export/32bit/windows/bin
   buildMac:
     runs-on: macos-latest
 
@@ -91,7 +86,7 @@ jobs:
           haxelib install hxcpp > /dev/null
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --never git flixel https://github.com/YoshiCrafter29/flixel
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
