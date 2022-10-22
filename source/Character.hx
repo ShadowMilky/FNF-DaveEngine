@@ -17,30 +17,6 @@ import haxe.format.JsonParser;
 
 using StringTools;
 
-typedef CharacterFile =
-{
-	var animations:Array<AnimArray>;
-	var image:String;
-	var scale:Float;
-	var sing_duration:Float;
-	var healthicon:String;
-
-	var position:Array<Float>;
-	var camera_position:Array<Float>;
-	var flip_x:Bool;
-	var no_antialiasing:Bool;
-}
-
-typedef AnimArray =
-{
-	var anim:String;
-	var name:String;
-	var fps:Int;
-	var loop:Bool;
-	var indices:Array<Int>;
-	var offsets:Array<Int>;
-}
-
 class Character extends FlxSprite
 {
 	public var animOffsets:Map<String, Array<Dynamic>>;
@@ -71,17 +47,26 @@ class Character extends FlxSprite
 	public var healthIcon:String = 'face';
 	public var animationsArray:Array<AnimArray> = [];
 
-	public var positionArray:Array<Float> = [0, 0];
-	public var cameraPosition:Array<Float> = [0, 0];
-
-	public var barColor:FlxColor;
-
 	public var canSing:Bool = true;
 	public var skins:Map<String, String> = new Map<String, String>();
 
 	public static var DEFAULT_CHARACTER:String = 'bf'; // In case a character is missing, it will use BF on its place
 
 	public var charList:Array<String> = [];
+
+	public var animInterrupt:Map<String, Bool>;
+	public var animNext:Map<String, String>;
+	public var animDanced:Map<String, Bool>;
+
+	public var barColor:FlxColor;
+
+	public var replacesGF:Bool;
+	public var hasTrail:Bool;
+	public var isDancing:Bool;
+	public var holdLength:Float;
+	public var charPos:Array<Int>;
+	public var camPos:Array<Int>;
+	public var camFollow:Array<Int>;
 
 	// Used on Character Editor
 	public var imageFile:String = '';
@@ -95,6 +80,9 @@ class Character extends FlxSprite
 		super(x, y);
 
 		animOffsets = new Map<String, Array<Dynamic>>();
+		animInterrupt = new Map<String, Bool>();
+		animNext = new Map<String, String>();
+		animDanced = new Map<String, Bool>();
 		curCharacter = character;
 		this.isPlayer = isPlayer;
 		charList = CoolUtil.coolTextFile(Paths.file('data/characterList.txt', TEXT, 'preload'));

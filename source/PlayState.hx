@@ -585,6 +585,15 @@ class PlayState extends MusicBeatState
 		}
 		bfGroup.add(boyfriend);
 
+		switch (dad.curCharacter)
+		{
+			case 'creation-new':
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+				// evilTrail.changeValuesEnabled(false, false, false, false);
+				// evilTrail.changeGraphic()
+				add(evilTrail);
+		}
+
 		var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
