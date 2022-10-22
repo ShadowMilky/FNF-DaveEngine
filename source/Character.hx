@@ -202,10 +202,10 @@ class Character extends FlxSprite
 				// GIRLFRIEND FUNNI CODE
 				frames = Paths.getSparrowAtlas('characters/GF_Standing_Sway', 'shared');
 
-				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
-				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-				animation.addByPrefix('scared', 'GF FEAR', 24);
+				animation.addByPrefix('sad', 'gf sad', 24, false);
+				animation.addByPrefix('danceLeft', 'gf dance left', 24, false);
+				animation.addByPrefix('danceRight', 'gf dance right', 24, false);
+				animation.addByPrefix('scared', 'gf scared', 24);
 
 				loadOffsetFile(curCharacter);
 
@@ -765,7 +765,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 			default:
-				trace('ERROR: Generating character (${curCharacter}) from JSON data...');
+				trace('Generating character (${curCharacter}) from JSON data...');
 
 				// Load the data from JSON and cast it to a struct we can easily read.
 				var jsonData = Paths.character('${curCharacter}');

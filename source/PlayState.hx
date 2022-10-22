@@ -585,6 +585,11 @@ class PlayState extends MusicBeatState
 		}
 		bfGroup.add(boyfriend);
 
+		if (bf.curCharacter = 'bf')
+			bf.flipX = true
+		else
+			bf.flipX = false
+
 		switch (dad.curCharacter)
 		{
 			case 'creation-new':
@@ -1358,14 +1363,21 @@ class PlayState extends MusicBeatState
 					creditsPopup.scrollFactor.set();
 					creditsPopup.x = creditsPopup.width * -1;
 					add(creditsPopup);
-	
-						FlxTween.tween(creditsPopup, {x: 0}, 0.5, {ease: FlxEase.backOut, onComplete: function(tweeen:FlxTween)
+
+					FlxTween.tween(creditsPopup, {x: 0}, 0.5, {
+						ease: FlxEase.backOut,
+						onComplete: function(tweeen:FlxTween)
 						{
-							FlxTween.tween(creditsPopup, {x: creditsPopup.width * -1} , 1, {ease: FlxEase.backIn, onComplete: function(tween:FlxTween)
-							{
-								creditsPopup.destroy();
-							}, startDelay: 3});
-						}});
+							FlxTween.tween(creditsPopup, {x: creditsPopup.width * -1}, 1, {
+								ease: FlxEase.backIn,
+								onComplete: function(tween:FlxTween)
+								{
+									creditsPopup.destroy();
+								},
+								startDelay: 3
+							});
+						}
+					});
 			}
 
 			swagCounter += 1;
