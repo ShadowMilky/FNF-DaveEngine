@@ -23,8 +23,7 @@ import lime.app.Application;
 #if desktop
 import Discord.DiscordClient;
 #end
-
-// only load this reference if its debug because its only needed for debug??? idk it might help with the file size or something 
+// only load this reference if its debug because its only needed for debug??? idk it might help with the file size or something
 #if debug
 import openfl.net.FileReference;
 import haxe.Json;
@@ -51,7 +50,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-
 		PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
@@ -70,16 +68,16 @@ class TitleState extends MusicBeatState
 		LanguageManager.init();
 
 		Highscore.load();
-		
+
 		CoolUtil.init();
 
 		Main.fps.visible = !FlxG.save.data.disableFps;
 
 		CompatTool.initSave();
-		if(CompatTool.save.data.compatMode == null)
-        {
-            FlxG.switchState(new CompatWarningState());
-        }
+		if (CompatTool.save.data.compatMode == null)
+		{
+			FlxG.switchState(new CompatWarningState());
+		}
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{
@@ -103,7 +101,7 @@ class TitleState extends MusicBeatState
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			startIntro();
-		});		
+		});
 		#end
 	}
 
@@ -253,7 +251,7 @@ class TitleState extends MusicBeatState
 				pressedEnter = true;
 			#end
 		}
-		
+
 		if (pressedEnter && !transitioning && skippedIntro)
 		{
 			titleText.animation.play('press');
@@ -285,11 +283,10 @@ class TitleState extends MusicBeatState
 		{
 			remove(credGroup);
 			skippedIntro = true;
-	
+
 			FlxG.camera.fade(FlxColor.WHITE, 2.5, true);
 		}
 	}
-
 
 	override function beatHit()
 	{
@@ -300,10 +297,12 @@ class TitleState extends MusicBeatState
 			danceLeft = !danceLeft;
 
 			logoBl.animation.play('bump');
-	
-			if (danceLeft) gfDance.animation.play('danceRight');
-			else gfDance.animation.play('danceLeft');
-	
+
+			if (danceLeft)
+				gfDance.animation.play('danceRight');
+			else
+				gfDance.animation.play('danceLeft');
+
 			switch (curBeat)
 			{
 				case 3:
@@ -361,7 +360,7 @@ class TitleState extends MusicBeatState
 		credGroup.add(coolText);
 		textGroup.add(coolText);
 	}
-	
+
 	function deleteCoolText()
 	{
 		while (textGroup.members.length > 0)
@@ -370,7 +369,7 @@ class TitleState extends MusicBeatState
 			textGroup.remove(textGroup.members[0], true);
 		}
 	}
-	
+
 	function deleteOneCoolText()
 	{
 		credGroup.remove(textGroup.members[0], true);

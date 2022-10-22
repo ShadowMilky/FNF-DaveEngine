@@ -216,7 +216,7 @@ class Character extends FlxSprite
 				// GIRLFRIEND FUNNI CODE
 				frames = Paths.getSparrowAtlas('characters/GF_Standing_Sway', 'shared');
 
-				animation.addByPrefix('sad', 'gf sad', 24, false);
+				animation.addByPrefix('sad', 'gf sad', 24);
 				animation.addByPrefix('danceLeft', 'gf dance left', 24, false);
 				animation.addByPrefix('danceRight', 'gf dance right', 24, false);
 				animation.addByPrefix('scared', 'gf scared', 24);
@@ -320,8 +320,6 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				skins.set('gfSkin', 'gf-whitty');
-
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
@@ -342,8 +340,6 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
-				skins.set('gfSkin', 'gf-whitty');
-
 				playAnim('idle');
 			case 'creation-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
@@ -361,8 +357,6 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
-				skins.set('gfSkin', 'gf-whitty');
-
 				playAnim('idle');
 			case 'foxa': // foxa regular
 				frames = Paths.getSparrowAtlas('characters/foxa', 'shared');
@@ -376,8 +370,6 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
-
-				skins.set('gfSkin', 'gf-whitty');
 
 				playAnim('idle');
 			case 'foxa-angy': // foxa angy
@@ -393,8 +385,6 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				skins.set('gfSkin', 'gf-whitty');
-
 				playAnim('idle');
 			case 'whitty-christmas': // whitty christmas, the only whitty sprites in this mod (currently)
 				var tex = Paths.getSparrowAtlas('characters/whitty-christmas', 'shared');
@@ -404,8 +394,6 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
 				animation.addByPrefix('singDOWN', 'Sing Down', 24);
 				animation.addByPrefix('singLEFT', 'Sing Left', 24);
-
-				skins.set('gfSkin', 'gf-whitty');
 				addOffset('idle', 0, 0);
 				addOffset("singUP", -6, 50);
 				addOffset("singRIGHT", 0, 27);

@@ -1,4 +1,5 @@
 package vlc;
+
 #if FEATURE_VLC
 #if cpp
 import cpp.NativeArray;
@@ -30,7 +31,7 @@ class VlcBitmap extends Bitmap
 	//-----------------------------------------------------------------------------------
 	public var videoWidth:Int;
 	public var videoHeight:Int;
-	//public var repeat:Int = 0;
+	// public var repeat:Int = 0;
 	public var duration:Float;
 	public var length:Float;
 	public var initComplete:Bool;
@@ -145,7 +146,7 @@ class VlcBitmap extends Bitmap
 
 	public function play(?source:String)
 	{
-		//libvlc.setRepeat(repeat);
+		// libvlc.setRepeat(repeat);
 
 		if (source != null)
 			libvlc.play(source);
