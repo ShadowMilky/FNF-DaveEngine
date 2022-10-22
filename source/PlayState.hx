@@ -475,7 +475,7 @@ class PlayState extends MusicBeatState
 		{
 			dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/${SONG.song.toLowerCase()}'));
 			hasDialogue = true;
-			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt')
+			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt');
 		}
 		else
 		{
