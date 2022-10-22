@@ -586,9 +586,9 @@ class PlayState extends MusicBeatState
 		bfGroup.add(boyfriend);
 
 		if (bf.curCharacter = 'bf')
-			bf.flipX = true
+			bf.flipX = true;
 		else
-			bf.flipX = false
+			bf.flipX = false;
 
 		switch (dad.curCharacter)
 		{
