@@ -106,6 +106,12 @@ class TerminalState extends MusicBeatState
 							PlayState.SONG = Song.loadFromJson('bubbles');
 							PlayState.SONG.validScore = false;
 							LoadingState.loadAndSwitchState(new PlayState());
+						case "creation.dat":
+							UpdatePreviousText(false); // resets the text
+							UpdateText(LanguageManager.getTerminalString("term_loading"));
+							PlayState.SONG = Song.loadFromJson('firestorm');
+							PlayState.SONG.validScore = false;
+							LoadingState.loadAndSwitchState(new PlayState());
 						case "whitty.dat":
 							UpdatePreviousText(false); // resets the text
 							UpdateText(LanguageManager.getTerminalString("term_loading"));

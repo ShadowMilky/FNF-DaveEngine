@@ -1,4 +1,3 @@
-
 package;
 
 import flixel.FlxSprite;
@@ -6,7 +5,7 @@ import flixel.FlxSprite;
 /**
  * Compared to `MP4Handler`. This loads slower!!
  */
- #if FEATURE_VLC
+#if FEATURE_VLC
 class MP4Sprite extends FlxSprite
 {
 	static public var readyCallback:Void->Void;

@@ -36,11 +36,11 @@ class MainMenuState extends MusicBeatState
 	var curSelected:Int = 0;
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'ost', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'ost', 'options', 'discord'];
 
-	var languagesOptions:Array<String> = ['main_story', 'main_freeplay', 'main_credits', 'main_ost', 'main_options'];
+	var languagesOptions:Array<String> = ['main_story', 'main_freeplay', 'main_credits', 'main_ost', 'main_options', 'main_discord'];
 
-	var languagesDescriptions:Array<String> = ['desc_story', 'desc_freeplay', 'desc_credits', 'desc_ost', 'desc_options'];
+	var languagesDescriptions:Array<String> = ['desc_story', 'desc_freeplay', 'desc_credits', 'desc_ost', 'desc_options', 'desc_discord'];
 
 	public static var firstStart:Bool = true;
 
@@ -131,7 +131,7 @@ class MainMenuState extends MusicBeatState
 		add(bigIcons);
 
 		curOptText = new FlxText(0, 0, FlxG.width, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '));
-		curOptText.setFormat(Paths.font("vcr.ttf"), 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		curOptText.setFormat(Paths.font("funkin.otf"), 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		curOptText.scrollFactor.set(0, 0);
 		curOptText.borderSize = 2.5;
 		curOptText.antialiasing = true;
@@ -140,7 +140,7 @@ class MainMenuState extends MusicBeatState
 		add(curOptText);
 
 		curOptDesc = new FlxText(0, 0, FlxG.width, LanguageManager.getTextString(languagesDescriptions[curSelected]));
-		curOptDesc.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		curOptDesc.setFormat(Paths.font("funkin.otf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		curOptDesc.scrollFactor.set(0, 0);
 		curOptDesc.borderSize = 1.8;
 		curOptDesc.antialiasing = true;

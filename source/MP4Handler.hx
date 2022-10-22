@@ -8,7 +8,7 @@ import flixel.FlxG;
  * Use bitmap to connect to a graphic or use `MP4Sprite`.
  */
 #if FEATURE_VLC
- class MP4Handler extends vlc.VlcBitmap
+class MP4Handler extends vlc.VlcBitmap
 {
 	public var readyCallback:Void->Void;
 	public var finishCallback:Void->Void;
@@ -110,7 +110,6 @@ import flixel.FlxG;
 
 		#if sys
 		play(checkFile(path));
-
 		#else
 		throw "Doesn't support sys";
 		#end

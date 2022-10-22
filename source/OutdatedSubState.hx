@@ -39,6 +39,7 @@ class OutdatedSubState extends MusicBeatState
 		}
 		super.update(elapsed);
 	}
+
 	function leaveState()
 	{
 		leftState = true;

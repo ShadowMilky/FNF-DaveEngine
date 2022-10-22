@@ -14,12 +14,12 @@ compat_yes==Yes
 compat_no==No
 
 // Main Menu Descriptions //
-desc_story==Play trough the story of the game!
+desc_story==Play through the story of the game!
 desc_freeplay==Play any song as you wish and get new scores!
-desc_credits==Look at the people who have worked or contributed to the engine!
+desc_credits==Look at the people who have worked or contributed to the mod and engine!
 desc_ost==Listen to the songs of the mod.
 desc_options==Adjust game settings and keybinds.
-desc_discord==Join the official Vs. Dave and Bambi Discord!
+desc_discord==Join the official Vs. Foxa Discord!
 
 // Freeplay State //
 freeplay_foxa==Main

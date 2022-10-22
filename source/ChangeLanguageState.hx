@@ -40,7 +40,7 @@ class ChangeLanguageState extends MusicBeatState
 		add(menuBG);
 
 		var helper:FlxText = new FlxText(0, 150, FlxG.width, "Select a language", 40);
-		helper.setFormat("VCR OSD Mono", 60, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		helper.setFormat("Funkin", 60, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		helper.antialiasing = true;
 		helper.borderSize = 3;
 		helper.screenCenter(X);
@@ -51,7 +51,7 @@ class ChangeLanguageState extends MusicBeatState
 			var curLanguage = languages[i];
 
 			var text:FlxText = new FlxText(0, 350 + (i * 75), FlxG.width, curLanguage.langaugeName, 40);
-			text.setFormat("VCR OSD Mono", 30, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE);
+			text.setFormat("Funkin", 30, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE);
 			text.antialiasing = true;
 			text.screenCenter(X);
 			add(text);
