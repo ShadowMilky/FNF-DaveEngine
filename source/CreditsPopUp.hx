@@ -38,6 +38,8 @@ class CreditsPopUp extends FlxSpriteGroup
 		{
 			case 'tutorial' | 'bopeebo' | 'fresh' | 'dadbattle' | 'spookeez' | 'south' | 'satin-panties' | 'high' |  'milf' | 'cocoa' | 'eggnog' | 'senpai' | 'roses' | 'thorns' | 'ugh' | 'guns' | 'stress' | 'test':
 				songCreator = 'KawaiSprite';
+			case 'bubbles' | 'burning-flames' | 'execution' | 'christmas-blitz':
+				songCreator = 'Foxa';
 		}
 		switch (PlayState.storyWeek)
 		{
@@ -67,6 +69,8 @@ class CreditsPopUp extends FlxSpriteGroup
 		{
 			case 'supernovae' | 'glitch':
 				funnyIcon = new FlxSprite(0, 0, Paths.image('songCreators/MoldyGH'));
+			case 'firestorm':
+				funnyIcon = new FlxSprite(0, 0, Paths.image('songCreators/garageband'));
 			default:
 				funnyIcon = new FlxSprite(0, 0, Paths.image('songCreators/' + songCreator));
 		}
