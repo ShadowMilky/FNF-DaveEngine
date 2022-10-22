@@ -475,6 +475,7 @@ class PlayState extends MusicBeatState
 		{
 			dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/${SONG.song.toLowerCase()}'));
 			hasDialogue = true;
+			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt')
 		}
 		else
 		{
@@ -2488,6 +2489,7 @@ class PlayState extends MusicBeatState
 	function nextSong()
 	{
 		FlxTransitionableState.skipNextTransIn = true;
+		trace('loading next song');
 		FlxTransitionableState.skipNextTransOut = true;
 		prevCamFollow = camFollow;
 
