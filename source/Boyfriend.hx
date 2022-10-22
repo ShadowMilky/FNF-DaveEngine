@@ -16,7 +16,7 @@ class Boyfriend extends Character
 		super(x, y, char, true);
 	}
 
-	override public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
+	override public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = true, Frame:Int = 0):Void
 		{
 			if (animation.getByName(AnimName) == null)
 			{
