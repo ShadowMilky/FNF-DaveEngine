@@ -40,10 +40,10 @@ class CreditsPopUp extends FlxSpriteGroup
 				songCreator = 'KawaiSprite';
 			case 'bubbles' | 'burning-flames' | 'execution' | 'christmas-blitz':
 				songCreator = 'Foxa';
-			case 'bubbles' | 'burning-flames' | 'execution' | 'christmas-blitz':
+			case 'firestorm':
 				songCreator = 'GarageBand Cover Guy 96';
 		}
-		switch (PlayState.storyWeek)
+		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'bubbles':
 				headingPath = {path: 'songHeadings/foxaHeading', antiAliasing: false, iconOffset: 0};

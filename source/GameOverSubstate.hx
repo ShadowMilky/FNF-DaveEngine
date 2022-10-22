@@ -76,7 +76,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			FlxG.switchState(new CharacterEditorState(bf.curCharacter));
+			FlxG.switchState(new AnimationDebugNew(bf.curCharacter));
 		}
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)

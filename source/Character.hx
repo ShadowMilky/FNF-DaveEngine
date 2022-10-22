@@ -23,7 +23,7 @@ class Character extends FlxSprite
 	public var debugMode:Bool = false;
 
 	public var isPlayer:Bool = false;
-	public var curCharacter:String = DEFAULT_CHARACTER;
+	public var curCharacter:String = 'bf';
 
 	public var holdTimer:Float = 0;
 	public var furiosityScale:Float = 1.02;
@@ -45,8 +45,6 @@ class Character extends FlxSprite
 	var hairFramesLoop:Int = 4; // ADVANCED: This is used for mom and bf on Week 4. They go back 4 frames once their singing animation is completed to give an impression that it's looping perfectly
 
 	public var healthIcon:String = 'face';
-	public var animationsArray:Array<AnimArray> = [];
-
 	public var canSing:Bool = true;
 	public var skins:Map<String, String> = new Map<String, String>();
 
