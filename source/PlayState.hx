@@ -588,7 +588,7 @@ class PlayState extends MusicBeatState
 		switch (dad.curCharacter)
 		{
 			case 'creation-new':
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+				var evilTrail = new FlxTrail(dad, null, 4, 12, 0.3, 0.069);
 				// evilTrail.changeValuesEnabled(false, false, false, false);
 				// evilTrail.changeGraphic()
 				add(evilTrail);
