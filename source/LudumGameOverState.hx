@@ -11,6 +11,8 @@ class LudumGameOverState extends FlxTransitionableState
 {
 	override function create()
 	{
+        FlxG.sound.playMusic(Paths.music('gameOver'));
+
 		var loser:FlxSprite = new FlxSprite(100, 100);
 		var loseTex = Paths.getSparrowAtlas('ui/lose');
 		loser.frames = loseTex;
@@ -38,10 +40,14 @@ class LudumGameOverState extends FlxTransitionableState
 		if (FlxG.keys.justPressed.ANY && !fading)
 		{
 			fading = true;
-			FlxG.sound.music.fadeOut(0.5, 0, function(twn:FlxTween)
+            FlxG.sound.music.stop();
+            FlxG.sound.play(Paths.music('gameOverEnd'));
+			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
-				FlxG.sound.music.stop();
-				FlxG.switchState(new PlayState());
+				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
+				{
+					LoadingState.loadAndSwitchState(new PlayState());
+				});
 			});
 		}
 		super.update(elapsed);
