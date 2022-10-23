@@ -90,12 +90,12 @@ import lime.ui.Window;
 import openfl.geom.Rectangle;
 import openfl.display.Sprite;
 
-//THERE
-//IS
-//NO
-//D&B SHIT HERE
-//EVEN THOUGH
-//THIS MOD IS BASED OFF ON IT
+// THERE
+// IS
+// NO
+// D&B SHIT HERE
+// EVEN THOUGH
+// THIS MOD IS BASED OFF ON IT
 using StringTools;
 
 class PlayState extends MusicBeatState
@@ -2136,10 +2136,13 @@ class PlayState extends MusicBeatState
 
 			if (!perfectMode)
 			{
-				gameOver();
+				if (FlxG.random.bool(0.3))
+				{
+					FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				}
+				else
+					gameOver();
 			}
-
-			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
 
 		if (unspawnNotes[0] != null)
