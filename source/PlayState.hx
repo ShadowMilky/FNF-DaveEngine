@@ -2021,7 +2021,7 @@ class PlayState extends MusicBeatState
 		}
 		if (FlxG.keys.justPressed.R) // unfunny didnt laugh
 		{
-			if (FlxG.random.bool(15))
+			if (FlxG.random.bool(35))
 			{
 				trace('ludum dared');
 				FlxG.switchState(new LudumGameOverState());
@@ -2149,7 +2149,7 @@ class PlayState extends MusicBeatState
 
 			if (!perfectMode)
 			{
-				if (FlxG.random.bool(15))
+				if (FlxG.random.bool(35))
 				{
 					trace('ludum dared');
 					FlxG.switchState(new LudumGameOverState());
