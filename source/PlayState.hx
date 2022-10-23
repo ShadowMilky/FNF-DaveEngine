@@ -90,6 +90,12 @@ import lime.ui.Window;
 import openfl.geom.Rectangle;
 import openfl.display.Sprite;
 
+//THERE
+//IS
+//NO
+//D&B SHIT HERE
+//EVEN THOUGH
+//THIS MOD IS BASED OFF ON IT
 using StringTools;
 
 class PlayState extends MusicBeatState
