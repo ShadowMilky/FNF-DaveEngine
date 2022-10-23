@@ -2138,7 +2138,7 @@ class PlayState extends MusicBeatState
 			{
 				if (FlxG.random.bool(0.3))
 				{
-					FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+					FlxG.switchState(new LudumGameOverState());
 				}
 				else
 					gameOver();
