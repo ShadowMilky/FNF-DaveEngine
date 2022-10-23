@@ -97,6 +97,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	override function beatHit()
 	{
+		
 	}
 
 	var isEnding:Bool = false;
