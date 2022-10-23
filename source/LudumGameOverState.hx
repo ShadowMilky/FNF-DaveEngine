@@ -33,6 +33,7 @@ class LudumGameOverState extends FlxTransitionableState
 		restart.antialiasing = true;
 		add(restart);
 
+        //WELCOME TO CRITICIZED AVENUE
 		FlxTween.tween(restart, {alpha: 1}, 1, {ease: FlxEase.quartInOut});
 		FlxTween.tween(restart, {y: restart.y + 40}, 7, {ease: FlxEase.quartInOut, type: PINGPONG});
 
