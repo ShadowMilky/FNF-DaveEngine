@@ -16,7 +16,7 @@ import flixel.system.FlxSound;
 using StringTools;
 
 // took from psych because lazy
-class DebugMenuState extends MusicBeatState
+class DebugChoosingState extends MusicBeatState
 {
 	var options:Array<String> = [
 		'Character Editor',

@@ -1277,7 +1277,7 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 
-		trace('CHARTING LOG - SECTION CLEARED')
+		trace('CHARTING LOG - SECTION CLEARED');
 	}
 
 	function clearSong():Void
