@@ -2138,9 +2138,11 @@ class PlayState extends MusicBeatState
 			{
 				if (FlxG.random.bool(15))
 				{
+					trace('ludum dared');
 					FlxG.switchState(new LudumGameOverState());
 				}
 				else
+					trace('you dead');
 					gameOver();
 			}
 		}
