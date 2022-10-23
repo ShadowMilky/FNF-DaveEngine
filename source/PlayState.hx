@@ -2136,7 +2136,7 @@ class PlayState extends MusicBeatState
 
 			if (!perfectMode)
 			{
-				if (FlxG.random.bool(0.7))
+				if (FlxG.random.bool(40))
 				{
 					FlxG.switchState(new LudumGameOverState());
 				}
