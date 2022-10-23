@@ -2019,6 +2019,19 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.switchState(new CharacterDebug(gf.curCharacter));
 		}
+		if (FlxG.keys.justPressed.R) // unfunny didnt laugh
+		{
+			if (FlxG.random.bool(15))
+			{
+				trace('ludum dared');
+				FlxG.switchState(new LudumGameOverState());
+			}
+			else
+			{
+				trace('you dead');
+				gameOver();
+			}
+		}
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebugNew(dad.curCharacter));
 		if (FlxG.keys.justPressed.SIX)
@@ -2142,8 +2155,10 @@ class PlayState extends MusicBeatState
 					FlxG.switchState(new LudumGameOverState());
 				}
 				else
+				{
 					trace('you dead');
 					gameOver();
+				}
 			}
 		}
 
