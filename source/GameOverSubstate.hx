@@ -45,7 +45,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		add(camFollow);
 
 		FlxG.sound.play(Paths.sound('death/fnf_loss_sfx' + deathSuffix));
-		Conductor.changeBPM(105);
+		Conductor.changeBPM(82);
 
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
