@@ -192,6 +192,7 @@ class PlayState extends MusicBeatState
 
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var dadStrums:FlxTypedGroup<StrumNote>;
+	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	private var noteLimbo:Note;
 
@@ -383,6 +384,8 @@ class PlayState extends MusicBeatState
 		'alright instagram its shoutout time'
 	];
 
+	public var noteSplash:Bool = true;
+
 	override public function create()
 	{
 		instance = this;
@@ -461,6 +464,7 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camHUD);
 		FlxG.cameras.add(camDialogue);
 		FlxG.cameras.add(camTransition);
+		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 
 		FlxCamera.defaultCameras = [camGame];
 
@@ -622,6 +626,7 @@ class PlayState extends MusicBeatState
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
+		add(grpNoteSplashes);
 
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
@@ -741,6 +746,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 
 		strumLineNotes.cameras = [camHUD];
+		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
@@ -752,6 +758,10 @@ class PlayState extends MusicBeatState
 			kadeEngineWatermark.cameras = [camHUD];
 		}
 		doof.cameras = [camDialogue];
+
+		var splash:NoteSplash = new NoteSplash(100, 100, 0);
+		grpNoteSplashes.add(splash);
+		splash.alpha = 0.0;
 
 		scriptThing = HScriptTool.create(Paths.scriptFile('tutorial'));
 
@@ -1190,6 +1200,21 @@ class PlayState extends MusicBeatState
 				variantColor = FlxColor.WHITE;
 		}
 		return variantColor;
+	}
+
+	function spawnNoteSplashOnNote(note:Note) {
+		if(note != null) {
+			var strum:StrumNote = playerStrums.members[note.noteData];
+			if(strum != null) {
+				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+			}
+		}
+	}
+
+	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
+		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
+		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
+		grpNoteSplashes.add(splash);
 	}
 
 	function schoolIntro(?dialogueBox:DialogueBox, isStart:Bool = true):Void
@@ -2686,6 +2711,7 @@ class PlayState extends MusicBeatState
 			daRating = 'shit';
 			totalNotesHit -= 2;
 			score = 10;
+			noteSplash = false;
 			shits++;
 		}
 		else if (noteDiff < Conductor.safeZoneOffset * -2)
@@ -2693,6 +2719,7 @@ class PlayState extends MusicBeatState
 			daRating = 'shit';
 			totalNotesHit -= 2;
 			score = 25;
+			noteSplash = false;
 			shits++;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.45)
@@ -2700,6 +2727,7 @@ class PlayState extends MusicBeatState
 			daRating = 'bad';
 			score = 100;
 			totalNotesHit += 0.2;
+			noteSplash = false;
 			bads++;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.25)
@@ -2707,11 +2735,13 @@ class PlayState extends MusicBeatState
 			daRating = 'good';
 			totalNotesHit += 0.65;
 			score = 200;
+			noteSplash = false;
 			goods++;
 		}
 		if (daRating == 'sick')
 		{
 			totalNotesHit += 1;
+			noteSplash = true;
 			sicks++;
 		}
 		score = cast(FlxMath.roundDecimal(cast(score, Float) * curmult[note.noteData],
@@ -3160,6 +3190,9 @@ class PlayState extends MusicBeatState
 					// 'LEFT', 'DOWN', 'UP', 'RIGHT'
 					var fuckingDumbassBullshitFuckYou:String;
 					var noteTypes = notestuffs;
+						if(!note.isSustainNote) {
+							spawnNoteSplashOnNote(note);
+						}
 					fuckingDumbassBullshitFuckYou = noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount];
 					if (!boyfriend.nativelyPlayable)
 					{
@@ -3170,6 +3203,7 @@ class PlayState extends MusicBeatState
 							case 'RIGHT':
 								fuckingDumbassBullshitFuckYou = 'LEFT';
 						}
+						if(note.hitCausesMiss) {
 					}
 					boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
 			}
