@@ -3221,16 +3221,15 @@ class PlayState extends MusicBeatState
 					note.wasGoodHit = true;
 					vocals.volume = 1;
 
-					note.kill();
-					notes.remove(note, true);
-					note.destroy();
-
 					updateAccuracy();
 			}
 			if (!note.isSustainNote)
-				{
-					spawnNoteSplashOnNote(note);
-				}
+			{
+				note.kill();
+				notes.remove(note, true);
+				note.destroy();
+				spawnNoteSplashOnNote(note);
+			}
 		}
 	}
 
