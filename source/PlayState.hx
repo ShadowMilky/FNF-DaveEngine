@@ -1202,16 +1202,20 @@ class PlayState extends MusicBeatState
 		return variantColor;
 	}
 
-	function spawnNoteSplashOnNote(note:Note) {
-		if(note != null) {
+	function spawnNoteSplashOnNote(note:Note)
+	{
+		if (note != null)
+		{
 			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null) {
+			if (strum != null)
+			{
 				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
 			}
 		}
 	}
 
-	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
+	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null)
+	{
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
 		grpNoteSplashes.add(splash);
@@ -3190,9 +3194,10 @@ class PlayState extends MusicBeatState
 					// 'LEFT', 'DOWN', 'UP', 'RIGHT'
 					var fuckingDumbassBullshitFuckYou:String;
 					var noteTypes = notestuffs;
-						if(!note.isSustainNote) {
-							spawnNoteSplashOnNote(note);
-						}
+					if (!note.isSustainNote)
+					{
+						spawnNoteSplashOnNote(note);
+					}
 					fuckingDumbassBullshitFuckYou = noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount];
 					if (!boyfriend.nativelyPlayable)
 					{
@@ -3203,33 +3208,35 @@ class PlayState extends MusicBeatState
 							case 'RIGHT':
 								fuckingDumbassBullshitFuckYou = 'LEFT';
 						}
-						if(note.hitCausesMiss) {
+						if (note.hitCausesMiss)
+						{
+						}
+						boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
 					}
-					boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
+					cameraMoveOnNote(note.originalType, 'bf');
+					if (UsingNewCam)
+					{
+						focusOnDadGlobal = false;
+						ZoomCam(false);
+					}
+
+					playerStrums.forEach(function(spr:StrumNote)
+					{
+						if (Math.abs(note.noteData) == spr.ID)
+						{
+							spr.animation.play('confirm', true);
+						}
+					});
+
+					note.wasGoodHit = true;
+					vocals.volume = 1;
+
+					note.kill();
+					notes.remove(note, true);
+					note.destroy();
+
+					updateAccuracy();
 			}
-			cameraMoveOnNote(note.originalType, 'bf');
-			if (UsingNewCam)
-			{
-				focusOnDadGlobal = false;
-				ZoomCam(false);
-			}
-
-			playerStrums.forEach(function(spr:StrumNote)
-			{
-				if (Math.abs(note.noteData) == spr.ID)
-				{
-					spr.animation.play('confirm', true);
-				}
-			});
-
-			note.wasGoodHit = true;
-			vocals.volume = 1;
-
-			note.kill();
-			notes.remove(note, true);
-			note.destroy();
-
-			updateAccuracy();
 		}
 	}
 
