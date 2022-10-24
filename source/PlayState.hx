@@ -3188,39 +3188,38 @@ class PlayState extends MusicBeatState
 					var heyAnimation:Bool = boyfriend.animation.getByName("hey") != null;
 					boyfriend.playAnim(hitAnimation ? 'dodge' : (heyAnimation ? 'hey' : 'singUPmiss'), true);
 					gf.playAnim('scared', true);
-				default:
-					// 'LEFT', 'DOWN', 'UP', 'RIGHT'
-					var fuckingDumbassBullshitFuckYou:String;
-					var noteTypes = notestuffs;
-					fuckingDumbassBullshitFuckYou = noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount];
-					switch (noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount])
-					{
-						case 'LEFT':
-							fuckingDumbassBullshitFuckYou = 'RIGHT';
-						case 'RIGHT':
-							fuckingDumbassBullshitFuckYou = 'LEFT';
-					}
-					boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
-					cameraMoveOnNote(note.originalType, 'bf');
-					if (UsingNewCam)
-					{
-						focusOnDadGlobal = false;
-						ZoomCam(false);
-					}
-
-					playerStrums.forEach(function(spr:StrumNote)
-					{
-						if (Math.abs(note.noteData) == spr.ID)
-						{
-							spr.animation.play('confirm', true);
-						}
-					});
-
-					note.wasGoodHit = true;
-					vocals.volume = 1;
-
-					updateAccuracy();
 			}
+			// 'LEFT', 'DOWN', 'UP', 'RIGHT'
+			var fuckingDumbassBullshitFuckYou:String;
+			var noteTypes = notestuffs;
+			fuckingDumbassBullshitFuckYou = noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount];
+			switch (noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount])
+			{
+				case 'LEFT':
+					fuckingDumbassBullshitFuckYou = 'RIGHT';
+				case 'RIGHT':
+					fuckingDumbassBullshitFuckYou = 'LEFT';
+			}
+			boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
+			cameraMoveOnNote(note.originalType, 'bf');
+			if (UsingNewCam)
+			{
+				focusOnDadGlobal = false;
+				ZoomCam(false);
+			}
+
+			playerStrums.forEach(function(spr:StrumNote)
+			{
+				if (Math.abs(note.noteData) == spr.ID)
+				{
+					spr.animation.play('confirm', true);
+				}
+			});
+
+			note.wasGoodHit = true;
+			vocals.volume = 1;
+
+			updateAccuracy();
 			if (!note.isSustainNote)
 			{
 				note.kill();
