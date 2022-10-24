@@ -23,9 +23,6 @@ class NoteSplash extends FlxSprite
 	public function setupNoteSplash(x:Float, y:Float, note:Int = 0) {
 		setPosition(x - Note.swagWidth * 0.95, y - Note.swagWidth);
 		alpha = 0.6;
-		if(textureLoaded != texture) {
-			loadAnims(texture);
-		}
 		offset.set(10, 10);
 
 		var animNum:Int = FlxG.random.int(1, 2);
@@ -47,13 +44,5 @@ class NoteSplash extends FlxSprite
 		if(animation.curAnim != null)if(animation.curAnim.finished) kill();
 
 		super.update(elapsed);
-	}
-
-	private function set_texture(value:String):String {
-		if(texture != value) {
-			reloadNote('', value);
-		}
-		texture = value;
-		return value;
 	}
 }
