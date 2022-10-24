@@ -3194,22 +3194,15 @@ class PlayState extends MusicBeatState
 					// 'LEFT', 'DOWN', 'UP', 'RIGHT'
 					var fuckingDumbassBullshitFuckYou:String;
 					var noteTypes = notestuffs;
-					if (!note.isSustainNote)
-					{
-						spawnNoteSplashOnNote(note);
-					}
 					fuckingDumbassBullshitFuckYou = noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount];
-					if (!boyfriend.nativelyPlayable)
+					switch (noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount])
 					{
-						switch (noteTypes[Math.round(Math.abs(note.originalType)) % playerStrumAmount])
-						{
-							case 'LEFT':
-								fuckingDumbassBullshitFuckYou = 'RIGHT';
-							case 'RIGHT':
-								fuckingDumbassBullshitFuckYou = 'LEFT';
-						}
-						boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
+						case 'LEFT':
+							fuckingDumbassBullshitFuckYou = 'RIGHT';
+						case 'RIGHT':
+							fuckingDumbassBullshitFuckYou = 'LEFT';
 					}
+					boyfriend.playAnim('sing' + fuckingDumbassBullshitFuckYou, true);
 					cameraMoveOnNote(note.originalType, 'bf');
 					if (UsingNewCam)
 					{
@@ -3234,6 +3227,10 @@ class PlayState extends MusicBeatState
 
 					updateAccuracy();
 			}
+			if (!note.isSustainNote)
+				{
+					spawnNoteSplashOnNote(note);
+				}
 		}
 	}
 
