@@ -52,9 +52,7 @@ class Note extends FlxSprite
 	public var alphaMult:Float = 1.0;
 	public var noteOffset:Float = 0;
 
-	public static var noteSplashOffsets:Map<Int, Array<Int>> = [
-		0 => [20, 10]
-	]
+	public static var noteSplashOffsets:Map<Int, Array<Int>> = [0 => [20, 10]];
 
 	var notes = ['purple', 'blue', 'green', 'red'];
 
