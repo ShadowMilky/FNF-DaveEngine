@@ -596,8 +596,6 @@ class PlayState extends MusicBeatState
 		}
 		bfGroup.add(boyfriend);
 
-		boyfriend.flipX = true;
-
 		switch (dad.curCharacter)
 		{
 			case 'creation-new':
