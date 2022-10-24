@@ -371,7 +371,7 @@ class PlayState extends MusicBeatState
 	public var playerStrumAmount = 4;
 
 	var foxaWindowNames:Array<String> = [
-		'welcome to criticized avenue'
+		'welcome to criticized avenue',
 		'when you realize you have school this monday',
 		'industrial society and its future',
 		'my ears burn',
@@ -592,10 +592,7 @@ class PlayState extends MusicBeatState
 		}
 		bfGroup.add(boyfriend);
 
-		if (formoverride == 'bf')
-			boyfriend.flipX = true;
-		else
-			boyfriend.flipX = false;
+		boyfriend.flipX = true;
 
 		switch (dad.curCharacter)
 		{

@@ -157,10 +157,10 @@ class TerminalState extends MusicBeatState
 							UpdateText("\nPLEASE WATCH IT JUST PLEASE");
 							PlatformUtil.sendWindowsNotification("Vs. Foxa", "DON'T REGRET WATCHING THIS PLEASE");
 							new FlxTimer().start(2, function(timer:FlxTimer)
-								{
-									fancyOpenURL("https://youtu.be/C1SeagrXY4Y");
-									System.exit(0);
-								});
+							{
+								fancyOpenURL("https://youtu.be/C1SeagrXY4Y");
+								System.exit(0);
+							});
 					}
 				}
 				else
