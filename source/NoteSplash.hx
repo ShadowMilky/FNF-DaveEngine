@@ -16,18 +16,14 @@ class NoteSplash extends FlxSprite
 		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
 
 		loadAnims(skin);
-		
-		colorSwap = new ColorSwap();
-		shader = colorSwap.shader;
 
 		setupNoteSplash(x, y, note);
-		antialiasing = ClientPrefs.globalAntialiasing;
+		antialiasing = true;
 	}
 
 	public function setupNoteSplash(x:Float, y:Float, note:Int = 0) {
 		setPosition(x - Note.swagWidth * 0.95, y - Note.swagWidth);
 		alpha = 0.6;
-
 		if(textureLoaded != texture) {
 			loadAnims(texture);
 		}
