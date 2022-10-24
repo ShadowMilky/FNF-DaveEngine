@@ -48,4 +48,12 @@ class NoteSplash extends FlxSprite
 
 		super.update(elapsed);
 	}
+
+	private function set_texture(value:String):String {
+		if(texture != value) {
+			reloadNote('', value);
+		}
+		texture = value;
+		return value;
+	}
 }
