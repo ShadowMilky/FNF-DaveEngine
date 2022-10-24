@@ -90,6 +90,12 @@ import lime.ui.Window;
 import openfl.geom.Rectangle;
 import openfl.display.Sprite;
 
+// THERE
+// IS
+// NO
+// D&B SHIT HERE
+// EVEN THOUGH
+// THIS MOD IS BASED OFF ON IT
 using StringTools;
 
 class PlayState extends MusicBeatState
@@ -365,6 +371,7 @@ class PlayState extends MusicBeatState
 	public var playerStrumAmount = 4;
 
 	var foxaWindowNames:Array<String> = [
+		'welcome to criticized avenue',
 		'when you realize you have school this monday',
 		'industrial society and its future',
 		'my ears burn',
@@ -475,6 +482,7 @@ class PlayState extends MusicBeatState
 		{
 			dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/${SONG.song.toLowerCase()}'));
 			hasDialogue = true;
+			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt');
 		}
 		else
 		{
@@ -583,6 +591,17 @@ class PlayState extends MusicBeatState
 			dadGroup.add(dadmirror);
 		}
 		bfGroup.add(boyfriend);
+
+		boyfriend.flipX = true;
+
+		switch (dad.curCharacter)
+		{
+			case 'creation-new':
+				var evilTrail = new FlxTrail(dad, null, 4, 12, 0.3, 0.069);
+				// evilTrail.changeValuesEnabled(false, false, false, false);
+				// evilTrail.changeGraphic()
+				add(evilTrail);
+		}
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
 		// doof.x += 70;
@@ -1342,6 +1361,27 @@ class PlayState extends MusicBeatState
 					{
 						songName.visible = true;
 					}
+				case 4:
+					creditsPopup = new CreditsPopUp(FlxG.width, 200);
+					creditsPopup.camera = camHUD;
+					creditsPopup.scrollFactor.set();
+					creditsPopup.x = creditsPopup.width * -1;
+					add(creditsPopup);
+
+					FlxTween.tween(creditsPopup, {x: 0}, 0.5, {
+						ease: FlxEase.backOut,
+						onComplete: function(tweeen:FlxTween)
+						{
+							FlxTween.tween(creditsPopup, {x: creditsPopup.width * -1}, 1, {
+								ease: FlxEase.backIn,
+								onComplete: function(tween:FlxTween)
+								{
+									creditsPopup.destroy();
+								},
+								startDelay: 3
+							});
+						}
+					});
 			}
 
 			swagCounter += 1;
@@ -1977,6 +2017,19 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.switchState(new CharacterDebug(gf.curCharacter));
 		}
+		if (FlxG.keys.justPressed.R) // unfunny didnt laugh
+		{
+			if (FlxG.random.bool(35))
+			{
+				trace('ludum dared');
+				FlxG.switchState(new LudumGameOverState());
+			}
+			else
+			{
+				trace('you dead');
+				gameOver();
+			}
+		}
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebugNew(dad.curCharacter));
 		if (FlxG.keys.justPressed.SIX)
@@ -2094,10 +2147,17 @@ class PlayState extends MusicBeatState
 
 			if (!perfectMode)
 			{
-				gameOver();
+				if (FlxG.random.bool(35))
+				{
+					trace('ludum dared');
+					FlxG.switchState(new LudumGameOverState());
+				}
+				else
+				{
+					trace('you dead');
+					gameOver();
+				}
 			}
-
-			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
 
 		if (unspawnNotes[0] != null)
@@ -2488,6 +2548,7 @@ class PlayState extends MusicBeatState
 	function nextSong()
 	{
 		FlxTransitionableState.skipNextTransIn = true;
+		trace('loading next song');
 		FlxTransitionableState.skipNextTransOut = true;
 		prevCamFollow = camFollow;
 

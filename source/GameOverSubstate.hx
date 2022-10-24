@@ -17,7 +17,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	var stageSuffix:String = "";
 	var deathSuffix:String = '';
 
-	public function new(x:Float, y:Float,char:String)
+	public function new(x:Float, y:Float, char:String)
 	{
 		var daBf:String = '';
 		switch (char)
@@ -35,7 +35,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		Conductor.songPosition = 0;
 
 		bf = new Boyfriend(x, y, daBf);
-		if(bf.animation.getByName('firstDeath') == null)
+		if (bf.animation.getByName('firstDeath') == null)
 		{
 			bf = new Boyfriend(x, y, "bf");
 		}
@@ -45,7 +45,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		add(camFollow);
 
 		FlxG.sound.play(Paths.sound('death/fnf_loss_sfx' + deathSuffix));
-		Conductor.changeBPM(105);
+		Conductor.changeBPM(82);
 
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
@@ -68,7 +68,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			FlxG.sound.music.stop();
 			Application.current.window.title = Main.applicationName;
-			
+
 			if (PlayState.isStoryMode)
 				FlxG.switchState(new StoryMenuState());
 			else
@@ -76,7 +76,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			FlxG.switchState(new CharacterEditorState(bf.curCharacter));
+			FlxG.switchState(new AnimationDebugNew(bf.curCharacter));
 		}
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)

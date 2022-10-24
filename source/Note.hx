@@ -231,7 +231,7 @@ class Note extends FlxSprite
 			// 	setGraphicSize(Std.int(width * noteSize));
 			// 	updateHitbox();
 			// 	antialiasing = true;
-			case 'warning': // 'notes/NOTE_assets'
+			case 'warning': // for execution
 				frames = Paths.getSparrowAtlas('notes/WarningNotes', 'shared');
 				animation.addByPrefix('greenScroll', 'green alone');
 				animation.addByPrefix('redScroll', 'red alone');

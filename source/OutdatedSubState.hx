@@ -13,7 +13,7 @@ class OutdatedSubState extends MusicBeatState
 
 	public static var needVer:String = "IDFK LOL";
 
-	public var InExpungedState:Bool = false;
+	public var InExpungedState:Bool = false; // useless
 
 	override function create()
 	{
@@ -39,6 +39,7 @@ class OutdatedSubState extends MusicBeatState
 		}
 		super.update(elapsed);
 	}
+
 	function leaveState()
 	{
 		leftState = true;

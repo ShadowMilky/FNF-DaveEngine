@@ -30,7 +30,7 @@ class DialogueBoxFoxa extends FlxSpriteGroup
 
 	var portraitLeft:FlxSprite;
 	var portraitRight:FlxSprite;
-	//custom portraits
+	// custom portraits
 	var portraitB:FlxSprite;
 
 	var handSelect:FlxSprite;
@@ -63,13 +63,13 @@ class DialogueBoxFoxa extends FlxSpriteGroup
 		}, 5);
 
 		box = new FlxSprite(-20, 45);
-		
+
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'senpai':
 				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel','week6');
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel', 'week6');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
 				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
 			case 'bubbles' | 'burning-flames' | 'execution':
@@ -86,92 +86,90 @@ class DialogueBoxFoxa extends FlxSpriteGroup
 				hasDialog = true;
 				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
 
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad','week6');
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad', 'week6');
 				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
 				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [4], "", 24);
 
 			case 'thorns':
 				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-evil','week6');
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-evil', 'week6');
 				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
 				box.animation.addByIndices('normal', 'Spirit Textbox spawn', [11], "", 24);
 
-				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward','week6'));
+				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward', 'week6'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
 		}
 
 		this.dialogueList = dialogueList;
-		
+
 		if (!hasDialog)
 			return;
-		
-		//portraitLeft = new FlxSprite(276.95, 149.9);
+
+		// portraitLeft = new FlxSprite(276.95, 149.9);
 		if (PlayState.SONG.song.toLowerCase() == 'bubbles')
 		{
-		portraitLeft = new FlxSprite(276.95, 149.9);
-		portraitLeft.frames = Paths.getSparrowAtlas('port','foxa');
-		portraitLeft.animation.addByPrefix('enter', 'portrait', 24, false);
-		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitLeft.updateHitbox();
-		portraitLeft.scrollFactor.set();
-		add(portraitLeft);
-		portraitLeft.visible = false;
+			portraitLeft = new FlxSprite(276.95, 149.9);
+			portraitLeft.frames = Paths.getSparrowAtlas('port', 'foxa');
+			portraitLeft.animation.addByPrefix('enter', 'portrait', 24, false);
+			// portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+			portraitLeft.updateHitbox();
+			portraitLeft.scrollFactor.set();
+			add(portraitLeft);
+			portraitLeft.visible = false;
 		}
 		else if (PlayState.SONG.song.toLowerCase() == 'burning-flames')
 		{
-		portraitLeft = new FlxSprite(276.95, 149.9);
-		portraitLeft.frames = Paths.getSparrowAtlas('port_angy','foxa');
-		portraitLeft.animation.addByPrefix('enter', 'portrait', 24, false);
-		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitLeft.updateHitbox();
-		portraitLeft.scrollFactor.set();
-		add(portraitLeft);
-		portraitLeft.visible = false;
+			portraitLeft = new FlxSprite(276.95, 149.9);
+			portraitLeft.frames = Paths.getSparrowAtlas('port_angy', 'foxa');
+			portraitLeft.animation.addByPrefix('enter', 'portrait', 24, false);
+			// portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+			portraitLeft.updateHitbox();
+			portraitLeft.scrollFactor.set();
+			add(portraitLeft);
+			portraitLeft.visible = false;
 		}
-
 		else if (PlayState.SONG.song.toLowerCase() == 'execution')
 		{
-		portraitLeft = new FlxSprite(276.95, 149.9);
-		portraitLeft.frames = Paths.getSparrowAtlas('port_mad','foxa');
-		portraitLeft.animation.addByPrefix('enter', 'portrait', 24, false);
-		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitLeft.updateHitbox();
-		portraitLeft.scrollFactor.set();
-		add(portraitLeft);
-		portraitLeft.visible = false;
+			portraitLeft = new FlxSprite(276.95, 149.9);
+			portraitLeft.frames = Paths.getSparrowAtlas('port_mad', 'foxa');
+			portraitLeft.animation.addByPrefix('enter', 'portrait', 24, false);
+			// portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+			portraitLeft.updateHitbox();
+			portraitLeft.scrollFactor.set();
+			add(portraitLeft);
+			portraitLeft.visible = false;
 		}
 
-		//portraitRight = new FlxSprite(0, 40);
+		// portraitRight = new FlxSprite(0, 40);
 		portraitRight = new FlxSprite(684.05, 149.9);
-		portraitRight.frames = Paths.getSparrowAtlas('bfport','foxa');
+		portraitRight.frames = Paths.getSparrowAtlas('bfport', 'foxa');
 		portraitRight.animation.addByPrefix('enter', 'bfport', 24, false);
-		//portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
+		// portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
 		add(portraitRight);
 		portraitRight.visible = false;
 
 		portraitB = new FlxSprite(684.05, 149.9);
-		portraitB.frames = Paths.getSparrowAtlas('gfPort','foxa');
+		portraitB.frames = Paths.getSparrowAtlas('gfPort', 'foxa');
 		portraitB.animation.addByPrefix('enter', 'gfport', 24, false);
-		//portraitB.setGraphicSize(Std.int(portraitB.width * PlayState.daPixelZoom * 0.9));
+		// portraitB.setGraphicSize(Std.int(portraitB.width * PlayState.daPixelZoom * 0.9));
 		portraitB.updateHitbox();
 		portraitB.scrollFactor.set();
 		add(portraitB);
 		portraitB.visible = false;
-		
+
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
 		box.updateHitbox();
 		add(box);
 
 		box.screenCenter(X);
-		//portraitLeft.screenCenter(X);
+		// portraitLeft.screenCenter(X);
 
-		handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('hand_textbox','foxa'));
+		handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('hand_textbox', 'foxa'));
 		add(handSelect);
-
 
 		if (!talkingRight)
 		{
@@ -229,7 +227,7 @@ class DialogueBoxFoxa extends FlxSpriteGroup
 		if (PlayerSettings.player1.controls.ACCEPT && dialogueStarted == true)
 		{
 			remove(dialogue);
-				
+
 			FlxG.sound.play(Paths.sound('clickText'), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
@@ -264,7 +262,7 @@ class DialogueBoxFoxa extends FlxSpriteGroup
 				startDialogue();
 			}
 		}
-		
+
 		super.update(elapsed);
 	}
 

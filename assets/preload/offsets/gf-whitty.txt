@@ -1,0 +1,4 @@
+sad -2 -2
+danceLeft 0 -9
+danceRight 0 -9
+scared -2 -17

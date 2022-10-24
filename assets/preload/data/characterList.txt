@@ -3,12 +3,13 @@ bf-pixel:bf-pixel:#31b0d1
 gf:gf:#a5004d
 dad:dad:#af66ce
 bf-car:bf:#31b0d1
+gf-whitty:gf:#a5004d
 bf-christmas:bf:#31b0d1
 gf-christmas:gf:#a5004d
 foxa:foxa:#ffd0ff
 foxa-angy:foxa-angy:#ffd0ff
 sadfoxa-critic:foxa:#ffd0ff
-whitty-christmas:dad:#af66ce
+whitty-christmas:whitty:#af66ce
 foxa-christmas:foxa:#ffd0ff 
 foxa-new:foxa:#ffd0ff
 foxa-angy-new:foxa-angy:#ffd0ff
