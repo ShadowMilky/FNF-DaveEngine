@@ -371,6 +371,7 @@ class PlayState extends MusicBeatState
 	public var playerStrumAmount = 4;
 
 	var foxaWindowNames:Array<String> = [
+		'welcome to criticized avenue'
 		'when you realize you have school this monday',
 		'industrial society and its future',
 		'my ears burn',

@@ -153,6 +153,14 @@ class TerminalState extends MusicBeatState
 								PlatformUtil.sendWindowsNotification("Vs. Foxa", "YOU HAVE BEEN FORCED TO WATCH THIS HAHAHAHA");
 								System.exit(0);
 							});
+						case "furry.dat":
+							UpdateText("\nPLEASE WATCH IT JUST PLEASE");
+							PlatformUtil.sendWindowsNotification("Vs. Foxa", "DON'T REGRET WATCHING THIS PLEASE");
+							new FlxTimer().start(2, function(timer:FlxTimer)
+								{
+									fancyOpenURL("https://youtu.be/C1SeagrXY4Y");
+									System.exit(0);
+								});
 					}
 				}
 				else
