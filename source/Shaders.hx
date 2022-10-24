@@ -2,7 +2,7 @@ package;
 
 import flixel.system.FlxAssets.FlxShader;
 
-/*  VS DAVE AND BAMBI SHADERS IMPLEMENTATION
+/*  VS DAVE AND BAMBI / VS FOXA SHADERS IMPLEMENTATION
 	ALL OF THIS CODE WAS WROTE BY MTM101, ERIZUR AND T5MPLER (BUGFIXES)
 
 	If you see a SHADERS_ENABLED flag here is because of the following reason:
