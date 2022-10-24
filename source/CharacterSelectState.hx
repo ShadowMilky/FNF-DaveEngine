@@ -28,7 +28,7 @@ import sys.FileSystem;
 	hey you fun commiting people, 
 	i don't know about the rest of the mod but since this is basically 99% my code
 	i do not give you guys permission to grab this specific code and re-use it in your own mods without asking me first.
-	the secondary dev, ben
+	the secondary vs dave dev, ben
 */
 
 class CharacterInSelect

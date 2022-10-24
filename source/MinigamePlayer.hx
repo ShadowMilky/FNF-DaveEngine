@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 
+// THIS IS USELESS BOOOOOO
 class MinigamePlayer extends FlxSprite
 {
 	static inline var speed:Float = 220;

@@ -1,7 +1,7 @@
 package;
 
 /*
-	VS DAVE WINDOWS/LINUX/MACOS UTIL
+	VS FOXA/DAVE WINDOWS/LINUX/MACOS UTIL
 	You can use this code while you give credit to it.
 	65% of the code written by chromasen
 	35% of the code written by Erizur (cross-platform and extra windows utils)

@@ -13,6 +13,9 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 
+// probably useless but actually funny to me
+// also dont steal the code i put
+
 class LudumGameOverState extends FlxTransitionableState
 {
 	override function create()
