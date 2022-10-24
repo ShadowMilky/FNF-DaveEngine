@@ -92,6 +92,8 @@ class Main extends Sprite
 		fps.defaultTextFormat = fpsFormat;
 		addChild(fps);
 		#end
+
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
