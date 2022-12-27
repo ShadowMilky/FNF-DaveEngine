@@ -2018,7 +2018,7 @@ class PlayState extends MusicBeatState
 		}
 		if (noMiss)
 		{
-			scoreTxt.text += " | NO MISS!!";
+			scoreTxt.text += " | Practice Mode";
 		}
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{

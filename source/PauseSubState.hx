@@ -26,7 +26,8 @@ class PauseSubState extends MusicBeatSubstate
 		new PauseOption('Resume'),
 		new PauseOption('Restart Song'),
 		new PauseOption('Change Character'),
-		new PauseOption('No Miss Mode'),
+		new PauseOption('Toggle Botplay'),
+		new PauseOption('Toggle Practice Mode'),
 		new PauseOption('Exit to menu')
 	];
 	var curSelected:Int = 0;
@@ -187,6 +188,8 @@ class PauseSubState extends MusicBeatSubstate
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
 
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+
 				// PlayState.instance.shakeCam = false;
 				PlayState.instance.camZooming = false;
 				FlxG.mouse.visible = false;
@@ -196,13 +199,19 @@ class PauseSubState extends MusicBeatSubstate
 				PlayState.characteroverride = 'none';
 				PlayState.formoverride = 'none';
 
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+
 				Application.current.window.title = Main.applicationName;
 
 				// PlayState.instance.shakeCam = false;
 				PlayState.instance.camZooming = false;
 				FlxG.mouse.visible = false;
 				FlxG.switchState(new CharacterSelectState());
-			case "No Miss Mode":
+			case "Toggle Botplay":
+			    FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.save.data.botplay = !FlxG.save.data.botplay;
+			case "Toggle Practice Mode":
+				FlxG.sound.play(Paths.sound('cancelMenu'));
 				PlayState.instance.noMiss = !PlayState.instance.noMiss;
 			case "Exit to menu":
 				funnyTexts.clear();
@@ -212,6 +221,7 @@ class PauseSubState extends MusicBeatSubstate
 				Application.current.window.title = Main.applicationName;
 
 				// PlayState.instance.shakeCam = false;
+				FlxG.sound.play(Paths.sound('cancelMenu'));
 				PlayState.instance.camZooming = false;
 				FlxG.mouse.visible = false;
 				FlxG.switchState(new MainMenuState());
@@ -221,6 +231,8 @@ class PauseSubState extends MusicBeatSubstate
 	override function close()
 	{
 		funnyTexts.clear();
+
+		FlxG.sound.play(Paths.sound('cancelMenu'));
 
 		super.close();
 	}
@@ -235,6 +247,8 @@ class PauseSubState extends MusicBeatSubstate
 	function changeSelection(change:Int = 0):Void
 	{
 		curSelected += change;
+
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;
