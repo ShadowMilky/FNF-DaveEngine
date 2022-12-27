@@ -177,10 +177,10 @@ class AnimationDebugNew extends MusicBeatState
 
 	function addOffsetUI():Void
 	{
-		var player1DropDown = new FlxUIDropDownMenu(10, 10, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player1DropDown = new FlxUIDropDownMenu(10, 10, FlxUIDropDownMenu.makeStrIdLabelArray(characterslol, true), function(character:String)
 		{
 			remove(dad);
-			dad = new Character(0, 0, characters[Std.parseInt(character)]);
+			dad = new Character(0, 0, characterslol[Std.parseInt(character)]);
 			dad.screenCenter();
 			dad.debugMode = true;
 			dad.flipX = false;
