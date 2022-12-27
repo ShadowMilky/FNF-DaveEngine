@@ -538,7 +538,12 @@ class FreeplayState extends MusicBeatState
 						if ((FlxG.keys.pressed.CONTROL || skipSelect.contains(PlayState.SONG.song.toLowerCase())))
 						{
 							trace('freeplay video funni');
-							PlayState.playEndCutscene('burningflamecut');
+							video = new VideoHandler();
+							video.finishCallback = function()
+							{
+								LoadingState.loadAndSwitchState(new PlayState());
+							}
+							video.playVideo(Paths.video('burningflamecut'));
 						}
 						else
 						{
