@@ -159,6 +159,14 @@ class TerminalState extends MusicBeatState
 								PlatformUtil.sendWindowsNotification("Vs. Foxa", "YOU HAVE BEEN FORCED TO WATCH THIS HAHAHAHA");
 								System.exit(0);
 							});
+						case "monomouse.dat":
+							UpdatePreviousText(false);
+							PlatformUtil.sendWindowsNotification("MONOMOUSE", "a boom de la kaka hwhip");
+							new FlxTimer().start(2, function(timer:FlxTimer)
+							{
+								fancyOpenURL("https://mirror.natsuki.live/monomouse/index.html")
+								System.exit(1);
+							});
 						case "furry.dat":
 							UpdateText("\nPLEASE WATCH IT JUST PLEASE");
 							PlatformUtil.sendWindowsNotification("Vs. Foxa", "DON'T REGRET WATCHING THIS PLEASE");
