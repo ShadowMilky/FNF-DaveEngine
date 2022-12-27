@@ -2632,6 +2632,9 @@ class PlayState extends MusicBeatState
 			case "bubbles":
 				trace('burning flames cutscene funni');
 			    playEndCutscene('burningflamecut');
+			case "burning-flames":
+				trace('AAAAAAAAAA');
+				playEndCutscene('executioncut');
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 		}
