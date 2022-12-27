@@ -523,7 +523,7 @@ class FreeplayState extends MusicBeatState
 			{
 				switch (songs[curSelected].songName)
 				{
-					case 'Burning Flames':
+					case 'burning-flames':
 						FlxG.sound.music.fadeOut(1, 0);
 						PlayState.SONG = Song.loadFromJson(songs[curSelected].songName.toLowerCase());
 						PlayState.isStoryMode = false;
