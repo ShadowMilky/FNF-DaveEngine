@@ -1188,9 +1188,9 @@ class PlayState extends MusicBeatState
 					wstageFront.scrollFactor.set(0.9, 0.9);
 					wstageFront.active = false;
 					/*
-					add(wBg);
-					add(wstageFront);
-					*/
+						add(wBg);
+						add(wstageFront);
+					 */
 					wBg.alpha = 0;
 					nwBg.alpha = 1;
 					var funneEffect = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ballisticAlley/thefunnyeffect', 'shared'));
