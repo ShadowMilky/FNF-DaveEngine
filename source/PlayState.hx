@@ -3227,12 +3227,12 @@ class PlayState extends MusicBeatState
 					var hitAnimation:Bool = boyfriend.animation.getByName("dodge") != null;
 					var heyAnimation:Bool = boyfriend.animation.getByName("hey") != null;
 					boyfriend.playAnim(hitAnimation ? 'dodge' : (heyAnimation ? 'hey' : 'singUPmiss'), true);
-					gf.playAnim('scared', true);
+					// gf.playAnim('scared', true);
 				case 'corrupt':
 					var hitAnimation:Bool = boyfriend.animation.getByName("dodge") != null;
 					var heyAnimation:Bool = boyfriend.animation.getByName("hey") != null;
 					boyfriend.playAnim(hitAnimation ? 'dodge' : (heyAnimation ? 'hey' : 'singUPmiss'), true);
-					gf.playAnim('scared', true);
+					// gf.playAnim('scared', true);
 			}
 			// 'LEFT', 'DOWN', 'UP', 'RIGHT'
 			var fuckingDumbassBullshitFuckYou:String;
