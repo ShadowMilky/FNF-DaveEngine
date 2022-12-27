@@ -49,7 +49,7 @@ class CreditsPopUp extends FlxSpriteGroup
 		}
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'bubbles':
+			case 'bubbles' | 'christmas-blitz':
 				headingPath = {path: 'songHeadings/foxaHeading', antiAliasing: false, iconOffset: 0};
 			case 'burning-flames':
 				headingPath = {path: 'songHeadings/burningFlamesHeading', antiAliasing: false, iconOffset: 0};
