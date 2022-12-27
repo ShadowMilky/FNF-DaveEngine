@@ -317,7 +317,7 @@ class AnimationDebugNew extends MusicBeatState
 
 	function addHelpText():Void
 	{
-		var helpTextValue = "Help:\nQ/E : Zoom in and out\nF : Flip\nI/J/K/L : Pan Camera\nW/S : Cycle Animation\nArrows : Offset Animation\nShift-Arrows : Offset Animation x10\nSpace : Replay Animation\nCTRL-S : Save Offsets to File\nEnter/ESC : Exit\nPress F1 to hide/show this!\n";
+		var helpTextValue = "Help:\nQ/E : Zoom in and out\nF : Flip\nI/J/K/L : Pan Camera\nW/S : Cycle Animation\nArrows : Offset Animation\nShift-Arrows : Offset Animation x10\nSpace : Replay Animation\nEnter : Save Offsets to File\nCTRL/S : Exit\nPress F1 to hide/show this!\n";
 		helpText = new FlxText(940, 20, 0, helpTextValue, 15);
 		helpText.scrollFactor.set();
 		helpText.y = FlxG.height - helpText.height - 20;
@@ -390,6 +390,9 @@ class AnimationDebugNew extends MusicBeatState
 
 		if (FlxG.keys.justPressed.F)
 			char.flipX = !char.flipX;
+
+		if (FlxG.keys.justPressed.TWO)
+			animationGhost.visible = true;
 
 		if (FlxG.keys.pressed.I || FlxG.keys.pressed.J || FlxG.keys.pressed.K || FlxG.keys.pressed.L)
 		{
