@@ -538,7 +538,7 @@ class FreeplayState extends MusicBeatState
 						if ((FlxG.keys.pressed.CONTROL || skipSelect.contains(PlayState.SONG.song.toLowerCase())))
 						{
 							trace('freeplay video funni');
-							video = new VideoHandler();
+							var video = new VideoHandler();
 							video.finishCallback = function()
 							{
 								LoadingState.loadAndSwitchState(new PlayState());
