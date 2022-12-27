@@ -1,5 +1,5 @@
 # WARNING
-this moc is rated **D** for ***DEEZ NUTS***
+this mod is rated **D** for ***DEEZ NUTS***
 
 <img src="KadeEngineWitBackground.png" width="600" height="400">
 
