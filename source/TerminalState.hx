@@ -178,6 +178,7 @@ class TerminalState extends MusicBeatState
 		CommandList.push(new TerminalCommand("clear", LanguageManager.getTerminalString("term_clear_ins"), function(arguments:Array<String>)
 		{
 			previousText = "> ";
+			displayText.y = 0;
 			UpdateText("");
 		}));
 		CommandList.push(new TerminalCommand("open", LanguageManager.getTerminalString("term_texts_ins"), function(arguments:Array<String>)
@@ -339,6 +340,8 @@ class TerminalState extends MusicBeatState
 		}
 		previousText = finalthing;
 		displayText.text = finalthing;
+		if(displayText.height > 720)
+			displayText.y = 720 - displayText.height;
 	}
 
 	override function update(elapsed:Float):Void
