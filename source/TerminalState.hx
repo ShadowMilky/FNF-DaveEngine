@@ -164,7 +164,7 @@ class TerminalState extends MusicBeatState
 							PlatformUtil.sendWindowsNotification("MONOMOUSE", "a boom de la kaka hwhip");
 							new FlxTimer().start(2, function(timer:FlxTimer)
 							{
-								fancyOpenURL("https://mirror.natsuki.live/monomouse/index.html")
+								fancyOpenURL("https://mirror.natsuki.live/monomouse/index.html");
 								System.exit(1);
 							});
 						case "furry.dat":
