@@ -747,6 +747,15 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		var yPos = scrollType == 'downscroll' ? FlxG.height * 0.9 + 20 : strumLine.y - 20;
+
+		songPosBG = new FlxSprite(0, yPos).loadGraphic(Paths.image('ui/timerBar'));
+		songPosBG.antialiasing = true;
+		songPosBG.screenCenter(X);
+		songPosBG.scrollFactor.set();
+		songPosBG.visible = false;
+		add(songPosBG);
+
 		botplayTxt = new FlxText(400, songPosBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
@@ -763,10 +772,11 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
-		botplayTxt.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		songPosBG.cameras = [camHUD];
+		botplayTxt.cameras = [camHUD];
 		if (kadeEngineWatermark != null)
 		{
 			kadeEngineWatermark.cameras = [camHUD];
@@ -1551,14 +1561,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.save.data.songPosition /*&& !isGreetingsCutscene && !['five-nights', 'overdrive'].contains(SONG.song.toLowerCase())*/)
 		{
-			var yPos = scrollType == 'downscroll' ? FlxG.height * 0.9 + 20 : strumLine.y - 20;
-
-			songPosBG = new FlxSprite(0, yPos).loadGraphic(Paths.image('ui/timerBar'));
-			songPosBG.antialiasing = true;
-			songPosBG.screenCenter(X);
-			songPosBG.scrollFactor.set();
-			add(songPosBG);
-
+			songPosBG.visible = true;
 			songPosBar = new FlxBar(songPosBG.x + 4, songPosBG.y + 4, LEFT_TO_RIGHT, Std.int(songPosBG.width - 8), Std.int(songPosBG.height - 8), Conductor,
 				'songPosition', 0, FlxG.sound.music.length);
 			songPosBar.scrollFactor.set();
@@ -1570,7 +1573,6 @@ class PlayState extends MusicBeatState
 			songName.scrollFactor.set();
 			songName.borderSize = 2.5 * 1;
 			songName.antialiasing = true;
-			songName.visible = true;
 
 			var xValues = CoolUtil.getMinAndMax(songName.width, songPosBG.width);
 			var yValues = CoolUtil.getMinAndMax(songName.height, songPosBG.height);
@@ -1580,7 +1582,6 @@ class PlayState extends MusicBeatState
 
 			add(songName);
 
-			songPosBG.cameras = [camHUD];
 			songPosBar.cameras = [camHUD];
 			songName.cameras = [camHUD];
 
@@ -1931,7 +1932,8 @@ class PlayState extends MusicBeatState
 			vocals.pause();
 		}
 
-		if(botplayTxt.visible) {
+		if (botplayTxt.visible)
+		{
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		}
