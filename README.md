@@ -1,4 +1,4 @@
-# WARNING
+wnewrNING
 this mod is rated **D** for ***DEEZ NUTS***
 
 <img src="KadeEngineWitBackground.png" width="600" height="400">
@@ -21,3 +21,10 @@ Powered by a heavily modified version of Kade Engine, This includes lots of addi
 - [Strawberry Input](https://github.com/benjaminpants/Funkin-Strawberry)
 
 If you're looking to compile the mod/make your own modification, [look here](Modding.md).
+
+# Credits
+
+* Foxa - Composer, Project Creator
+* CharlesCatYT - Main Programmer, Co-Director
+* PogDev - Programmer
+
