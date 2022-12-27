@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="goofy_ahh_foxa.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Foxa down0000" x="0" y="0" width="417" height="648" pivotX="-19.8" pivotY="-30.5"/>
+	<SubTexture name="Foxa down0001" x="0" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0002" x="417" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0003" x="417" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0004" x="834" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0005" x="834" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0006" x="834" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0007" x="834" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa down0008" x="834" y="0" width="417" height="648"/>
+	<SubTexture name="Foxa left0000" x="1251" y="0" width="465" height="667" pivotX="41.9" pivotY="-10"/>
+	<SubTexture name="Foxa left0001" x="1251" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0002" x="1716" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0003" x="1716" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0004" x="2181" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0005" x="2181" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0006" x="2181" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0007" x="2181" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa left0008" x="2181" y="0" width="465" height="667"/>
+	<SubTexture name="Foxa right0000" x="2646" y="0" width="426" height="663" pivotX="-22.3" pivotY="-14.35"/>
+	<SubTexture name="Foxa right0001" x="2646" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0002" x="3072" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0003" x="3072" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0004" x="3498" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0005" x="3498" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0006" x="3498" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0007" x="3498" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa right0008" x="3498" y="0" width="426" height="663"/>
+	<SubTexture name="Foxa up0000" x="0" y="667" width="440" height="695" pivotX="16.75" pivotY="17.05"/>
+	<SubTexture name="Foxa up0001" x="0" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0002" x="440" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0003" x="440" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0004" x="880" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0005" x="880" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0006" x="880" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0007" x="880" y="667" width="440" height="695"/>
+	<SubTexture name="Foxa up0008" x="880" y="667" width="440" height="695"/>
+	<SubTexture name="FoxaIdle0000" x="1320" y="667" width="486" height="666" pivotX="-7.35" pivotY="-12.85"/>
+	<SubTexture name="FoxaIdle0001" x="1320" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0002" x="1806" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0003" x="1806" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0004" x="2292" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0005" x="2292" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0006" x="2778" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0007" x="2778" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0008" x="3264" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0009" x="3264" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0010" x="3264" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0011" x="3264" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0012" x="3264" y="667" width="486" height="666"/>
+	<SubTexture name="FoxaIdle0013" x="3264" y="667" width="486" height="666"/>
+</TextureAtlas>

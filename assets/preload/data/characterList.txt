@@ -13,5 +13,6 @@ sadfoxa-critic:foxa:#ffd0ff
 whitty-christmas:whitty:#af66ce
 foxa-christmas:foxa:#ffd0ff 
 foxa-new:foxa:#ffd0ff
+foxa-newer:foxa:#ffd0ff
 foxa-angy-new:foxa-angy:#ffd0ff
 creation-new:foxa-mad:#5f0000
