@@ -523,6 +523,32 @@ class FreeplayState extends MusicBeatState
 			{
 				switch (songs[curSelected].songName)
 				{
+					case 'Burning Flames':
+						FlxG.sound.music.fadeOut(1, 0);
+						PlayState.SONG = Song.loadFromJson(songs[curSelected].songName.toLowerCase());
+						PlayState.isStoryMode = false;
+
+						PlayState.characteroverride = "none";
+						PlayState.formoverride = "none";
+						PlayState.curmult = [1, 1, 1, 1];
+
+						PlayState.storyWeek = songs[curSelected].week;
+
+						packTransitionDone = false;
+						if ((FlxG.keys.pressed.CONTROL || skipSelect.contains(PlayState.SONG.song.toLowerCase())))
+						{
+							trace('freeplay video funni');
+							playEndCutscene('burningflamecut');
+						}
+						else
+						{
+							if (!FlxG.save.data.wasInCharSelect)
+							{
+								FlxG.save.data.wasInCharSelect = true;
+								FlxG.save.flush();
+							}
+							LoadingState.loadAndSwitchState(new CharacterSelectState());
+						}	
 					default:
 						FlxG.sound.music.fadeOut(1, 0);
 						PlayState.SONG = Song.loadFromJson(songs[curSelected].songName.toLowerCase());
