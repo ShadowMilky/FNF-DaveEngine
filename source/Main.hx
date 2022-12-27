@@ -15,10 +15,11 @@ import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
 import Discord.DiscordClient;
+#if !html5
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
-
+#end
 using StringTools;
 
 class Main extends Sprite
