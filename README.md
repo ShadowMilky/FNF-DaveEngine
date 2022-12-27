@@ -26,7 +26,7 @@ If you're looking to compile the mod/make your own modification, [look here](Mod
 
 * Foxa - Composer, Director, Project Creator
 * CharlesCatYT - Main Programmer, Co-Director
-* PogDev (formerly Grits) - Programmer
+* PogDev - Programmer
 * TheAnimateMan - Spriter
 * Natsuki.HX - Jester Programmer
 * GaragebandCoveryGuy96 - Composer
