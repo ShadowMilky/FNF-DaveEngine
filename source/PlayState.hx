@@ -1471,7 +1471,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'house':
+				case 'bubbles' | 'burning-flames':
 					var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
 					// doof.x += 70;
 					// doof.y = FlxG.height * 0.5;
@@ -2629,8 +2629,8 @@ class PlayState extends MusicBeatState
 
 		switch (curSong.toLowerCase())
 		{
-			// case "Bubbles":
-			// LoadingState.loadAndSwitchState(new VideoState("assets/videos/burningflamesCutscene.webm", new PlayState()));
+			case "Bubbles":
+			    playCutscene('burningflamecut.mp4');
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 		}

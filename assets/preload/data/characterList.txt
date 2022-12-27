@@ -4,6 +4,7 @@ gf:gf:#a5004d
 dad:dad:#af66ce
 bf-car:bf:#31b0d1
 gf-whitty:gf:#a5004d
+gf-whitty-new:gf:#a5004d
 bf-christmas:bf:#31b0d1
 gf-christmas:gf:#a5004d
 foxa:foxa:#ffd0ff
