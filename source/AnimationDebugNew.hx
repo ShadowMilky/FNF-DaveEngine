@@ -133,7 +133,14 @@ class AnimationDebugNew extends MusicBeatState
 
 		addHelpText();
 
-		characters = CoolUtil.coolTextFile(Paths.txt('characterList'));
+		characterslol = CoolUtil.coolTextFile(Paths.txt('characterList'));
+		var characters2:Array<String> = [];
+
+		for (i in 0...characterslol.length)
+			{
+				var curCharThing = characterslol[i].trim().split(':');
+				characters2.push(curCharThing[0]);
+			}
 
 		var tabs = [{name: "Offsets", label: 'Offset menu'},];
 
