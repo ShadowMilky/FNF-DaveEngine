@@ -45,11 +45,7 @@ class StoryMenuState extends MusicBeatState
 
 	var weekList:Array<String> = [];
 	var weeks:Array<Week> = [];
-	var bannerNames:Array<String> = [
-		'menu_tut',
-		'menu_alley',
-		'menu_christmas'
-	];
+	var bannerNames:Array<String> = ['menu_tut', 'menu_alley', 'menu_christmas'];
 
 	var weekBanners:Array<FlxSprite> = new Array<FlxSprite>();
 	var lastSelectedWeek:Int = 0;
@@ -60,9 +56,8 @@ class StoryMenuState extends MusicBeatState
 
 		for (i in 0...weekList.length)
 		{
-			weeks.push(
-				new Week(FreeplayState.createSongArrayFromTxt(weekList[i], 'songs'), LanguageManager.getTextString('story_week${i}'), FlxColor.fromString('#F9CF51'), bannerNames[i])
-			);
+			weeks.push(new Week(FreeplayState.createSongArrayFromTxt(weekList[i], 'songs'), LanguageManager.getTextString('story_week${i}'),
+				FlxColor.fromString('#F9CF51'), bannerNames[i]));
 		}
 
 		#if desktop
@@ -229,6 +224,14 @@ class StoryMenuState extends MusicBeatState
 
 				switch (PlayState.storyWeek)
 				{
+					case 1:
+						FlxG.sound.music.stop();
+						var video:VideoHandler = new VideoHandler();
+						video.finishCallback = function()
+						{
+							LoadingState.loadAndSwitchState(new PlayState(), true);
+						}
+						video.playVideo(Paths.video('burningflamecut'));
 					default:
 						LoadingState.loadAndSwitchState(new PlayState(), true);
 				}
