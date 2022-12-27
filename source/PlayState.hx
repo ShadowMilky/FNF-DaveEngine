@@ -1471,13 +1471,13 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'bubbles' | 'burning-flames':
+				/*case 'bubbles' | 'burning-flames':
 					var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
 					// doof.x += 70;
 					// doof.y = FlxG.height * 0.5;
 					doof.scrollFactor.set();
 					doof.finishThing = startCountdown;
-					schoolIntro(doof);
+					schoolIntro(doof);*/
 				default:
 					startCountdown();
 			}
