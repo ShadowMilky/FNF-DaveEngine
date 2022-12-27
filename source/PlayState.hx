@@ -228,6 +228,9 @@ class PlayState extends MusicBeatState
 	// public var shakeCam:Bool = false;
 	private var startingSong:Bool = false;
 
+	public var botplaySine:Float = 0;
+	public var botplayTxt:FlxText;
+
 	// srperez get the camera
 	public var TwentySixKey:Bool = false;
 
@@ -744,11 +747,23 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		botplayTxt = new FlxText(400, songPosBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt.scrollFactor.set();
+		botplayTxt.borderSize = 1.25;
+		botplayTxt.visible = FlxG.save.data.botplay;
+		add(botplayTxt);
+		if (scrollType == 'downscroll')
+		{
+			botplayTxt.y = songPosBG.y - 78;
+		}
+
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		botplayTxt.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
@@ -1477,7 +1492,7 @@ class PlayState extends MusicBeatState
 					// doof.y = FlxG.height * 0.5;
 					doof.scrollFactor.set();
 					doof.finishThing = startCountdown;
-					schoolIntro(doof);*/
+					schoolIntro(doof); */
 				default:
 					startCountdown();
 			}
@@ -1915,6 +1930,12 @@ class PlayState extends MusicBeatState
 			FlxG.sound.music.pause();
 			vocals.pause();
 		}
+
+		if(botplayTxt.visible) {
+			botplaySine += 180 * elapsed;
+			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
+		}
+
 		// if (curbg != null)
 		// {
 		// 	if (curbg.active) // only the polygonized background is active
@@ -2631,7 +2652,7 @@ class PlayState extends MusicBeatState
 		{
 			case "bubbles":
 				trace('burning flames cutscene funni');
-			    playEndCutscene('burningflamecut');
+				playEndCutscene('burningflamecut');
 			case "burning-flames":
 				trace('AAAAAAAAAA');
 				playEndCutscene('executioncut');
@@ -3231,7 +3252,7 @@ class PlayState extends MusicBeatState
 					var hitAnimation:Bool = boyfriend.animation.getByName("dodge") != null;
 					var heyAnimation:Bool = boyfriend.animation.getByName("hey") != null;
 					boyfriend.playAnim(hitAnimation ? 'dodge' : (heyAnimation ? 'hey' : 'singUPmiss'), true);
-					// gf.playAnim('scared', true);
+				// gf.playAnim('scared', true);
 				case 'corrupt':
 					var hitAnimation:Bool = boyfriend.animation.getByName("dodge") != null;
 					var heyAnimation:Bool = boyfriend.animation.getByName("hey") != null;
