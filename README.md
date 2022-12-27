@@ -24,7 +24,13 @@ If you're looking to compile the mod/make your own modification, [look here](Mod
 
 # Credits
 
-* Foxa - Composer, Project Creator
+* Foxa - Composer, Director, Project Creator
 * CharlesCatYT - Main Programmer, Co-Director
-* PogDev - Programmer
-
+* PogDev (formerly Grits) - Programmer
+* TheAnimateMan - Spriter
+* Natsuki.HX - Jester Programmer
+* GaragebandCoveryGuy96 - Composer
+* FellowIdiot - Retired Programmer, Charter 
+* LeNinethGames - Icon Artist
+* JoerOnTheBlower - NO DONT TRUST THIS GUY
+* Bambi Enjoyer - Composer, Charter
