@@ -1165,12 +1165,12 @@ class PlayState extends MusicBeatState
 				{
 					defaultCamZoom = 0.9;
 					curStage = 'ballisticAlley';
-					wBg = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/alley/whittyBack', 'shared'));
+					var wBg = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/alley/whittyBack', 'shared'));
 
 					trace('junkers on steroids');
 					wBg.antialiasing = true;
 					var bgTex = Paths.getSparrowAtlas('stages/ballisticAlley/BallisticBackground', 'shared');
-					nwBg = new FlxSprite(-600, -200);
+					var nwBg = new FlxSprite(-600, -200);
 					nwBg.frames = bgTex;
 					nwBg.antialiasing = true;
 					nwBg.scrollFactor.set(0.9, 0.9);
@@ -1181,7 +1181,7 @@ class PlayState extends MusicBeatState
 					// add(wBg);
 					add(nwBg);
 					nwBg.alpha = 1;
-					wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/alley/whittyFront', 'shared'));
+					var wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/alley/whittyFront', 'shared'));
 					wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
 					wstageFront.updateHitbox();
 					wstageFront.antialiasing = true;
@@ -1193,7 +1193,7 @@ class PlayState extends MusicBeatState
 					*/
 					wBg.alpha = 0;
 					nwBg.alpha = 1;
-					funneEffect = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ballisticAlley/thefunnyeffect', 'shared'));
+					var funneEffect = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ballisticAlley/thefunnyeffect', 'shared'));
 					funneEffect.alpha = 0.5;
 					funneEffect.scrollFactor.set();
 					funneEffect.visible = true;
