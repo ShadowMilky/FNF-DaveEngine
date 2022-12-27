@@ -523,7 +523,7 @@ class FreeplayState extends MusicBeatState
 			{
 				switch (songs[curSelected].songName)
 				{
-					case 'burning-flames':
+					case 'Burning Flames':
 						FlxG.sound.music.fadeOut(1, 0);
 						PlayState.SONG = Song.loadFromJson(songs[curSelected].songName.toLowerCase());
 						PlayState.isStoryMode = false;
@@ -537,6 +537,8 @@ class FreeplayState extends MusicBeatState
 						packTransitionDone = false;
 						if ((FlxG.keys.pressed.CONTROL || skipSelect.contains(PlayState.SONG.song.toLowerCase())))
 						{
+							var inCutscene = true;
+
 							trace('freeplay video funni');
 							var video = new VideoHandler();
 							video.finishCallback = function()
