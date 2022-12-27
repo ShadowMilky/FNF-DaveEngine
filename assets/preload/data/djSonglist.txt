@@ -1,4 +1,6 @@
 internal,tutorial,gf,good
 internal,bubbles,foxa,good
-internal,burning-flames,foxa,bad
+internal,burning-flames,foxa-angy,bad
+internal,execution,foxa-mad,bad
+internal,firestorm,foxa-mad,bad
 internal,christmas-blitz,foxa,good

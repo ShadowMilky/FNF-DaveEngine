@@ -228,6 +228,7 @@ class PlayState extends MusicBeatState
 	// public var shakeCam:Bool = false;
 	private var startingSong:Bool = false;
 
+	// srperez get the camera
 	public var TwentySixKey:Bool = false;
 
 	private var iconP1:HealthIcon;
@@ -238,7 +239,7 @@ class PlayState extends MusicBeatState
 	private var camGame:FlxCamera;
 	private var camTransition:FlxCamera;
 
-	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
+	var dialogue:Array<String> = ['blah blah blah', 'coolswag', 'lol'];
 
 	var pixelStages:Array<String> = ['school', 'schoolEvil']; // da pixel stages
 	var specialStages:Array<String> = ['limo', 'mall', 'mallEvil']; // da custom bg stages
@@ -1159,6 +1160,50 @@ class PlayState extends MusicBeatState
 					// }
 					// bg.setGraphicSize(Std.int(bg.width * 2.5));
 					// bg.updateHitbox();
+				}
+			case 'ballisticAlley':
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'ballisticAlley';
+					wBg = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/alley/whittyBack', 'shared'));
+
+					trace('junkers on steroids');
+					wBg.antialiasing = true;
+					var bgTex = Paths.getSparrowAtlas('stages/ballisticAlley/BallisticBackground', 'shared');
+					nwBg = new FlxSprite(-600, -200);
+					nwBg.frames = bgTex;
+					nwBg.antialiasing = true;
+					nwBg.scrollFactor.set(0.9, 0.9);
+					nwBg.active = true;
+					nwBg.animation.addByPrefix('start', 'Background Whitty Start', 24, false);
+					nwBg.animation.addByPrefix('gaming', 'Background Whitty Startup', 24, false);
+					nwBg.animation.addByPrefix('gameButMove', 'Background Whitty Moving', 16, true);
+					// add(wBg);
+					add(nwBg);
+					nwBg.alpha = 1;
+					wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/alley/whittyFront', 'shared'));
+					wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
+					wstageFront.updateHitbox();
+					wstageFront.antialiasing = true;
+					wstageFront.scrollFactor.set(0.9, 0.9);
+					wstageFront.active = false;
+					/*
+					add(wBg);
+					add(wstageFront);
+					*/
+					wBg.alpha = 0;
+					nwBg.alpha = 1;
+					funneEffect = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/ballisticAlley/thefunnyeffect', 'shared'));
+					funneEffect.alpha = 0.5;
+					funneEffect.scrollFactor.set();
+					funneEffect.visible = true;
+					add(funneEffect);
+
+					funneEffect.cameras = [camHUD];
+
+					trace('funne: ' + funneEffect);
+					nwBg.animation.play("gameButMove");
+					remove(wstageFront);
 				}
 			default:
 				bgZoom = 0.9;
