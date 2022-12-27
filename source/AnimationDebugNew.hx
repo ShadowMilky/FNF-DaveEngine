@@ -61,11 +61,11 @@ class AnimationDebugNew extends MusicBeatState
 
 	override function create()
 	{
-		// FlxG.sound.music.stop();
+		FlxG.sound.music.stop();
 
-		// var gridBG:FlxSprite = FlxGridOverlay.create(10, 10);
-		// gridBG.scrollFactor.set(0.5, 0.5);
-		// add(gridBG);
+		var gridBG:FlxSprite = FlxGridOverlay.create(10, 10);
+		gridBG.scrollFactor.set(0.5, 0.5);
+		add(gridBG);
 
 		FlxG.mouse.visible = true;
 
