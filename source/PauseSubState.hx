@@ -208,8 +208,17 @@ class PauseSubState extends MusicBeatSubstate
 				FlxG.mouse.visible = false;
 				FlxG.switchState(new CharacterSelectState());
 			case "Toggle Botplay":
-			    FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.save.data.botplay = !FlxG.save.data.botplay;
+
+				FlxG.sound.music.volume = 0;
+				PlayState.instance.vocals.volume = 0;
+
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+
+				// PlayState.instance.shakeCam = false;
+				PlayState.instance.camZooming = false;
+				FlxG.mouse.visible = false;
+				FlxG.resetState();
 			case "Toggle Practice Mode":
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				PlayState.instance.noMiss = !PlayState.instance.noMiss;
