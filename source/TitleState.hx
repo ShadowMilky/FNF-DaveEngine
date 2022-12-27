@@ -315,7 +315,7 @@ class TitleState extends MusicBeatState
 				case 6:
 					createCoolText(['Based on Kade Engine']);
 				case 7:
-					addMoreText('idk i have to say just kade engine only');
+					addMoreText('ahem i mean dave engine');
 				case 8:
 					deleteCoolText();
 				case 9:
