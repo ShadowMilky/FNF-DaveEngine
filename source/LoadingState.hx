@@ -1,17 +1,18 @@
 package;
 
-import lime.app.Promise;
-import lime.app.Future;
 import flixel.FlxG;
-import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.text.FlxText;
 import flixel.util.FlxTimer;
-import openfl.utils.Assets;
-import lime.utils.Assets as LimeAssets;
+import haxe.io.Path;
+import lime.app.Future;
+import lime.app.Promise;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
-import haxe.io.Path;
+import lime.utils.Assets as LimeAssets;
+import openfl.utils.Assets;
 
 class LoadingState extends MusicBeatState
 {
@@ -21,7 +22,7 @@ class LoadingState extends MusicBeatState
 	var stopMusic = false;
 	var callbacks:MultiCallback;
 
-	var danceLeft = false;
+	public static var globeTrans:Bool = true;
 
 	function new(target:FlxState, stopMusic:Bool)
 	{
@@ -30,8 +31,83 @@ class LoadingState extends MusicBeatState
 		this.stopMusic = stopMusic;
 	}
 
+	var loadBar:FlxSprite;
+	var callbackTxt:FlxText;
+	var loadingTxt:FlxSprite;
+	var loadingCirc:FlxSprite;
+	var loadingCircSpeed = FlxG.random.int(50, 200);
+	var tipTxt:FlxText;
+	var tips:Array<String> = [
+		"This mod was made with Dave Engine, because Whitty exists in both Kade Engine and Psych Engine.",
+		"GF doesn't work properly, I'm not sure if I can fix it right now.",
+		"Foxa is not a furry.",
+		"I'm inside your walls.",
+		"Screw you!",
+		"It's AumSum Time!!!!!",
+		"It's AumSum Time!!!!!",
+	];
+
 	override function create()
 	{
+		/*var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
+			add(bg); */
+
+		var loading:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('loadingscreen'));
+		add(loading);
+
+		flixel.addons.transition.FlxTransitionableState.skipNextTransIn = false;
+		flixel.addons.transition.FlxTransitionableState.skipNextTransOut = false;
+		if (!globeTrans)
+		{
+			flixel.addons.transition.FlxTransitionableState.skipNextTransIn = true;
+			flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+		}
+		globeTrans = true;
+
+		loadingTxt = new FlxSprite(100, 0).loadGraphic(Paths.image('loading'));
+		loadingTxt.antialiasing = ClientPrefs.globalAntialiasing;
+		loadingTxt.scale.set(0.45, 0.45);
+		loadingTxt.updateHitbox();
+		loadingTxt.screenCenter(Y);
+		add(loadingTxt);
+
+		flixel.tweens.FlxTween.angle(loadingTxt, -5, 5, 1, {ease: flixel.tweens.FlxEase.quadInOut, type: flixel.tweens.FlxTween.FlxTweenType.PINGPONG});
+		flixel.tweens.FlxTween.tween(loadingTxt, {"scale.x": 0.47, "scale.y": 0.47}, 0.5,
+			{ease: flixel.tweens.FlxEase.quadInOut, type: flixel.tweens.FlxTween.FlxTweenType.PINGPONG});
+
+		loadingCirc = new FlxSprite(loadingTxt.x, 0).loadGraphic(Paths.image('loadingicon'));
+		loadingCirc.x += loadingTxt.width;
+		loadingCirc.scale.set(0.45, 0.45);
+		loadingCirc.updateHitbox();
+		loadingCirc.antialiasing = ClientPrefs.globalAntialiasing;
+		loadingCirc.screenCenter(Y);
+		add(loadingCirc);
+
+		loadBar = new FlxSprite(10, 0).makeGraphic(10, FlxG.height - 150, 0xffffffff);
+		loadBar.screenCenter(Y);
+		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
+		loadBar.color = 0xffff00ff;
+		add(loadBar);
+
+		var loadColors:Array<flixel.util.FlxColor> = [0xffff0000, 0xffff7b00, 0xffffff00, 0xff00ff00, 0xff0000ff, 0xffff00ff];
+		var loadIncrement:Int = 0;
+		clrBarTwn(loadIncrement, loadBar, loadColors, 1);
+
+		callbackTxt = new FlxText(30, 0, 0, "");
+		callbackTxt.scrollFactor.set();
+		callbackTxt.setFormat("VCR OSD Mono", 16, 0xffffffff, CENTER);
+		callbackTxt.screenCenter(Y);
+		add(callbackTxt);
+
+		tipTxt = new FlxText(0, FlxG.height - 48, 0, tips[FlxG.random.int(0, tips.length - 1)]);
+		tipTxt.scrollFactor.set();
+		tipTxt.setFormat("VCR OSD Mono", 16, 0xffffffff, LEFT);
+		add(tipTxt);
+
+		var timer = new FlxTimer().start(4, function(tmr:FlxTimer)
+		{
+			tipTxt.text = tips[FlxG.random.int(0, tips.length - 1)];
+		}, 0);
 		initSongsManifest().onComplete(function(lib)
 		{
 			callbacks = new MultiCallback(onLoad);
@@ -94,10 +170,33 @@ class LoadingState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
 		#if debug
 		if (FlxG.keys.justPressed.SPACE)
 			trace('fired: ' + callbacks.getFired() + " unfired:" + callbacks.getUnfired());
 		#end
+
+		loadingCirc.angle += elapsed * loadingCircSpeed;
+
+		if (callbacks != null)
+		{
+			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
+			loadBar.scale.y += 0.5 * (targetShit - loadBar.scale.y);
+			callbackTxt.text = (callbacks.length - callbacks.numRemaining) + '/' + callbacks.length;
+		}
+	}
+
+	function clrBarTwn(incrementor:Int, sprite:FlxSprite, clrArray:Array<flixel.util.FlxColor>, duration:Int)
+	{
+		flixel.tweens.FlxTween.color(sprite, duration, sprite.color, clrArray[incrementor], {
+			onComplete: function(_)
+			{
+				incrementor++;
+				if (incrementor > 5)
+					incrementor = 0;
+				clrBarTwn(incrementor, sprite, clrArray, duration);
+			}
+		});
 	}
 
 	function onLoad()
