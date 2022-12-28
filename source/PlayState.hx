@@ -579,7 +579,8 @@ class PlayState extends MusicBeatState
 					tweenCamIn();
 				}
 			case 'foxa-newer':
-				camPos.y += 400;
+				camPos.x += 400;
+				camPos.y -= 200;
 		}
 
 		if (formoverride == "none" || formoverride == "bf" && pixelStages.contains(curStage) || formoverride == "bf" && specialStages.contains(curStage)
