@@ -99,7 +99,7 @@ class FreeplayState extends MusicBeatState
 		showCharText = FlxG.save.data.wasInCharSelect;
 
 		bg.loadGraphic(MainMenuState.randomizeBG());
-		bg.color = 0xFF4965FF;
+		bg.color = 0xFFEC80D1;
 		defColor = bg.color;
 		bg.scrollFactor.set();
 		add(bg);
@@ -504,7 +504,7 @@ class FreeplayState extends MusicBeatState
 								remove(i);
 							}
 
-							FlxTween.color(bg, 0.25, bg.color, defColor);
+							// FlxTween.color(bg, 0.25, bg.color, defColor);
 
 							// MAKE SURE TO RESET EVERYTHIN!
 							songs = [];
@@ -671,7 +671,7 @@ class FreeplayState extends MusicBeatState
 				item.alpha = 1;
 			}
 		}
-		FlxTween.color(bg, 0.25, bg.color, songColors[songs[curSelected].week]);
+		// FlxTween.color(bg, 0.25, bg.color, songColors[songs[curSelected].week]);
 	}
 
 	function getTrueSongTextWidth(song:Alphabet)
