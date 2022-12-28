@@ -55,7 +55,7 @@ class LoadingState extends MusicBeatState
 		add(loading);
 
 		trace('please work please');
-		
+
 		flixel.addons.transition.FlxTransitionableState.skipNextTransIn = false;
 		flixel.addons.transition.FlxTransitionableState.skipNextTransOut = false;
 		if (!globeTrans)
@@ -146,19 +146,4 @@ class LoadingState extends MusicBeatState
 				}
 			});
 		}
-
-	public function saveData()
-	{
-		FlxG.save.bind(Settings.save_bind_name, Settings.save_bind_path);
-		Settings.loadDefault();
-
-		var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
-		diamond.persist = true;
-		diamond.destroyOnNoUse = false;
-		// FlxG.bitmap.spareFromCache.push(diamond);
-
-		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5, new FlxPoint(0, -1), {asset: diamond, width: 32, height: 32},
-			new FlxRect(0, 0, FlxG.width, FlxG.height));
-		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.35, new FlxPoint(0, 1), {asset: diamond, width: 32, height: 32},
-			new FlxRect(0, 0, FlxG.width, FlxG.height));
 }
