@@ -438,8 +438,8 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence.
 		#if desktop
 		DiscordClient.changePresence(detailsText
-			+ " " // + SONG.song
-			+ "NO LEAKS!!!"
+			+ " "
+			+ SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") ",
@@ -1801,8 +1801,7 @@ class PlayState extends MusicBeatState
 			}
 
 			#if desktop
-			DiscordClient.changePresence("PAUSED on " // + SONG.song
-				+ "NO LEAKS!!!"
+			DiscordClient.changePresence("PAUSED on " + SONG.song
 				+ " ("
 				+ storyDifficultyText
 				+ ") |",
@@ -1852,8 +1851,8 @@ class PlayState extends MusicBeatState
 			{
 				#if desktop
 				DiscordClient.changePresence(detailsText
-					+ " " // + SONG.song
-					+ "NO LEAKS!!!"
+					+ " "
+					+ SONG.song
 					+ " ("
 					+ storyDifficultyText
 					+ ") ",
@@ -1870,8 +1869,8 @@ class PlayState extends MusicBeatState
 			else
 			{
 				#if desktop
-				DiscordClient.changePresence(detailsText, // + SONG.song
-				"NO LEAKS!!!" + " (" + storyDifficultyText + ") ", iconRPC);
+				DiscordClient.changePresence(detailsText, SONG.song
+					+ " (" + storyDifficultyText + ") ", iconRPC);
 				#end
 			}
 		}
@@ -1889,8 +1888,8 @@ class PlayState extends MusicBeatState
 
 		#if desktop
 		DiscordClient.changePresence(detailsText
-			+ " " // + SONG.song
-			+ "NO LEAKS!!!"
+			+ " "
+			+ SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") ",
@@ -3371,8 +3370,8 @@ class PlayState extends MusicBeatState
 		}*/
 		#if desktop
 		DiscordClient.changePresence(detailsText
-			+ " " // + SONG.song
-			+ "NO LEAKS!!!"
+			+ " "
+			+ SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") ",
@@ -3577,8 +3576,7 @@ class PlayState extends MusicBeatState
 		openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, deathSkinCheck));
 
 		#if desktop
-		DiscordClient.changePresence("GAME OVER -- " // + SONG.song
-			+ "NO LEAKS!!!"
+		DiscordClient.changePresence("GAME OVER -- " + SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") ",
