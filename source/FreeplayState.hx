@@ -143,7 +143,7 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public static function createSongArrayFromTxt(name:String, nameSection:String, whatTo:String):Array<String>
+	public static function createSongArrayFromTxt(name:String, whatTo:String):Array<String>
 	{
 		var tempWeek:Array<String> = CoolUtil.coolTextFile(Paths.file('data/weeks/' + name + '.txt', TEXT, 'preload'));
 		var returned:Array<String> = [];
