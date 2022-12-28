@@ -10,18 +10,36 @@ import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 import sys.io.File;
-import PlayState;
 import sys.FileSystem;
-import CharacterData.CharacterOrigin;
-import CharacterData.PsychAnimArray;
-import CharacterData.PsychEngineChar;
 import openfl.utils.Assets;
-import FoxaDeps.ScriptHandler;
-import FNFUtils.FNFSprite;
 import haxe.Json;
 import haxe.format.JsonParser;
 
 using StringTools;
+
+typedef CharacterFile =
+{
+	var animations:Array<AnimArray>;
+	var image:String;
+	var scale:Float;
+	var sing_duration:Float;
+	var healthicon:String;
+
+	var position:Array<Float>;
+	var camera_position:Array<Float>;
+	var flip_x:Bool;
+	var no_antialiasing:Bool;
+}
+
+typedef AnimArray =
+{
+	var anim:String;
+	var name:String;
+	var fps:Int;
+	var loop:Bool;
+	var indices:Array<Int>;
+	var offsets:Array<Int>;
+}
 
 class Character extends FlxSprite
 {
@@ -31,26 +49,17 @@ class Character extends FlxSprite
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = DEFAULT_CHARACTER;
 
-	public var specialAnim:Bool = false;
-
-	public var hasMissAnims:Bool = false;
-	public var danceIdle:Bool = false;
-
-	public var characterType:String = FOREVER_FEATHER;
-	public var characterData:CharacterData;
-
-	public var characterScripts:Array<ScriptHandler> = [];
-
-	public var idleSuffix:String = '';
-
 	public var holdTimer:Float = 0;
 	public var furiosityScale:Float = 1.02;
 	public var canDance:Bool = true;
 	public var colorTween:FlxTween;
 	public var heyTimer:Float = 0;
+	public var specialAnim:Bool = false;
 	public var animationNotes:Array<Dynamic> = [];
 	public var stunned2:Bool = false;
 	public var singDuration:Float = 4; // Multiplier of how long a character holds the sing pose
+	public var idleSuffix:String = '';
+	public var danceIdle:Bool = false; // Character use "danceLeft" and "danceRight" instead of "idle"
 
 	public var nativelyPlayable:Bool = false;
 
@@ -89,16 +98,6 @@ class Character extends FlxSprite
 		curCharacter = character;
 		this.isPlayer = isPlayer;
 		charList = CoolUtil.coolTextFile(Paths.file('data/characterList.txt', TEXT, 'preload'));
-
-		if (characterData.icon == null)
-			characterData.icon = character;
-
-		if (animation.getByName('danceRight') != null)
-			danceIdle = true;
-
-		if (FileSystem.exists(Paths.characterModule(character, character, PSYCH_ENGINE)))
-			characterType = PSYCH_ENGINE;
-
 
 		skins.set('normal', curCharacter);
 		skins.set('gfSkin', 'gf-none');
@@ -796,22 +795,90 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
-				default:
-					switch (characterType)
-					{
-						case PSYCH_ENGINE:
-							generatePsychChar(character);
-						default:
-							try
-							{
-								generateChar(character);
-							}
-							catch (e)
-							{
-								trace('$character is/was null');
-								return setCharacter(x, y, 'placeholder');
-							}
+			default:
+				var characterPath:String = 'data/characters/' + curCharacter + '.json';
+				/*#if FEATURE_MODDING
+					var path:String = Paths.mods(characterPath);
+					if (!FileSystem.exists(path)) {
+						path = Paths.getPreloadPath(characterPath);
 					}
+
+					if (!FileSystem.exists(path))
+					#else */
+
+				var path:String = Paths.getPreloadPath(characterPath);
+				if (!Assets.exists(path))
+					// #end
+				{
+					path = Paths.getPreloadPath('data/characters/' + DEFAULT_CHARACTER +
+						'.json'); // If a character couldn't be found, change him to BF just to prevent a crash
+				}
+
+				/*#if FEATURE_MODDING
+					var rawJson = File.getContent(path);
+					#else */
+				var rawJson = Assets.getText(path);
+				// #end
+
+				var json:CharacterFile = cast Json.parse(rawJson);
+				if (Assets.exists(Paths.getPath('images/' + json.image + '.txt', TEXT, 'shared')))
+				{
+					frames = Paths.getPackerAtlas(json.image);
+				}
+				else
+				{
+					frames = Paths.getSparrowAtlas(json.image);
+				}
+				imageFile = json.image;
+
+				if (json.scale != 1)
+				{
+					jsonScale = json.scale;
+					setGraphicSize(Std.int(width * jsonScale));
+					updateHitbox();
+				}
+
+				positionArray = json.position;
+				cameraPosition = json.camera_position;
+
+				healthIcon = json.healthicon;
+				singDuration = json.sing_duration;
+				flipX = !!json.flip_x;
+				if (json.no_antialiasing)
+					noAntialiasing = true;
+
+				antialiasing = true;
+
+				animationsArray = json.animations;
+				if (animationsArray != null && animationsArray.length > 0)
+				{
+					for (anim in animationsArray)
+					{
+						var animAnim:String = '' + anim.anim;
+						var animName:String = '' + anim.name;
+						var animFps:Int = anim.fps;
+						var animLoop:Bool = !!anim.loop; // Bruh
+						var animIndices:Array<Int> = anim.indices;
+						if (animIndices != null && animIndices.length > 0)
+						{
+							animation.addByIndices(animAnim, animName, animIndices, "", animFps, animLoop);
+						}
+						else
+						{
+							animation.addByPrefix(animAnim, animName, animFps, animLoop);
+						}
+
+						if (anim.offsets != null && anim.offsets.length > 1)
+						{
+							addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
+						}
+					}
+				}
+				else
+				{
+					quickAnimAdd('idle', 'BF idle dance');
+				}
+				// trace('Loaded file to character ' + curCharacter);
 		}
 		dance();
 
@@ -1002,279 +1069,6 @@ class Character extends FlxSprite
 			}
 		}
 	}
-
-	public function simplifyCharacter():String
-		{
-			var base = curCharacter;
-	
-			if (base.contains('-'))
-				base = base.substring(0, base.indexOf('-'));
-			return base;
-		}
-	
-		/**
-		 * [Generates a Character in the Forever Engine Feather Format]
-		 * @param char returns the character that should be generated
-		 */
-		function generateChar(char:String = 'bf')
-		{
-			var pushedChars:Array<String> = [];
-	
-			var overrideFrames:String = null;
-			var framesPath:String = null;
-	
-			if (!pushedChars.contains(char))
-			{
-				var script:ScriptHandler = new ScriptHandler(Paths.characterModule(char, 'config', FOREVER_FEATHER));
-	
-				if (script.interp == null)
-					trace("Something terrible occured! Skipping.");
-	
-				characterScripts.push(script);
-				pushedChars.push(char);
-			}
-	
-			var spriteType = "SparrowAtlas";
-	
-			try
-			{
-				var textAsset:String = Paths.characterModule(char, char + '.txt');
-	
-				// check if a text file exists with the character name exists, if so, it's a spirit-like character;
-				if (FileSystem.exists(textAsset))
-					spriteType = "PackerAtlas";
-				else
-					spriteType = "SparrowAtlas";
-			}
-			catch (e)
-			{
-				trace('Could not define Sprite Type, Uncaught Error: ' + e);
-			}
-	
-			// frame overrides because why not;
-			setVar('setFrames', function(newFrames:String, newFramesPath:String)
-			{
-				if (newFrames != null || newFrames != '')
-					overrideFrames = newFrames;
-				if (newFramesPath != null && newFramesPath != '')
-					framesPath = newFramesPath;
-			});
-	
-			switch (spriteType)
-			{
-				case "PackerAtlas":
-					var sprPacker:String = (overrideFrames == null ? char : overrideFrames);
-					var sprPath:String = (framesPath == null ? 'data/characters/$char' : framesPath);
-					frames = Paths.getPackerAtlas(sprPacker, sprPath);
-				default:
-					var sprSparrow:String = (overrideFrames == null ? char : overrideFrames);
-					var sprPath:String = (framesPath == null ? 'data/characters/$char' : framesPath);
-					frames = Paths.getSparrowAtlas(sprSparrow, sprPath);
-			}
-	
-			setVar('addByPrefix', function(name:String, prefix:String, ?frames:Int = 24, ?loop:Bool = false)
-			{
-				animation.addByPrefix(name, prefix, frames, loop);
-			});
-	
-			setVar('addByIndices', function(name:String, prefix:String, indices:Array<Int>, ?frames:Int = 24, ?loop:Bool = false)
-			{
-				animation.addByIndices(name, prefix, indices, "", frames, loop);
-			});
-	
-			setVar('addOffset', function(?name:String = "idle", ?x:Float = 0, ?y:Float = 0)
-			{
-				addOffset(name, x, y);
-			});
-	
-			setVar('set', function(name:String, value:Dynamic)
-			{
-				Reflect.setProperty(this, name, value);
-			});
-	
-			setVar('setSingDuration', function(amount:Int)
-			{
-				characterData.singDuration = amount;
-			});
-	
-			setVar('setOffsets', function(x:Float = 0, y:Float = 0)
-			{
-				characterData.offsets = [x, y];
-			});
-	
-			setVar('setCamOffsets', function(x:Float = 0, y:Float = 0)
-			{
-				characterData.camOffsets = [x, y];
-			});
-	
-			setVar('setScale', function(?x:Float = 1, ?y:Float = 1)
-			{
-				scale.set(x, y);
-			});
-	
-			setVar('setIcon', function(swag:String = 'face') characterData.icon = swag);
-	
-			setVar('quickDancer', function(quick:Bool = false)
-			{
-				characterData.quickDancer = quick;
-			});
-	
-			setVar('setBarColor', function(rgb:Array<Float>)
-			{
-				if (characterData.healthColor != null)
-					characterData.healthColor = rgb;
-				else
-					characterData.healthColor = [161, 161, 161];
-				return true;
-			});
-	
-			setVar('setDeathChar',
-				function(char:String = 'bf-dead', lossSfx:String = 'fnf_loss_sfx', song:String = 'gameOver', confirmSound:String = 'gameOverEnd', bpm:Int)
-				{
-					states.substates.GameOverSubstate.bfType = char;
-					states.substates.GameOverSubstate.deathNoise = lossSfx;
-					states.substates.GameOverSubstate.deathTrack = song;
-					states.substates.GameOverSubstate.leaveTrack = confirmSound;
-					states.substates.GameOverSubstate.trackBpm = bpm;
-				});
-	
-			setVar('get', function(variable:String)
-			{
-				return Reflect.getProperty(this, variable);
-			});
-	
-			setVar('setGraphicSize', function(width:Int = 0, height:Int = 0)
-			{
-				setGraphicSize(width, height);
-				updateHitbox();
-			});
-	
-			setVar('playAnim', function(name:String, ?force:Bool = false, ?reversed:Bool = false, ?frames:Int = 0)
-			{
-				playAnim(name, force, reversed, frames);
-			});
-	
-			setVar('isPlayer', isPlayer);
-			setVar('characterData', characterData);
-			if (PlayState.SONG != null)
-				setVar('songName', PlayState.SONG.song.toLowerCase());
-			setVar('flipLeftRight', flipLeftRight);
-	
-			if (characterScripts != null)
-			{
-				for (i in characterScripts)
-					i.call('loadAnimations', []);
-			}
-	
-			if (animation.getByName('danceLeft$idleSuffix') != null)
-				playAnim('danceLeft$idleSuffix');
-			else
-				playAnim('idle$idleSuffix');
-		}
-	
-		public function setVar(key:String, value:Dynamic)
-		{
-			var allSucceed:Bool = true;
-			if (characterScripts != null)
-			{
-				for (i in characterScripts)
-				{
-					i.set(key, value);
-	
-					if (!i.exists(key))
-					{
-						trace('${i.scriptFile} failed to set $key for its interpreter, continuing.');
-						allSucceed = false;
-						continue;
-					}
-				}
-			}
-			return allSucceed;
-		}
-	
-		public var psychAnimationsArray:Array<PsychAnimArray> = [];
-	
-		/**
-		 * [Generates a Character in the Psych Engine Format, as a Compatibility Layer for them]
-		 * [@author Shadow_Mario_]
-		 * @param char returns the character that should be generated
-		 */
-		function generatePsychChar(char:String = 'bf-psych')
-		{
-			var rawJson:String = null;
-			var json:PsychEngineChar = null;
-	
-			if (FileSystem.exists(Paths.characterModule(char, char, PSYCH_ENGINE)))
-				rawJson = File.getContent(Paths.characterModule(char, char, PSYCH_ENGINE));
-	
-			if (rawJson != null)
-				json = cast Json.parse(rawJson);
-	
-			var spriteType:String = "SparrowAtlas";
-	
-			try
-			{
-				var textAsset:String = Paths.characterModule(char, json.image.replace('characters/', '') + '.txt');
-	
-				if (FileSystem.exists(textAsset))
-					spriteType = "PackerAtlas";
-				else
-					spriteType = "SparrowAtlas";
-			}
-			catch (e)
-			{
-				trace('Could not define Sprite Type, Uncaught Error: ' + e);
-			}
-	
-			switch (spriteType)
-			{
-				case "PackerAtlas":
-					frames = Paths.getPackerAtlas(json.image.replace('characters/', ''), 'data/characters/$char');
-				default:
-					frames = Paths.getSparrowAtlas(json.image.replace('characters/', ''), 'data/characters/$char');
-			}
-	
-			psychAnimationsArray = json.animations;
-			for (anim in psychAnimationsArray)
-			{
-				var animAnim:String = '' + anim.anim;
-				var animName:String = '' + anim.name;
-				var animFps:Int = anim.fps;
-				var animLoop:Bool = !!anim.loop; // Bruh
-				var animIndices:Array<Int> = anim.indices;
-				if (animIndices != null && animIndices.length > 0)
-					animation.addByIndices(animAnim, animName, animIndices, "", animFps, animLoop);
-				else
-					animation.addByPrefix(animAnim, animName, animFps, animLoop);
-	
-				if (anim.offsets != null && anim.offsets.length > 1)
-					addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
-			}
-			characterData.flipX = json.flip_x;
-	
-			// characterData.icon = json.healthicon;
-			characterData.antialiasing = !json.no_antialiasing;
-			characterData.healthColor = json.healthbar_colors;
-			characterData.singDuration = json.sing_duration;
-	
-			characterData.adjustPos = true;
-	
-			if (json.scale != 1)
-			{
-				setGraphicSize(Std.int(width * json.scale));
-				updateHitbox();
-			}
-	
-			if (animation.getByName('danceLeft$idleSuffix') != null)
-				playAnim('danceLeft$idleSuffix');
-			else
-				playAnim('idle$idleSuffix');
-	
-			characterData.camOffsets = [json.camera_position[0], json.camera_position[1]];
-			setPosition(json.position[0], json.position[1]);
-	
-			return this;
-		}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
 	{
