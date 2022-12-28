@@ -69,12 +69,12 @@ class AnimationDebugNew extends MusicBeatState
 
 		FlxG.mouse.visible = true;
 
-		background = new FlxSprite(-600, -525).loadGraphic(Paths.image('stageback', 'shared'));
-		front = new FlxSprite(-650, 325).loadGraphic(Paths.image('stagefront', 'shared'));
-		curt = new FlxSprite(-500, -625).loadGraphic(Paths.image('stagecurtains', 'shared'));
-		background.antialiasing = FlxG.save.data.antialiasing;
-		front.antialiasing = FlxG.save.data.antialiasing;
-		curt.antialiasing = FlxG.save.data.antialiasing;
+		background = new FlxSprite(-600, -525).loadGraphic(Paths.image('stages/stage/stageback', 'shared'));
+		front = new FlxSprite(-650, 325).loadGraphic(Paths.image('stages/stage/stagefront', 'shared'));
+		curt = new FlxSprite(-500, -625).loadGraphic(Paths.image('stages/stage/stagecurtains', 'shared'));
+		background.antialiasing = true;
+		front.antialiasing = true;
+		curt.antialiasing = true;
 
 		background.screenCenter(X);
 		background.scale.set(0.7, 0.7);
@@ -137,10 +137,10 @@ class AnimationDebugNew extends MusicBeatState
 		var characters2:Array<String> = [];
 
 		for (i in 0...characterslol.length)
-			{
-				var curCharThing = characterslol[i].trim().split(':');
-				characters2.push(curCharThing[0]);
-			}
+		{
+			var curCharThing = characterslol[i].trim().split(':');
+			characters2.push(curCharThing[0]);
+		}
 
 		var tabs = [{name: "Offsets", label: 'Offset menu'},];
 
@@ -194,7 +194,10 @@ class AnimationDebugNew extends MusicBeatState
 			updateTexts();
 		});
 
-		player1DropDown.selectedLabel = char.curCharacter;
+		if (isDad)
+			player1DropDown.selectedLabel = dad.curCharacter;
+		else
+			player1DropDown.selectedLabel = bf.curCharacter;
 
 		var offsetX_label = new FlxText(10, 50, 'X Offset');
 
@@ -350,28 +353,26 @@ class AnimationDebugNew extends MusicBeatState
 	}
 
 	override function update(elapsed:Float)
+		var characterSelTextField = new FlxText(0, 0, 0, 'Character: ' + char.curCharacter);
+
+	add(characterSelTextField);
 	{
 		textAnim.text = char.animation.curAnim.name;
-
 		FlxG.mouse.visible = true;
-
 		if (FlxG.mouse.overlaps(char) && FlxG.mouse.pressed)
 		{
 			// HOW THE FUCK DO I CONVERT THIS
 			char.animOffsets.get(animList[curAnim])[0] = -Math.round(FlxG.mouse.x - char.frameWidth * 1.5);
 			char.animOffsets.get(animList[curAnim])[1] = -Math.round(FlxG.mouse.y - char.frameHeight / 2);
-
 			updateTexts();
 			genBoyOffsets(false);
 			char.playAnim(animList[curAnim]);
 			// TO MOUSE MOVEMENT?????????
 		}
-
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			FlxG.switchState(new PlayState());
 		}
-
 		if (FlxG.keys.justPressed.F)
 		{
 			char.flipX = false;
@@ -382,18 +383,14 @@ class AnimationDebugNew extends MusicBeatState
 			char.flipX = true;
 			animationGhost.flipX = true;
 		}
-
 		if (FlxG.keys.justPressed.E)
 			FlxG.camera.zoom += 0.25;
 		if (FlxG.keys.justPressed.Q)
 			FlxG.camera.zoom -= 0.25;
-
 		if (FlxG.keys.justPressed.F)
 			char.flipX = !char.flipX;
-
 		if (FlxG.keys.justPressed.TWO)
 			animationGhost.visible = true;
-
 		if (FlxG.keys.pressed.I || FlxG.keys.pressed.J || FlxG.keys.pressed.K || FlxG.keys.pressed.L)
 		{
 			if (FlxG.keys.pressed.I)
@@ -402,7 +399,6 @@ class AnimationDebugNew extends MusicBeatState
 				camFollow.velocity.y = 90;
 			else
 				camFollow.velocity.y = 0;
-
 			if (FlxG.keys.pressed.J)
 				camFollow.velocity.x = -90;
 			else if (FlxG.keys.pressed.L)
@@ -414,31 +410,24 @@ class AnimationDebugNew extends MusicBeatState
 		{
 			camFollow.velocity.set();
 		}
-
 		if (FlxG.keys.justPressed.W)
 		{
 			curAnim -= 1;
 		}
-
 		if (FlxG.keys.justPressed.S)
 		{
 			curAnim += 1;
 		}
-
 		if (curAnim < 0)
 			curAnim = animList.length - 1;
-
 		if (curAnim >= animList.length)
 			curAnim = 0;
-
 		if (FlxG.keys.justPressed.S || FlxG.keys.justPressed.W || FlxG.keys.justPressed.SPACE)
 		{
 			char.playAnim(animList[curAnim]);
-
 			updateTexts();
 			genBoyOffsets(false);
 		}
-
 		var upP = FlxG.keys.anyJustPressed([UP]);
 		var rightP = FlxG.keys.anyJustPressed([RIGHT]);
 		var downP = FlxG.keys.anyJustPressed([DOWN]);
@@ -448,7 +437,6 @@ class AnimationDebugNew extends MusicBeatState
 		var multiplier = 1;
 		if (holdShift)
 			multiplier = 10;
-
 		if (upP || rightP || downP || leftP)
 		{
 			updateTexts();
@@ -460,20 +448,15 @@ class AnimationDebugNew extends MusicBeatState
 				char.animOffsets.get(animList[curAnim])[0] += 1 * multiplier;
 			if (rightP)
 				char.animOffsets.get(animList[curAnim])[0] -= 1 * multiplier;
-
 			updateTexts();
 			genBoyOffsets(false);
 			char.playAnim(animList[curAnim]);
 		}
-
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.S)
 			saveBoyOffsets();
-
 		if (FlxG.keys.justPressed.F1)
 			FlxG.save.data.showHelp = !FlxG.save.data.showHelp;
-
 		helpText.visible = FlxG.save.data.showHelp;
-
 		super.update(elapsed);
 	}
 }
