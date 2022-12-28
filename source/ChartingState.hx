@@ -223,6 +223,8 @@ class ChartingState extends MusicBeatState
 		// UI_box.add(player2);
 
 		super.create();
+
+		// no.
 	}
 
 	function addSongUI():Void
