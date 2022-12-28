@@ -6,6 +6,7 @@ import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
+import flixel.math.FlxMath;
 import haxe.io.Path;
 import lime.app.Future;
 import lime.app.Promise;
@@ -53,6 +54,29 @@ class LoadingState extends MusicBeatState
 		/*var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
 			add(bg); */
 
+		screenThing();
+
+		initSongsManifest().onComplete(function(lib)
+		{
+			callbacks = new MultiCallback(onLoad);
+			var introComplete = callbacks.add("introComplete");
+			checkLoadSong(getSongPath());
+			if (PlayState.SONG.needsVoices)
+				checkLoadSong(getVocalPath());
+			checkLibrary("shared");
+			if (PlayState.storyWeek > 0)
+				checkLibrary("week" + PlayState.storyWeek);
+			else
+				checkLibrary("tutorial");
+
+			var fadeTime = 0.5;
+			FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
+			new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
+		});
+	}
+
+	public function screenThing()
+	{
 		var loading:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('loadingscreen'));
 		add(loading);
 
@@ -109,23 +133,6 @@ class LoadingState extends MusicBeatState
 		{
 			tipTxt.text = tips[FlxG.random.int(0, tips.length - 1)];
 		}, 0);
-		initSongsManifest().onComplete(function(lib)
-		{
-			callbacks = new MultiCallback(onLoad);
-			var introComplete = callbacks.add("introComplete");
-			checkLoadSong(getSongPath());
-			if (PlayState.SONG.needsVoices)
-				checkLoadSong(getVocalPath());
-			checkLibrary("shared");
-			if (PlayState.storyWeek > 0)
-				checkLibrary("week" + PlayState.storyWeek);
-			else
-				checkLibrary("tutorial");
-
-			var fadeTime = 0.5;
-			FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
-			new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
-		});
 	}
 
 	function checkLoadSong(path:String)
