@@ -32,7 +32,7 @@ class LoadingState extends MusicBeatState
 		this.target = target;
 		this.stopMusic = stopMusic;
 
-        screenThing();
+		screenThing();
 	}
 
 	var loadBar:FlxSprite;
@@ -229,7 +229,7 @@ class LoadingState extends MusicBeatState
 
 	inline static public function loadAndSwitchState(target:FlxState, stopMusic = false)
 	{
-		var loadup = new LoadingScreen();
+		// var loadup = new LoadingScreen();
 		FlxG.sound.music.stop();
 		FlxG.switchState(getNextState(target, stopMusic));
 	}
