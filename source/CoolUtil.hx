@@ -63,6 +63,11 @@ class CoolUtil
 		return dumbArray;
 	}
 
+	inline public static function boundTo(value:Float, min:Float, max:Float):Float
+	{
+		return Math.max(min, Math.min(max, value));
+	}
+
 	public static function formatString(string:String, separator:String):String
 	{
 		var split:Array<String> = string.split(separator);

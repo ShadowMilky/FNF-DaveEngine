@@ -78,6 +78,8 @@
 	<haxelib name="hxCodec" if="desktop || android" />
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+	<haxedef name="HXCPP_GC_MOVING"/>
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<setenv name="next"/>
