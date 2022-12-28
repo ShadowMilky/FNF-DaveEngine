@@ -29,7 +29,7 @@ class Character extends FlxSprite
 	public var debugMode:Bool = false;
 
 	public var isPlayer:Bool = false;
-	public var curCharacter:String = 'bf';
+	public var curCharacter:String = DEFAULT_CHARACTER;
 
 	public var specialAnim:Bool = false;
 
@@ -60,6 +60,7 @@ class Character extends FlxSprite
 	var hairFramesLoop:Int = 4; // ADVANCED: This is used for mom and bf on Week 4. They go back 4 frames once their singing animation is completed to give an impression that it's looping perfectly
 
 	public var healthIcon:String = 'face';
+	public var animationsArray:Array<AnimArray> = [];
 
 	public var positionArray:Array<Float> = [0, 0];
 	public var cameraPosition:Array<Float> = [0, 0];
@@ -1308,40 +1309,5 @@ class Character extends FlxSprite
 	public function quickAnimAdd(name:String, anim:String)
 	{
 		animation.addByPrefix(name, anim, 24, false);
-	}
-}
-
-class Boyfriend extends Character
-{
-	public var stunned:Bool = false;
-
-	public function new(x:Float, y:Float, ?char:String = 'bf')
-	{
-		super(x, y, char, true);
-	}
-
-	override function update(elapsed:Float)
-	{
-		if (!debugMode)
-		{
-			if (animation.curAnim.name.startsWith('sing'))
-			{
-				holdTimer += elapsed;
-			}
-			else
-				holdTimer = 0;
-
-			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
-			{
-				playAnim('idle', true, false, 10);
-			}
-
-			if (animation.curAnim.name == 'firstDeath' && animation.curAnim.finished)
-			{
-				playAnim('deathLoop');
-			}
-		}
-
-		super.update(elapsed);
 	}
 }
