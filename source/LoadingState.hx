@@ -21,6 +21,7 @@ class LoadingState extends MusicBeatState
 	var target:FlxState;
 	var stopMusic = false;
 	var callbacks:MultiCallback;
+	var targetShit:Float = 0;
 
 	public static var globeTrans:Bool = true;
 
@@ -65,7 +66,7 @@ class LoadingState extends MusicBeatState
 		globeTrans = true;
 
 		loadingTxt = new FlxSprite(100, 0).loadGraphic(Paths.image('loading'));
-		loadingTxt.antialiasing = ClientPrefs.globalAntialiasing;
+		loadingTxt.antialiasing = true;
 		loadingTxt.scale.set(0.45, 0.45);
 		loadingTxt.updateHitbox();
 		loadingTxt.screenCenter(Y);
@@ -79,13 +80,13 @@ class LoadingState extends MusicBeatState
 		loadingCirc.x += loadingTxt.width;
 		loadingCirc.scale.set(0.45, 0.45);
 		loadingCirc.updateHitbox();
-		loadingCirc.antialiasing = ClientPrefs.globalAntialiasing;
+		loadingCirc.antialiasing = true;
 		loadingCirc.screenCenter(Y);
 		add(loadingCirc);
 
 		loadBar = new FlxSprite(10, 0).makeGraphic(10, FlxG.height - 150, 0xffffffff);
 		loadBar.screenCenter(Y);
-		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
+		loadBar.antialiasing = true;
 		loadBar.color = 0xffff00ff;
 		add(loadBar);
 
