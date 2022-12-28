@@ -121,11 +121,11 @@ class PlayState extends MusicBeatState
 	public var dadCombo:Int = 0;
 
 	#if (haxe >= "4.0.0")
-	public var boyfriendMap:Map<String, Character.Boyfriend> = new Map();
+	public var boyfriendMap:Map<String, Boyfriend> = new Map();
 	public var dadMap:Map<String, Character> = new Map();
 	public var gfMap:Map<String, Character> = new Map();
 	#else
-	public var boyfriendMap:Map<String, Character.Boyfriend> = new Map<String, Boyfriend>();
+	public var boyfriendMap:Map<String, Boyfriend> = new Map<String, Boyfriend>();
 	public var dadMap:Map<String, Character> = new Map<String, Character>();
 	public var gfMap:Map<String, Character> = new Map<String, Character>();
 	#end

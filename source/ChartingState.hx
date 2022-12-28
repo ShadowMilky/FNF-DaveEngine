@@ -94,8 +94,9 @@ class ChartingState extends MusicBeatState
 	var gridBlackLine:FlxSprite;
 	var vocals:FlxSound;
 
-	// var player2:Character = new Character(0, 0, "dad");
-	// var player1:Boyfriend = new Boyfriend(0, 0, "bf");
+	var player2:Character = new Character(0, 0, "dad");
+	var player1:Boyfriend = new Boyfriend(0, 0, "bf");
+
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
 
@@ -215,12 +216,12 @@ class ChartingState extends MusicBeatState
 		add(curRenderedSustains);
 		add(snapText);
 
-		// player2 = new Character(0, gridBG.y + 50, _song.player2);
-		// player1 = new Boyfriend(player2.width * 0.2, gridBG.y + 150, _song.player1);
-		// player2.setGraphicSize(Std.int(player2.width * 0.2));
-		// player1.setGraphicSize(Std.int(player1.width * 0.2));
-		// UI_box.add(player1);
-		// UI_box.add(player2);
+		player2 = new Character(0, gridBG.y + 50, _song.player2);
+		player1 = new Boyfriend(player2.width * 0.2, gridBG.y + 150, _song.player1);
+		player2.setGraphicSize(Std.int(player2.width * 0.2));
+		player1.setGraphicSize(Std.int(player1.width * 0.2));
+		UI_box.add(player1);
+		UI_box.add(player2);
 
 		super.create();
 	}
