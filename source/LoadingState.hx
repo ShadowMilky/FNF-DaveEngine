@@ -31,6 +31,8 @@ class LoadingState extends MusicBeatState
 		super();
 		this.target = target;
 		this.stopMusic = stopMusic;
+
+		screenThing();
 	}
 
 	var loadBar:FlxSprite;
