@@ -54,6 +54,8 @@ class LoadingState extends MusicBeatState
 		var loading:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('loadingscreen'));
 		add(loading);
 
+		trace('please work please');
+		
 		flixel.addons.transition.FlxTransitionableState.skipNextTransIn = false;
 		flixel.addons.transition.FlxTransitionableState.skipNextTransOut = false;
 		if (!globeTrans)
