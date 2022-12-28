@@ -353,10 +353,10 @@ class AnimationDebugNew extends MusicBeatState
 	}
 
 	override function update(elapsed:Float)
+	{
 		var characterSelTextField = new FlxText(0, 0, 0, 'Character: ' + char.curCharacter);
 
-	add(characterSelTextField);
-	{
+		add(characterSelTextField);
 		textAnim.text = char.animation.curAnim.name;
 		FlxG.mouse.visible = true;
 		if (FlxG.mouse.overlaps(char) && FlxG.mouse.pressed)
@@ -390,7 +390,7 @@ class AnimationDebugNew extends MusicBeatState
 		if (FlxG.keys.justPressed.F)
 			char.flipX = !char.flipX;
 		if (FlxG.keys.justPressed.TWO)
-			animationGhost.visible = true;
+			animationGhost.visible = !animationGhost.visible;
 		if (FlxG.keys.pressed.I || FlxG.keys.pressed.J || FlxG.keys.pressed.K || FlxG.keys.pressed.L)
 		{
 			if (FlxG.keys.pressed.I)
