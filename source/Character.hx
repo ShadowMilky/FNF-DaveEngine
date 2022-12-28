@@ -331,6 +331,8 @@ class Character extends FlxSprite
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
+				globalOffset = [0, 200];
+
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
