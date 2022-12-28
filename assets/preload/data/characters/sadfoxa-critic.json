@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				20,
+				10
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "FoxaSad Idle"
+		},
+		{
+			"offsets": [
+				31,
+				10
+			],
+			"loop": true,
+			"fps": 15,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "FoxaSad Left"
+		},
+		{
+			"offsets": [
+				20,
+				10
+			],
+			"loop": true,
+			"fps": 15,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "FoxaSad Down"
+		},
+		{
+			"offsets": [
+				14,
+				10
+			],
+			"loop": true,
+			"fps": 15,
+			"anim": "singUP",
+			"indices": [],
+			"name": "FoxaSad Up"
+		},
+		{
+			"offsets": [
+				20,
+				7
+			],
+			"loop": true,
+			"fps": 15,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "FoxaSad Right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/FoxaSad",
+	"position": [
+		220,
+		0
+	],
+	"healthicon": "SadFox",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		169,
+		255
+	],
+	"camera_position": [
+		-240,
+		110
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1
+}
