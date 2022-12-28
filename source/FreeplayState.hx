@@ -199,7 +199,7 @@ class FreeplayState extends MusicBeatState
 		switch (Catagories[CurrentPack].toLowerCase())
 		{
 			case 'foxa':
-				addWeek(['Bubbles', 'Burning Flames', 'Execution', 'Firestorm'], 1, ['foxa', 'foxa-angy', 'creation-new']);
+				addWeek(['Bubbles', 'Burning-Flames', 'Execution', 'Firestorm'], 1, ['foxa', 'foxa-angy', 'creation-new']);
 			case 'vanilla':
 				addWeek(['Tutorial'], 2, ['gf']);
 		}
