@@ -20,7 +20,7 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
-class LoadingState extends MusicBeatState
+class LoadingScreen extends MusicBeatState
 {
 	inline static var MIN_TIME = 1.0;
 
