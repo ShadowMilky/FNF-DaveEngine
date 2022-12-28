@@ -1,5 +1,6 @@
 package;
 
+import vlc.MP4Handler;
 import CreditsMenuState.CreditsText;
 import flixel.graphics.frames.FlxFrame;
 import flixel.graphics.FlxGraphic;
@@ -303,7 +304,7 @@ class PlayState extends MusicBeatState
 	var bfNoteCamOffset:Array<Float> = new Array<Float>();
 	var dadNoteCamOffset:Array<Float> = new Array<Float>();
 
-	var video:VideoHandler;
+	var video:MP4Handler;
 	var weirdBG:FlxSprite;
 
 	var scriptThing:Dynamic;
@@ -1491,7 +1492,7 @@ class PlayState extends MusicBeatState
 		inCutscene = true;
 		FlxG.sound.music.stop();
 
-		video = new VideoHandler();
+		video = new MP4Handler();
 		video.finishCallback = function()
 		{
 			switch (curSong.toLowerCase())
@@ -1514,7 +1515,7 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = true;
 
-		video = new VideoHandler();
+		video = new MP4Handler();
 		video.finishCallback = function()
 		{
 			LoadingState.loadAndSwitchState(new PlayState());
@@ -1801,7 +1802,8 @@ class PlayState extends MusicBeatState
 			}
 
 			#if desktop
-			DiscordClient.changePresence("PAUSED on " + SONG.song
+			DiscordClient.changePresence("PAUSED on "
+				+ SONG.song
 				+ " ("
 				+ storyDifficultyText
 				+ ") |",
@@ -1869,8 +1871,7 @@ class PlayState extends MusicBeatState
 			else
 			{
 				#if desktop
-				DiscordClient.changePresence(detailsText, SONG.song
-					+ " (" + storyDifficultyText + ") ", iconRPC);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") ", iconRPC);
 				#end
 			}
 		}
@@ -2079,8 +2080,14 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		iconP1.x = healthBar.x
+			+ (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01))
+			+ (150 * iconP1.scale.x - 150) / 2
+			- iconOffset;
+		iconP2.x = healthBar.x
+			+ (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01))
+			- (150 * iconP2.scale.x) / 2
+			- iconOffset * 2;
 
 		if (health > 2)
 			health = 2;
@@ -3572,7 +3579,8 @@ class PlayState extends MusicBeatState
 		openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, deathSkinCheck));
 
 		#if desktop
-		DiscordClient.changePresence("GAME OVER -- " + SONG.song
+		DiscordClient.changePresence("GAME OVER -- "
+			+ SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") ",
