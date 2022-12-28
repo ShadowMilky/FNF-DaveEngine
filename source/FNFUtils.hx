@@ -11,7 +11,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxGradient;
-import states.MusicBeatState.MusicBeatSubstate;
+import MusicBeatSubstate;
 
 /**
  * Base Flixel Game override, for handling errors and other extra FNF Related stuff!
