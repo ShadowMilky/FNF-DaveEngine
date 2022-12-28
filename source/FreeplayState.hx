@@ -552,7 +552,7 @@ class FreeplayState extends MusicBeatState
 								FlxG.save.flush();
 							}
 							LoadingState.loadAndSwitchState(new CharacterSelectState());
-						}	
+						}
 					default:
 						FlxG.sound.music.fadeOut(1, 0);
 						PlayState.SONG = Song.loadFromJson(songs[curSelected].songName.toLowerCase());

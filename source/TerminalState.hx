@@ -109,7 +109,7 @@ class TerminalState extends MusicBeatState
 						case "execution.dat":
 							UpdatePreviousText(false); // resets the text
 							UpdateText(LanguageManager.getTerminalString("term_loading"));
-					    	PlayState.SONG = Song.loadFromJson('execution');
+							PlayState.SONG = Song.loadFromJson('execution');
 							PlayState.SONG.validScore = false;
 							LoadingState.loadAndSwitchState(new PlayState());
 						case "creation.dat":
@@ -348,7 +348,7 @@ class TerminalState extends MusicBeatState
 		}
 		previousText = finalthing;
 		displayText.text = finalthing;
-		if(displayText.height > 720)
+		if (displayText.height > 720)
 			displayText.y = 720 - displayText.height;
 	}
 
