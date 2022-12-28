@@ -46,8 +46,8 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var Catagories:Array<String> = ['foxa'];
-	var translatedCatagory:Array<String> = [LanguageManager.getTextString('freeplay_foxa')];
+	private var Catagories:Array<String> = ['foxa', 'vanilla'];
+	var translatedCatagory:Array<String> = [LanguageManager.getTextString('freeplay_foxa'), 'vanilla'];
 
 	var weekList:Array<String> = [];
 
@@ -143,7 +143,7 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public static function createSongArrayFromTxt(name:String, whatTo:String):Array<String>
+	public static function createSongArrayFromTxt(name:String, nameSection:String, whatTo:String):Array<String>
 	{
 		var tempWeek:Array<String> = CoolUtil.coolTextFile(Paths.file('data/weeks/' + name + '.txt', TEXT, 'preload'));
 		var returned:Array<String> = [];
@@ -199,12 +199,9 @@ class FreeplayState extends MusicBeatState
 		switch (Catagories[CurrentPack].toLowerCase())
 		{
 			case 'foxa':
-				for (i in 0...weekList.length)
-				{
-					var mainCharacter = createSongArrayFromTxt(weekList[i], 'char');
-					addWeek(createSongArrayFromTxt(weekList[i], 'songs'), i, createSongArrayFromTxt(weekList[i], 'char'));
-					songColors.push(FlxColor.fromString(getColorCode(mainCharacter[0])));
-				}
+				addWeek(['Bubbles', 'Burning Flames', 'Execution', 'Firestorm'], 1, ['foxa', 'foxa-angy', 'creation-new']);
+			case 'vanilla':
+				addWeek(['Tutorial'], 2, ['gf']);
 		}
 	}
 
