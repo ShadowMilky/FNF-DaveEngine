@@ -1,24 +1,25 @@
-import haxe.crypto.Md5;
-import haxe.Exception;
-import openfl.utils.Assets;
-import hscript.Interp;
-import sys.thread.Thread;
-import sys.io.File;
-import sys.FileSystem;
-import lime.system.System;
-import flixel.addons.transition.TransitionData;
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
-import flixel.text.FlxText;
-import flixel.math.FlxMath;
-import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
+import flixel.graphics.FlxGraphic;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+import haxe.Exception;
+import haxe.crypto.Md5;
+import hscript.Interp;
+import lime.system.System;
+import openfl.utils.Assets;
+import sys.FileSystem;
+import sys.io.File;
+import sys.thread.Thread;
 
 class LoadingScreen extends MusicBeatState
 {
@@ -42,11 +43,12 @@ class LoadingScreen extends MusicBeatState
 		"Screw you!",
 		"It's AumSum Time!!!!!",
 		"It's AumSum Time!!!!!",
-	]; 
-	function new()
+	];
+
+	public function new()
 	{
 		super();
-        screenThing();
+		screenThing();
 	}
 
 	public function screenThing()
@@ -135,15 +137,15 @@ class LoadingScreen extends MusicBeatState
 	}
 
 	function clrBarTwn(incrementor:Int, sprite:FlxSprite, clrArray:Array<flixel.util.FlxColor>, duration:Int)
-		{
-			flixel.tweens.FlxTween.color(sprite, duration, sprite.color, clrArray[incrementor], {
-				onComplete: function(_)
-				{
-					incrementor++;
-					if (incrementor > 5)
-						incrementor = 0;
-					clrBarTwn(incrementor, sprite, clrArray, duration);
-				}
-			});
-		}
+	{
+		flixel.tweens.FlxTween.color(sprite, duration, sprite.color, clrArray[incrementor], {
+			onComplete: function(_)
+			{
+				incrementor++;
+				if (incrementor > 5)
+					incrementor = 0;
+				clrBarTwn(incrementor, sprite, clrArray, duration);
+			}
+		});
+	}
 }

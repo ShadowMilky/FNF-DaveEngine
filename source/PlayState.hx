@@ -1871,7 +1871,7 @@ class PlayState extends MusicBeatState
 			{
 				#if desktop
 				DiscordClient.changePresence(detailsText, // + SONG.song
-					+ "NO LEAKS!!!" + " (" + storyDifficultyText + ") ", iconRPC);
+				"NO LEAKS!!!" + " (" + storyDifficultyText + ") ", iconRPC);
 				#end
 			}
 		}
