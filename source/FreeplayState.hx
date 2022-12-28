@@ -1,6 +1,5 @@
 package;
 
-import vlc.MP4Handler;
 import flixel.system.FlxSound;
 import Controls.Device;
 import Controls.Control;
@@ -538,7 +537,7 @@ class FreeplayState extends MusicBeatState
 							var inCutscene = true;
 
 							trace('freeplay video funni');
-							var video = new MP4Handler();
+							var video = new VideoHandler();
 							video.finishCallback = function()
 							{
 								LoadingState.loadAndSwitchState(new PlayState());
