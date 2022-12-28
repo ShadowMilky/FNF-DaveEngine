@@ -51,7 +51,7 @@ class AnimationDebugNew extends MusicBeatState
 	var offsetX:FlxUINumericStepper;
 	var offsetY:FlxUINumericStepper;
 
-	var characters:Array<String>;
+	var characterslol:Array<String>;
 
 	public function new(daAnim:String = 'bf')
 	{
