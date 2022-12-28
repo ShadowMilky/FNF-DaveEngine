@@ -229,6 +229,7 @@ class LoadingState extends MusicBeatState
 
 	inline static public function loadAndSwitchState(target:FlxState, stopMusic = false)
 	{
+		var loadup = new LoadingScreen();
 		FlxG.sound.music.stop();
 		FlxG.switchState(getNextState(target, stopMusic));
 	}

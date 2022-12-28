@@ -20,135 +20,107 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
-typedef LoadingShit =
+class LoadingState extends MusicBeatState
 {
-	var name:String;
-	var func:Void->Void;
-}
+	inline static var MIN_TIME = 1.0;
 
-class LoadingScreen extends FlxState
-{
-	var loadSections:Array<LoadingShit> = [];
-	var step:Int = 0;
-	var loadingText:FlxText;
-	var switchin:Bool = false;
-	var bg:FlxTypedSpriteGroup<FlxSprite> = new FlxTypedSpriteGroup<FlxSprite>();
+	var targetShit:Float = 0;
 
-	var w = 775;
-	var h = 550;
+	public static var globeTrans:Bool = true;
 
-	public override function create()
+	var loadBar:FlxSprite;
+	var callbackTxt:FlxText;
+	var loadingTxt:FlxSprite;
+	var loadingCirc:FlxSprite;
+	var loadingCircSpeed = FlxG.random.int(50, 200);
+	var tipTxt:FlxText;
+	var tips:Array<String> = [
+		"This mod was made with Dave Engine, because Whitty exists in both Kade Engine and Psych Engine.",
+		"GF doesn't work properly, I'm not sure if I can fix it right now.",
+		"Foxa is not a furry.",
+		"I'm inside your walls.",
+		"Screw you!",
+		"It's AumSum Time!!!!!",
+		"It's AumSum Time!!!!!",
+	]; 
+	function new()
 	{
-		super.create();
+		super();
+        screenThing();
+	}
 
-		var md5 = null;
-
-		// can't put this into main cause of conflicting headers shit (thank you hxcpp)
-		HeaderCompilationBypass.darkMode();
-		HeaderCompilationBypass.addFileAssoc();
-
-		var loadingThingy = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK, true);
-		loadingThingy.pixels.lock();
-		var color1 = FlxColor.fromRGB(0, 66, 119);
-		var color2 = FlxColor.fromRGB(86, 0, 151);
-		for (x in 0...loadingThingy.pixels.width)
-		{
-			for (y in 0...loadingThingy.pixels.height)
-			{
-				loadingThingy.pixels.setPixel32(x, y,
-					FlxColor.fromRGB(Std.int(FlxMath.remapToRange(((y / loadingThingy.pixels.height) * 1), 0, 1, color1.red, color2.red)),
-						Std.int(FlxMath.remapToRange(((y / loadingThingy.pixels.height) * 1), 0, 1, color1.green, color2.green)),
-						Std.int(FlxMath.remapToRange(((y / loadingThingy.pixels.height) * 1), 0, 1, color1.blue, color2.blue))));
-			}
-		}
-		loadingThingy.pixels.unlock();
-		add(loadingThingy);
-
-		var bgLol = new FlxSprite(FlxG.width, FlxG.height);
-		bgLol.loadGraphic(Paths.image("loading/bg", "preload"));
-		bgLol.antialiasing = true;
-		bg.add(bgLol);
-
-		/*for(x in 0...Math.ceil(FlxG.width / w)+1) {
-			for(y in 0...(Math.ceil(FlxG.height / h)+1)) {
-				// bg pattern
-				var pattern = new FlxSprite(x * w, y * h);
-				pattern.loadGraphic(Paths.image("loading/bgpattern", "preload"));
-				pattern.antialiasing = true;
-				bg.add(pattern);
-			}
-		}*/
-		add(bg);
-
-		var loading = new FlxSprite().loadGraphic(Paths.image("loading/loading"));
-		loading.scale.set(0.85, 0.85);
-		loading.updateHitbox();
-		loading.y = FlxG.height - (loading.height * 0.85);
-		loading.screenCenter(X);
-		loading.antialiasing = true;
+	public function screenThing()
+	{
+		var loading:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('loadingscreen'));
 		add(loading);
 
-		loadingText = new FlxText(0, 0, FlxG.width, "Loading...", 32);
-		loadingText.setFormat(Paths.font("vcr.ttf"), Std.int(32), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		loadingText.y = FlxG.height - (loadingText.height * 1.5);
-		loadingText.screenCenter(X);
-		loadingText.antialiasing = true;
-		add(loadingText);
-
-		var logoBl = new FlxSprite(-150, -25);
-		logoBl.frames = Paths.getSparrowAtlas('ui/logoBumpin');
-		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logoBl.animation.play('bump');
-		logoBl.updateHitbox();
-		logoBl.screenCenter(X);
-		add(logoBl);
-
-		loadSections.push({
-			"name": "Loading Save Data",
-			"func": saveData
-		});
-		loadSections.push({
-			"name": "Finishing Loading",
-			"func": additionalSetup
-		});
-
-		FlxG.autoPause = false;
-
-		#if sys
-		Thread.create(function()
+		flixel.addons.transition.FlxTransitionableState.skipNextTransIn = false;
+		flixel.addons.transition.FlxTransitionableState.skipNextTransOut = false;
+		if (!globeTrans)
 		{
-			for (k => s in loadSections)
-			{
-				loadingText.text = '${s.name}... (${Std.string(Math.floor((k / loadSections.length) * 100))}%)';
-				trace(loadingText.text);
-				s.func();
-			}
-			switchin = true;
-		});
-		#end
+			flixel.addons.transition.FlxTransitionableState.skipNextTransIn = true;
+			flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+		}
+		globeTrans = true;
+
+		loadingTxt = new FlxSprite(100, 0).loadGraphic(Paths.image('loading'));
+		loadingTxt.antialiasing = true;
+		loadingTxt.scale.set(0.45, 0.45);
+		loadingTxt.updateHitbox();
+		loadingTxt.screenCenter(Y);
+		add(loadingTxt);
+
+		flixel.tweens.FlxTween.angle(loadingTxt, -5, 5, 1, {ease: flixel.tweens.FlxEase.quadInOut, type: flixel.tweens.FlxTween.FlxTweenType.PINGPONG});
+		flixel.tweens.FlxTween.tween(loadingTxt, {"scale.x": 0.47, "scale.y": 0.47}, 0.5,
+			{ease: flixel.tweens.FlxEase.quadInOut, type: flixel.tweens.FlxTween.FlxTweenType.PINGPONG});
+
+		loadingCirc = new FlxSprite(loadingTxt.x, 0).loadGraphic(Paths.image('loadingicon'));
+		loadingCirc.x += loadingTxt.width;
+		loadingCirc.scale.set(0.45, 0.45);
+		loadingCirc.updateHitbox();
+		loadingCirc.antialiasing = true;
+		loadingCirc.screenCenter(Y);
+		add(loadingCirc);
+
+		loadBar = new FlxSprite(10, 0).makeGraphic(10, FlxG.height - 150, 0xffffffff);
+		loadBar.screenCenter(Y);
+		loadBar.antialiasing = true;
+		loadBar.color = 0xffff00ff;
+		add(loadBar);
+
+		var loadColors:Array<flixel.util.FlxColor> = [0xffff0000, 0xffff7b00, 0xffffff00, 0xff00ff00, 0xff0000ff, 0xffff00ff];
+		var loadIncrement:Int = 0;
+		clrBarTwn(loadIncrement, loadBar, loadColors, 1);
+
+		callbackTxt = new FlxText(30, 0, 0, "");
+		callbackTxt.scrollFactor.set();
+		callbackTxt.setFormat("VCR OSD Mono", 16, 0xffffffff, CENTER);
+		callbackTxt.screenCenter(Y);
+		add(callbackTxt);
+
+		tipTxt = new FlxText(0, FlxG.height - 48, 0, tips[FlxG.random.int(0, tips.length - 1)]);
+		tipTxt.scrollFactor.set();
+		tipTxt.setFormat("VCR OSD Mono", 16, 0xffffffff, LEFT);
+		add(tipTxt);
+
+		var timer = new FlxTimer().start(4, function(tmr:FlxTimer)
+		{
+			tipTxt.text = tips[FlxG.random.int(0, tips.length - 1)];
+		}, 0);
 	}
 
 	var aborted = false;
 
 	public override function update(elapsed:Float)
 	{
-		bg.x -= w * elapsed / 4;
-		bg.x %= w;
-		bg.y -= h * elapsed / 4;
-		bg.y %= h;
 		super.update(elapsed);
+
+		loadingCirc.angle += elapsed * loadingCircSpeed;
 
 		#if !sys
 		if (switchin || aborted)
 			return;
 
-		if (step < 0)
-		{
-			loadingText.text = loadSections[0].name + "... (0%)";
-			step = 0;
-			return;
-		}
 		if (step >= loadSections.length)
 		{
 			switchin = true;
@@ -157,24 +129,21 @@ class LoadingScreen extends FlxState
 			trace(e);
 			FlxG.switchState(e);
 		}
-		else
-		{
-			loadSections[step].func();
-			step++;
-			if (aborted)
-				return;
-			if (step >= loadSections.length)
-			{
-				loadingText.text = "Loading Complete ! (100%)";
-			}
-			else
-			{
-				loadingText.text = loadSections[step].name + "... (" + Std.string(Math.round((step / loadSections.length) * 100)) + "%)";
-			}
-			loadingText.screenCenter(X);
-		}
 		#end
 	}
+
+	function clrBarTwn(incrementor:Int, sprite:FlxSprite, clrArray:Array<flixel.util.FlxColor>, duration:Int)
+		{
+			flixel.tweens.FlxTween.color(sprite, duration, sprite.color, clrArray[incrementor], {
+				onComplete: function(_)
+				{
+					incrementor++;
+					if (incrementor > 5)
+						incrementor = 0;
+					clrBarTwn(incrementor, sprite, clrArray, duration);
+				}
+			});
+		}
 
 	public function saveData()
 	{
@@ -190,94 +159,4 @@ class LoadingScreen extends FlxState
 			new FlxRect(0, 0, FlxG.width, FlxG.height));
 		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.35, new FlxPoint(0, 1), {asset: diamond, width: 32, height: 32},
 			new FlxRect(0, 0, FlxG.width, FlxG.height));
-	}
-
-	public function additionalSetup()
-	{
-		// FLXCOLOR
-		Interp.setRedirects["Int"] = function(obj:Dynamic, name:String, val:Dynamic):Dynamic
-		{
-			var c:FlxColor = obj;
-			switch (name)
-			{
-				case "alpha":
-					c.alpha = val;
-				case "alphaFloat":
-					c.alphaFloat = val;
-				case "black":
-					c.black = val;
-				case "blue":
-					c.blue = val;
-				case "blueFloat":
-					c.blueFloat = val;
-				case "brightness":
-					c.brightness = val;
-				case "cyan":
-					c.cyan = val;
-				case "green":
-					c.green = val;
-				case "greenFloat":
-					c.greenFloat = val;
-				case "hue":
-					c.hue = val;
-				case "lightness":
-					c.lightness = val;
-				case "magenta":
-					c.magenta = val;
-				case "red":
-					c.red = val;
-				case "redFloat":
-					c.redFloat = val;
-				case "saturation":
-					c.saturation = val;
-				case "yellow":
-					c.yellow = val;
-			}
-			obj = c;
-			return c;
-		}
-		Interp.getRedirects["Int"] = function(obj:Dynamic, name:String):Dynamic
-		{
-			var c:FlxColor = obj;
-			switch (name)
-			{
-				case "alpha":
-					return c.alpha;
-				case "alphaFloat":
-					return c.alphaFloat;
-				case "black":
-					return c.black;
-				case "blue":
-					return c.blue;
-				case "blueFloat":
-					return c.blueFloat;
-				case "brightness":
-					return c.brightness;
-				case "cyan":
-					return c.cyan;
-				case "green":
-					return c.green;
-				case "greenFloat":
-					return c.greenFloat;
-				case "hue":
-					return c.hue;
-				case "lightness":
-					return c.lightness;
-				case "magenta":
-					return c.magenta;
-				case "red":
-					return c.red;
-				case "redFloat":
-					return c.redFloat;
-				case "saturation":
-					return c.saturation;
-				case "yellow":
-					return c.yellow;
-			}
-			return null;
-		}
-
-		FlxG.fixedTimestep = false;
-		PlayerSettings.init();
-	}
 }
