@@ -972,7 +972,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf':
+				case 'gf' | 'gf-whitty' | 'gf-junkers':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
