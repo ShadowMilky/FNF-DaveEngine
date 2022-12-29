@@ -1,41 +1,11 @@
 package;
 
-import CreditsMenuState.CreditsText;
-import flixel.graphics.frames.FlxFrame;
-import flixel.graphics.FlxGraphic;
-import flixel.addons.transition.Transition;
-import flixel.group.FlxGroup;
-import sys.FileSystem;
-import flixel.util.FlxArrayUtil;
-import flixel.addons.plugin.FlxScrollingText;
 import Alphabet;
-import flixel.addons.display.FlxBackdrop;
-// import openfl.display.ShaderParameter;
-import openfl.display.Graphics;
-import flixel.group.FlxSpriteGroup;
-import lime.tools.ApplicationData;
-import flixel.effects.particles.FlxParticle;
-import hscript.Printer;
-import openfl.desktop.Clipboard;
-import flixel.system.debug.Window;
-#if desktop
-import sys.io.File;
-import openfl.display.BitmapData;
-#end
-import flixel.system.FlxBGSprite;
-import flixel.tweens.misc.ColorTween;
-import flixel.math.FlxRandom;
-import openfl.net.FileFilter;
-import openfl.filters.BitmapFilter;
-// import Shaders.PulseEffect;
-// import Shaders.BlockedGlitchShader;
-// import Shaders.BlockedGlitchEffect;
-// import Shaders.DitherEffect;
-import Shaders.WiggleEffect;
-// import Shaders.VCRDistortionShader;
-import Section.SwagSection;
-import Song.SwagSong;
+import CreditsMenuState.CreditsText;
 import HScriptTool.Script;
+import Section.SwagSection;
+import Shaders.WiggleEffect;
+import Song.SwagSong;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -44,51 +14,85 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxSubState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.FlxTrailArea;
 import flixel.addons.effects.chainable.FlxEffectSprite;
 import flixel.addons.effects.chainable.FlxWaveEffect;
+import flixel.addons.effects.chainable.IFlxEffect;
+import flixel.addons.plugin.FlxScrollingText;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.Transition;
+import flixel.animation.FlxAnimationController;
+import flixel.effects.particles.FlxParticle;
+import flixel.graphics.FlxGraphic;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxFrame;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.group.FlxGroup;
+import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
+import flixel.math.FlxRandom;
 import flixel.math.FlxRect;
+import flixel.system.FlxBGSprite;
 import flixel.system.FlxSound;
+import flixel.system.debug.Window;
+import flixel.system.debug.Window;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.tweens.misc.ColorTween;
 import flixel.ui.FlxBar;
+import flixel.util.FlxArrayUtil;
 import flixel.util.FlxCollision;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
+import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
 import haxe.Json;
+import hscript.Printer;
+import lime.app.Application;
+import lime.tools.ApplicationData;
+import lime.ui.Window;
 import lime.utils.Assets;
+import openfl.Lib;
+import openfl.desktop.Clipboard;
 import openfl.display.BlendMode;
+import openfl.display.Graphics;
+import openfl.display.Sprite;
 import openfl.display.StageQuality;
+import openfl.filters.BitmapFilter;
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
+import openfl.net.FileFilter;
+import sys.FileSystem;
+
+using StringTools;
+
+// import openfl.display.ShaderParameter;
+#if desktop
+import openfl.display.BitmapData;
+import sys.io.File;
+#end
+// import Shaders.PulseEffect;
+// import Shaders.BlockedGlitchShader;
+// import Shaders.BlockedGlitchEffect;
+// import Shaders.DitherEffect;
+// import Shaders.VCRDistortionShader;
 // import openfl.filters.ShaderFilter;
 // import flash.system.System;
-import flixel.util.FlxSpriteUtil;
-import flixel.addons.effects.chainable.IFlxEffect;
 #if desktop
 import Discord.DiscordClient;
 #end
 #if windows
+import lime.app.Application;
 import sys.io.File;
 import sys.io.Process;
-import lime.app.Application;
 #end
-import flixel.system.debug.Window;
-import lime.app.Application;
-import openfl.Lib;
-import openfl.geom.Matrix;
-import lime.ui.Window;
-import openfl.geom.Rectangle;
-import openfl.display.Sprite;
 
 // THERE
 // IS
@@ -96,8 +100,6 @@ import openfl.display.Sprite;
 // D&B SHIT HERE
 // EVEN THOUGH
 // THIS MOD IS BASED OFF ON IT
-using StringTools;
-
 class PlayState extends MusicBeatState
 {
 	public static var instance:PlayState;
@@ -2661,10 +2663,30 @@ class PlayState extends MusicBeatState
 		{
 			case "bubbles":
 				trace('burning flames cutscene funni');
-				LoadingState.loadAndSwitchState(new FMVState());
+
+				var bgFunni:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('fmvBG'));
+				bgFunni.antialiasing = true;
+				bgFunni.visible = true;
+				add(bgFunni);
+
+				var frameFunni = new FlxSprite(0, 0);
+				frameFunni.frames = Paths.getSparrowAtlas('cutscenes/burningflames_cut');
+				frameFunni.antialiasing = true;
+				frameFunni.animation.addByPrefix('cutscene', 'cutscene', 20);
+				add(frameFunni);
+		        frameFunni.visible = false;
+
+				FlxG.sound.play(Paths.sound('cutscene/burningflamesCutscene'));
+
+				frameFunni.animation.play('cutscene');
+
+				new FlxTimer().start(10, function(tmr:FlxTimer)
+				{
+					FlxG.switchState(new PlayState());
+				});
 			/*case "burning-flames":
 				trace('AAAAAAAAAA');
-				playEndCutscene('executioncut');*/
+				playEndCutscene('executioncut'); */
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 		}
