@@ -3,7 +3,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' | Vs. Foxa" file="VsFoxa" packageName="dnbteam.daveengine" package="dnbteam.daveengine" main="Main" version="3.0.0" company="dnbteam"/>
+	<app title="Friday Night Funkin' | Vs. Foxa" file="VsFoxa" packageName="powderteam.vsfoxa" package="powderteam.vsfoxa" main="Main" version="3.0.0" company="powderteam"/>
 	<app preloader="flixel.system.FlxPreloader"/>
 
 	<set name="APP_ID" value="0x0100f6c013bbc000"/>
@@ -76,12 +76,19 @@
 	<haxelib name="hscript" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="hxCodec" if="desktop || android" />
+
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+
 	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
 	<haxedef name="HXCPP_GC_MOVING"/>
 	<haxedef name="HXCPP_GC_DYNAMIC_SIZE"/>
+
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+	<!--Used for Izzy Engine's crash handler-->
+	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
 
 	<setenv name="next"/>
 
