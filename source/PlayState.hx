@@ -2664,7 +2664,7 @@ class PlayState extends MusicBeatState
 			case "bubbles":
 				trace('burning flames cutscene funni');
 
-				var bgFunni:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('fmvBG'));
+				var bgFunni:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('fmvBG'));
 				bgFunni.antialiasing = true;
 				bgFunni.visible = true;
 				add(bgFunni);
@@ -2674,7 +2674,7 @@ class PlayState extends MusicBeatState
 				frameFunni.antialiasing = true;
 				frameFunni.animation.addByPrefix('cutscene', 'cutscene', 20);
 				add(frameFunni);
-		        frameFunni.visible = false;
+		        frameFunni.visible = true;
 
 				FlxG.sound.play(Paths.sound('cutscene/burningflamesCutscene'));
 
