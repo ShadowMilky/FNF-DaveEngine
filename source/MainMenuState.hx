@@ -38,9 +38,23 @@ class MainMenuState extends MusicBeatState
 
 	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'ost', 'options', 'discord'];
 
-	var languagesOptions:Array<String> = ['main_story', 'main_freeplay', 'main_credits', 'main_ost', 'main_options', 'main_discord'];
+	var languagesOptions:Array<String> = [
+		'main_story',
+		'main_freeplay',
+		'main_credits',
+		'main_ost',
+		'main_options',
+		'main_discord'
+	];
 
-	var languagesDescriptions:Array<String> = ['desc_story', 'desc_freeplay', 'desc_credits', 'desc_ost', 'desc_options', 'desc_discord'];
+	var languagesDescriptions:Array<String> = [
+		'desc_story',
+		'desc_freeplay',
+		'desc_credits',
+		'desc_ost',
+		'desc_options',
+		'desc_discord'
+	];
 
 	public static var firstStart:Bool = true;
 
@@ -110,6 +124,10 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = true;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
+
+		var overlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('ui/CoolOverlay'));
+		overlay.scrollFactor.set();
+		add(overlay);
 
 		selectUi = new FlxSprite(0, 0).loadGraphic(Paths.image('mainMenu/Select_Thing', 'preload'));
 		selectUi.scrollFactor.set(0, 0);
