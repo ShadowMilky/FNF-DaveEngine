@@ -2667,12 +2667,14 @@ class PlayState extends MusicBeatState
 				var bgFunni:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('fmvBG'));
 				bgFunni.antialiasing = true;
 				bgFunni.visible = true;
+				bgFunni.setGraphicSize(FlxG.width, FlxG.height);
 				add(bgFunni);
 
-				var frameFunni = new FlxSprite(0, 0);
+				var frameFunni = new FlxSprite(400, 400);
 				frameFunni.frames = Paths.getSparrowAtlas('cutscenes/burningflames_cut');
 				frameFunni.antialiasing = true;
 				frameFunni.animation.addByPrefix('cutscene', 'cutscene', 20);
+				frameFunni.setGraphicSize(Std.int(frameFunni.width * 0.7));
 				add(frameFunni);
 		        frameFunni.visible = true;
 
