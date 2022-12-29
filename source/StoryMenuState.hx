@@ -224,14 +224,14 @@ class StoryMenuState extends MusicBeatState
 
 				switch (PlayState.storyWeek)
 				{
-					case 1:
+					/*case 1:
 						FlxG.sound.music.stop();
 						var video:VideoHandler = new VideoHandler();
 						video.finishCallback = function()
 						{
 							LoadingState.loadAndSwitchState(new PlayState(), true);
 						}
-						video.playVideo(Paths.video('burningflamecut'));
+						video.playVideo(Paths.video('burningflamecut')); */
 					default:
 						LoadingState.loadAndSwitchState(new PlayState(), true);
 				}

@@ -2132,6 +2132,8 @@ class PlayState extends MusicBeatState
 		}
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebugNew(dad.curCharacter));
+		if (FlxG.keys.justPressed.NINE)
+			FlxG.switchState(new AnimationDebugNew(gf.curCharacter));
 		if (FlxG.keys.justPressed.SIX)
 			FlxG.switchState(new AnimationDebugNew(boyfriend.curCharacter));
 		if (FlxG.keys.justPressed.TWO) // Go 10 seconds into the future :O
@@ -2659,10 +2661,10 @@ class PlayState extends MusicBeatState
 		{
 			case "bubbles":
 				trace('burning flames cutscene funni');
-				playEndCutscene('burningflamecut');
-			case "burning-flames":
+				LoadingState.loadAndSwitchState(new FMVState());
+			/*case "burning-flames":
 				trace('AAAAAAAAAA');
-				playEndCutscene('executioncut');
+				playEndCutscene('executioncut');*/
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 		}

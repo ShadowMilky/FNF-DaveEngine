@@ -218,9 +218,9 @@ class Character extends FlxSprite
 				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 
-				loadOffsetFile(curCharacter);
+				globalOffset = [0, 200];
 
-				globalOffset = [0, 400];
+				loadOffsetFile(curCharacter);
 
 				barColor = FlxColor.fromString('#33de39');
 
@@ -800,90 +800,6 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
-			default:
-				var characterPath:String = 'data/characters/' + curCharacter + '.json';
-				/*#if FEATURE_MODDING
-					var path:String = Paths.mods(characterPath);
-					if (!FileSystem.exists(path)) {
-						path = Paths.getPreloadPath(characterPath);
-					}
-
-					if (!FileSystem.exists(path))
-					#else */
-
-				var path:String = Paths.getPreloadPath(characterPath);
-				if (!Assets.exists(path))
-					// #end
-				{
-					path = Paths.getPreloadPath('data/characters/' + DEFAULT_CHARACTER +
-						'.json'); // If a character couldn't be found, change him to BF just to prevent a crash
-				}
-
-				/*#if FEATURE_MODDING
-					var rawJson = File.getContent(path);
-					#else */
-				var rawJson = Assets.getText(path);
-				// #end
-
-				var json:CharacterFile = cast Json.parse(rawJson);
-				if (Assets.exists(Paths.getPath('images/' + json.image + '.txt', TEXT, 'shared')))
-				{
-					frames = Paths.getPackerAtlas(json.image);
-				}
-				else
-				{
-					frames = Paths.getSparrowAtlas(json.image);
-				}
-				imageFile = json.image;
-
-				if (json.scale != 1)
-				{
-					jsonScale = json.scale;
-					setGraphicSize(Std.int(width * jsonScale));
-					updateHitbox();
-				}
-
-				positionArray = json.position;
-				cameraPosition = json.camera_position;
-
-				healthIcon = json.healthicon;
-				singDuration = json.sing_duration;
-				flipX = !!json.flip_x;
-				if (json.no_antialiasing)
-					noAntialiasing = true;
-
-				antialiasing = true;
-
-				animationsArray = json.animations;
-				if (animationsArray != null && animationsArray.length > 0)
-				{
-					for (anim in animationsArray)
-					{
-						var animAnim:String = '' + anim.anim;
-						var animName:String = '' + anim.name;
-						var animFps:Int = anim.fps;
-						var animLoop:Bool = !!anim.loop; // Bruh
-						var animIndices:Array<Int> = anim.indices;
-						if (animIndices != null && animIndices.length > 0)
-						{
-							animation.addByIndices(animAnim, animName, animIndices, "", animFps, animLoop);
-						}
-						else
-						{
-							animation.addByPrefix(animAnim, animName, animFps, animLoop);
-						}
-
-						if (anim.offsets != null && anim.offsets.length > 1)
-						{
-							addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
-						}
-					}
-				}
-				else
-				{
-					quickAnimAdd('idle', 'BF idle dance');
-				}
-				// trace('Loaded file to character ' + curCharacter);
 		}
 		dance();
 
