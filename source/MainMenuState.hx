@@ -126,6 +126,7 @@ class MainMenuState extends MusicBeatState
 		add(magenta);
 
 		var overlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('ui/CoolOverlay'));
+		overlay.alpha = 50;
 		overlay.scrollFactor.set();
 		add(overlay);
 
@@ -191,7 +192,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItem.updateHitbox();
 			// menuItem.screenCenter(Y);
-			// menuItem.alpha = 0; //TESTING
+			// menuItem.alpha = 0; // TESTING
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set(0, 1);
 			if (firstStart)
