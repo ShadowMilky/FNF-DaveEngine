@@ -220,6 +220,8 @@ class Character extends FlxSprite
 
 				loadOffsetFile(curCharacter);
 
+				globalOffset = [0, 400];
+
 				barColor = FlxColor.fromString('#33de39');
 
 				playAnim('danceRight');
