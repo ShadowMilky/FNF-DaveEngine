@@ -56,6 +56,7 @@ class Conductor
 
 	public static function changeBPM(newBpm:Float)
 	{
+		trace('i decided to change your ass, you beats per minute');
 		bpm = newBpm;
 
 		crochet = ((60 / bpm) * 1000);

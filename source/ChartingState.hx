@@ -358,6 +358,14 @@ class ChartingState extends MusicBeatState
 
 		var player1Label = new FlxText(10, 80, 64, 'BF P1');
 
+		var player3DropDown = new FlxUIDropDownMenu(10, 180, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+			{
+				_song.gf = characters[Std.parseInt(character)];
+			});
+			player3DropDown.selectedLabel = _song.gf;
+	
+			var player3Label = new FlxText(10, 80, 64, 'GF P3');
+
 		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player2 = characters[Std.parseInt(character)];
@@ -407,6 +415,7 @@ class ChartingState extends MusicBeatState
 		tab_group_assets.add(stageLabel);
 		tab_group_assets.add(player1DropDown);
 		tab_group_assets.add(player2DropDown);
+		tab_group_assets.add(player3DropDown);
 		tab_group_assets.add(player1Label);
 		tab_group_assets.add(player2Label);
 
@@ -1427,8 +1436,16 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase());
-		FlxG.resetState();
+		if (PlayState.SONG != null)
+		{
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase());
+			FlxG.resetState();
+		}
+		else
+		{
+			trace("no that song doesn't exist stfu, unless it does idk");
+			FlxG.sound.play(Paths.sound('missnote1'));
+		}
 	}
 
 	function loadAutosave():Void

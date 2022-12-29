@@ -225,14 +225,16 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 			case 'gf-whitty':
 				// GIRLFRIEND FUNNI CODE
-				frames = Paths.getSparrowAtlas('characters/GF_Standing_Sway', 'shared');
+				frames = Paths.getSparrowAtlas('characters/Gf-whit', 'shared');
+				animation.addByPrefix('sad', 'Sad', 24, false);
+				animation.addByPrefix('danceLeft', 'Idle Left', 24, false);
+				animation.addByPrefix('danceRight', 'Idle Right', 24, false);
+				animation.addByPrefix('scared', 'Scared', 24, false);
 
-				animation.addByPrefix('sad', 'gf sad', 24);
-				animation.addByPrefix('danceLeft', 'gf dance left', 24, false);
-				animation.addByPrefix('danceRight', 'gf dance right', 24, false);
-				animation.addByPrefix('scared', 'gf scared', 24);
-
-				loadOffsetFile(curCharacter);
+				addOffset('sad', -140, -153);
+				addOffset('danceLeft', -140, -153);
+				addOffset('danceRight', -140, -153);
+				addOffset('scared', -140, -153);
 
 				barColor = FlxColor.fromString('#33de39');
 

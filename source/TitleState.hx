@@ -43,10 +43,12 @@ class TitleState extends MusicBeatState
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
+	var ngSpr:FlxSprite;
 
 	var fun:Int;
 	var eye:FlxSprite;
 	var loopEyeTween:FlxTween;
+
 
 	override public function create():Void
 	{
@@ -177,6 +179,14 @@ class TitleState extends MusicBeatState
 		credTextShit.antialiasing = true;
 		credTextShit.screenCenter();
 
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		add(ngSpr);
+		ngSpr.visible = false;
+		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		ngSpr.updateHitbox();
+		ngSpr.screenCenter(X);
+		ngSpr.antialiasing = true;
+
 		// credTextShit.alignment = CENTER;
 
 		credTextShit.visible = false;
@@ -194,9 +204,7 @@ class TitleState extends MusicBeatState
 
 		// Init the first line of text on the intro start to prevent the intro text bug
 		createCoolText(['Engine Created by:']);
-		addMoreText('MoldyGH');
-		addMoreText('MissingTextureMan101');
-		addMoreText('Rapparep LOL');
+		addMoreText('The Vs Dave Devs');
 	}
 
 	function getIntroTextShit():Array<Array<String>>
@@ -306,16 +314,18 @@ class TitleState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 3:
-					addMoreText('TheBuilderXD');
-					addMoreText('Erizur, T5mpler');
-				case 4:
-					addMoreText('and Contributors');
-				case 5:
 					deleteCoolText();
+				case 4:
+					createCoolText(['Sponsored by']);
+				case 5:
+					addMoreText('no fuck them');
+					ngSpr.visible = true;
 				case 6:
-					createCoolText(['Based on Kade Engine']);
+					deleteCoolText();
+					ngSpr.visible = false;
+					createCoolText(['Based on Dave Engine']);
 				case 7:
-					addMoreText('ahem i mean dave engine');
+					addMoreText('its not a whitty reskin stfu');
 				case 8:
 					deleteCoolText();
 				case 9:
