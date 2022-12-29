@@ -1,35 +1,37 @@
 package;
 
-import flixel.addons.ui.FlxInputText;
-import flixel.group.FlxSpriteGroup;
-import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import flixel.addons.effects.chainable.FlxShakeEffect;
-import flixel.addons.effects.chainable.FlxWaveEffect;
-import flixel.addons.effects.chainable.FlxGlitchEffect;
-import flixel.addons.effects.chainable.FlxEffectSprite;
-import sys.FileSystem;
-import flixel.util.FlxSave;
-import flixel.math.FlxRandom;
-import flixel.math.FlxPoint;
 import Controls.KeyboardScheme;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.effects.chainable.FlxEffectSprite;
+import flixel.addons.effects.chainable.FlxGlitchEffect;
+import flixel.addons.effects.chainable.FlxShakeEffect;
+import flixel.addons.effects.chainable.FlxWaveEffect;
+import flixel.addons.ui.FlxInputText;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.group.FlxSpriteGroup;
+import flixel.input.keyboard.FlxKey;
+import flixel.math.FlxPoint;
+import flixel.math.FlxRandom;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxSave;
 import lime.app.Application;
-import flixel.addons.display.FlxBackdrop;
-import flixel.input.keyboard.FlxKey;
+import sys.FileSystem;
+
+using StringTools;
+
 #if desktop
 import Discord.DiscordClient;
 #end
-
-using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
@@ -112,7 +114,7 @@ class MainMenuState extends MusicBeatState
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
-		bg.color = 0xFFFDE871;
+		bg.color = 0xFF975299;
 		add(bg);
 
 		magenta = new FlxSprite(-80).loadGraphic(bg.graphic);
@@ -122,7 +124,7 @@ class MainMenuState extends MusicBeatState
 		magenta.screenCenter();
 		magenta.visible = false;
 		magenta.antialiasing = true;
-		magenta.color = 0xFFfd719b;
+		magenta.color = 0xfffdc571;
 		add(magenta);
 
 		var overlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('ui/CoolOverlay'));
@@ -348,7 +350,7 @@ class MainMenuState extends MusicBeatState
 					switch (optionShit[curSelected])
 					{
 						case 'discord':
-							fancyOpenURL("https://discord.gg/H4D4Ab8SYp");
+							fancyOpenURL("https://discord.gg/TtrjPDDQSJ");
 					}
 				}
 				else
