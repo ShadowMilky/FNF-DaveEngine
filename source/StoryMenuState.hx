@@ -190,8 +190,13 @@ class StoryMenuState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		}
 
+		if (camZooming)
+			FlxG.camera.zoom = FlxMath.lerp(1.5, FlxG.camera.zoom, 0.975);
+
 		super.update(elapsed);
 	}
+
+	var camZooming:Bool = false;
 
 	var movedBack:Bool = false;
 	var selectedWeek:Bool = false;
@@ -216,6 +221,22 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase());
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
+
+			FlxTween.tween(scoreText, {x: -400}, 0.5, {ease: FlxEase.quadOut});
+			FlxTween.tween(txtTracklist, {x: -400}, 0.5, {ease: FlxEase.quadOut});
+
+			updateText();
+
+			new FlxTimer().start(0.65, function(tmr:FlxTimer)
+			{
+				camZooming = true;
+			});
+
+			grpWeekText.forEach(function(spr:FlxSprite)
+			{
+				FlxTween.tween(spr, {alpha: 0}, 0.35, {ease: FlxEase.quadOut});
+			});
+
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				PlayState.characteroverride = "none";

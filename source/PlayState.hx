@@ -494,11 +494,12 @@ class PlayState extends MusicBeatState
 		// DIALOGUE STUFF
 		// Hi guys i know yall are gonna try to add more dialogue here, but with this new system, all you have to do is add a dialogue file with the name of the song in the assets/data/dialogue folder,
 		// and it will automatically get the dialogue in this function
-		if (FileSystem.exists(Paths.txt('dialogue/${SONG.song.toLowerCase()}')))
+		if (FileSystem.exists(Paths.txt('dialogue/' + SONG.song.toLowerCase())))
 		{
-			dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/${SONG.song.toLowerCase()}'));
+			trace('loading dialogue');
+			dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/' + SONG.song.toLowerCase()));
 			hasDialogue = true;
-			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt');
+			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt file');
 		}
 		else
 		{
