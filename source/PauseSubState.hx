@@ -204,9 +204,9 @@ class PauseSubState extends MusicBeatSubstate
 				switch (PlayState.SONG.song.toLowerCase())
 				{
 					case "bubbles":
-						trace('burning flames cutscene funni');
+						trace('video here | burning flames cut');
 		
-						var frameFunni = new FlxSprite(400, 400);
+						var frameFunni = new FlxSprite(145, 180);
 						frameFunni.frames = Paths.getSparrowAtlas('cutscenes/burningflames_cut');
 						frameFunni.antialiasing = true;
 						frameFunni.animation.addByPrefix('cutscene', 'cutscene', 27, false);
@@ -218,8 +218,8 @@ class PauseSubState extends MusicBeatSubstate
 		
 						frameFunni.animation.play('cutscene');
 					case "burning-flames":
-						trace('AAAAAAAAAA');
-						var frameFunni = new FlxSprite(0, 0);
+						trace('video here | execution cut');
+						var frameFunni = new FlxSprite(145, 180);
 						frameFunni.frames = Paths.getSparrowAtlas('cutscenes/execution_cut');
 						frameFunni.antialiasing = true;
 						frameFunni.animation.addByPrefix('cutscene', 'cutscene', 12, false);
@@ -230,9 +230,6 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.sound.play(Paths.sound('cutscene/executionCutscene'));
 		
 						frameFunni.animation.play('cutscene');
-	
-					default:
-						LoadingState.loadAndSwitchState(new PlayState());
 				}
 			case "Change Character":
 				funnyTexts.clear();

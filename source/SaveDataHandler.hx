@@ -55,5 +55,8 @@ class SaveDataHandler
 
 		if (FlxG.save.data.botplay == null)
 			FlxG.save.data.botplay = false;
+
+		if (FlxG.save.data.msText == null)
+			FlxG.save.data.msText = false;
 	}
 }

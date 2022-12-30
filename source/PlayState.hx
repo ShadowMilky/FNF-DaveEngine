@@ -270,6 +270,12 @@ class PlayState extends MusicBeatState
 	var creditsWatermark:FlxText;
 	var songName:FlxText;
 
+	var allNotesMs:Float = 0;
+	var averageMs:Float = 0;
+
+	var msTimeTxt:FlxText;
+	var msTimeTxtTween:FlxTween;
+
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
@@ -758,6 +764,14 @@ class PlayState extends MusicBeatState
 		songPosBG.visible = false;
 		add(songPosBG);
 
+		msTimeTxt = new FlxText(0, 0, 400, "", 32);
+		msTimeTxt.setFormat(Paths.font('vcr.ttf'), 32, 0xFFAC75FF, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		msTimeTxt.scrollFactor.set();
+		msTimeTxt.alpha = 0;
+		msTimeTxt.visible = true;
+		msTimeTxt.borderSize = 2;
+		add(msTimeTxt);
+
 		botplayTxt = new FlxText(400, songPosBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
@@ -777,6 +791,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		msTimeTxt.cameras = [camHUD];
 		songPosBG.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
 		if (kadeEngineWatermark != null)
@@ -1337,6 +1352,20 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = 0;
 		Conductor.songPosition -= Conductor.crochet * 5;
 		var swagCounter:Int = 0;
+
+		if (FlxG.save.data.msText)
+		{
+			if (scrollType == 'downscroll')
+			{
+				msTimeTxt.x = playerStrums.members[1].x - 100;
+				msTimeTxt.y = playerStrums.members[1].y + 100;
+			}
+			else
+			{
+				msTimeTxt.x = playerStrums.members[1].x - 100;
+				msTimeTxt.y = playerStrums.members[1].y - 50;
+			}
+		}
 
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
@@ -2817,6 +2846,25 @@ class PlayState extends MusicBeatState
 	private function popUpScore(strumtime:Float, note:Note):Void
 	{
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
+		allNotesMs += noteDiff;
+		averageMs = allNotesMs / totalNotesHit;
+		if (FlxG.save.data.msText)
+		{
+			msTimeTxt.alpha = 1;
+			msTimeTxt.text = Std.string(Math.round(noteDiff)) + "ms";
+			if (msTimeTxtTween != null)
+			{
+				msTimeTxtTween.cancel();
+				msTimeTxtTween.destroy(); // top 10 awesome code
+			}
+			msTimeTxtTween = FlxTween.tween(msTimeTxt, {alpha: 0}, 0.25, {
+				onComplete: function(tw:FlxTween)
+				{
+					msTimeTxtTween = null;
+				},
+				startDelay: 0.7
+			});
+		}
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
 

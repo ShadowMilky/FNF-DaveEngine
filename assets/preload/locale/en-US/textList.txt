@@ -62,6 +62,9 @@ option_fpsCap==FPS Cap
 option_freeplay_cutscenes_off==Freeplay Cutscenes Off
 option_freeplay_cutscenes_on==Freeplay Cutscenes On
 
+option_mstext_on==MS Text
+option_noteCamera_off==No MS Text
+
 option_noteCamera_on==Camera Movement On Note
 option_noteCamera_off==Normal Camera
 
