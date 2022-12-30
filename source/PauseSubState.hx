@@ -26,7 +26,7 @@ class PauseSubState extends MusicBeatSubstate
 	var menuItems:Array<PauseOption> = [
 		new PauseOption('Resume'),
 		new PauseOption('Restart Song'),
-		new PauseOption('Skip Song'),
+		new PauseOption('Play Cutscene'),
 		new PauseOption('Change Character'),
 		new PauseOption('Toggle Botplay'),
 		new PauseOption('Toggle Practice Mode'),
