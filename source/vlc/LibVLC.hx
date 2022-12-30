@@ -1,7 +1,8 @@
 package vlc;
 
 #if !(desktop || android)
-#error "The current target platform isn't supported by hxCodec. If you are targeting Windows/Mac/Linux/Android and you are getting this message, please contact us.";
+#error "The current target platform isn't supported by hxCodec. If you are targeting Windows/Mac/Linux/Android and you are getting this message, please contact us."
+;
 #end
 import cpp.Pointer;
 import cpp.UInt8;
@@ -24,7 +25,9 @@ extern class LibVLC
 	public static function create():LibVLC;
 
 	@:native("play")
-	@:overload(function():Void {})
+	@:overload(function():Void
+	{
+	})
 	public function play(path:String, loop:Bool, haccelerated:Bool):Void;
 
 	@:native("stop")

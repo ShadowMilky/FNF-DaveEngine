@@ -87,7 +87,7 @@ class OptionsMenu extends MusicBeatState
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
 
-		versionShit = new FlxText(5, FlxG.height - 18, 0, "Offset (Left, Right): " + FlxG.save.data.offset, 12);
+		versionShit = new FlxText(5, FlxG.height - 18, 0, "Select an option. | Offset (Left, Right): " + FlxG.save.data.offset, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -120,13 +120,13 @@ class OptionsMenu extends MusicBeatState
 		if (controls.RIGHT_R)
 		{
 			FlxG.save.data.offset++;
-			versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
+			versionShit.text = "Select an option. | Offset (Left, Right): " + FlxG.save.data.offset;
 		}
 
 		if (controls.LEFT_R)
 		{
 			FlxG.save.data.offset--;
-			versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
+			versionShit.text = "Select an option. | Offset (Left, Right): " + FlxG.save.data.offset;
 		}
 		if (controls.ACCEPT)
 		{

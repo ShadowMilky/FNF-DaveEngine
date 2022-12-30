@@ -14,6 +14,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import flixel.addons.display.FlxBackdrop;
 import lime.app.Application;
 
@@ -25,6 +26,7 @@ class PauseSubState extends MusicBeatSubstate
 	var menuItems:Array<PauseOption> = [
 		new PauseOption('Resume'),
 		new PauseOption('Restart Song'),
+		new PauseOption('Skip Song'),
 		new PauseOption('Change Character'),
 		new PauseOption('Toggle Botplay'),
 		new PauseOption('Toggle Practice Mode'),
@@ -194,6 +196,58 @@ class PauseSubState extends MusicBeatSubstate
 				PlayState.instance.camZooming = false;
 				FlxG.mouse.visible = false;
 				FlxG.resetState();
+			case "Skip Song":
+				PlayState.instance.vocals.volume = 0;
+
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+
+				trace('loading next song');
+		
+				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0]);
+				FlxG.sound.music.stop();
+		
+				switch (PlayState.SONG.song.toLowerCase())
+				{
+					case "bubbles":
+						trace('burning flames cutscene funni');
+		
+						var frameFunni = new FlxSprite(0, 0);
+						frameFunni.frames = Paths.getSparrowAtlas('cutscenes/burningflames_cut');
+						frameFunni.antialiasing = true;
+						frameFunni.animation.addByPrefix('cutscene', 'cutscene', 27, false);
+						frameFunni.setGraphicSize(1280, 720);
+						add(frameFunni);
+						frameFunni.visible = true;
+		
+						FlxG.sound.play(Paths.sound('cutscene/burningflamesCutscene'));
+		
+						frameFunni.animation.play('cutscene');
+		
+						new FlxTimer().start(10, function(tmr:FlxTimer)
+						{
+							FlxG.switchState(new PlayState());
+						});
+					case "burning-flames":
+						trace('AAAAAAAAAA');
+						var frameFunni = new FlxSprite(-400, -400);
+						frameFunni.frames = Paths.getSparrowAtlas('cutscenes/execution_cut');
+						frameFunni.antialiasing = true;
+						frameFunni.animation.addByPrefix('cutscene', 'cutscene', 12, false);
+						frameFunni.setGraphicSize(1280, 720);
+						add(frameFunni);
+						frameFunni.visible = true;
+		
+						FlxG.sound.play(Paths.sound('cutscene/executionCutscene'));
+		
+						frameFunni.animation.play('cutscene');
+		
+						new FlxTimer().start(10, function(tmr:FlxTimer)
+						{
+							FlxG.switchState(new PlayState());
+						});
+					default:
+						LoadingState.loadAndSwitchState(new PlayState());
+				}
 			case "Change Character":
 				funnyTexts.clear();
 				PlayState.characteroverride = 'none';

@@ -1,7 +1,8 @@
 package vlc;
 
 #if !(desktop || android)
-#error "The current target platform isn't supported by hxCodec. If you're targeting Windows/Mac/Linux/Android and getting this message, please contact us.";
+#error "The current target platform isn't supported by hxCodec. If you're targeting Windows/Mac/Linux/Android and getting this message, please contact us."
+;
 #end
 import cpp.NativeArray;
 import haxe.io.Bytes;
@@ -389,6 +390,7 @@ class VLCBitmap extends Bitmap
 	}
 
 	private var currentTime:Float = 0;
+
 	private function onEnterFrame(?e:Event):Void
 	{
 		checkFlags();

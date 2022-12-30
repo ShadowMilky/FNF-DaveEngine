@@ -2649,7 +2649,7 @@ class PlayState extends MusicBeatState
 
 	var endingSong:Bool = false;
 
-	function nextSong()
+	public function nextSong()
 	{
 		FlxTransitionableState.skipNextTransIn = true;
 		trace('loading next song');
@@ -2664,19 +2664,15 @@ class PlayState extends MusicBeatState
 			case "bubbles":
 				trace('burning flames cutscene funni');
 
-				var bgFunni:FlxSprite = new FlxSprite(400, 400).loadGraphic(Paths.image('fmvBG'));
-				bgFunni.antialiasing = true;
-				bgFunni.visible = true;
-				bgFunni.setGraphicSize(Std.int(FlxG.width * 0.9), Std.int(FlxG.height * 0.9));
-				add(bgFunni);
-
-				var frameFunni = new FlxSprite(400, 400);
+				var frameFunni = new FlxSprite(0, 0);
 				frameFunni.frames = Paths.getSparrowAtlas('cutscenes/burningflames_cut');
 				frameFunni.antialiasing = true;
-				frameFunni.animation.addByPrefix('cutscene', 'cutscene', 30);
-				frameFunni.setGraphicSize(Std.int(frameFunni.width * 0.7));
+				frameFunni.animation.addByPrefix('cutscene', 'cutscene', 27, false);
+				frameFunni.setGraphicSize(1280, 720);
 				add(frameFunni);
-		        frameFunni.visible = true;
+				frameFunni.visible = true;
+
+				camFollow.setPosition(frameFunni.x, frameFunni.y);
 
 				FlxG.sound.play(Paths.sound('cutscene/burningflamesCutscene'));
 
@@ -2686,9 +2682,26 @@ class PlayState extends MusicBeatState
 				{
 					FlxG.switchState(new PlayState());
 				});
-			/*case "burning-flames":
+			case "burning-flames":
 				trace('AAAAAAAAAA');
-				playEndCutscene('executioncut'); */
+				var frameFunni = new FlxSprite(-400, -400);
+				frameFunni.frames = Paths.getSparrowAtlas('cutscenes/execution_cut');
+				frameFunni.antialiasing = true;
+				frameFunni.animation.addByPrefix('cutscene', 'cutscene', 12, false);
+				frameFunni.setGraphicSize(1280, 720);
+				add(frameFunni);
+				frameFunni.visible = true;
+
+				camFollow.setPosition(frameFunni.x, frameFunni.y);
+
+				FlxG.sound.play(Paths.sound('cutscene/executionCutscene'));
+
+				frameFunni.animation.play('cutscene');
+
+				new FlxTimer().start(10, function(tmr:FlxTimer)
+				{
+					FlxG.switchState(new PlayState());
+				});
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 		}
