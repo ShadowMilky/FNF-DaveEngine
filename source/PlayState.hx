@@ -765,17 +765,18 @@ class PlayState extends MusicBeatState
 		add(songPosBG);
 
 		msTimeTxt = new FlxText(0, 0, 400, "", 32);
-		msTimeTxt.setFormat(Paths.font('vcr.ttf'), 32, 0xFFAC75FF, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		msTimeTxt.setFormat(Paths.font('funkin.ttf'), 32, 0xFFEE8FDE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		msTimeTxt.scrollFactor.set();
 		msTimeTxt.alpha = 0;
 		msTimeTxt.visible = true;
 		msTimeTxt.borderSize = 2;
 		add(msTimeTxt);
 
-		botplayTxt = new FlxText(400, songPosBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt = new FlxText(400, songPosBG.y + 55, FlxG.width - 800, "BOTPLAY", 42);
+		botplayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
-		botplayTxt.borderSize = 1.25;
+		botplayTxt.borderSize = 4;
+		botplayTxt.borderQuality = 2;
 		botplayTxt.visible = FlxG.save.data.botplay;
 		add(botplayTxt);
 		if (scrollType == 'downscroll')
@@ -1363,7 +1364,7 @@ class PlayState extends MusicBeatState
 			else
 			{
 				msTimeTxt.x = playerStrums.members[1].x - 100;
-				msTimeTxt.y = playerStrums.members[1].y - 50;
+				msTimeTxt.y = playerStrums.members[1].y + 35;
 			}
 		}
 
