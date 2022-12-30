@@ -442,7 +442,6 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused - " + detailsText;
 
 		curStage = "";
-
 		// Updating Discord Rich Presence.
 		#if desktop
 		DiscordClient.changePresence(detailsText
@@ -494,10 +493,24 @@ class PlayState extends MusicBeatState
 		// DIALOGUE STUFF
 		// Hi guys i know yall are gonna try to add more dialogue here, but with this new system, all you have to do is add a dialogue file with the name of the song in the assets/data/dialogue folder,
 		// and it will automatically get the dialogue in this function
+
+		trace('story mode: ' + isStoryMode + ' - dialogue?' + FileSystem.exists(Paths.txt('dialogue/' + SONG.song.toLowerCase())));
+
 		if (FileSystem.exists(Paths.txt('dialogue/' + SONG.song.toLowerCase())))
 		{
 			trace('loading dialogue');
-			dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/' + SONG.song.toLowerCase()));
+			switch (SONG.song.toLowerCase())
+			{
+				case 'execution':
+					dialogue = [":foxa,mad:I CAN'T TAKE IT ANYMORE!
+					:foxa,mad:I GAVE YOU A WARNING, AND YOU DIDN'T TAKE IT.
+					:foxa,mad:WHY CAN'T YOU JUST LEAVE!?
+					:foxa,mad:IF YOU GET PAST ME, YOU WILL REGRET IT. EVEN NOW, IT WILL APPLY.
+					:foxa,mad:CURSE YOU. I HOPE YOU AREN'T REMEMBERED BY ANYONE.
+					:bf,upset:beep"];
+				default:
+					dialogue = CoolUtil.coolTextFile(Paths.txt('dialogue/' + SONG.song.toLowerCase()));
+			}
 			hasDialogue = true;
 			trace('dialogue from ${SONG.song.toLowerCase()} has been found, loading dialogue txt file');
 		}
@@ -618,7 +631,7 @@ class PlayState extends MusicBeatState
 				add(evilTrail);
 		}
 
-		var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
+		var doof:DialogueBox = new DialogueBox(false, dialogue, true);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
 		doof.scrollFactor.set();
