@@ -393,6 +393,23 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				playAnim('idle');
+			case 'creation-new-player': // foxa regular new (player)
+				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
+
+				animation.addByPrefix('idle', 'FoxaUltra Idle', 24);
+				animation.addByPrefix('singUP', 'FoxaUltra up', 24, false);
+				animation.addByPrefix('singRIGHT', 'FoxaUltra right', 24, false);
+				animation.addByPrefix('singDOWN', 'FoxaUltra down', 24, false);
+				animation.addByPrefix('singLEFT', 'FoxaUltra left', 24, false);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
+
+				playAnim('idle');
 			case 'foxa': // foxa regular
 				frames = Paths.getSparrowAtlas('characters/foxa', 'shared');
 
