@@ -196,22 +196,17 @@ class PauseSubState extends MusicBeatSubstate
 				PlayState.instance.camZooming = false;
 				FlxG.mouse.visible = false;
 				FlxG.resetState();
-			case "Skip Song":
-				PlayState.instance.vocals.volume = 0;
-
+			case "Play Cutscene":
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 
-				trace('loading next song');
-		
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0]);
-				FlxG.sound.music.stop();
+				trace('loading video');
 		
 				switch (PlayState.SONG.song.toLowerCase())
 				{
 					case "bubbles":
 						trace('burning flames cutscene funni');
 		
-						var frameFunni = new FlxSprite(0, 0);
+						var frameFunni = new FlxSprite(400, 400);
 						frameFunni.frames = Paths.getSparrowAtlas('cutscenes/burningflames_cut');
 						frameFunni.antialiasing = true;
 						frameFunni.animation.addByPrefix('cutscene', 'cutscene', 27, false);
@@ -222,14 +217,9 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.sound.play(Paths.sound('cutscene/burningflamesCutscene'));
 		
 						frameFunni.animation.play('cutscene');
-		
-						new FlxTimer().start(10, function(tmr:FlxTimer)
-						{
-							FlxG.switchState(new PlayState());
-						});
 					case "burning-flames":
 						trace('AAAAAAAAAA');
-						var frameFunni = new FlxSprite(-400, -400);
+						var frameFunni = new FlxSprite(0, 0);
 						frameFunni.frames = Paths.getSparrowAtlas('cutscenes/execution_cut');
 						frameFunni.antialiasing = true;
 						frameFunni.animation.addByPrefix('cutscene', 'cutscene', 12, false);
@@ -240,11 +230,7 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.sound.play(Paths.sound('cutscene/executionCutscene'));
 		
 						frameFunni.animation.play('cutscene');
-		
-						new FlxTimer().start(10, function(tmr:FlxTimer)
-						{
-							FlxG.switchState(new PlayState());
-						});
+	
 					default:
 						LoadingState.loadAndSwitchState(new PlayState());
 				}
