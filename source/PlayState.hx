@@ -582,11 +582,10 @@ class PlayState extends MusicBeatState
 			gf.visible = false;
 		}
 
-		dad = new Character(100, 100, SONG.player2);
-
 		dad2 = new Character(100, 100, 'whitty-ghost');
-		add(dad2);
 		dad2.visible = false;
+		
+		dad = new Character(100, 100, SONG.player2);
 
 		for (tween in tweenList)
 		{
