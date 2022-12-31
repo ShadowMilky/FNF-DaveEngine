@@ -394,7 +394,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'whitty-ghost': // whitty ghost, for burning flames lol
-				frames = Paths.getSparrowAtlas('WhittyGhost', 'shared');
+				frames = Paths.getSparrowAtlas('characters/WhittyGhost', 'shared');
 
 				animation.addByPrefix('idle', 'Idle', 24, false);
 				animation.addByPrefix('singUP', 'Sing Up', 24, false);
