@@ -584,7 +584,7 @@ class PlayState extends MusicBeatState
 
 		dad2 = new Character(100, 100, 'whitty-ghost');
 		dad2.visible = false;
-		
+
 		dad = new Character(100, 100, SONG.player2);
 
 		for (tween in tweenList)
@@ -623,9 +623,9 @@ class PlayState extends MusicBeatState
 		gfGroup.add(gf);
 		dadGroup.add(dad);
 		if (dad2 != null)
-			{
-				dadGroup.add(dad2);
-			}
+		{
+			dadGroup.add(dad2);
+		}
 		if (dadmirror != null)
 		{
 			dadGroup.add(dadmirror);
