@@ -3267,9 +3267,9 @@ class PlayState extends MusicBeatState
 				boyfriend.color = 0xFF000084;
 				boyfriend.playAnim('sing' + noteToPlay, true);
 				new FlxTimer().start(1, function(tmr:FlxTimer)
-					{
-						boyfriend.color = 0xFFFFFFFF;
-					});
+				{
+					boyfriend.color = 0xFFFFFFFF;
+				});
 			}
 			updateAccuracy();
 		}
@@ -3521,6 +3521,21 @@ class PlayState extends MusicBeatState
 
 		scriptThing.executeFunc("beatHit", [curBeat]);
 
+		if (SONG.song.toLowerCase() == "burning-flames")
+		{
+			switch (curBeat)
+			{
+				case 56:
+					var dadWhitty = new Character(100, 100, 'whitty-ghost');
+					trace("whitty ghost junk");
+					add(dadWhitty);
+
+				case 64:
+					var dadWhitty = new Character(100, 100, 'whitty-ghost');
+					remove(dadWhitty);
+			}
+		}
+
 		var currentSection = SONG.notes[Std.int(curStep / 16)];
 		if (!UsingNewCam)
 		{
@@ -3628,7 +3643,8 @@ class PlayState extends MusicBeatState
 			dad.playAnim('cheer', true);
 		}
 
-		if (curBeat % gfSpeed == 0) {
+		if (curBeat % gfSpeed == 0)
+		{
 			curBeat % (gfSpeed * 2) == 0 ? {
 				iconP1.scale.set(1.1, 0.8);
 				iconP2.scale.set(1.1, 1.3);
@@ -3641,7 +3657,7 @@ class PlayState extends MusicBeatState
 
 				FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-			}
+				}
 
 			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
