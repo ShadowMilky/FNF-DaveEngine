@@ -14,7 +14,7 @@ class Prompt extends FlxSpriteGroup
 	var promptText:FlxText;
 	var yesText:FlxText;
 	var noText:FlxText;
-	var texts = new Array<FlxText>();
+	var texts:Array<FlxText>;
 
 	public var yesFunc:Void->Void;
 	public var noFunc:Void->Void;
