@@ -3266,6 +3266,10 @@ class PlayState extends MusicBeatState
 			{
 				boyfriend.color = 0xFF000084;
 				boyfriend.playAnim('sing' + noteToPlay, true);
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						boyfriend.color = 0xFFFFFFFF;
+					});
 			}
 			updateAccuracy();
 		}
