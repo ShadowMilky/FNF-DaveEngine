@@ -584,6 +584,10 @@ class PlayState extends MusicBeatState
 
 		dad = new Character(100, 100, SONG.player2);
 
+		dad2 = new Character(100, 100, 'whitty-ghost');
+		add(dad2);
+		dad2.visible = false;
+
 		for (tween in tweenList)
 		{
 			tween.active = false;
@@ -3532,12 +3536,10 @@ class PlayState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 56:
-					dad2 = new Character(100, 100, 'whitty-ghost');
-					trace("whitty ghost junk");
-					add(dad2);
+					dad2.visible = true;
 
 				case 64:
-					remove(dad2);
+					dad2.visible = false;
 			}
 		}
 
