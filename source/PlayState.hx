@@ -2186,15 +2186,23 @@ class PlayState extends MusicBeatState
 		}
 		if (FlxG.keys.justPressed.R) // unfunny didnt laugh
 		{
-			if (FlxG.random.bool(35))
+			switch (curSong.toLowerCase())
 			{
-				trace('ludum dared');
-				FlxG.switchState(new LudumGameOverState());
-			}
-			else
-			{
-				trace('you dead');
-				gameOver();
+				case 'execution' | 'firestorm':
+					trace('SHUT UP');
+					FlxG.switchState(new GameOverCreationState());
+
+				default:
+					if (FlxG.random.bool(35))
+					{
+						trace('ludum dared');
+						FlxG.switchState(new LudumGameOverState());
+					}
+					else
+					{
+						trace('you dead');
+						gameOver();
+					}
 			}
 		}
 		if (FlxG.keys.justPressed.EIGHT)
@@ -2316,15 +2324,23 @@ class PlayState extends MusicBeatState
 
 			if (!perfectMode)
 			{
-				if (FlxG.random.bool(35))
+				switch (curSong.toLowerCase())
 				{
-					trace('ludum dared');
-					FlxG.switchState(new LudumGameOverState());
-				}
-				else
-				{
-					trace('you dead');
-					gameOver();
+					case 'execution' | 'firestorm':
+						trace('SHUT UP');
+						FlxG.switchState(new GameOverCreationState());
+
+					default:
+						if (FlxG.random.bool(35))
+						{
+							trace('ludum dared');
+							FlxG.switchState(new LudumGameOverState());
+						}
+						else
+						{
+							trace('you dead');
+							gameOver();
+						}
 				}
 			}
 		}
@@ -3223,8 +3239,8 @@ class PlayState extends MusicBeatState
 				switch (note.noteStyle)
 				{
 					case 'warning':
-						var hitAnimation:Bool = boyfriend.animation.getByName("hit") != null;
-						boyfriend.playAnim(hitAnimation ? 'hit' : 'singRIGHTmiss', true);
+						var hitAnimation:Bool = boyfriend.animation.getByName("dodge") != null;
+						boyfriend.playAnim(hitAnimation ? 'dodge' : 'singRIGHTmiss', true);
 						FlxTween.cancelTweensOf(note.MyStrum);
 						note.MyStrum.alpha = 0.01;
 						var noteTween = FlxTween.tween(note.MyStrum, {alpha: 1}, 7, {ease: FlxEase.expoIn});

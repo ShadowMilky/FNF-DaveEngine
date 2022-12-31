@@ -69,6 +69,14 @@ class CreditsMenuState extends MusicBeatState
 			new Social('youtube', 'https://www.youtube.com/channel/UCu0cMjmyVBgUXSieMwbqyjA'),
 			new Social('gamebanana', 'https://gamebanana.com/members/1966904')
 		]),
+		new Person("CharlesCatYT", CreditsType.Dev, [
+			new Social('youtube', 'https://www.youtube.com/channel/UCogaGQOhYBgxbj_6S1rU3MQ'),
+			new Social('gamebanana', 'https://gamebanana.com/members/2020512')
+		]),
+		new Person("TheAnimateMan", CreditsType.Dev, [
+			new Social('youtube', 'https://www.youtube.com/channel/UCwsHVR5zkvnW4U4-Uoh118w'),
+			new Social('gamebanana', 'https://gamebanana.com/members/1792965')
+		]),
 		new Person("Erizur", CreditsType.Dev, [
 			new Social('youtube', 'https://www.youtube.com/channel/UCdCAaQzt9yOGfFM0gJDJ4bQ'),
 			new Social('twitter', 'https://twitter.com/am_erizur')
