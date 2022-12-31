@@ -621,11 +621,11 @@ class PlayState extends MusicBeatState
 		repositionCharStages();
 
 		gfGroup.add(gf);
-		dadGroup.add(dad);
 		if (dad2 != null)
 		{
 			dadGroup.add(dad2);
 		}
+		dadGroup.add(dad);
 		if (dadmirror != null)
 		{
 			dadGroup.add(dadmirror);
@@ -3535,6 +3535,7 @@ class PlayState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 56:
+					trace('my asshole burns');
 					dad2.visible = true;
 
 				case 64:
