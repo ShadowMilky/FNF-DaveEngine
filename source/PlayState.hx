@@ -619,7 +619,10 @@ class PlayState extends MusicBeatState
 
 		gfGroup.add(gf);
 		dadGroup.add(dad);
-		dadGroup.add(dad2);
+		if (dad2 != null)
+			{
+				dadGroup.add(dad2);
+			}
 		if (dadmirror != null)
 		{
 			dadGroup.add(dadmirror);
