@@ -170,6 +170,7 @@ class PlayState extends MusicBeatState
 	public var vocals:FlxSound;
 
 	private var dad:Character;
+	private var dad2:Character;
 	private var dadmirror:Character;
 	private var gf:Character;
 	private var boyfriend:Boyfriend;
@@ -618,6 +619,7 @@ class PlayState extends MusicBeatState
 
 		gfGroup.add(gf);
 		dadGroup.add(dad);
+		dadGroup.add(dad2);
 		if (dadmirror != null)
 		{
 			dadGroup.add(dadmirror);
@@ -2385,6 +2387,7 @@ class PlayState extends MusicBeatState
 								}
 							}
 							dad.playAnim('sing' + noteToPlay + altAnim, true);
+							dad2.playAnim('sing' + noteToPlay + altAnim, true);
 							if (dadmirror != null)
 							{
 								dadmirror.playAnim('sing' + noteToPlay + altAnim, true);
@@ -3526,13 +3529,12 @@ class PlayState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 56:
-					var dadWhitty = new Character(100, 100, 'whitty-ghost');
+					dad2 = new Character(100, 100, 'whitty-ghost');
 					trace("whitty ghost junk");
-					add(dadWhitty);
+					add(dad2);
 
 				case 64:
-					var dadWhitty = new Character(100, 100, 'whitty-ghost');
-					remove(dadWhitty);
+					remove(dad2);
 			}
 		}
 
