@@ -489,6 +489,20 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
+		var crazyNumber:Int;
+		crazyNumber = FlxG.random.int(0, 3);
+		switch(crazyNumber)
+	    {
+			case 0:
+				trace("secret dick message ???");
+			case 1:
+				trace("vs foxa haters arent welcome lol");
+			case 2:
+				trace("Hi, song genie here. You're playing " + SONG.song + ", right?");
+			case 3:
+				trace("its aumsum time");
+		}
+
 		theFunne = theFunne;
 
 		// DIALOGUE STUFF
@@ -1677,7 +1691,7 @@ class PlayState extends MusicBeatState
 
 			var songCalc:Float = (songLength - curTime);
 
-			// songCalc = curTime;
+			songCalc = curTime;
 
 			var secondsTotal:Int = Math.floor(songCalc / 1000);
 			if (secondsTotal < 0)
