@@ -1680,26 +1680,6 @@ class PlayState extends MusicBeatState
 
 		songLength = FlxG.sound.music.length;
 
-		if (updateTime)
-		{
-			var curTime:Float = Conductor.songPosition;
-
-			if (curTime < 0)
-				curTime = 0;
-			songPercent = (curTime / songLength);
-			songPercent = (curTime / songLength);
-
-			var songCalc:Float = (songLength - curTime);
-
-			songCalc = curTime;
-
-			var secondsTotal:Int = Math.floor(songCalc / 1000);
-			if (secondsTotal < 0)
-				secondsTotal = 0;
-
-			songName.text = FlxStringUtil.formatTime(secondsTotal, false);
-		}
-
 		FlxG.sound.music.onComplete = endSong;
 	}
 
@@ -2314,6 +2294,29 @@ class PlayState extends MusicBeatState
 					Conductor.lastSongPos = Conductor.songPosition;
 					// Conductor.songPosition += FlxG.elapsed * 1000;
 					// trace('MISSED FRAME');
+				}
+
+				if (updateTime)
+				{
+					var curTime:Float = Conductor.songPosition;
+
+					if (curTime < 0)
+						curTime = 0;
+					songPercent = (curTime / songLength);
+					songPercent = (curTime / songLength);
+
+					var songCalc:Float = (songLength - curTime);
+
+					songCalc = curTime;
+
+					var secondsTotal:Int = Math.floor(songCalc / 1000);
+					if (secondsTotal < 0)
+						secondsTotal = 0;
+
+					if (songName != null)
+					{
+						songName.text = FlxStringUtil.formatTime(secondsTotal, false);
+					}
 				}
 			}
 
