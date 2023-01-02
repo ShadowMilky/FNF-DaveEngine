@@ -92,6 +92,8 @@
 
 	<setenv name="next"/>
 
+	<ndll name="systools" haxelib="systools" />
+
 	<haxelib name="discord_rpc" if="desktop"/>
 
 	<!-- _________________________________ Custom _______________________________ -->

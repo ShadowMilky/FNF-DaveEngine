@@ -5,8 +5,11 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.util.FlxSignal;
 
+// who the hell needs this
+
 // import ui.DeviceManager;
 // import props.Player;
+
 class PlayerSettings
 {
 	static public var numPlayers(default, null) = 0;

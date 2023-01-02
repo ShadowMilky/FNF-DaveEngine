@@ -1,4 +1,4 @@
-package;
+package; // its mostly hardcoded you know.
 
 import Alphabet;
 import CreditsMenuState.CreditsText;
@@ -1652,6 +1652,9 @@ class PlayState extends MusicBeatState
 			songPosBar.setRange(0, FlxG.sound.music.length);
 		}
 
+		songTime += FlxG.game.ticks - previousFrameTime;
+		previousFrameTime = FlxG.game.ticks;
+
 		// Interpolation type beat
 		if (Conductor.lastSongPos != Conductor.songPosition)
 		{
@@ -1666,11 +1669,15 @@ class PlayState extends MusicBeatState
 		if (updateTime)
 		{
 			var curTime:Float = Conductor.songPosition;
+
 			if (curTime < 0)
 				curTime = 0;
 			songPercent = (curTime / songLength);
+			songPercent = (curTime / songLength);
 
 			var songCalc:Float = (songLength - curTime);
+
+			songCalc = curTime;
 
 			var secondsTotal:Int = Math.floor(songCalc / 1000);
 			if (secondsTotal < 0)
