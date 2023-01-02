@@ -1677,7 +1677,7 @@ class PlayState extends MusicBeatState
 
 			var songCalc:Float = (songLength - curTime);
 
-			songCalc = curTime;
+			// songCalc = curTime;
 
 			var secondsTotal:Int = Math.floor(songCalc / 1000);
 			if (secondsTotal < 0)
