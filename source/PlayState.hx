@@ -491,8 +491,8 @@ class PlayState extends MusicBeatState
 
 		var crazyNumber:Int;
 		crazyNumber = FlxG.random.int(0, 3);
-		switch(crazyNumber)
-	    {
+		switch (crazyNumber)
+		{
 			case 0:
 				trace("secret dick message ???");
 			case 1:
@@ -2180,14 +2180,24 @@ class PlayState extends MusicBeatState
 			health = 2;
 
 		if (healthBar.percent < 20)
+		{
 			iconP1.changeState('losing');
+			iconP2.changeState('winning');
+		}
 		else
+		{
 			iconP1.changeState('normal');
+		}
 
 		if (healthBar.percent > 80)
+		{
 			iconP2.changeState('losing');
+			iconP1.changeState('winning');
+		}
 		else
+		{
 			iconP2.changeState('normal');
+		}
 
 		if (FlxG.keys.justPressed.FOUR)
 		{

@@ -44,6 +44,8 @@ class MusicPlayerState extends MusicBeatState
 	private var iconP1:HealthIcon;
 	private var iconP2:HealthIcon;
 
+	private var gfSpeed:Int = 1;
+
 	private var barText:FlxText;
 
 	override function create()
@@ -147,8 +149,16 @@ class MusicPlayerState extends MusicBeatState
 		playdist = 1 - (FlxG.sound.music.time / FlxG.sound.music.length);
 
 		// copied from playstate
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - 26);
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - 26);
+		iconP1.centerOffsets();
+		iconP2.centerOffsets();
+
+		iconP1.updateHitbox();
+		iconP2.updateHitbox();
+
+		var iconOffset:Int = 26;
+
+		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 
 		var currentTimeFormatted = FlxStringUtil.formatTime(FlxG.sound.music.time / 1000);
 		var lengthFormatted = FlxStringUtil.formatTime(FlxG.sound.music.length / 1000);
@@ -183,14 +193,24 @@ class MusicPlayerState extends MusicBeatState
 		}
 
 		if (healthBar.percent < 20)
+		{
 			iconP1.changeState('losing');
+			iconP2.changeState('winning');
+		}
 		else
+		{
 			iconP1.changeState('normal');
+		}
 
 		if (healthBar.percent > 80)
+		{
+			iconP1.changeState('winning');
 			iconP2.changeState('losing');
+		}
 		else
+		{
 			iconP2.changeState('normal');
+		}
 
 		if (upP)
 		{
@@ -219,9 +239,7 @@ class MusicPlayerState extends MusicBeatState
 				FlxG.sound.music.time += 5000;
 			}
 		}
-
 		barText.text = FlxStringUtil.formatTime(FlxG.sound.music.time / 1000) + " / " + FlxStringUtil.formatTime(FlxG.sound.music.length / 1000);
-
 		if (controls.BACK)
 		{
 			if (currentlyplaying)
@@ -229,7 +247,6 @@ class MusicPlayerState extends MusicBeatState
 				#if desktop
 				DiscordClient.changePresence('In The OST Menu', null);
 				#end
-
 				if (CurVocals != null)
 				{
 					CurVocals.stop();
@@ -239,21 +256,17 @@ class MusicPlayerState extends MusicBeatState
 				FlxG.sound.music.stop();
 				currentlyplaying = false;
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
-
 				var bullShit:Int = 0; // the fact that i have to copy this code is bullshit
 
 				for (i in 0...iconArray.length)
 				{
 					iconArray[i].alpha = 0.6;
 				}
-
 				iconArray[curSelected].alpha = 1;
-
 				for (item in grpSongs.members)
 				{
 					item.targetY = bullShit - curSelected;
 					bullShit++;
-
 					item.alpha = 0.6;
 					// item.setGraphicSize(Std.int(item.width * 0.8));
 					if (item.targetY == 0)
@@ -296,9 +309,7 @@ class MusicPlayerState extends MusicBeatState
 					currentlyplaying = true;
 					FlxG.sound.playMusic(Paths.externmusic(songs[curSelected].songName), 1, true);
 				}
-
 				var bullShit:Int = 0;
-
 				for (i in 0...iconArray.length)
 				{
 					if (i != curSelected)
@@ -311,19 +322,16 @@ class MusicPlayerState extends MusicBeatState
 						iconArray[curSelected].alpha = 1;
 					}
 				}
-
 				for (item in grpSongs.members)
 				{
 					item.targetY = bullShit - curSelected;
 					bullShit++;
-
 					if (item.targetY != 0)
 					{
 						FlxTween.tween(item, {alpha: 0}, 0.15);
 						// item.alpha = 0;
 					}
 					// item.setGraphicSize(Std.int(item.width * 0.8));
-
 					if (item.targetY == 0)
 					{
 						item.alpha = 1;
@@ -418,6 +426,36 @@ class MusicPlayerState extends MusicBeatState
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
+	}
+
+	override public function beatHit():Void
+	{
+		super.beatHit();
+
+		if (curBeat % gfSpeed == 0)
+		{
+			curBeat % (gfSpeed * 2) == 0 ? {
+				iconP1.scale.set(1.1, 0.8);
+				iconP2.scale.set(1.1, 1.3);
+
+				FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
+				iconP1.scale.set(1.1, 1.3);
+				iconP2.scale.set(1.1, 0.8);
+
+				FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				}
+
+			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}
+
+		// do literally nothing dumbass
 	}
 }
 
