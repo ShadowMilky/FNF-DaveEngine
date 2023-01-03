@@ -266,7 +266,7 @@ class LogInScreen extends MusicBeatSubstate
 	var option:AccountOption;
 	var incorrect:FlxText;
 	var initialized:Bool = false;
-	public var username:String = Assets.getText('data/userAccount.txt');
+	public var username:String = Assets.getText(Paths.txt('userAccount'));
 
 	public function new(option:AccountOption)
 	{

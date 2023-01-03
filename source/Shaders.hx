@@ -12,7 +12,7 @@ import flixel.system.FlxAssets.FlxShader;
 		but this would take a lot of time and investigation as support for macOS barely exists.
 
 		We are not trying to bully macOS users to "download other os" with this.
-		These are things we are can't fix.
+		These are things we can't fix.
 		Sorry for any inconvenience.
  */
 class GlitchEffect
