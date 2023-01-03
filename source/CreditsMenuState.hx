@@ -118,11 +118,11 @@ class CreditsMenuState extends MusicBeatState
 			new Social('youtube', 'https://www.youtube.com/channel/UC7VSf4ITAMN83hL3zQbqt3w'),
 			new Social('twitter', 'https://twitter.com/nickstwt')
 		]),
-		/*new Person("TheZoroForce240", CreditsType.SpecialThanks, [
+		new Person("TheZoroForce240", CreditsType.SpecialThanks, [
 				new Social('youtube', 'https://www.youtube.com/channel/UCjXs9mcE531CrmaQrf0OkOw'),
 				new Social('twitter', 'https://twitter.com/TheZoroForce240'),
 				new Social('gamebanana', 'https://gamebanana.com/members/1708748')
-			]) */
+			]) 
 	];
 
 	override function create()
