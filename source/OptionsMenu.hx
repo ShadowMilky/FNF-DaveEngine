@@ -1,23 +1,34 @@
 package;
 
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import Controls.KeyboardScheme;
 import Controls.Control;
+import Controls.KeyboardScheme;
+import OptionsMenu;
+import flash.system.System;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.ui.FlxInputText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
-import lime.utils.Assets;
 import flixel.util.FlxTimer;
+import lime.utils.Assets;
+
+using StringTools;
+
 #if desktop
 import Discord.DiscordClient;
 #end
+
 
 class OptionsMenu extends MusicBeatState
 {
@@ -73,7 +84,9 @@ class OptionsMenu extends MusicBeatState
 			+ "\n"
 			+ (FlxG.save.data.botplay ? LanguageManager.getTextString('option_botplay_on') : LanguageManager.getTextString('option_botplay_off'))
 			+ "\n"
-			+ (FlxG.save.data.msText ? LanguageManager.getTextString('option_mstext_on') : LanguageManager.getTextString('option_mstext_off')));
+			+ (FlxG.save.data.msText ? LanguageManager.getTextString('option_mstext_on') : LanguageManager.getTextString('option_mstext_off'))
+			+ "\n"
+			+ 'Account Settings');
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
@@ -182,10 +195,14 @@ class OptionsMenu extends MusicBeatState
 					updateGroupControls(FlxG.save.data.botplay ? LanguageManager.getTextString('option_botplay_on') : LanguageManager.getTextString('option_botplay_off'),
 						10,
 						'Vertical');
-				case 11: 					
+				case 11:
 					FlxG.save.data.msText = !FlxG.save.data.msText;
-				updateGroupControls(FlxG.save.data.msText ? LanguageManager.getTextString('option_mstext_on') : LanguageManager.getTextString('option_mstext.off'),
-					8, 'Vertical');
+					updateGroupControls(FlxG.save.data.msText ? LanguageManager.getTextString('option_mstext_on') : LanguageManager.getTextString('option_mstext.off'),
+						8,
+						'Vertical');
+				case 12:
+					updateGroupControls('Account Settings', 7, 'Vertical');
+					FlxG.switchState(new LogInScreen(new AccountOption()));
 			}
 		}
 	}
@@ -237,5 +254,192 @@ class OptionsMenu extends MusicBeatState
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
+	}
+}
+
+class LogInScreen extends MusicBeatSubstate
+{
+	var good:Bool = false;
+	var bg:FlxSprite;
+	var name:FlxText;
+	var nameBox:FlxInputText;
+	var option:AccountOption;
+	var incorrect:FlxText;
+	var initialized:Bool = false;
+
+	public function new(option:AccountOption)
+	{
+		this.option = option;
+		super();
+
+		var menuBG:FlxSprite = new FlxSprite();
+
+		menuBG.color = 0xff44b3c7;
+		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
+		menuBG.updateHitbox();
+		menuBG.antialiasing = true;
+		menuBG.loadGraphic(MainMenuState.randomizeBG());
+		add(menuBG);
+
+		name = new FlxText(100, 100, 0, "Account Name", 60);
+		name.font = "VCR OSD Mono";
+		name.color = 0xFFffffff;
+		add(name);
+
+		nameBox = new FlxInputText(600, 100, 600, "", 60, FlxColor.BLACK, 0xff878787);
+		nameBox.font = "VCR OSD Mono";
+		add(nameBox);
+
+		// might add a password thingy later lol
+
+		incorrect = new FlxText(300, 500, 0, "Press Enter to log in, escape to cancel.", 30);
+		incorrect.font = "VCR OSD Mono";
+		incorrect.color = 0xFFffffff;
+		add(incorrect);
+	}
+
+	override function update(elapsed:Float)
+	{
+		if (FlxG.keys.justPressed.ENTER)
+		{
+			trace(nameBox.text);
+			trace(initialized);
+			if (good)
+			{
+				FlxG.save.data.userName = nameBox.text;
+				trace(FlxG.save.data.userName + "has been signed in!");
+				option.log();
+				close();
+			}
+			else
+			{
+				incorrect.text = "Log in failed, please check your account again.";
+				incorrect.color = 0xffff0000;
+				incorrect.x = 150;
+			}
+		}
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			close();
+		}
+
+		super.update(elapsed);
+	}
+}
+
+class Option
+{
+	public function new()
+	{
+		display = updateDisplay();
+		display2 = updateDisplay2();
+	}
+
+	private var description:String = "";
+	private var display:String;
+	private var display2:Array<String>;
+	private var acceptValues:Bool = false;
+
+	public var selected:Int = 0;
+
+	public final function getDisplay():String
+	{
+		return display;
+	}
+
+	public final function getDisplay2():Array<String>
+	{
+		return display2;
+	}
+
+	public final function getAccept():Bool
+	{
+		return acceptValues;
+	}
+
+	public final function getDescription():String
+	{
+		return description;
+	}
+
+	public function getValue():String
+	{
+		return throw "stub!";
+	};
+
+	// Returns whether the label is to be updated.
+	public function press():Bool
+	{
+		return throw "stub!";
+	}
+
+	private function updateDisplay():String
+	{
+		return throw "stub!";
+	}
+
+	private function updateDisplay2():Array<String>
+	{
+		return [];
+	}
+
+	public function updateCheck():Bool
+	{
+		return throw "noCheck";
+	}
+
+	public function left():Bool
+	{
+		return throw "stub!";
+	}
+
+	public function right():Bool
+	{
+		return throw "stub!";
+	}
+}
+
+class AccountOption extends Option
+{
+	public override function updateCheck():Bool
+	{
+		return throw "noCheck";
+	}
+
+	public function log()
+	{
+		var display = updateDisplay();
+		var display2 = updateDisplay2();
+	}
+
+	var initialized:Bool = false;
+	var good:Bool = false;
+
+	public override function press():Bool
+	{
+		if (initialized)
+		{
+			PlayState.instance.openSubState(new LogInScreen(this));
+		}
+		else
+		{
+			FlxG.save.data.userName = null;
+			System.exit(0);
+		}
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		if (initialized)
+			return "Log In";
+		return "Log Out";
+	}
+
+	private override function updateDisplay2():Array<String>
+	{
+		if (initialized)
+			return [""];
+		return [FlxG.save.data.userName];
 	}
 }
