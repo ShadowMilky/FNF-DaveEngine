@@ -264,6 +264,8 @@ class MainMenuState extends MusicBeatState
 			#if debug
 			if (FlxG.keys.justPressed.EIGHT)
 			{
+				FlxG.sound.play(Paths.sound('selectMenu'), 0.4);
+
 				FlxG.switchState(new ChartingState());
 			}
 			#end
