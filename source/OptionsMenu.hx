@@ -8,6 +8,7 @@ import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxInputText;
@@ -50,6 +51,9 @@ class OptionsMenu extends MusicBeatState
 		#if desktop
 		DiscordClient.changePresence("In the Options Menu", null);
 		#end
+
+		FlxG.mouse.visible = true;
+
 		var menuBG:FlxSprite = new FlxSprite();
 
 		menuBG.color = 0xFFea71fd;
@@ -261,6 +265,7 @@ class LogInScreen extends MusicBeatSubstate
 {
 	var bg:FlxSprite;
 	var name:FlxText;
+	var backDrop:FlxBackdrop;
 	var nameBox:FlxInputText;
 	var option:AccountOption;
 	var incorrect:FlxText;
@@ -273,21 +278,30 @@ class LogInScreen extends MusicBeatSubstate
 		this.option = option;
 		super();
 
-		var menuBG:FlxSprite = new FlxSprite();
+		FlxG.sound.music.stop();
+		
+		FlxG.sound.playMusic(Paths.music('selectLanguageMenu'), 0.7);
 
-		menuBG.color = 0xff44b3c7;
-		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
-		menuBG.updateHitbox();
-		menuBG.antialiasing = true;
-		menuBG.loadGraphic(MainMenuState.randomizeBG());
-		add(menuBG);
+		FlxG.mouse.visible = true;
+
+		bg = new FlxSprite();
+		bg.color = 0xffc58fc1;
+		bg.setGraphicSize(Std.int(bg.width * 1.1));
+		bg.updateHitbox();
+		bg.antialiasing = true;
+		bg.loadGraphic(MainMenuState.randomizeBG());
+		add(bg);
+
+		backDrop = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), 1, 1, true, true, 1, 1);
+		backDrop.antialiasing = true;
+		add(backDrop);
 
 		name = new FlxText(100, 100, 0, "Account Name", 60);
 		name.font = "VCR OSD Mono";
 		name.color = 0xFFffffff;
 		add(name);
 
-		nameBox = new FlxInputText(600, 100, 600, "", 60, FlxColor.BLACK, 0xff878787);
+		nameBox = new FlxInputText(600, 100, 600, "", 60, FlxColor.BLACK, 0xffffb6fb);
 		nameBox.font = "VCR OSD Mono";
 		add(nameBox);
 
@@ -323,6 +337,7 @@ class LogInScreen extends MusicBeatSubstate
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			trace('aight imma head out');
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 			FlxG.switchState(new MainMenuState());
 		}
 

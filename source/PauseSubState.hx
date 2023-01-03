@@ -107,6 +107,15 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.borderSize = 2.5;
 		levelDifficulty.updateHitbox();
 
+		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, FlxG.save.data.userName, 32, false);
+		chartingText.scrollFactor.set();
+		chartingText.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, RIGHT);
+		chartingText.x = FlxG.width - (chartingText.width + 20);
+		chartingText.y = FlxG.height - (chartingText.height + 20);
+		chartingText.updateHitbox();
+		chartingText.visible = true;
+		add(chartingText);
+
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
 

@@ -55,6 +55,8 @@ class CSVChartingState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.mouse.visible = true;
+		
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
 
