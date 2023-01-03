@@ -54,6 +54,7 @@
 
 	<define name="SHADERS_ENABLED" unless="mac"/>
 	<define name="CRASH_HANDLER" />
+	<define name="OLD_KE" />
 	<!--<define name="FEATURE_MP4" if="desktop" />-->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>

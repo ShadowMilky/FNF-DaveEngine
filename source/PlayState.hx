@@ -70,6 +70,9 @@ import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.net.FileFilter;
 import sys.FileSystem;
+import modcharting.ModchartFuncs;
+import modcharting.NoteMovement;
+import modcharting.PlayfieldRenderer;
 
 using StringTools;
 
@@ -103,6 +106,9 @@ import sys.io.Process;
 class PlayState extends MusicBeatState
 {
 	public static var instance:PlayState;
+
+	// init variable for renderer
+	public var playfieldRenderer:PlayfieldRenderer;
 
 	public static var curStage:String = '';
 	public static var characteroverride:String = "none";
@@ -191,7 +197,7 @@ class PlayState extends MusicBeatState
 	private static var prevCamFollow:FlxObject;
 
 	private var strumLine:FlxSprite;
-	private var strumLineNotes:FlxTypedGroup<StrumNote>;
+	public var strumLineNotes:FlxTypedGroup<StrumNote>;
 
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var dadStrums:FlxTypedGroup<StrumNote>;
@@ -406,6 +412,11 @@ class PlayState extends MusicBeatState
 		paused = false;
 
 		// resetShader();
+
+		// Add this before camfollow stuff
+		playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
+		playfieldRenderer.cameras = [camHUD];
+		add(playfieldRenderer);
 
 		scrollType = FlxG.save.data.downscroll ? 'downscroll' : 'upscroll';
 
@@ -1385,6 +1396,9 @@ class PlayState extends MusicBeatState
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
+
+		//add after generating strums
+		NoteMovement.getDefaultStrumPos(this);
 
 		talking = false;
 		startedCountdown = true;

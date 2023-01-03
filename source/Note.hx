@@ -19,6 +19,10 @@ import StringTools;
 
 class Note extends FlxSprite
 {
+	//add these 2 variables for the renderer
+	public var mesh:modcharting.SustainMesh = null; 
+	public var z:Float = 0;
+	
 	public var strumTime:Float = 0;
 
 	public var mustPress:Bool = false;
