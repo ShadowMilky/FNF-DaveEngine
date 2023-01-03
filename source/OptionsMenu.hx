@@ -29,7 +29,6 @@ using StringTools;
 import Discord.DiscordClient;
 #end
 
-
 class OptionsMenu extends MusicBeatState
 {
 	var selector:FlxText;
@@ -266,6 +265,7 @@ class LogInScreen extends MusicBeatSubstate
 	var option:AccountOption;
 	var incorrect:FlxText;
 	var initialized:Bool = false;
+
 	public var username:String = Assets.getText(Paths.txt('userAccount'));
 
 	public function new(option:AccountOption)
@@ -323,7 +323,7 @@ class LogInScreen extends MusicBeatSubstate
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			trace('aight imma head out');
-			close();
+			FlxG.switchState(new MainMenuState());
 		}
 
 		super.update(elapsed);
