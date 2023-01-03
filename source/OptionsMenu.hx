@@ -202,6 +202,7 @@ class OptionsMenu extends MusicBeatState
 						'Vertical');
 				case 12:
 					updateGroupControls('Account Settings', 7, 'Vertical');
+					trace('log in pls');
 					FlxG.switchState(new LogInScreen(new AccountOption()));
 			}
 		}
@@ -259,13 +260,13 @@ class OptionsMenu extends MusicBeatState
 
 class LogInScreen extends MusicBeatSubstate
 {
-	var good:Bool = false;
 	var bg:FlxSprite;
 	var name:FlxText;
 	var nameBox:FlxInputText;
 	var option:AccountOption;
 	var incorrect:FlxText;
 	var initialized:Bool = false;
+	public var username:String = Assets.getText('data/userAccount.txt');
 
 	public function new(option:AccountOption)
 	{
@@ -304,7 +305,7 @@ class LogInScreen extends MusicBeatSubstate
 		{
 			trace(nameBox.text);
 			trace(initialized);
-			if (good)
+			if (nameBox.text == username)
 			{
 				FlxG.save.data.userName = nameBox.text;
 				trace(FlxG.save.data.userName + "has been signed in!");
@@ -313,6 +314,7 @@ class LogInScreen extends MusicBeatSubstate
 			}
 			else
 			{
+				trace('you failed lol');
 				incorrect.text = "Log in failed, please check your account again.";
 				incorrect.color = 0xffff0000;
 				incorrect.x = 150;
@@ -320,6 +322,7 @@ class LogInScreen extends MusicBeatSubstate
 		}
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
+			trace('aight imma head out');
 			close();
 		}
 
