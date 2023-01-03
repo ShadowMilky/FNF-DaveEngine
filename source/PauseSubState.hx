@@ -239,6 +239,8 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.sound.play(Paths.sound('cutscene/executionCutscene'));
 		
 						frameFunni.animation.play('cutscene');
+					default:
+						trace('no video bruhhhhh');
 				}
 			case "Change Character":
 				funnyTexts.clear();
