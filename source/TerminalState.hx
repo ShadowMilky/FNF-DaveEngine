@@ -22,7 +22,7 @@ import PlayState; // why the hell did this work LMAO.
 class TerminalState extends MusicBeatState
 {
 	// dont just yoink this code and use it in your own mod. this includes you, psych/OS engine porters.
-	// if you ingore this message and use it anyway, atleast give credit.
+	// if you ignore this message and use it anyway, atleast give credit.
 	// the credits already been put in this repo so ummmmm
 	public var curCommand:String = "";
 	public var previousText:String = LanguageManager.getTerminalString("term_introduction");

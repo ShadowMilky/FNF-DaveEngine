@@ -414,9 +414,9 @@ class PlayState extends MusicBeatState
 		// resetShader();
 
 		// Add this before camfollow stuff
-		playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
-		playfieldRenderer.cameras = [camHUD];
-		add(playfieldRenderer);
+		// playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
+		// playfieldRenderer.cameras = [camHUD];
+		// add(playfieldRenderer);
 
 		scrollType = FlxG.save.data.downscroll ? 'downscroll' : 'upscroll';
 
@@ -750,6 +750,8 @@ class PlayState extends MusicBeatState
 		var credits:String;
 		switch (SONG.song.toLowerCase())
 		{
+			case 'execution' | 'firestorm':
+				credits = "That's a you problem, you know.";
 			default:
 				credits = '';
 		}
@@ -1398,7 +1400,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(1);
 
 		//add after generating strums
-		NoteMovement.getDefaultStrumPos(this);
+		// NoteMovement.getDefaultStrumPos(this);
 
 		talking = false;
 		startedCountdown = true;
