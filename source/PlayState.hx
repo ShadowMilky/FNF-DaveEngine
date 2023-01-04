@@ -197,6 +197,7 @@ class PlayState extends MusicBeatState
 	private static var prevCamFollow:FlxObject;
 
 	private var strumLine:FlxSprite;
+
 	public var strumLineNotes:FlxTypedGroup<StrumNote>;
 
 	public var playerStrums:FlxTypedGroup<StrumNote>;
@@ -250,6 +251,8 @@ class PlayState extends MusicBeatState
 	private var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
 	private var camTransition:FlxCamera;
+
+	public static var variables:Map<String, Dynamic> = new Map<String, Dynamic>();
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag', 'lol'];
 
@@ -321,7 +324,7 @@ class PlayState extends MusicBeatState
 	var video:VideoHandler;
 	var weirdBG:FlxSprite;
 
-	var scriptThing:Dynamic;
+	var script:Dynamic;
 	var canRunScript:Bool;
 
 	public var noMiss:Bool = false;
@@ -856,25 +859,25 @@ class PlayState extends MusicBeatState
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 
-		scriptThing = HScriptTool.create(Paths.scriptFile('tutorial'));
+		script = HScriptTool.create(Paths.scriptFile('tutorial'));
 
-		scriptThing.setVariable("create", function()
+		script.setVariable("create", function()
 		{
 		});
-		scriptThing.setVariable("update", function(elapsed:Float)
+		script.setVariable("update", function(elapsed:Float)
 		{
 		});
-		scriptThing.setVariable("beatHit", function(curBeat:Int)
+		script.setVariable("beatHit", function(curBeat:Int)
 		{
 		});
-		scriptThing.setVariable("stepHit", function(curStep:Int)
+		script.setVariable("stepHit", function(curStep:Int)
 		{
 		});
-		scriptThing.setVariable("PlayState", this);
+		script.setVariable("PlayState", this);
 
-		scriptThing.loadFile();
+		script.loadFile();
 
-		scriptThing.executeFunc("create");
+		script.executeFunc("create");
 
 		startingSong = true;
 		if (startTimer != null && !startTimer.active)
@@ -917,6 +920,9 @@ class PlayState extends MusicBeatState
 		var sprites:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 		var bgZoom:Float = 1.05;
 		var stageName:String = '';
+
+		script.executeFunc("createBackgroundSprites", [bgName]);
+
 		switch (bgName)
 		{
 			case 'spooky':
@@ -1396,10 +1402,12 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 
+		script.executeFunc("startCountdown");
+
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		//add after generating strums
+		// add after generating strums
 		// NoteMovement.getDefaultStrumPos(this);
 
 		talking = false;
@@ -1620,6 +1628,8 @@ class PlayState extends MusicBeatState
 
 		previousFrameTime = FlxG.game.ticks;
 
+		script.executeFunc("startSong");
+
 		if (!paused)
 		{
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
@@ -1790,6 +1800,7 @@ class PlayState extends MusicBeatState
 
 	private function generateStaticArrows(player:Int, regenerate:Bool = false):Void
 	{
+		script.executeFunc("generateStaticArrows", [player]);
 		var note_order:Array<Int> = [0, 1, 2, 3];
 		for (i in 0...4)
 		{
@@ -1994,7 +2005,7 @@ class PlayState extends MusicBeatState
 	{
 		elapsedtime += elapsed;
 
-		scriptThing.executeFunc("update", [elapsed]);
+		script.executeFunc("update", [elapsed]);
 
 		if (startingSong && startTimer != null && !startTimer.active)
 			startTimer.active = true;
@@ -2544,8 +2555,168 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	public function startScript()
+		{
+			var path:String;
+	
+			/*if (Script.scriptName == null || Script.scriptName == '' || Script.scriptName == 'script')
+				path = Paths.hscript('songs/${PlayState.SONG.songId}/script');
+			else
+				path = Paths.hscript('songs/${PlayState.SONG.songId}/${Script.scriptName}');*/
+	
+			path = Paths.scriptFile(SONG.song.toLowerCase());
+	
+			var hxdata:String = "";
+	
+			if (FileSystem.exists(path))
+				hxdata = File.getContent(path);
+	
+			if (hxdata != "")
+			{
+				// sadge script = new Script(Script.scriptName);
+				script = new Script();
+	
+				script.variables.set('setVar', function(name:String, value:Dynamic)
+				{
+					variables.set(name, value);
+				});
+	
+				script.variables.set('getVar', function(name:String)
+				{
+					var result:Dynamic = null;
+					if(variables.exists(name)) result = variables.get(name);
+					return result;
+				});
+	
+				script.variables.set('removeVar', function(name:String)
+				{
+					if(variables.exists(name))
+					{
+						variables.remove(name);
+						return true;
+					}
+					return false;
+				});
+	
+				script.setVariable("start", function()
+				{
+				});
+	
+				script.setVariable("onSongStart", function()
+				{
+				});
+	
+				script.setVariable("destroy", function()
+				{
+				});
+	
+				script.setVariable("onCreate", function()
+				{
+				});
+	
+				script.setVariable("onStartCountdown", function()
+				{
+				});
+	
+				script.setVariable("stepHit", function()
+				{
+				});
+	
+				script.setVariable("beatHit", function() 
+				{
+				});
+	
+				script.setVariable("onUpdate", function()
+				{
+				});
+	
+				script.setVariable("import", function(lib:String, ?as:Null<String>) // Does this even work?
+				{
+					if (lib != null && Type.resolveClass(lib) != null)
+					{
+						script.setVariable(as != null ? as : lib, Type.resolveClass(lib));
+					}
+				});
+
+	
+				script.setVariable("goodNoteHit", function(note:Note) {
+					goodNoteHit(note);
+				});
+	
+				script.setVariable("fromRGB", function(Red:Int, Green:Int, Blue:Int, Alpha:Int = 255)
+				{
+					return FlxColor.fromRGB(Red, Green, Blue, Alpha);
+				});
+	
+				script.setVariable("curStep", curStep);
+				script.setVariable("curBeat", curBeat);
+				script.setVariable("bpm", SONG.bpm);
+	
+				// PRESET CLASSES
+				script.setVariable("PlayState", instance);
+				script.setVariable("FlxTween", FlxTween); //I personally would not remove flxtween.
+				script.setVariable("FlxEase", FlxEase);
+				script.setVariable("FlxSprite", FlxSprite);
+				script.setVariable("Math", Math);
+				script.setVariable("FlxG", FlxG);
+				script.setVariable("FlxTimer", FlxTimer);
+				script.setVariable("Main", Main);
+				script.setVariable("Conductor", Conductor);
+				script.setVariable("Std", Std);
+				script.setVariable("FlxG", FlxG);
+				script.setVariable("FlxTextBorderStyle", FlxTextBorderStyle);
+				script.setVariable("Paths", Paths);
+				script.setVariable("Alphabet", Alphabet);
+				script.setVariable("CENTER", FlxTextAlign.CENTER);
+				script.setVariable("Animation", Animation);
+				script.setVariable("FlxTextFormat", FlxTextFormat);
+				script.setVariable("FlxTextFormatMarkerPair", FlxTextFormatMarkerPair);
+				script.setVariable("Character", Character);
+				script.setVariable("CreditsPopUp", CreditsPopUp);
+				script.setVariable("StringTools", StringTools);
+
+				script.setVariable("PlatformUtil", PlatformUtil);
+	
+				//this is because of somethings I think would be easier to use without being hardcoded. -Thank you TheRealJake12 from glowsoony
+				script.setVariable("Subtitle", Subtitle);
+				script.setVariable("Note", Note);
+				script.setVariable("NoteSplash", NoteSplash);
+				script.setVariable("StrumNote", StrumNote); //Except you, you are mine.
+	
+				//Da Characters -Thank you TheRealJake12 from glowsoony
+				script.setVariable("dad", dad);
+				script.setVariable("gf", gf);
+				script.setVariable("bf", boyfriend);
+				//not really needed cuz you can do PlayState.charactershit but it makes it cleaner imo -TheRealJake12;
+	
+				//mf give me those x's
+				script.setVariable("PlayerStrumsX0", playerStrums.members[0].x);
+				script.setVariable("PlayerStrumsX1", playerStrums.members[1].x);
+				script.setVariable("PlayerStrumsX2", playerStrums.members[2].x);
+				script.setVariable("PlayerStrumsX3", playerStrums.members[3].x);
+				script.setVariable("CpuStrumsX0", dadStrums.members[0].x);
+				script.setVariable("CpuStrumsX1", dadStrums.members[1].x);
+				script.setVariable("CpuStrumsX2", dadStrums.members[2].x);
+				script.setVariable("CpuStrumsX3", dadStrums.members[3].x);
+	
+				//mf give me those y's
+				script.setVariable("PlayerStrumsY0", playerStrums.members[0].y);
+				script.setVariable("PlayerStrumsY1", playerStrums.members[1].y);
+				script.setVariable("PlayerStrumsY2", playerStrums.members[2].y);
+				script.setVariable("PlayerStrumsY3", playerStrums.members[3].y);
+				script.setVariable("CpuStrumsY0", dadStrums.members[0].y);
+				script.setVariable("CpuStrumsY1", dadStrums.members[1].y);
+				script.setVariable("CpuStrumsY2", dadStrums.members[2].y);
+				script.setVariable("CupStrumsY3", dadStrums.members[3].y);
+	
+				script.runScript(hxdata);
+			}
+		}
+
 	function destroyNote(note:Note)
 	{
+		script.executeFunc("destroyNote", [note]);
+
 		note.active = false;
 		note.visible = false;
 		note.kill();
@@ -2662,6 +2833,8 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 		canPause = false;
 		updateTime = false;
+
+		script.executeFunc("endSong");
 
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
@@ -2786,6 +2959,9 @@ class PlayState extends MusicBeatState
 		FlxTransitionableState.skipNextTransIn = true;
 		trace('loading next song');
 		FlxTransitionableState.skipNextTransOut = true;
+
+		script.executeFunc("nextSong");
+
 		prevCamFollow = camFollow;
 
 		PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0]);
@@ -2948,6 +3124,10 @@ class PlayState extends MusicBeatState
 
 	private function popUpScore(strumtime:Float, note:Note):Void
 	{
+		script.executeFunc("popUpScore", [note]);
+
+		script.executeFunc("popUpScoreST", [strumtime]);
+
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
 		allNotesMs += noteDiff;
 		averageMs = allNotesMs / totalNotesHit;
@@ -3272,6 +3452,10 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, note:Note):Void
 	{
+		script.executeFunc("noteMiss", [note]);
+
+		script.executeFunc("noteMissDirection", [direction]);
+
 		if (true)
 		{
 			misses++;
@@ -3429,6 +3613,8 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
+		script.executeFunc("goodNoteHit", [note]);
+
 		if (!note.wasGoodHit)
 		{
 			if (!note.isSustainNote)
@@ -3557,7 +3743,7 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		scriptThing.executeFunc("stepHit", [curStep]);
+		script.executeFunc("stepHit", [curStep]);
 
 		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20)
 			resyncVocals();
@@ -3594,7 +3780,7 @@ class PlayState extends MusicBeatState
 	{
 		super.beatHit();
 
-		scriptThing.executeFunc("beatHit", [curBeat]);
+		script.executeFunc("beatHit", [curBeat]);
 
 		if (SONG.song.toLowerCase() == "burning-flames")
 		{

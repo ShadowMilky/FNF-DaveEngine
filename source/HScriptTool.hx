@@ -176,4 +176,11 @@ class Script extends HScriptTool
 
 		return null;
 	}
+
+	
+	public override function destroy()
+		{
+			super.destroy();
+			hscript = null;
+		}
 }
