@@ -95,6 +95,10 @@ class HScriptTool implements IFlxDestroyable
 
 class Script extends HScriptTool
 {
+	public static var Function_Stop:Dynamic = 1;
+	public static var Function_Continue:Dynamic = 0;
+	public static var Function_Halt:Dynamic = 2;
+
 	public var hscript:Interp;
 
 	public function new()
@@ -105,6 +109,27 @@ class Script extends HScriptTool
 			this.trace('$e', true);
 		};
 		super();
+	}
+
+	static var parser:Parser = new Parser();
+
+	public static function init() // BRITISH
+	{
+		parser.allowMetadata = true;
+		parser.allowJSON = true;
+		parser.allowTypes = true;
+	}
+
+	public static function parseFile(file:String, ?name:String)
+	{
+		if (name == null)
+			name = file;
+		return parseString(File.getContent(file), name);
+	}
+
+	public static function parseString(script:String, ?name:String = "Script")
+	{
+		return parser.parseString(script, name);
 	}
 
 	public override function executeFunc(funcName:String, ?args:Array<Any>):Dynamic
@@ -148,6 +173,19 @@ class Script extends HScriptTool
 		super.loadFile();
 	}
 
+	public function exists(name:String)
+	{
+		return hscript.variables.exists(name);
+	}
+
+	public function call(func:String, ?parameters:Array<Dynamic>):Dynamic
+	{
+		var returnValue:Dynamic = executeFunc(func, parameters);
+		if (returnValue == null)
+			return Function_Continue;
+		return returnValue;
+	}
+
 	public override function trace(text:String, error:Bool = false)
 	{
 		var posInfo = hscript.posInfos();
@@ -177,10 +215,9 @@ class Script extends HScriptTool
 		return null;
 	}
 
-	
 	public override function destroy()
-		{
-			super.destroy();
-			hscript = null;
-		}
+	{
+		super.destroy();
+		hscript = null;
+	}
 }
