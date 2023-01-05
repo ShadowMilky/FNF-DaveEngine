@@ -186,30 +186,30 @@ class Note extends FlxSprite
 			// 	antialiasing = false;
 			// 	noteOffset = 8;
 
-			// case 'text':
-			// 	frames = Paths.getSparrowAtlas('ui/alphabet');
+			case 'text':
+			 	frames = Paths.getSparrowAtlas('ui/alphabet');
 
-			// 	var noteColors = ['purple', 'blue', 'green', 'red'];
+			 	var noteColors = ['purple', 'blue', 'green', 'red'];
 
-			// 	var boldLetters:Array<String> = new Array<String>();
+			 	var boldLetters:Array<String> = new Array<String>();
 
-			// 	for (frameName in frames.frames)
-			// 	{
-			// 		if (frameName.name.contains('bold'))
-			// 		{
-			// 			boldLetters.push(frameName.name);
-			// 		}
-			// 	}
-			// 	var randomFrame = boldLetters[new FlxRandom().int(0, boldLetters.length - 1)];
-			// 	var prefix = randomFrame.substr(0, randomFrame.length - 4);
-			// 	for (note in noteColors)
-			// 	{
-			// 		animation.addByPrefix('${note}Scroll', prefix, 24);
-			// 	}
-			// 	setGraphicSize(Std.int(width * 1.2));
-			// 	updateHitbox();
-			// 	antialiasing = true;
-			// 	noteOffset = -(width - 78);
+			 	for (frameName in frames.frames)
+			 	{
+			 		if (frameName.name.contains('bold'))
+			 		{
+			 			boldLetters.push(frameName.name);
+			 		}
+			 	}
+			 	var randomFrame = boldLetters[new FlxRandom().int(0, boldLetters.length - 1)];
+			 	var prefix = randomFrame.substr(0, randomFrame.length - 4);
+			 	for (note in noteColors)
+			 	{
+			 		animation.addByPrefix('${note}Scroll', prefix, 24);
+			 	}
+			 	setGraphicSize(Std.int(width * 1.2));
+			 	updateHitbox();
+			 	antialiasing = true;
+			 	noteOffset = -(width - 78);
 
 			// case 'guitarHero':
 			// 	frames = Paths.getSparrowAtlas('notes/NOTEGH_assets', 'shared');

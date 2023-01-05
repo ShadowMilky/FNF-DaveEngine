@@ -449,25 +449,25 @@ class MainMenuState extends MusicBeatState
 
 	function resetData()
 	{
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('vsfoxa', 'PowderTeam');
 
 		FlxG.save.erase();
 
 		FlxG.save.flush();
 
-		FlxG.save.bind('controls', 'ninjamuffin99');
+		FlxG.save.bind('controls', 'PowderTeam');
 
 		FlxG.save.erase();
 
 		FlxG.save.flush();
 
-		FlxG.save.bind('language', 'ninjamuffin99');
+		FlxG.save.bind('language', 'PowderTeam');
 
 		FlxG.save.erase();
 
 		FlxG.save.flush();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('vsfoxa', 'PowderTeam');
 
 		Highscore.songScores = new Map();
 		Highscore.songChars = new Map();

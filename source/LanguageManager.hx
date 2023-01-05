@@ -14,7 +14,7 @@ class LanguageManager
 	public static function initSave()
 	{
 		save = new FlxSave();
-		save.bind('language', 'ninjamuffin99');
+		save.bind('language', 'PowderTeam');
 	}
 
 	public static function init()

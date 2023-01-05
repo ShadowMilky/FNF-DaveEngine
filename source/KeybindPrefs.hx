@@ -23,7 +23,7 @@ class KeybindPrefs
 	public static function saveControls()
 	{
 		var controlsSave:FlxSave = new FlxSave();
-		controlsSave.bind('controls', 'ninjamuffin99');
+		controlsSave.bind('controls', 'PowderTeam');
 		controlsSave.data.keybinds = keybinds;
 		controlsSave.flush();
 	}
@@ -31,7 +31,7 @@ class KeybindPrefs
 	public static function loadControls()
 	{
 		var controlsSave:FlxSave = new FlxSave();
-		controlsSave.bind('controls', 'ninjamuffin99');
+		controlsSave.bind('controls', 'PowderTeam');
 		if (controlsSave != null && controlsSave.data.keybinds != null)
 		{
 			var funnyKeybinds:Map<String, Array<FlxKey>> = controlsSave.data.keybinds;

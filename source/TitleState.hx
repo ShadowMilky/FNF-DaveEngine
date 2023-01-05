@@ -64,7 +64,7 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('vsfoxa', 'PowderTeam');
 
 		SaveDataHandler.initSave();
 		LanguageManager.init();
