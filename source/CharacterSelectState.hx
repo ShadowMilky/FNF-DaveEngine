@@ -168,7 +168,7 @@ class CharacterSelectState extends MusicBeatState
 		stageCurtains.active = false;
 		add(stageCurtains);
 
-		funbg = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), 1, 1, true, true, 1, 1);
+		funbg = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'),  #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
 		funbg.alpha = 0;
 		funbg.antialiasing = true;
 		funbg.scrollFactor.set();

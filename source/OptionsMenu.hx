@@ -294,7 +294,7 @@ class LogInScreen extends MusicBeatSubstate
 		bg.loadGraphic(MainMenuState.randomizeBG());
 		add(bg);
 
-		backDrop = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), 1, 1, true, true, 1, 1);
+		backDrop = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'),  #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
 		backDrop.antialiasing = true;
 		add(backDrop);
 
