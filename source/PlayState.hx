@@ -523,6 +523,8 @@ class PlayState extends MusicBeatState
 		// Hi guys i know yall are gonna try to add more dialogue here, but with this new system, all you have to do is add a dialogue file with the name of the song in the assets/data/dialogue folder,
 		// and it will automatically get the dialogue in this function
 
+			// why is execution in freeplay crash like its in story mode
+
 		trace('story mode: ' + isStoryMode + ' - dialogue?' + FileSystem.exists(Paths.txt('dialogue/' + SONG.song.toLowerCase())));
 
 		if (FileSystem.exists(Paths.txt('dialogue/' + SONG.song.toLowerCase())))
@@ -877,7 +879,7 @@ class PlayState extends MusicBeatState
 
 		script.loadFile();
 
-		script.executeFunc("create");
+		// script.executeFunc("create");
 
 		startingSong = true;
 		if (startTimer != null && !startTimer.active)
@@ -921,7 +923,7 @@ class PlayState extends MusicBeatState
 		var bgZoom:Float = 1.05;
 		var stageName:String = '';
 
-		script.executeFunc("createBackgroundSprites", [bgName]);
+		// script.executeFunc("createBackgroundSprites", [bgName]);
 
 		switch (bgName)
 		{
@@ -1402,7 +1404,7 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 
-		script.executeFunc("startCountdown");
+		// script.executeFunc("startCountdown");
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
@@ -1628,7 +1630,7 @@ class PlayState extends MusicBeatState
 
 		previousFrameTime = FlxG.game.ticks;
 
-		script.executeFunc("startSong");
+		// script.executeFunc("startSong");
 
 		if (!paused)
 		{
@@ -1800,7 +1802,7 @@ class PlayState extends MusicBeatState
 
 	private function generateStaticArrows(player:Int, regenerate:Bool = false):Void
 	{
-		script.executeFunc("generateStaticArrows", [player]);
+		// script.executeFunc("generateStaticArrows", [player]);
 		var note_order:Array<Int> = [0, 1, 2, 3];
 		for (i in 0...4)
 		{
@@ -2005,7 +2007,7 @@ class PlayState extends MusicBeatState
 	{
 		elapsedtime += elapsed;
 
-		script.executeFunc("update", [elapsed]);
+		// script.executeFunc("update", [elapsed]);
 
 		if (startingSong && startTimer != null && !startTimer.active)
 			startTimer.active = true;
@@ -2715,7 +2717,7 @@ class PlayState extends MusicBeatState
 
 	function destroyNote(note:Note)
 	{
-		script.executeFunc("destroyNote", [note]);
+		// script.executeFunc("destroyNote", [note]);
 
 		note.active = false;
 		note.visible = false;
@@ -2834,7 +2836,7 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		updateTime = false;
 
-		script.executeFunc("endSong");
+		// script.executeFunc("endSong");
 
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
@@ -2960,7 +2962,7 @@ class PlayState extends MusicBeatState
 		trace('loading next song');
 		FlxTransitionableState.skipNextTransOut = true;
 
-		script.executeFunc("nextSong");
+		// script.executeFunc("nextSong");
 
 		prevCamFollow = camFollow;
 
@@ -3124,9 +3126,9 @@ class PlayState extends MusicBeatState
 
 	private function popUpScore(strumtime:Float, note:Note):Void
 	{
-		script.executeFunc("popUpScore", [note]);
+		// script.executeFunc("popUpScore", [note]);
 
-		script.executeFunc("popUpScoreST", [strumtime]);
+		// script.executeFunc("popUpScoreST", [strumtime]);
 
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
 		allNotesMs += noteDiff;
@@ -3452,9 +3454,9 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, note:Note):Void
 	{
-		script.executeFunc("noteMiss", [note]);
+		// script.executeFunc("noteMiss", [note]);
 
-		script.executeFunc("noteMissDirection", [direction]);
+		// script.executeFunc("noteMissDirection", [direction]);
 
 		if (true)
 		{
@@ -3613,7 +3615,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		script.executeFunc("goodNoteHit", [note]);
+		// script.executeFunc("goodNoteHit", [note]);
 
 		if (!note.wasGoodHit)
 		{
@@ -3743,7 +3745,7 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		script.executeFunc("stepHit", [curStep]);
+		// script.executeFunc("stepHit", [curStep]);
 
 		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20)
 			resyncVocals();
@@ -3780,7 +3782,7 @@ class PlayState extends MusicBeatState
 	{
 		super.beatHit();
 
-		script.executeFunc("beatHit", [curBeat]);
+		// script.executeFunc("beatHit", [curBeat]);
 
 		if (SONG.song.toLowerCase() == "burning-flames")
 		{
