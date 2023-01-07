@@ -104,6 +104,9 @@ class CharacterSelectState extends MusicBeatState
 			new CharacterForm('foxa-new', 'Foxa', [1,1,1,1]),
 			new CharacterForm('foxa-angy-new', 'Angy Foxa', [1,1,1,1]),
 			new CharacterForm('creation-new-player', 'Creation', [1,1,1,1]),
+		]),
+		new CharacterInSelect('rubber', [1, 1, 1, 1], [
+			new CharacterForm('rubber', 'Rubber', [1,1,1,1]),
 		])
 	];
 	#if SHADERS_ENABLED

@@ -409,6 +409,20 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+			case 'rubber': // no.
+				frames = Paths.getSparrowAtlas('characters/rubber', 'shared');
+
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				playAnim('idle');
 			case 'creation-new-player': // foxa regular new (player)
 				frames = Paths.getSparrowAtlas('characters/FoxaNewSupaMadSprite', 'shared');
 
