@@ -32,7 +32,7 @@ jobs:
           haxelib install hxcpp > nul
           haxelib install lime
           haxelib install openfl
-          haxelib --never git flixel https://github.com/YoshiCrafter29/flixel
+          haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -42,7 +42,7 @@ jobs:
           haxelib install hxjsonast
           haxelib install hxCodec
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
-          haxelib git hscript https://github.com/YoshiCrafter29/hscript-improved.git
+          haxelib git hscript https://github.com/Erizur/hscript-improved.git
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git hscript-improved https://github.com/YoshiCrafter29/hscript-improved
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
