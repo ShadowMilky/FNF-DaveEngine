@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="dadButBetter.png">
-<!-- Created with whitty-executor.exe -->
+<!-- funni -->
 <SubTexture name="Dad Sing Note DOWN0000" x="0" y="0" width="533" height="752" frameX="-0" frameY="-0" frameWidth="537" frameHeight="752"/>
 <SubTexture name="Dad Sing Note DOWN0001" x="0" y="0" width="533" height="752" frameX="-0" frameY="-0" frameWidth="537" frameHeight="752"/>
 <SubTexture name="Dad Sing Note DOWN0002" x="533" y="0" width="534" height="739" frameX="-3" frameY="-13" frameWidth="537" frameHeight="752"/>

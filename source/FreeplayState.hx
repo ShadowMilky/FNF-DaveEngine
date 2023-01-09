@@ -46,8 +46,8 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var Catagories:Array<String> = ['foxa', 'vanilla'];
-	var translatedCatagory:Array<String> = [LanguageManager.getTextString('freeplay_foxa'), 'vanilla'];
+	private var Catagories:Array<String> = ['foxa', 'vanilla', 'extras'];
+	var translatedCatagory:Array<String> = [LanguageManager.getTextString('freeplay_foxa'), 'vanilla', 'extras'];
 
 	var weekList:Array<String> = [];
 
@@ -202,6 +202,8 @@ class FreeplayState extends MusicBeatState
 				addWeek(['Bubbles', 'Burning-Flames', 'Execution', 'Firestorm'], 1, ['foxa', 'foxa-angy', 'creation-new', 'creation-new']);
 			case 'vanilla':
 				addWeek(['Tutorial'], 2, ['gf']);
+			case 'extras':
+				addWeek(['AumSum Time!'], 3, ['aumsum']);
 		}
 	}
 

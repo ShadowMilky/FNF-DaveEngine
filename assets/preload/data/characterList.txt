@@ -16,3 +16,4 @@ foxa-angy-new:foxa-angy:#ffd0ff
 creation-new:foxa-mad:#5f0000
 creation-new-player:foxa-mad:#5f0000
 rubber:rubber:#5f0000
+aumsum:aumsum:#5f0000
