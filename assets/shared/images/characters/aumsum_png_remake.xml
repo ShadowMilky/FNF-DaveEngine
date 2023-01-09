@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="aumsum_png_remake.png">
+	<!-- Created with Adobe Animate version 22.0.6.202 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="thunda down0000" x="0" y="0" width="500" height="96" frameX="0" frameY="-274" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0001" x="0" y="0" width="500" height="96" frameX="0" frameY="-274" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0002" x="500" y="0" width="424" height="162" frameX="-38" frameY="-208" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0003" x="500" y="0" width="424" height="162" frameX="-38" frameY="-208" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0004" x="924" y="0" width="376" height="242" frameX="-62" frameY="-128" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0005" x="924" y="0" width="376" height="242" frameX="-62" frameY="-128" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0006" x="1300" y="0" width="327" height="309" frameX="-86" frameY="-60" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0007" x="1300" y="0" width="327" height="309" frameX="-86" frameY="-60" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0008" x="1627" y="0" width="299" height="345" frameX="-100" frameY="-24" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0009" x="1627" y="0" width="299" height="345" frameX="-100" frameY="-24" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0010" x="1926" y="0" width="283" height="369" frameX="-108" frameY="0" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0011" x="1926" y="0" width="283" height="369" frameX="-108" frameY="0" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0012" x="1926" y="0" width="283" height="369" frameX="-108" frameY="0" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda down0013" x="1926" y="0" width="283" height="369" frameX="-108" frameY="0" frameWidth="500" frameHeight="370"/>
+	<SubTexture name="thunda idle0000" x="2209" y="0" width="438" height="224" frameX="0" frameY="-272" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0001" x="2209" y="0" width="438" height="224" frameX="0" frameY="-272" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0002" x="2647" y="0" width="386" height="282" frameX="-26" frameY="-214" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0003" x="2647" y="0" width="386" height="282" frameX="-26" frameY="-214" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0004" x="3033" y="0" width="314" height="360" frameX="-62" frameY="-136" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0005" x="3033" y="0" width="314" height="360" frameX="-62" frameY="-136" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0006" x="3347" y="0" width="286" height="411" frameX="-76" frameY="-84" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0007" x="3347" y="0" width="286" height="411" frameX="-76" frameY="-84" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0008" x="3633" y="0" width="270" height="473" frameX="-84" frameY="-22" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0009" x="3633" y="0" width="270" height="473" frameX="-84" frameY="-22" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0010" x="0" y="473" width="254" height="495" frameX="-92" frameY="0" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0011" x="0" y="473" width="254" height="495" frameX="-92" frameY="0" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0012" x="0" y="473" width="254" height="495" frameX="-92" frameY="0" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0013" x="0" y="473" width="254" height="495" frameX="-92" frameY="0" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda idle0014" x="0" y="473" width="254" height="495" frameX="-92" frameY="0" frameWidth="438" frameHeight="496"/>
+	<SubTexture name="thunda left0000" x="254" y="473" width="452" height="495"/>
+	<SubTexture name="thunda left0001" x="254" y="473" width="452" height="495"/>
+	<SubTexture name="thunda left0002" x="706" y="473" width="367" height="495" frameX="-85" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0003" x="706" y="473" width="367" height="495" frameX="-85" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0004" x="1073" y="473" width="331" height="495" frameX="-120" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0005" x="1073" y="473" width="331" height="495" frameX="-120" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0006" x="1404" y="473" width="295" height="495" frameX="-156" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0007" x="1404" y="473" width="295" height="495" frameX="-156" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0008" x="1699" y="473" width="280" height="495" frameX="-171" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0009" x="1699" y="473" width="280" height="495" frameX="-171" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0010" x="1979" y="473" width="261" height="495" frameX="-190" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0011" x="1979" y="473" width="261" height="495" frameX="-190" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0012" x="1979" y="473" width="261" height="495" frameX="-190" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda left0013" x="1979" y="473" width="261" height="495" frameX="-190" frameY="0" frameWidth="452" frameHeight="495"/>
+	<SubTexture name="thunda right0000" x="2240" y="473" width="432" height="495"/>
+	<SubTexture name="thunda right0001" x="2240" y="473" width="432" height="495"/>
+	<SubTexture name="thunda right0002" x="2672" y="473" width="382" height="495" frameX="0" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0003" x="2672" y="473" width="382" height="495" frameX="0" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0004" x="3054" y="473" width="319" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0005" x="3054" y="473" width="319" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0006" x="3373" y="473" width="295" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0007" x="3373" y="473" width="295" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0008" x="3668" y="473" width="267" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0009" x="3668" y="473" width="267" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0010" x="0" y="968" width="255" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0011" x="0" y="968" width="255" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0012" x="0" y="968" width="255" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda right0013" x="0" y="968" width="255" height="495" frameX="-1" frameY="0" frameWidth="432" frameHeight="495"/>
+	<SubTexture name="thunda up0000" x="255" y="968" width="210" height="500" frameX="-94" frameY="-20" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0001" x="255" y="968" width="210" height="500" frameX="-94" frameY="-20" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0002" x="465" y="968" width="254" height="500" frameX="-72" frameY="0" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0003" x="465" y="968" width="254" height="500" frameX="-72" frameY="0" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0004" x="719" y="968" width="290" height="500" frameX="-54" frameY="-10" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0005" x="719" y="968" width="290" height="500" frameX="-54" frameY="-10" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0006" x="1009" y="968" width="350" height="500" frameX="-24" frameY="-30" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0007" x="1009" y="968" width="350" height="500" frameX="-24" frameY="-30" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0008" x="1359" y="968" width="382" height="500" frameX="-8" frameY="-78" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0009" x="1359" y="968" width="382" height="500" frameX="-8" frameY="-78" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0010" x="1741" y="968" width="398" height="500" frameX="0" frameY="-126" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0011" x="1741" y="968" width="398" height="500" frameX="0" frameY="-126" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0012" x="1741" y="968" width="398" height="500" frameX="0" frameY="-126" frameWidth="398" frameHeight="626"/>
+	<SubTexture name="thunda up0013" x="1741" y="968" width="398" height="500" frameX="0" frameY="-126" frameWidth="398" frameHeight="626"/>
+</TextureAtlas>

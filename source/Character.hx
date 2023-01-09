@@ -359,6 +359,23 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				playAnim('idle');
+			case 'aumsum': // ITS AUMSUM TIME!!!!
+				frames = Paths.getSparrowAtlas('characters/AumSum_Remake', 'shared');
+
+				animation.addByPrefix('idle', 'aumsum idle dance', 24, false);
+				animation.addByPrefix('singUP', 'aumsum up', 24, false);
+				animation.addByPrefix('singRIGHT', 'aumsum right', 24, false);
+				animation.addByPrefix('singDOWN', 'aumsum down', 24, false);
+				animation.addByPrefix('singLEFT', 'aumsum left', 24, false);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
+
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
+
+				playAnim('idle');
 			case 'foxa-angy-new': // foxa regular new
 				frames = Paths.getSparrowAtlas('characters/FoxaNewMadSprite', 'shared');
 
@@ -407,6 +424,20 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 0, 27);
 				addOffset("singLEFT", -10, 10);
 				addOffset("singDOWN", 0, -30);
+
+				playAnim('idle');
+			case 'rubber': // no.
+				frames = Paths.getSparrowAtlas('characters/rubber', 'shared');
+
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+
+				loadOffsetFile(curCharacter);
+
+				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
 				playAnim('idle');
 			case 'creation-new-player': // foxa regular new (player)

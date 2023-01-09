@@ -44,6 +44,8 @@ class CreditsPopUp extends FlxSpriteGroup
 				songCreator = 'KawaiSprite';
 			case 'bubbles' | 'burning-flames' | 'execution' | 'christmas-blitz':
 				songCreator = 'Foxa';
+			case 'aumsum-time':
+				songCreator = 'CharlesCatYT';
 			case 'firestorm':
 				songCreator = 'GarageBand Cover Guy 96';
 		}
