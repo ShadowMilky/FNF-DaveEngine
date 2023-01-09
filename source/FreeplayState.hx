@@ -203,7 +203,7 @@ class FreeplayState extends MusicBeatState
 			case 'vanilla':
 				addWeek(['Tutorial'], 2, ['gf']);
 			case 'extras':
-				addWeek(['AumSum Time'], 3, ['aumsum']);
+				addWeek(['AumSum-Time'], 3, ['aumsum']);
 		}
 	}
 
