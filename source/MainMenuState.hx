@@ -67,7 +67,7 @@ class MainMenuState extends MusicBeatState
 	public static var engineVers:Array<String> = ['Foxa'];
 
 	public static var kadeEngineVer:String = "FOXA";
-	public static var gameVer:String = "0.2.7.1";
+	public static var gameVer:String = "0.2.8";
 
 	var bg:FlxSprite;
 	var magenta:FlxSprite;
@@ -219,7 +219,7 @@ class MainMenuState extends MusicBeatState
 		firstStart = false;
 
 		// var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, '${daRealEngineVer} Engine v${engineVer}\nFNF v${gameVer}', 12);
-		var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, 'Vs. Foxa 3.0 ALPHA\nFNF v${gameVer}', 12);
+		var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, 'Vs. Foxa Plus ALPHA\nFNF v${gameVer}', 12);
 		versionShit.antialiasing = true;
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

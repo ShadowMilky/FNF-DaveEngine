@@ -3,7 +3,7 @@ this mod is rated **D** for ***DEEZ NUTS***
 
 <img src="KadeEngineWitBackground.png" width="600" height="400">
 
-# VS FOXA 3.0
+# VS FOXA PLUS
 this is foxa
 
 <img src="https://media.discordapp.net/attachments/994696415676739594/1015383787657498634/1cdff2fe-df54-445a-b7df-c9428302cab9-jpnddjpe.gif">
@@ -26,8 +26,8 @@ Also, install systools, because that's required.
 
 # Credits
 
-* Foxa - Composer, Director, Project Creator
-* CharlesCatYT - Main Programmer, Co-Director
+* CharlesCatYT - Main Programmer, Director
+* Foxa - Composer, Co-Director
 * PogDev - Programmer
 * TheAnimateMan - Spriter
 * Natsuki.HX - Jester Programmer
