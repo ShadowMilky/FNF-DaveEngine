@@ -60,7 +60,7 @@ class FlxCamera extends FlxBasic
 	 */
 	@:deprecated("`FlxCamera.defaultCameras` is deprecated, use `FlxG.cameras.setDefaultDrawTarget` instead")
 	public static var defaultCameras(get, set):Array<FlxCamera>;
-	
+
 	/**
 	 * Used behind-the-scenes during the draw phase so that members use the same default
 	 * cameras as their parent.
@@ -577,7 +577,8 @@ class FlxCamera extends FlxBasic
 	}
 
 	@:noCompletion
-	public function startTrianglesBatch(graphic:FlxGraphic, smoothing:Bool = false, ?transform:ColorTransform, ?blend:BlendMode, ?shader:FlxShader):FlxDrawTrianglesItem
+	public function startTrianglesBatch(graphic:FlxGraphic, smoothing:Bool = false, ?transform:ColorTransform, ?blend:BlendMode,
+			?shader:FlxShader):FlxDrawTrianglesItem
 	{
 		var blendInt:Int = FlxDrawBaseItem.blendToInt(blend);
 
@@ -591,7 +592,7 @@ class FlxCamera extends FlxBasic
 			&& _headTriangles.colored == isColored
 			&& _headTriangles.hasColorOffsets == hasColorOffsets
 			&& _headTriangles.blending == blendInt
-            && _headTriangles.shader == shader)
+			&& _headTriangles.shader == shader)
 		{
 			return _headTriangles;
 		}
@@ -600,7 +601,8 @@ class FlxCamera extends FlxBasic
 	}
 
 	@:noCompletion
-	public function getNewDrawTrianglesItem(graphic:FlxGraphic, smoothing:Bool = false, ?transform:ColorTransform, ?blend:BlendMode, ?shader:FlxShader):FlxDrawTrianglesItem
+	public function getNewDrawTrianglesItem(graphic:FlxGraphic, smoothing:Bool = false, ?transform:ColorTransform, ?blend:BlendMode,
+			?shader:FlxShader):FlxDrawTrianglesItem
 	{
 		var itemToReturn:FlxDrawTrianglesItem = null;
 		var blendInt:Int = FlxDrawBaseItem.blendToInt(blend);
@@ -625,7 +627,7 @@ class FlxCamera extends FlxBasic
 		itemToReturn.colored = isColored;
 		itemToReturn.hasColorOffsets = hasColorOffsets;
 		itemToReturn.blending = blendInt;
-        itemToReturn.shader = shader;
+		itemToReturn.shader = shader;
 
 		itemToReturn.nextTyped = _headTriangles;
 		_headTriangles = itemToReturn;
@@ -765,8 +767,9 @@ class FlxCamera extends FlxBasic
 		}
 	}
 
-	public function drawTriangles(graphic:FlxGraphic, ?pixels:BitmapData, vertices:DrawData<Float>, indices:DrawData<Int>, uvtData:DrawData<Float>, ?colors:DrawData<Int>,
-			?position:FlxPoint, ?transform:ColorTransform, ?blend:BlendMode, repeat:Bool = false, smoothing:Bool = false, ?shader:FlxShader):Void
+	public function drawTriangles(graphic:FlxGraphic, ?pixels:BitmapData, vertices:DrawData<Float>, indices:DrawData<Int>, uvtData:DrawData<Float>,
+			?colors:DrawData<Int>, ?position:FlxPoint, ?transform:ColorTransform, ?blend:BlendMode, repeat:Bool = false, smoothing:Bool = false,
+			?shader:FlxShader):Void
 	{
 		if (FlxG.renderBlit)
 		{
@@ -1746,7 +1749,7 @@ class FlxCamera extends FlxBasic
 		updateFlashOffset();
 		setScale(scaleX, scaleY);
 	}
-	
+
 	/**
 	 * The size and position of this camera's screen
 	 * @since 4.11.0
@@ -1755,10 +1758,10 @@ class FlxCamera extends FlxBasic
 	{
 		if (rect == null)
 			rect = FlxRect.get();
-		
+
 		return rect.set(viewOffsetX, viewOffsetY, viewOffsetWidth - viewOffsetX, viewOffsetHeight - viewOffsetY);
 	}
-	
+
 	/**
 	 * Checks whether this camera contains a given point or rectangle, in
 	 * screen coordinates.
@@ -1766,20 +1769,18 @@ class FlxCamera extends FlxBasic
 	 */
 	public inline function containsPoint(point:FlxPoint, width:Float = 0, height:Float = 0):Bool
 	{
-		var contained = (point.x + width > viewOffsetX) && (point.x < viewOffsetWidth)
-			&& (point.y + height > viewOffsetY) && (point.y < viewOffsetHeight);
+		var contained = (point.x + width > viewOffsetX) && (point.x < viewOffsetWidth) && (point.y + height > viewOffsetY) && (point.y < viewOffsetHeight);
 		point.putWeak();
 		return contained;
 	}
-	
+
 	/**
 	 * Checks whether this camera contains a given rectangle, in screen coordinates.
 	 * @since 4.11.0
 	 */
 	public inline function containsRect(rect:FlxRect):Bool
 	{
-		var contained = (rect.right > viewOffsetX) && (rect.x < viewOffsetWidth)
-			&& (rect.bottom > viewOffsetY) && (rect.y < viewOffsetHeight);
+		var contained = (rect.right > viewOffsetX) && (rect.x < viewOffsetWidth) && (rect.bottom > viewOffsetY) && (rect.y < viewOffsetHeight);
 		rect.putWeak();
 		return contained;
 	}
@@ -1927,12 +1928,12 @@ class FlxCamera extends FlxBasic
 		viewOffsetHeight = height - viewOffsetY;
 		viewHeight = height - 2 * viewOffsetY;
 	}
-	
+
 	static inline function get_defaultCameras():Array<FlxCamera>
 	{
 		return _defaultCameras;
 	}
-	
+
 	static inline function set_defaultCameras(value:Array<FlxCamera>):Array<FlxCamera>
 	{
 		return _defaultCameras = value;
