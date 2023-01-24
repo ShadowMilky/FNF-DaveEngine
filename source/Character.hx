@@ -10,6 +10,7 @@ import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 import sys.io.File;
+import HCharacter;
 import sys.FileSystem;
 import openfl.utils.Assets;
 import haxe.Json;
@@ -88,7 +89,7 @@ class Character extends FlxSprite
 	public var stopSinging = false;
 	public var stopDancing = false;
 	
-	var CharScript:Null<HCharacter> = null;
+	var charScript:Null<HCharacter> = null;
 
 	// Used on Character Editor
 	public var imageFile:String = '';
