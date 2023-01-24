@@ -1,5 +1,5 @@
 function create() {
-    char.frames = Paths.getSparrowAtlas("BOYFRIEND");
+    char.frames = Paths.getSparrowAtlas("template");
     char.animation.addByPrefix('idle', 'BF idle dance', 24, false);
     char.animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
     char.animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);

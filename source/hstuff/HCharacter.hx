@@ -10,7 +10,7 @@ class HCharacter extends CallbackScript
 		name = "Character:" + charClass.curCharacter;
 		set("this", charClass);
 		set("char", charClass);
-		set("Paths", new CustomPaths(charClass.curCharacter, "characters"));
+		set("Paths", new CustomPaths(charClass.curCharacter, "preload"));
 		set("_Paths", Paths);
 	}
 }
