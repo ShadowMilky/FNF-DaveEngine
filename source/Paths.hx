@@ -291,3 +291,44 @@ class Paths
 		return getPath('videos/$key.mp4', BINARY, library);
 	}
 }
+
+class CustomPaths {
+	var dir:String = "";
+	var lib:String = "";
+	public function new(dir:String, lib:String) {
+		this.dir = dir;
+		this.lib = lib;
+	}
+
+	public function music(key:String,useFullDir=false) {
+		return Paths.getPath('$dir/${useFullDir ? 'music/' : '' }$key.${Paths.SOUND_EXT}', MUSIC, lib);
+	}
+	
+	public function sound(key:String, useFullDir=false) {
+		return Paths.getPath('$dir/${useFullDir ? 'sounds/' : '' }$key.${Paths.SOUND_EXT}', SOUND, lib);
+	}
+
+	public function soundRandom(key:String, min:Int, max:Int, useFullDir=false) {
+		return sound(key + FlxG.random.int(min, max), useFullDir);
+	}
+	
+	public function txt(key:String, useFullDir=false) {
+		return Paths.getPath('$dir/${useFullDir ? 'data/' : '' }$key.txt', TEXT, lib);
+	}
+
+	public function json(key:String, useFullDir=false) {
+		return Paths.getPath('$dir/${useFullDir ? 'data/' : '' }$key.json', TEXT, lib);
+	}
+
+	public function image(key:String, useFullDir=false) {
+		return Paths.getPath('$dir/${useFullDir ? 'images/' : '' }$key.png', IMAGE, lib);
+	}
+
+    public function getSparrowAtlas(key:String, useFullDir=false) {
+		return FlxAtlasFrames.fromSparrow(image(key, useFullDir), Paths.file('$dir/${useFullDir ? 'images/' : '' }$key.xml', lib));
+	}
+	
+	public function getPackerAtlas(key:String, useFullDir=false) {
+		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, useFullDir), Paths.file('$dir/${useFullDir ? 'images/' : '' }$key.txt', lib));
+	}
+}

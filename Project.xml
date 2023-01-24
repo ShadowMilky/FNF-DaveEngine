@@ -75,6 +75,7 @@
 	<haxedev set='webgl' if="web"/>
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" />
+	<haxelib name="sscript" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="hxCodec" if="desktop || android" />
 

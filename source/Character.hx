@@ -1,5 +1,6 @@
 package;
 
+import SScript.*;
 import sys.FileSystem;
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
@@ -10,7 +11,7 @@ import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 import sys.io.File;
-import HCharacter;
+import hstuff.HCharacter;
 import sys.FileSystem;
 import openfl.utils.Assets;
 import haxe.Json;
@@ -88,7 +89,7 @@ class Character extends FlxSprite
 	public var stopAnims = false;
 	public var stopSinging = false;
 	public var stopDancing = false;
-	
+
 	var charScript:Null<HCharacter> = null;
 
 	// Used on Character Editor
@@ -873,12 +874,12 @@ class Character extends FlxSprite
 
 				flipX = true;
 			default:
-				if (FileSystem.exists('assets/data/characters/$curCharacter/init.hx'))
+				if (FileSystem.exists('assets/data/characters/$curCharacter/Init.hx'))
 				{
-					// var charCode = File.getContent('assets/characters/$curCharacter/init.hx');
+					// var charCode = File.getContent('assets/characters/$curCharacter/Init.hx');
 					try
 					{
-						charScript = new HCharacter(this, 'assets/data/characters/$curCharacter/init.hx');
+						charScript = new HCharacter(this, 'assets/data/characters/$curCharacter/Init.hx');
 						charScript.exec("create", []);
 					}
 					catch (e)
@@ -898,8 +899,8 @@ class Character extends FlxSprite
 			flipX = !flipX;
 		}
 
-		if (CharScript != null && CharScript.exists("createPost"))
-			CharScript.exec("createPost", []);
+		if (charScript != null && charScript.exists("createPost"))
+			charScript.exec("createPost", []);
 	}
 
 	function loadOffsetFile(character:String)
@@ -972,9 +973,9 @@ class Character extends FlxSprite
 
 		super.update(elapsed);
 
-		if (CharScript != null && CharScript.exists("update"))
+		if (charScript != null && charScript.exists("update"))
 		{
-			CharScript.exec("update", [elapsed]);
+			charScript.exec("update", [elapsed]);
 			return;
 		}
 	}
@@ -986,9 +987,9 @@ class Character extends FlxSprite
 	 */
 	public function dance()
 	{
-		if (CharScript != null && CharScript.exists("dance"))
+		if (charScript != null && charScript.exists("dance"))
 		{
-			CharScript.exec("dance", []);
+			charScript.exec("dance", []);
 			return;
 		}
 
