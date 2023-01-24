@@ -16,6 +16,7 @@ Powered by a heavily modified version of Kade Engine, This includes lots of addi
 - OpenGL Shaders
 - Character Selector
 - H-Script
+- Softcoded Characters
 - Languages
 - OST Player
 - [Strawberry Input](https://github.com/benjaminpants/Funkin-Strawberry)
