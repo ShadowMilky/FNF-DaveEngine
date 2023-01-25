@@ -564,18 +564,6 @@ class PlayState extends MusicBeatState
 		{
 			stageCheck = SONG.stage;
 		}
-		curStage = SONG.stage;
-		if (curStage == '' || curStage == null) {
-			trace("stage from song data is null, loading stage");
-			curStage = 'stage';
-		}
-
-		var stage = new Stage();
-
-		defaultCamZoom = stage.defaultCamZoom;
-
-		add(stage);
-
 		backgroundSprites = createBackgroundSprites(stageCheck, false);
 		// switch (SONG.song.toLowerCase())
 		// {
@@ -616,8 +604,6 @@ class PlayState extends MusicBeatState
 				add(bfGroup);
 		}
 
-		add(stage.infrontOfGf); // i'm tired of limo
-		
 		gf = new Character(400, 130, gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);
 
@@ -662,13 +648,7 @@ class PlayState extends MusicBeatState
 			boyfriend = new Boyfriend(770, 450, formoverride);
 		}
 
-		
-		add(stage.foreground);
-
-		stage.reposCharacters();
-
-		camPos.x += stage.cameraDisplace.x;
-		camPos.y += stage.cameraDisplace.y;
+		repositionCharStages();
 
 		gfGroup.add(gf);
 		if (dad2 != null)
@@ -2026,8 +2006,6 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		elapsedtime += elapsed;
-
-		stage.stageUpdate(elapsed);
 
 		// script.executeFunc("update", [elapsed]);
 
@@ -3767,8 +3745,6 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		stage.stepHit(curStep);
-
 		// script.executeFunc("stepHit", [curStep]);
 
 		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20)
@@ -3805,8 +3781,6 @@ class PlayState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-
-		stage.beatHit(curBeat);
 
 		// script.executeFunc("beatHit", [curBeat]);
 
