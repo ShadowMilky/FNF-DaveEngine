@@ -7,6 +7,8 @@ import hstuff.HStage;
 import flixel.FlxBasic;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+// cant finish yet cuz of school so compile the "useless lol" commit instead ok bye
+
 class Stage extends FlxTypedGroup<FlxBasic> {
     public var publicSprites:Map<String, FlxBasic>;
     public var foreground:FlxTypedGroup<FlxBasic>;
