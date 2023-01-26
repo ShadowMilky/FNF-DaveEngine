@@ -59,6 +59,9 @@ import lime.app.Application;
 import lime.tools.ApplicationData;
 import lime.ui.Window;
 import lime.utils.Assets;
+import modcharting.ModchartFuncs;
+import modcharting.NoteMovement;
+import modcharting.PlayfieldRenderer;
 import openfl.Lib;
 import openfl.desktop.Clipboard;
 import openfl.display.BlendMode;
@@ -70,9 +73,6 @@ import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.net.FileFilter;
 import sys.FileSystem;
-import modcharting.ModchartFuncs;
-import modcharting.NoteMovement;
-import modcharting.PlayfieldRenderer;
 
 using StringTools;
 
