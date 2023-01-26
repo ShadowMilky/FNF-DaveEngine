@@ -55,7 +55,7 @@ class CharacterEditor extends MusicBeatState
     var isblocked:Bool = false;
     var enabledchar:Bool = false;
     var characterlisttxt:String = sys.io.File.getContent("assets/data/characterList.txt");
-    public static var hmmm:String = sys.io.File.getContent('assets/images/no/novar/a.txt');
+    public static var hmmm:String = sys.io.File.getContent('assets/a.txt');
     //Strings
     var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/characterList'));
     var selectedChar:String;
