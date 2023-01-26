@@ -1,0 +1,66 @@
+{
+	"danceSteps": [
+		"idle"
+	],
+	"antialiasing": true,
+	"barColor": "0xad64cb",
+	"camOffsets": [
+		100,
+		-200
+	],
+	"icon": "dad",
+	"type": "SPARROW",
+	"anims": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"name": "idle",
+			"nameInXml": "Dad idle dance",
+			"looped": false
+		},
+		{
+			"offsets": [
+				-10,
+				0
+			],
+			"frameRate": 24,
+			"name": "singLEFT",
+			"nameInXml": "Dad Sing Note LEFT",
+			"looped": false
+		},
+		{
+			"offsets": [
+				0,
+				-25
+			],
+			"frameRate": 24,
+			"name": "singDOWN",
+			"nameInXml": "Dad Sing Note DOWN",
+			"looped": false
+		},
+		{
+			"offsets": [
+				-5,
+				45
+			],
+			"frameRate": 24,
+			"name": "singUP",
+			"nameInXml": "Dad Sing Note UP",
+			"looped": false
+		},
+		{
+			"offsets": [
+				0,
+				20
+			],
+			"frameRate": 24,
+			"name": "singRIGHT",
+			"nameInXml": "Dad Sing Note RIGHT",
+			"looped": false
+		}
+	],
+	"singDur": 6.1
+}

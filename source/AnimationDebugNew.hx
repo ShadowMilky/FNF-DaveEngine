@@ -100,7 +100,7 @@ class AnimationDebugNew extends MusicBeatState
 
 			char = dad;
 			animationGhost = dad;
-			animationGhost = new Character(dad.x, dad.y, dad.curCharacter, false);
+			animationGhost = new Character(dad.x, dad.y, dad.curCharacter);
 			dad.flipX = false;
 		}
 		else
@@ -111,7 +111,7 @@ class AnimationDebugNew extends MusicBeatState
 			add(bf);
 
 			char = bf;
-			animationGhost = new Character(bf.x, bf.y, bf.curCharacter, true);
+			animationGhost = new Character(bf.x, bf.y, bf.curCharacter);
 			bf.flipX = false;
 		}
 

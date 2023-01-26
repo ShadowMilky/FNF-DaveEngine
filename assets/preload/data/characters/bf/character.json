@@ -1,0 +1,130 @@
+{
+	"barColor": "0xFFFF0000",
+	"camOffsets": [
+		0,
+		0
+	],
+	"icon": "dad",
+	"type": "SPARROW",
+	"anims": [
+		{
+			"offsets": [
+				-5,
+				0
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF idle dance",
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-10,
+				-50
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE DOWN0",
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				12,
+				-6
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE LEFT0",
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-38,
+				-7
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE RIGHT0",
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-29,
+				27
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE UP0",
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-29,
+				27
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE UP MISS",
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				-29,
+				-27
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE DOWN MISS",
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-29,
+				27
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE RIGHT MISS",
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-29,
+				29
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF NOTE LEFT MISS",
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				0,
+				7
+			],
+			"frameRate": 24,
+			"looped": false,
+			"nameInXml": "BF HEY!!",
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				-4,
+				0
+			],
+			"frameRate": 24,
+			"looped": true,
+			"nameInXml": "BF idle shaking",
+			"name": "scared"
+		}
+	],
+	"singDur": 4,
+	"danceSteps": [
+		"idle"
+	],
+	"antialiasing": true,
+	"globalOffset": [
+		0,
+		0
+	]
+}

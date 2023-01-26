@@ -1,0 +1,75 @@
+{
+	"barColor": "0xFFFF0000",
+	"icon": "dad",
+	"camOffsets": [
+		0,
+		0
+	],
+	"anims": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"nameInXml": "GF Dancing Beat",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			],
+			"name": "danceLeft",
+			"looped": false
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"looped": false,
+			"name": "danceRight",
+			"nameInXml": "GF Dancing Beat0",
+			"indices": [
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30
+			]
+		}
+	],
+	"singDur": 4,
+	"type": "SPARROW",
+	"danceSteps": [
+		"idle"
+	],
+	"antialiasing": true,
+	"globalOffset": [
+		0,
+		0
+	]
+}

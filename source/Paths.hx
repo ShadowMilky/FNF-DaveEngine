@@ -148,6 +148,11 @@ class Paths
 		return getPath('data/$key.json', TEXT, library);
 	}
 
+	inline static public function jsonCharacter(key:String, ?library:String)
+		{
+			return getPath('data/characters/$key.json', TEXT, library);
+		}
+
 	inline static public function data(key:String, ?library:String)
 	{
 		// trace('data - loaded $key');

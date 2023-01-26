@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FoxaNewSupaMadSprite.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FoxaUltra Idle0000" x="0" y="0" width="346" height="561" pivotX="-23" pivotY="-29.8" frameX="-3" frameY="0" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0001" x="346" y="0" width="345" height="563" frameX="-4" frameY="-1" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0002" x="691" y="0" width="345" height="557" frameX="-2" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0003" x="1036" y="0" width="343" height="556" frameX="-1" frameY="-4" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0004" x="1379" y="0" width="345" height="557" frameX="-2" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0005" x="1724" y="0" width="342" height="557" frameX="0" frameY="-4" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0006" x="2066" y="0" width="345" height="558" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0007" x="2411" y="0" width="344" height="558" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0008" x="2755" y="0" width="344" height="558" frameX="-2" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0009" x="3099" y="0" width="344" height="557" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0010" x="3443" y="0" width="344" height="558" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0011" x="0" y="563" width="344" height="557" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0012" x="344" y="563" width="344" height="558" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra Idle0013" x="688" y="563" width="344" height="558" frameX="-1" frameY="-3" frameWidth="349" frameHeight="564"/>
+	<SubTexture name="FoxaUltra down0000" x="1032" y="563" width="437" height="389" pivotX="-34.65" pivotY="-151.8" frameX="0" frameY="-51" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0001" x="1032" y="563" width="437" height="389" frameX="0" frameY="-51" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0002" x="1469" y="563" width="372" height="433" frameX="-10" frameY="-7" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0003" x="1469" y="563" width="372" height="433" frameX="-10" frameY="-7" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0004" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0005" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0006" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0007" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0008" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0009" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0010" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0011" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0012" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra down0013" x="1841" y="563" width="363" height="440" frameX="-11" frameY="0" frameWidth="437" frameHeight="440"/>
+	<SubTexture name="FoxaUltra left0000" x="2204" y="563" width="401" height="576" pivotX="102.9" pivotY="-14.9" frameX="0" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0001" x="2204" y="563" width="401" height="576" frameX="0" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0002" x="2605" y="563" width="367" height="577" frameX="-34" frameY="0" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0003" x="2605" y="563" width="367" height="577" frameX="-34" frameY="0" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0004" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0005" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0006" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0007" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0008" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0009" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0010" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0011" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0012" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra left0013" x="2972" y="563" width="363" height="576" frameX="-39" frameY="-1" frameWidth="402" frameHeight="577"/>
+	<SubTexture name="FoxaUltra right0000" x="3335" y="563" width="407" height="558" pivotX="-34.85" pivotY="-24.95" frameX="-39" frameY="-9" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0001" x="3335" y="563" width="407" height="558" frameX="-39" frameY="-9" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0002" x="0" y="1140" width="400" height="565" frameX="-5" frameY="-2" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0003" x="0" y="1140" width="400" height="565" frameX="-5" frameY="-2" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0004" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0005" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0006" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0007" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0008" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0009" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0010" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0011" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0012" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra right0013" x="400" y="1140" width="399" height="567" frameX="0" frameY="0" frameWidth="446" frameHeight="567"/>
+	<SubTexture name="FoxaUltra up0000" x="799" y="1140" width="348" height="636" pivotX="54.6" pivotY="47.75" frameX="0" frameY="0" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0001" x="799" y="1140" width="348" height="636" frameX="0" frameY="0" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0002" x="1147" y="1140" width="346" height="574" frameX="-41" frameY="-62" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0003" x="1147" y="1140" width="346" height="574" frameX="-41" frameY="-62" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0004" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0005" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0006" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0007" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0008" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0009" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0010" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0011" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0012" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+	<SubTexture name="FoxaUltra up0013" x="1493" y="1140" width="347" height="564" frameX="-48" frameY="-72" frameWidth="395" frameHeight="636"/>
+</TextureAtlas>

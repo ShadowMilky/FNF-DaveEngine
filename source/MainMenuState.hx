@@ -268,15 +268,12 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new ChartingState());
 			}
 			#end
-			#if release
 			if (FlxG.keys.justPressed.SEVEN)
 			{
-				var deathSound:FlxSound = new FlxSound();
-				deathSound.loadEmbedded(Paths.soundRandom('missnote', 1, 3));
-				deathSound.volume = FlxG.random.float(0.6, 1);
-				deathSound.play();
+				FlxG.sound.play(Paths.sound('selectMenu'), 0.4);
+
+				FlxG.switchState(new CharacterSelectState());
 			}
-			#end
 			if (FlxG.keys.justPressed.R)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
