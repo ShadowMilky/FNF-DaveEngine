@@ -36,3 +36,4 @@ Also, install systools, because that's required.
 * FellowIdiot - Retired Programmer, Charter 
 * LeNinethGames - Icon Artist
 * JoerOnTheBlower (``Amonger#6663``) - NO DONT TRUST THIS GUY (He apologized now but we do not care.)
+* Erizur and every other Vs. Dave developer - made the engine (i used it as a base btw)
