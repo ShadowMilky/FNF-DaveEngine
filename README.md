@@ -29,7 +29,7 @@ Also, install systools, because that's required.
 
 * CharlesCatYT - Main Programmer, Director
 * Foxa - Composer, Co-Director
-* PogDev - Programmer
+* Shadow Mario / mello - Programmer
 * TheAnimateMan - Spriter
 * Natsuki.HX - Jester Programmer
 * GaragebandCoveryGuy96 - Composer
