@@ -35,4 +35,4 @@ Also, install systools, because that's required.
 * GaragebandCoveryGuy96 - Composer
 * FellowIdiot - Retired Programmer, Charter 
 * LeNinethGames - Icon Artist
-* JoerOnTheBlower - NO DONT TRUST THIS GUY (He apologized now but we do not care.)
+* JoerOnTheBlower (``Amonger#6663``) - NO DONT TRUST THIS GUY (He apologized now but we do not care.)
