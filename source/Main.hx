@@ -11,7 +11,7 @@ import openfl.events.Event;
 import flixel.system.FlxSound;
 import flixel.FlxG;
 import lime.app.Application;
-import openfl.events.UncaughtErrorEvent;
+// import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
 import Discord.DiscordClient;
@@ -27,7 +27,9 @@ class Main extends Sprite
 {
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+
 	public static var initialState:Class<FlxState> = SpecsDetector; // The FlxState the game starts with.
+
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 
 	public static var framerate:Int = 144; // How many frames per second the game should run at.
@@ -95,53 +97,53 @@ class Main extends Sprite
 		addChild(fps);
 		#end
 
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		// Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
 	// #if CRASH_HANDLER
-	function onCrash(e:UncaughtErrorEvent):Void
-	{
-		var errMsg:String = "";
-		var path:String;
-		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
-		var dateNow:String = Date.now().toString();
-
-		dateNow = dateNow.replace(" ", "_");
-		dateNow = dateNow.replace(":", "'");
-
-		path = "./crash/" + "VsFoxaPlus_" + dateNow + ".txt";
-
-		trace('it crashed thanks a lot dummy');
-
-		for (stackItem in callStack)
+	/* function onCrash(e:UncaughtErrorEvent):Void
 		{
-			switch (stackItem)
+			var errMsg:String = "";
+			var path:String;
+			var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+			var dateNow:String = Date.now().toString();
+
+			dateNow = dateNow.replace(" ", "_");
+			dateNow = dateNow.replace(":", "'");
+
+			path = "./crash/" + "VsFoxaPlus_" + dateNow + ".txt";
+
+			trace('it crashed thanks a lot dummy');
+
+			for (stackItem in callStack)
 			{
-				case FilePos(s, file, line, column):
-					errMsg += file + " (line " + line + ")\n";
-				default:
-					Sys.println(stackItem);
+				switch (stackItem)
+				{
+					case FilePos(s, file, line, column):
+						errMsg += file + " (line " + line + ")\n";
+					default:
+						Sys.println(stackItem);
+				}
 			}
+
+			errMsg += "\nUncaught Error: "
+				+ e.error
+				+ "\nPlease report this error to the GitHub page: https://github.com/VsFoxaTeam/FNF-VsFoxaPlus/issues\n\n> Crash Handler written by: sqirra-rng";
+
+			if (!FileSystem.exists("./crash/"))
+				FileSystem.createDirectory("./crash/");
+
+			File.saveContent(path, errMsg + "\n");
+
+			Sys.println(errMsg);
+			Sys.println("Crash dump saved in " + Path.normalize(path));
+
+			Application.current.window.alert(errMsg, "Error!");
+			// DiscordClient.shutdown();
+			Sys.exit(1);
 		}
-
-		errMsg += "\nUncaught Error: "
-			+ e.error
-			+ "\nPlease report this error to the GitHub page: https://github.com/VsFoxaTeam/FNF-VsFoxaPlus/issues\n\n> Crash Handler written by: sqirra-rng";
-
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
-
-		File.saveContent(path, errMsg + "\n");
-
-		Sys.println(errMsg);
-		Sys.println("Crash dump saved in " + Path.normalize(path));
-
-		Application.current.window.alert(errMsg, "Error!");
-		// DiscordClient.shutdown();
-		Sys.exit(1);
-	}
-
+	 */
 	// #end
 }
