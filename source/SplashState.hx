@@ -49,6 +49,8 @@ class SplashState extends FlxState
 		_cachedAutoPause = FlxG.autoPause;
 		FlxG.autoPause = false;
 
+		trace('yeet');
+
 		animatedTex = Paths.getSplashSparrowAtlas('ui/flixel_intro', 'preload');
 
 		animatedIntro = new FlxSprite(0, 0);
@@ -90,7 +92,7 @@ class SplashState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.save.data.hasSeenSplash && FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER)
 		{
 			onComplete(null);
 		}
