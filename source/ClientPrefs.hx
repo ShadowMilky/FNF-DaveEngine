@@ -2,6 +2,8 @@ package;
 
 import flixel.FlxG;
 import flixel.util.FlxSave;
+import flixel.input.keyboard.FlxKey;
+import Controls;
 
 class ClientPrefs {
 	//TO DO: Redo ClientPrefs in a way that isn't too stupid
@@ -15,6 +17,42 @@ class ClientPrefs {
 	public static var noteCamera:Bool = true;
 	public static var botplay:Bool = false;
 	public static var offset:Int = 0;
+
+	public static var defaultKeys:Array<FlxKey> = [
+		A, LEFT,			//Note Left
+		S, DOWN,			//Note Down
+		W, UP,				//Note Up
+		D, RIGHT,			//Note Right
+
+		A, LEFT,			//UI Left
+		S, DOWN,			//UI Down
+		W, UP,				//UI Up
+		D, RIGHT,			//UI Right
+
+		R, NONE,			//Reset
+		SPACE, ENTER,		//Accept
+		BACKSPACE, ESCAPE,	//Back
+		ENTER, ESCAPE		//Pause
+	];
+	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState)'s list
+	public static var keyBinds:Array<Dynamic> = [
+		//Key Bind, Name for ControlsSubState
+		[Control.NOTE_LEFT, 'Left'],
+		[Control.NOTE_DOWN, 'Down'],
+		[Control.NOTE_UP, 'Up'],
+		[Control.NOTE_RIGHT, 'Right'],
+
+		[Control.UI_LEFT, 'Left '],		//Added a space for not conflicting on ControlsSubState
+		[Control.UI_DOWN, 'Down '],		//Added a space for not conflicting on ControlsSubState
+		[Control.UI_UP, 'Up '],			//Added a space for not conflicting on ControlsSubState
+		[Control.UI_RIGHT, 'Right '],	//Added a space for not conflicting on ControlsSubState
+
+		[Control.RESET, 'Reset'],
+		[Control.ACCEPT, 'Accept'],
+		[Control.BACK, 'Back'],
+		[Control.PAUSE, 'Pause']
+	];
+	public static var lastControls:Array<FlxKey> = defaultKeys.copy();
 
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
@@ -32,6 +70,7 @@ class ClientPrefs {
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls', 'PowderTeam'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff.
+		save.data.customControls = lastControls;
 		save.flush();
 		FlxG.log.add("Settings saved!");
 	}
@@ -77,5 +116,43 @@ class ClientPrefs {
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls', 'PowderTeam');
+		if(save != null && save.data.customControls != null) {
+			reloadControls(save.data.customControls);
+		}
+	}
+
+	public static function reloadControls(newKeys:Array<FlxKey>) {
+		ClientPrefs.removeControls(ClientPrefs.lastControls);
+		ClientPrefs.lastControls = newKeys.copy();
+		ClientPrefs.loadControls(ClientPrefs.lastControls);
+	}
+
+	private static function removeControls(controlArray:Array<FlxKey>) {
+		for (i in 0...keyBinds.length) {
+			var controlValue:Int = i*2;
+			var controlsToRemove:Array<FlxKey> = [];
+			for (j in 0...2) {
+				if(controlArray[controlValue+j] != NONE) {
+					controlsToRemove.push(controlArray[controlValue+j]);
+				}
+			}
+			if(controlsToRemove.length > 0) {
+				PlayerSettings.player1.controls.unbindKeys(keyBinds[i][0], controlsToRemove);
+			}
+		}
+	}
+	private static function loadControls(controlArray:Array<FlxKey>) {
+		for (i in 0...keyBinds.length) {
+			var controlValue:Int = i*2;
+			var controlsToAdd:Array<FlxKey> = [];
+			for (j in 0...2) {
+				if(controlArray[controlValue+j] != NONE) {
+					controlsToAdd.push(controlArray[controlValue+j]);
+				}
+			}
+			if(controlsToAdd.length > 0) {
+				PlayerSettings.player1.controls.bindKeys(keyBinds[i][0], controlsToAdd);
+			}
+		}
 	}
 }

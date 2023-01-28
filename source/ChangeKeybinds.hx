@@ -102,21 +102,21 @@ class ChangeKeybinds extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		var left = controls.LEFT_P;
-		var down = controls.DOWN_P;
-		var up = controls.UP_P;
-		var right = controls.RIGHT_P;
+		var left = controls.UI_LEFT_P;
+		var down = controls.UI_DOWN_P;
+		var up = controls.UI_UP_P;
+		var right = controls.UI_RIGHT_P;
 		var back = controls.BACK;
 		var accept = controls.ACCEPT;
 
 		switch (state)
 		{
 			case SelectControl:
-				if (up && !controls.RIGHT && !controls.LEFT)
+				if (up && !controls.UI_RIGHT && !controls.UI_LEFT)
 				{
 					changeSelection(-1);
 				}
-				if (down && !controls.RIGHT && !controls.LEFT)
+				if (down && !controls.UI_RIGHT && !controls.UI_LEFT)
 				{
 					changeSelection(1);
 				}
@@ -134,19 +134,19 @@ class ChangeKeybinds extends MusicBeatState
 				}
 				if (curTextGroup.groupName == 'presetGroup')
 				{
-					if (controls.RIGHT)
+					if (controls.UI_RIGHT)
 					{
 						updateText(presetRight, true);
 					}
-					if (controls.RIGHT_R)
+					if (controls.UI_RIGHT_R)
 					{
 						updateText(presetRight, false);
 					}
-					if (controls.LEFT)
+					if (controls.UI_LEFT)
 					{
 						updateText(presetLeft, true);
 					}
-					if (controls.LEFT_R)
+					if (controls.UI_LEFT_R)
 					{
 						updateText(presetLeft, false);
 					}

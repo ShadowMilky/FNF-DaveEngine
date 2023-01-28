@@ -73,11 +73,11 @@ class ChangeLanguageState extends MusicBeatState
 			{
 				Conductor.songPosition = FlxG.sound.music.time;
 			}
-			if (controls.UP_P)
+			if (controls.UI_UP_P)
 			{
 				changeSelection(-1);
 			}
-			if (controls.DOWN_P)
+			if (controls.UI_DOWN_P)
 			{
 				changeSelection(1);
 			}

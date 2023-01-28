@@ -89,11 +89,11 @@ class CompatWarningState extends MusicBeatState
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
 				});
 			}
-			if (controls.LEFT_P)
+			if (controls.UI_LEFT_P)
 			{
 				changeSelection(-1);
 			}
-			if (controls.RIGHT_P)
+			if (controls.UI_RIGHT_P)
 			{
 				changeSelection(1);
 			}

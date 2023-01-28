@@ -64,8 +64,8 @@ class Prompt extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		var leftP = controls.LEFT_P;
-		var rightP = controls.RIGHT_P;
+		var leftP = controls.UI_LEFT_P;
+		var rightP = controls.UI_RIGHT_P;
 		var enter = controls.ACCEPT;
 
 		if (leftP)

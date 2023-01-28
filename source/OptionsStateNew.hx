@@ -77,11 +77,11 @@ class OptionsStateNew extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (controls.UP_P)
+		if (controls.UI_UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (controls.DOWN_P)
+		if (controls.UI_DOWN_P)
 		{
 			changeSelection(1);
 		}
@@ -133,6 +133,267 @@ class OptionsStateNew extends MusicBeatState
 			if (item.targetY == 0)
 			{
 				item.alpha = 1;
+			}
+		}
+	}
+}
+
+class ControlsSubstate extends MusicBeatSubstate {
+	private static var curSelected:Int = 1;
+	private static var curAlt:Bool = false;
+
+	private static var defaultKey:String = 'Reset to Default Keys';
+
+	var optionShit:Array<String> = [
+		'NOTES',
+		ClientPrefs.keyBinds[0][1],
+		ClientPrefs.keyBinds[1][1],
+		ClientPrefs.keyBinds[2][1],
+		ClientPrefs.keyBinds[3][1],
+		'',
+		'UI',
+		ClientPrefs.keyBinds[4][1],
+		ClientPrefs.keyBinds[5][1],
+		ClientPrefs.keyBinds[6][1],
+		ClientPrefs.keyBinds[7][1],
+		'',
+		ClientPrefs.keyBinds[8][1],
+		ClientPrefs.keyBinds[9][1],
+		ClientPrefs.keyBinds[10][1],
+		ClientPrefs.keyBinds[11][1],
+		'',
+		defaultKey];
+
+	private var grpOptions:FlxTypedGroup<Alphabet>;
+	private var grpInputs:Array<AttachedText> = [];
+	private var controlArray:Array<FlxKey> = [];
+	var rebindingKey:Int = -1;
+	var nextAccept:Int = 5;
+
+	public function new() {
+		super();
+		grpOptions = new FlxTypedGroup<Alphabet>();
+		add(grpOptions);
+
+		controlArray = ClientPrefs.lastControls.copy();
+		for (i in 0...optionShit.length) {
+			var isCentered:Bool = false;
+			var isDefaultKey:Bool = (optionShit[i] == defaultKey);
+			if(unselectableCheck(i, true)) {
+				isCentered = true;
+			}
+
+			var optionText:Alphabet = new Alphabet(0, 70 * i, optionShit[i], false, false);
+			optionText.isMenuItem = true;
+			optionText.itemType = 'D-Shape';
+			optionText.targetY = i;
+			optionText.scrollFactor.set();
+			optionText.alpha = 0;
+			optionText.y += 1000;
+			grpOptions.add(optionText);
+
+
+				addBindTexts(optionText);
+			}
+
+		changeSelection();
+	}
+
+	var leaving:Bool = false;
+	var bindingTime:Float = 0;
+	override function update(elapsed:Float) {
+		if(rebindingKey < 0) {
+			if (controls.UI_UP_P) {
+				changeSelection(-1);
+			}
+			if (controls.UI_DOWN_P) {
+				changeSelection(1);
+			}
+			if (controls.UI_LEFT_P || controls.UI_RIGHT_P) {
+				changeAlt();
+			}
+
+			if (controls.BACK) {
+				ClientPrefs.reloadControls(controlArray);
+				grpOptions.forEachAlive(function(spr:Alphabet) {
+					spr.alpha = 0;
+				});
+				for (i in 0...grpInputs.length) {
+					var spr:AttachedText = grpInputs[i];
+					if(spr != null) {
+						spr.alpha = 0;
+					}
+				}
+				close();
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+			}
+
+			if(controls.ACCEPT && nextAccept <= 0) {
+				if(optionShit[curSelected] == defaultKey) {
+					controlArray = ClientPrefs.defaultKeys.copy();
+					reloadKeys();
+					changeSelection();
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+				} else {
+					bindingTime = 0;
+					rebindingKey = getSelectedKey();
+					if(rebindingKey > -1) {
+						grpInputs[rebindingKey].visible = false;
+						FlxG.sound.play(Paths.sound('scrollMenu'));
+					} else {
+						FlxG.log.warn('Error! No input found/badly configured');
+						FlxG.sound.play(Paths.sound('cancelMenu'));
+					}
+				}
+			}
+		} else {
+			var keyPressed:Int = FlxG.keys.firstJustPressed();
+			if (keyPressed > -1) {
+				controlArray[rebindingKey] = keyPressed;
+				var opposite:Int = rebindingKey + (rebindingKey % 2 == 1 ? -1 : 1);
+				trace('Rebinded key with ID: ' + rebindingKey + ', Opposite is: ' + opposite);
+				if(controlArray[opposite] == controlArray[rebindingKey]) {
+					controlArray[opposite] = NONE;
+				}
+
+				reloadKeys();
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				rebindingKey = -1;
+			}
+
+			bindingTime += elapsed;
+			if(bindingTime > 5) {
+				grpInputs[rebindingKey].visible = true;
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				rebindingKey = -1;
+				bindingTime = 0;
+			}
+		}
+
+		if(nextAccept > 0) {
+			nextAccept -= 1;
+		}
+		super.update(elapsed);
+	}
+	
+	function changeSelection(change:Int = 0) {
+		do {
+			curSelected += change;
+			if (curSelected < 0)
+				curSelected = optionShit.length - 1;
+			if (curSelected >= optionShit.length)
+				curSelected = 0;
+		} while(unselectableCheck(curSelected));
+
+		var bullShit:Int = 0;
+
+		for (i in 0...grpInputs.length) {
+			grpInputs[i].alpha = 0.6;
+		}
+
+		for (item in grpOptions.members) {
+			item.targetY = bullShit - curSelected;
+			bullShit++;
+
+			if(!unselectableCheck(bullShit-1)) {
+				item.alpha = 0.6;
+				if (item.targetY == 0) {
+					item.alpha = 1;
+					for (i in 0...grpInputs.length) {
+						if(grpInputs[i].sprTracker == item && grpInputs[i].isAlt == curAlt) {
+							grpInputs[i].alpha = 1;
+						}
+					}
+				}
+			}
+		}
+		FlxG.sound.play(Paths.sound('scrollMenu'));
+	}
+
+	function changeAlt() {
+		curAlt = !curAlt;
+		for (i in 0...grpInputs.length) {
+			if(grpInputs[i].sprTracker == grpOptions.members[curSelected]) {
+				grpInputs[i].alpha = 0.6;
+				if(grpInputs[i].isAlt == curAlt) {
+					grpInputs[i].alpha = 1;
+				}
+			}
+		}
+		FlxG.sound.play(Paths.sound('scrollMenu'));
+	}
+
+	private function unselectableCheck(num:Int, ?checkDefaultKey:Bool = false):Bool {
+		if(optionShit[num] == defaultKey) {
+			return checkDefaultKey;
+		}
+
+		for (i in 0...ClientPrefs.keyBinds.length) {
+			if(ClientPrefs.keyBinds[i][1] == optionShit[num]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private function getSelectedKey():Int {
+		var altValue:Int = (curAlt ? 1 : 0);
+		for (i in 0...ClientPrefs.keyBinds.length) {
+			if(ClientPrefs.keyBinds[i][1] == optionShit[curSelected]) {
+				return i*2 + altValue;
+			}
+		}
+		return -1;
+	}
+
+	private function addBindTexts(optionText:Alphabet) {
+		var text1 = new AttachedText(InputFormatter.getKeyName(controlArray[grpInputs.length]), 400, -55);
+		text1.setPosition(optionText.x + 400, optionText.y - 55);
+		text1.sprTracker = optionText;
+		grpInputs.push(text1);
+		add(text1);
+
+		var text2 = new AttachedText(InputFormatter.getKeyName(controlArray[grpInputs.length]), 650, -55);
+		text2.setPosition(optionText.x + 650, optionText.y - 55);
+		text2.sprTracker = optionText;
+		text2.isAlt = true;
+		grpInputs.push(text2);
+		add(text2);
+	}
+
+	function reloadKeys() {
+		while(grpInputs.length > 0) {
+			var item:AttachedText = grpInputs[0];
+			grpInputs.remove(item);
+			remove(item);
+		}
+
+		for (i in 0...grpOptions.length) {
+			if(!unselectableCheck(i, true)) {
+				addBindTexts(grpOptions.members[i]);
+			}
+		}
+
+
+		var bullShit:Int = 0;
+		for (i in 0...grpInputs.length) {
+			grpInputs[i].alpha = 0.6;
+		}
+
+		for (item in grpOptions.members) {
+			item.targetY = bullShit - curSelected;
+			bullShit++;
+
+			if(!unselectableCheck(bullShit-1)) {
+				item.alpha = 0.6;
+				if (item.targetY == 0) {
+					item.alpha = 1;
+					for (i in 0...grpInputs.length) {
+						if(grpInputs[i].sprTracker == item && grpInputs[i].isAlt == curAlt) {
+							grpInputs[i].alpha = 1;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -254,11 +515,11 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
-		if (controls.UP_P)
+		if (controls.UI_UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (controls.DOWN_P)
+		if (controls.UI_DOWN_P)
 		{
 			changeSelection(1);
 		}
@@ -334,10 +595,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 		}
 		else
 		{
-			if (controls.LEFT || controls.RIGHT)
+			if (controls.UI_LEFT || controls.UI_RIGHT)
 			{
-				var add:Int = controls.LEFT ? -1 : 1;
-				if (holdTime > 0.5 || controls.LEFT_P || controls.RIGHT_P)
+				var add:Int = controls.UI_LEFT ? -1 : 1;
+				if (holdTime > 0.5 || controls.UI_LEFT_P || controls.UI_RIGHT_P)
 					switch (options[curSelected])
 					{
 						case 'Framerate':

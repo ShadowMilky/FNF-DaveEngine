@@ -104,11 +104,11 @@ class SelectLanguageState extends MusicBeatState
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
 				});
 			}
-			if (controls.UP_P)
+			if (controls.UI_UP_P)
 			{
 				changeSelection(-1);
 			}
-			if (controls.DOWN_P)
+			if (controls.UI_DOWN_P)
 			{
 				changeSelection(1);
 			}

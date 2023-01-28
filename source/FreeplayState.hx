@@ -341,11 +341,11 @@ class FreeplayState extends MusicBeatState
 			diffText = null;
 			characterSelectText = null;
 
-			if (controls.LEFT_P && canInteract)
+			if (controls.UI_LEFT_P && canInteract)
 			{
 				UpdatePackSelection(-1);
 			}
-			if (controls.RIGHT_P && canInteract)
+			if (controls.UI_RIGHT_P && canInteract)
 			{
 				UpdatePackSelection(1);
 			}
@@ -398,8 +398,8 @@ class FreeplayState extends MusicBeatState
 		// Freeplay Functions
 		else
 		{
-			var upP = controls.UP_P;
-			var downP = controls.DOWN_P;
+			var upP = controls.UI_UP_P;
+			var downP = controls.UI_DOWN_P;
 			var accepted = controls.ACCEPT;
 
 			if (upP && canInteract)
@@ -412,13 +412,13 @@ class FreeplayState extends MusicBeatState
 				stringKey = 'down';
 				changeSelection(1);
 			}
-			if (controls.LEFT_P && canInteract)
+			if (controls.UI_LEFT_P && canInteract)
 			{
 				FlxG.sound.music.fadeOut(1, 0);
 				trace('terminal is here');
 				FlxG.switchState(new TerminalState());
 			}
-			if (controls.RIGHT_P && canInteract)
+			if (controls.UI_RIGHT_P && canInteract)
 			{
 				trace('why not use the main menu, dum-dum');
 				FlxG.switchState(new OptionsStateNew());
@@ -621,15 +621,6 @@ class FreeplayState extends MusicBeatState
 	function changeSelection(change:Int = 0)
 	{
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-
-		if (change != 0)
-		{
-			var inputKeys = controls.getInputsFor(Controls.stringControlToControl(stringKey), Device.Keys);
-			if (pressSpeeds.length == 1)
-			{
-				requiredKey = inputKeys;
-			}
-		}
 
 		curSelected += change;
 
