@@ -3,7 +3,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' | Vs. Foxa+" file="VsFoxaPlus" packageName="powderteam.vsfoxaplus" package="powderteam.vsfoxaplus" main="Main" version="1.0.0" company="powderteam"/>
+	<app title="Friday Night Funkin' | Vs. Foxa Expanded" file="VsFoxaExpanded" packageName="powderteam.vsfoxaexpanded" package="powderteam.vsfoxaexpanded" main="Main" version="1.0.0" company="powderteam"/>
 	<app preloader="flixel.system.FlxPreloader"/>
 
 	<set name="APP_ID" value="0x0100f6c013bbc000"/>

@@ -40,8 +40,8 @@ class SpecsDetector extends MusicBeatState
 			return true;
 		else
 		{
-			return messageBox("Vs. Foxa Plus",
-				"Your PC does not meet the requirements Vs. Foxa Plus has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
+			return messageBox("Vs. Foxa Expanded",
+				"Your PC does not meet the requirements Vs. Foxa Expanded has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
 		}
 
 		return true;
