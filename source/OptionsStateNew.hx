@@ -102,7 +102,7 @@ class OptionsStateNew extends MusicBeatState
 			switch (options[curSelected])
 			{
 				case 'Controls':
-					FlxG.switchState(new ChangeKeybinds());
+					openSubState(new ControlsSubstate());
 				case 'Language':
 					FlxG.switchState(new ChangeLanguageState());
 				case 'Preferences':

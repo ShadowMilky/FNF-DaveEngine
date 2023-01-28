@@ -127,7 +127,7 @@ class ClientPrefs {
 		ClientPrefs.loadControls(ClientPrefs.lastControls);
 	}
 
-	private static function removeControls(controlArray:Array<FlxKey>) {
+	public static function removeControls(controlArray:Array<FlxKey>) {
 		for (i in 0...keyBinds.length) {
 			var controlValue:Int = i*2;
 			var controlsToRemove:Array<FlxKey> = [];
@@ -141,7 +141,7 @@ class ClientPrefs {
 			}
 		}
 	}
-	private static function loadControls(controlArray:Array<FlxKey>) {
+	public static function loadControls(controlArray:Array<FlxKey>) {
 		for (i in 0...keyBinds.length) {
 			var controlValue:Int = i*2;
 			var controlsToAdd:Array<FlxKey> = [];
