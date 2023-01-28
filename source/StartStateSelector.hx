@@ -11,6 +11,7 @@ class StartStateSelector extends FlxState
 		LanguageManager.save.data.language == null;
 		if (LanguageManager.save.data.language == null)
 		{
+			trace('choose your language!\nalso this is your first time compiling this mod\nso thank you for that.');
 			FlxG.switchState(new SelectLanguageState());
 		}
 		else
