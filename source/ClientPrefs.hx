@@ -18,41 +18,37 @@ class ClientPrefs {
 	public static var botplay:Bool = false;
 	public static var offset:Int = 0;
 
-	public static var defaultKeys:Array<FlxKey> = [
-		A, LEFT,			//Note Left
-		S, DOWN,			//Note Down
-		W, UP,				//Note Up
-		D, RIGHT,			//Note Right
-
-		A, LEFT,			//UI Left
-		S, DOWN,			//UI Down
-		W, UP,				//UI Up
-		D, RIGHT,			//UI Right
-
-		R, NONE,			//Reset
-		SPACE, ENTER,		//Accept
-		BACKSPACE, ESCAPE,	//Back
-		ENTER, ESCAPE		//Pause
-	];
-	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState)'s list
-	public static var keyBinds:Array<Dynamic> = [
+	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
+	public static var keyBinds:Map<String, Array<FlxKey>> = [
 		//Key Bind, Name for ControlsSubState
-		[Control.NOTE_LEFT, 'Left'],
-		[Control.NOTE_DOWN, 'Down'],
-		[Control.NOTE_UP, 'Up'],
-		[Control.NOTE_RIGHT, 'Right'],
-
-		[Control.UI_LEFT, 'Left '],		//Added a space for not conflicting on ControlsSubState
-		[Control.UI_DOWN, 'Down '],		//Added a space for not conflicting on ControlsSubState
-		[Control.UI_UP, 'Up '],			//Added a space for not conflicting on ControlsSubState
-		[Control.UI_RIGHT, 'Right '],	//Added a space for not conflicting on ControlsSubState
-
-		[Control.RESET, 'Reset'],
-		[Control.ACCEPT, 'Accept'],
-		[Control.BACK, 'Back'],
-		[Control.PAUSE, 'Pause']
+		'note_left'		=> [A, LEFT],
+		'note_down'		=> [S, DOWN],
+		'note_up'		=> [W, UP],
+		'note_right'	=> [D, RIGHT],
+		
+		'ui_left'		=> [A, LEFT],
+		'ui_down'		=> [S, DOWN],
+		'ui_up'			=> [W, UP],
+		'ui_right'		=> [D, RIGHT],
+		
+		'accept'		=> [SPACE, ENTER],
+		'back'			=> [BACKSPACE, ESCAPE],
+		'pause'			=> [ENTER, ESCAPE],
+		'reset'			=> [R, NONE],
+		
+		'volume_mute'	=> [ZERO, NONE],
+		'volume_up'		=> [NUMPADPLUS, PLUS],
+		'volume_down'	=> [NUMPADMINUS, MINUS],
+		
+		'debug_1'		=> [SEVEN, NONE],
+		'debug_2'		=> [EIGHT, NONE]
 	];
-	public static var lastControls:Array<FlxKey> = defaultKeys.copy();
+	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
+
+	public static function loadDefaultKeys() {
+		defaultKeys = keyBinds.copy();
+		//trace(defaultKeys);
+	}
 
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
@@ -70,7 +66,7 @@ class ClientPrefs {
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls', 'PowderTeam'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff.
-		save.data.customControls = lastControls;
+		save.data.customControls = keyBinds;
 		save.flush();
 		FlxG.log.add("Settings saved!");
 	}
@@ -117,42 +113,31 @@ class ClientPrefs {
 		var save:FlxSave = new FlxSave();
 		save.bind('controls', 'PowderTeam');
 		if(save != null && save.data.customControls != null) {
-			reloadControls(save.data.customControls);
+			var loadedControls:Map<String, Array<FlxKey>> = save.data.customControls;
+			for (control => keys in loadedControls) {
+				keyBinds.set(control, keys);
+			}
+			reloadControls();
 		}
 	}
 
-	public static function reloadControls(newKeys:Array<FlxKey>) {
-		ClientPrefs.removeControls(ClientPrefs.lastControls);
-		ClientPrefs.lastControls = newKeys.copy();
-		ClientPrefs.loadControls(ClientPrefs.lastControls);
+	public static function reloadControls() {
+		PlayerSettings.player1.controls.setKeyboardScheme(KeyboardScheme.Solo);
 	}
 
-	public static function removeControls(controlArray:Array<FlxKey>) {
-		for (i in 0...keyBinds.length) {
-			var controlValue:Int = i*2;
-			var controlsToRemove:Array<FlxKey> = [];
-			for (j in 0...2) {
-				if(controlArray[controlValue+j] != NONE) {
-					controlsToRemove.push(controlArray[controlValue+j]);
-				}
+	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
+		var copiedArray:Array<FlxKey> = arrayToCopy.copy();
+		var i:Int = 0;
+		var len:Int = copiedArray.length;
+
+		while (i < len) {
+			if(copiedArray[i] == NONE) {
+				copiedArray.remove(NONE);
+				--i;
 			}
-			if(controlsToRemove.length > 0) {
-				PlayerSettings.player1.controls.unbindKeys(keyBinds[i][0], controlsToRemove);
-			}
+			i++;
+			len = copiedArray.length;
 		}
-	}
-	public static function loadControls(controlArray:Array<FlxKey>) {
-		for (i in 0...keyBinds.length) {
-			var controlValue:Int = i*2;
-			var controlsToAdd:Array<FlxKey> = [];
-			for (j in 0...2) {
-				if(controlArray[controlValue+j] != NONE) {
-					controlsToAdd.push(controlArray[controlValue+j]);
-				}
-			}
-			if(controlsToAdd.length > 0) {
-				PlayerSettings.player1.controls.bindKeys(keyBinds[i][0], controlsToAdd);
-			}
-		}
+		return copiedArray;
 	}
 }
