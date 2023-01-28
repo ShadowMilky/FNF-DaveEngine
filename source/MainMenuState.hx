@@ -53,8 +53,8 @@ class MainMenuState extends MusicBeatState
 		'desc_freeplay',
 		'desc_credits',
 		'desc_ost',
-		'desc_options',
-		'desc_discord'
+		'desc_discord',
+		'desc_options'
 	];
 
 	public static var firstStart:Bool = true;
@@ -81,7 +81,7 @@ class MainMenuState extends MusicBeatState
 
 	var lilMenuGuy:FlxSprite;
 
-	var curOptText:FlxText;
+	var money:Alphabet;
 	var curOptDesc:FlxText;
 
 	var voidShader:Shaders.GlitchEffect;
@@ -126,6 +126,12 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xfffdc571;
 		add(magenta);
 
+		bg = new FlxBackdrop(Paths.image('ui/checkeredBG', 'preload'), #if (flixel_addons < "3.0.0") 1, 1, true, true, #else XY, #end 1, 1);
+		bg.alpha = 0;
+		bg.antialiasing = true;
+		bg.scrollFactor.set();
+		add(bg);
+
 		var overlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('ui/CoolOverlay'));
 		overlay.alpha = 50;
 		overlay.scrollFactor.set();
@@ -150,14 +156,23 @@ class MainMenuState extends MusicBeatState
 		bigIcons.screenCenter(X);
 		add(bigIcons);
 
-		curOptText = new FlxText(0, 0, FlxG.width, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '));
-		curOptText.setFormat(Paths.font("funkin.otf"), 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		curOptText.scrollFactor.set(0, 0);
-		curOptText.borderSize = 2.5;
-		curOptText.antialiasing = true;
-		curOptText.screenCenter(X);
-		curOptText.y = FlxG.height / 2 + 42;
-		add(curOptText);
+		/*
+			curOptText = new Alphabet(0, 0, FlxG.width, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '));
+			curOptText.setFormat(Paths.font("funkin.otf"), 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			curOptText.scrollFactor.set(0, 0);
+			curOptText.borderSize = 2.5;
+			curOptText.antialiasing = true;
+			curOptText.screenCenter(X);
+			curOptText.y = FlxG.height / 2 + 42;
+			add(curOptText); 
+		 */
+
+		money = new Alphabet(0, 0, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '), true);
+		money.antialiasing = true;
+		money.screenCenter(X);
+		money.scrollFactor.set();
+		money.y = FlxG.height / 2 + 42;
+		add(money);
 
 		curOptDesc = new FlxText(0, 0, FlxG.width, LanguageManager.getTextString(languagesDescriptions[curSelected]));
 		curOptDesc.setFormat(Paths.font("funkin.otf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -219,14 +234,14 @@ class MainMenuState extends MusicBeatState
 		firstStart = false;
 
 		// var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, '${daRealEngineVer} Engine v${engineVer}\nFNF v${gameVer}', 12);
-		var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, 'Vs. Foxa Expanded ALPHA\nFNF v${gameVer}', 12);
+		var versionShit:FlxText = new FlxText(1, FlxG.height - 45, FlxG.width, 'Foxa Engine - Vs. Foxa Expanded BETA\nFNF v${gameVer}', 12);
 		versionShit.antialiasing = true;
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
 		var pressR:FlxText = new FlxText(1, 10, FlxG.width, LanguageManager.getTextString("main_resetdata"), 12);
-		pressR.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		pressR.setFormat("Funkin", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		pressR.antialiasing = true;
 		pressR.alpha = 0;
 		pressR.scrollFactor.set();
@@ -436,7 +451,7 @@ class MainMenuState extends MusicBeatState
 		});
 
 		bigIcons.animation.play(optionShit[curSelected]);
-		curOptText.text = CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' ');
+		money.text = CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' ');
 		curOptDesc.text = LanguageManager.getTextString(languagesDescriptions[curSelected]);
 	}
 
