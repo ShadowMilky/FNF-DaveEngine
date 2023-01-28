@@ -18,7 +18,7 @@ class ClientPrefs {
 	public static var botplay:Bool = false;
 	public static var offset:Int = 0;
 
-	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
+	/*//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
 		//Key Bind, Name for ControlsSubState
 		'note_left'		=> [A, LEFT],
@@ -48,7 +48,7 @@ class ClientPrefs {
 	public static function loadDefaultKeys() {
 		defaultKeys = keyBinds.copy();
 		//trace(defaultKeys);
-	}
+	}*/
 
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
@@ -65,8 +65,8 @@ class ClientPrefs {
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls', 'PowderTeam'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff.
-		save.data.customControls = keyBinds;
+		save.bind('vsfoxa', 'PowderTeam'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff.
+		// save.data.customControls = keyBinds;
 		save.flush();
 		FlxG.log.add("Settings saved!");
 	}
@@ -111,17 +111,17 @@ class ClientPrefs {
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls', 'PowderTeam');
-		if(save != null && save.data.customControls != null) {
+		save.bind('vsfoxa', 'PowderTeam');
+		/*if(save != null && save.data.customControls != null) {
 			var loadedControls:Map<String, Array<FlxKey>> = save.data.customControls;
 			for (control => keys in loadedControls) {
 				keyBinds.set(control, keys);
 			}
 			reloadControls();
-		}
+		}*/
 	}
 
-	public static function reloadControls() {
+	/*public static function reloadControls() {
 		PlayerSettings.player1.controls.setKeyboardScheme(KeyboardScheme.Solo);
 	}
 
@@ -139,5 +139,5 @@ class ClientPrefs {
 			len = copiedArray.length;
 		}
 		return copiedArray;
-	}
+	}*/
 }

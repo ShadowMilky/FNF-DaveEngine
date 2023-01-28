@@ -77,11 +77,11 @@ class OptionsStateNew extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (controls.UI_UP_P)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
@@ -102,7 +102,7 @@ class OptionsStateNew extends MusicBeatState
 			switch (options[curSelected])
 			{
 				case 'Controls':
-					openSubState(new ControlsSubState());
+					FlxG.switchState(new ChangeKeybinds());
 				case 'Language':
 					FlxG.switchState(new ChangeLanguageState());
 				case 'Preferences':
@@ -254,11 +254,11 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_UP_P)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
@@ -334,10 +334,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 		}
 		else
 		{
-			if (controls.UI_LEFT || controls.UI_RIGHT)
+			if (controls.LEFT || controls.RIGHT)
 			{
-				var add:Int = controls.UI_LEFT ? -1 : 1;
-				if (holdTime > 0.5 || controls.UI_LEFT_P || controls.UI_RIGHT_P)
+				var add:Int = controls.LEFT ? -1 : 1;
+				if (holdTime > 0.5 || controls.LEFT_P || controls.RIGHT_P)
 					switch (options[curSelected])
 					{
 						case 'Framerate':

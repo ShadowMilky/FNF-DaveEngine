@@ -68,11 +68,11 @@ class DebugChoosingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_UP_P)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}

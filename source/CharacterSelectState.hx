@@ -342,7 +342,7 @@ class CharacterSelectState extends MusicBeatState
 		funbg.x -= scrollSpeed * elapsed;
 		funbg.y -= scrollSpeed * elapsed;
 		
-		var controlSet:Array<Bool> = [controls.UI_LEFT_P, controls.UI_DOWN_P, controls.UI_UP_P, controls.UI_RIGHT_P];
+		var controlSet:Array<Bool> = [controls.LEFT_P, controls.DOWN_P, controls.UP_P, controls.RIGHT_P];
 
 		super.update(elapsed);
 

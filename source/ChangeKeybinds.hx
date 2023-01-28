@@ -46,7 +46,8 @@ class ChangeKeybinds extends MusicBeatState
 		new ControlUI('Down', 'down'),
 		new ControlUI('Up', 'up'),
 		new ControlUI('Right', 'right'),
-		new ControlUI('Reset', 'reset')
+		new ControlUI('Reset', 'reset'),
+		new ControlUI('Key5', 'key5'),
 	];
 
 	var currentUIControl:ControlUI;
@@ -59,7 +60,7 @@ class ChangeKeybinds extends MusicBeatState
 	var curKeybindSelected:Int = 0;
 	var currentKeybind:FlxText;
 
-	var keybindPresets:Array<String> = ['-', 'WASD', 'DFJK', 'ASKL', 'ZX,.'];
+	var keybindPresets:Array<String> = ['Arrow Keys', 'WASD', 'DFJK', 'ASKL', 'ZX,.'];
 	var choosePreset:FlxText;
 	var preset:FlxText;
 	var presetLeft:FlxText;
@@ -78,7 +79,7 @@ class ChangeKeybinds extends MusicBeatState
 
 		var tutorial:FlxText = new FlxText(0, 50, FlxG.width / 2, LanguageManager.getTextString('keybind_tutorial'), 32);
 		tutorial.screenCenter(X);
-		tutorial.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		tutorial.setFormat("Funkin", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tutorial.borderSize = 2;
 		tutorial.antialiasing = true;
 		add(tutorial);
@@ -102,21 +103,21 @@ class ChangeKeybinds extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		var left = controls.UI_LEFT_P;
-		var down = controls.UI_DOWN_P;
-		var up = controls.UI_UP_P;
-		var right = controls.UI_RIGHT_P;
+		var left = controls.LEFT_P;
+		var down = controls.DOWN_P;
+		var up = controls.UP_P;
+		var right = controls.RIGHT_P;
 		var back = controls.BACK;
 		var accept = controls.ACCEPT;
 
 		switch (state)
 		{
 			case SelectControl:
-				if (up && !controls.UI_RIGHT && !controls.UI_LEFT)
+				if (up && !controls.RIGHT && !controls.LEFT)
 				{
 					changeSelection(-1);
 				}
-				if (down && !controls.UI_RIGHT && !controls.UI_LEFT)
+				if (down && !controls.RIGHT && !controls.LEFT)
 				{
 					changeSelection(1);
 				}
@@ -134,19 +135,19 @@ class ChangeKeybinds extends MusicBeatState
 				}
 				if (curTextGroup.groupName == 'presetGroup')
 				{
-					if (controls.UI_RIGHT)
+					if (controls.RIGHT)
 					{
 						updateText(presetRight, true);
 					}
-					if (controls.UI_RIGHT_R)
+					if (controls.RIGHT_R)
 					{
 						updateText(presetRight, false);
 					}
-					if (controls.UI_LEFT)
+					if (controls.LEFT)
 					{
 						updateText(presetLeft, true);
 					}
-					if (controls.UI_LEFT_R)
+					if (controls.LEFT_R)
 					{
 						updateText(presetLeft, false);
 					}
@@ -250,7 +251,7 @@ class ChangeKeybinds extends MusicBeatState
 		var keybindTexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
 		var control:FlxText = new FlxText((FlxG.width / 2) - 200, (preset.y + 125) + (order * 100), 0, uiControl.uiName + ":", 32);
-		control.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+		control.setFormat("Funkin", 32, FlxColor.WHITE, CENTER);
 		control.borderSize = 2;
 		control.antialiasing = true;
 		add(control);
@@ -270,7 +271,7 @@ class ChangeKeybinds extends MusicBeatState
 					keybind.x = (FlxG.width / 2) + (j * 50) + keybindTexts.members[j - 1].width;
 			}
 			keybind.y = control.y;
-			keybind.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+			keybind.setFormat("Funkin", 32, FlxColor.WHITE, CENTER);
 			keybind.borderSize = 2;
 			keybind.antialiasing = true;
 			add(keybind);
@@ -289,30 +290,30 @@ class ChangeKeybinds extends MusicBeatState
 
 		choosePreset = new FlxText(0, 175, FlxG.width / 2, LanguageManager.getTextString('keybind_preset'), 32);
 		choosePreset.screenCenter(X);
-		choosePreset.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		choosePreset.setFormat("Funkin", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		choosePreset.borderSize = 2;
 		choosePreset.antialiasing = true;
 		keybindPresetGroup.add(choosePreset);
 		add(choosePreset);
 
-		preset = new FlxText(0, choosePreset.y + 100, FlxG.width / 2, keybindPresets[curSelectedPreset], 32);
+		preset = new FlxText(0, choosePreset.y + 75, FlxG.width / 2, keybindPresets[curSelectedPreset], 32);
 		preset.screenCenter(X);
-		preset.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		preset.setFormat("Funkin", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		preset.borderSize = 2;
 		preset.antialiasing = true;
 		add(preset);
 		keybindPresetGroup.add(preset);
 		selectableItems.push(preset);
 
-		presetLeft = new FlxText(preset.x - arrowOffset, preset.y - 10, FlxG.width / 2, "<", 32);
-		presetLeft.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+		presetLeft = new FlxText(preset.x - arrowOffset, preset.y - preset.textField.height + 3, FlxG.width / 2, "<", 32);
+		presetLeft.setFormat("Funkin", 32, FlxColor.WHITE, CENTER);
 		presetLeft.borderSize = 1;
 		presetLeft.antialiasing = true;
 		keybindPresetGroup.add(presetLeft);
 		add(presetLeft);
 
-		presetRight = new FlxText(preset.x + arrowOffset, preset.y - 10, FlxG.width / 2, ">", 32);
-		presetRight.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+		presetRight = new FlxText(preset.x + arrowOffset, preset.y - preset.textField.height + 3, FlxG.width / 2, ">", 32);
+		presetRight.setFormat("Funkin", 32, FlxColor.WHITE, CENTER);
 		presetRight.borderSize = 1;
 		presetRight.antialiasing = true;
 		keybindPresetGroup.add(presetRight);
@@ -402,54 +403,47 @@ class ChangeKeybinds extends MusicBeatState
 
 	function changePreset()
 	{
-		if (curPreset != '-')
+		switch (curPreset)
 		{
-			switch (curPreset)
-			{
-				case 'WASD':
-					KeybindPrefs.setKeybindPreset(KeyboardScheme.Duo(true));
-				case 'DFJK':
-					KeybindPrefs.setKeybindPreset(KeyboardScheme.Solo);
-				case 'ASKL':
-					KeybindPrefs.setKeybindPreset(KeyboardScheme.Askl);
-				case 'ZX,.':
-					KeybindPrefs.setKeybindPreset(KeyboardScheme.ZxCommaDot);
-			}
-			FlxG.sound.play(Paths.sound('confirmMenu'));
-			KeybindPrefs.saveControls();
+			case 'WASD':
+				KeybindPrefs.setKeybindPreset(KeyboardScheme.Duo(true));
+			case 'DFJK':
+				KeybindPrefs.setKeybindPreset(KeyboardScheme.Solo);
+			case 'ASKL':
+				KeybindPrefs.setKeybindPreset(KeyboardScheme.Askl);
+			case 'ZX,.':
+				KeybindPrefs.setKeybindPreset(KeyboardScheme.ZxCommaDot);
+		}
+		FlxG.sound.play(Paths.sound('confirmMenu'));
+		KeybindPrefs.saveControls();
 
-			for (controlGroup in controlGroups)
-			{
-				for (text in controlGroup.texts)
-				{
-					FlxTween.tween(text, {alpha: 0}, 0.5);
-				}
-			}
-			for (text in controlTexts)
+		for (controlGroup in controlGroups)
+		{
+			for (text in controlGroup.texts)
 			{
 				FlxTween.tween(text, {alpha: 0}, 0.5);
 			}
-			FlxFlicker.flicker(preset, 1.1, 0.07, true, false, function(flicker:FlxFlicker)
-			{
-				FlxG.resetState();
-			});
 		}
-		else
+		for (text in controlTexts)
 		{
-			FlxG.sound.play(Paths.sound('scrollMenu'));
+			FlxTween.tween(text, {alpha: 0}, 0.5);
 		}
+		FlxFlicker.flicker(preset, 1.1, 0.07, true, false, function(flicker:FlxFlicker)
+		{
+			FlxG.resetState();
+		});
 	}
 
 	function updateText(text:FlxText, selected:Bool)
 	{
 		if (selected)
 		{
-			text.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			text.setFormat("Funkin", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			text.borderSize = 2;
 		}
 		else
 		{
-			text.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+			text.setFormat("Funkin", 32, FlxColor.WHITE, CENTER);
 		}
 	}
 }

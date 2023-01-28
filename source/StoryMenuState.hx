@@ -166,12 +166,12 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (!selectedWeek)
 			{
-				if (controls.UI_LEFT_P)
+				if (controls.LEFT_P)
 				{
 					changeWeek(-1);
 				}
 
-				if (controls.UI_RIGHT_P)
+				if (controls.RIGHT_P)
 				{
 					changeWeek(1);
 				}
