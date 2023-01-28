@@ -81,7 +81,7 @@ class MainMenuState extends MusicBeatState
 
 	var lilMenuGuy:FlxSprite;
 
-	var money:Alphabet;
+	var curOptText:FlxText;
 	var curOptDesc:FlxText;
 
 	var voidShader:Shaders.GlitchEffect;
@@ -156,23 +156,14 @@ class MainMenuState extends MusicBeatState
 		bigIcons.screenCenter(X);
 		add(bigIcons);
 
-		/*
-			curOptText = new Alphabet(0, 0, FlxG.width, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '));
-			curOptText.setFormat(Paths.font("funkin.otf"), 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			curOptText.scrollFactor.set(0, 0);
-			curOptText.borderSize = 2.5;
-			curOptText.antialiasing = true;
-			curOptText.screenCenter(X);
-			curOptText.y = FlxG.height / 2 + 42;
-			add(curOptText); 
-		 */
-
-		money = new Alphabet(0, 0, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '), true);
-		money.antialiasing = true;
-		money.screenCenter(X);
-		money.scrollFactor.set();
-		money.y = FlxG.height / 2 + 42;
-		add(money);
+		curOptText = new FlxText(0, 0, FlxG.width, CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' '));
+		curOptText.setFormat(Paths.font("funkin.otf"), 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		curOptText.scrollFactor.set(0, 0);
+		curOptText.borderSize = 2.5;
+		curOptText.antialiasing = true;
+		curOptText.screenCenter(X);
+		curOptText.y = FlxG.height / 2 + 42;
+		add(curOptText);
 
 		curOptDesc = new FlxText(0, 0, FlxG.width, LanguageManager.getTextString(languagesDescriptions[curSelected]));
 		curOptDesc.setFormat(Paths.font("funkin.otf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -451,7 +442,7 @@ class MainMenuState extends MusicBeatState
 		});
 
 		bigIcons.animation.play(optionShit[curSelected]);
-		money.text = CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' ');
+		curOptText.text = CoolUtil.formatString(LanguageManager.getTextString(languagesOptions[curSelected]), ' ');
 		curOptDesc.text = LanguageManager.getTextString(languagesDescriptions[curSelected]);
 	}
 
