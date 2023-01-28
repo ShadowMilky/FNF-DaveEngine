@@ -421,12 +421,12 @@ class PlayState extends MusicBeatState
 		// playfieldRenderer.cameras = [camHUD];
 		// add(playfieldRenderer);
 
-		scrollType = FlxG.save.data.downscroll ? 'downscroll' : 'upscroll';
+		scrollType = ClientPrefs.downScroll ? 'downscroll' : 'upscroll';
 
-		theFunne = FlxG.save.data.newInput;
+		theFunne = ClientPrefs.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
-		// eyesoreson = FlxG.save.data.eyesores;
+		// eyesoreson = ClientPrefs.eyesores;
 
 		sicks = 0;
 		bads = 0;
@@ -833,7 +833,7 @@ class PlayState extends MusicBeatState
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 4;
 		botplayTxt.borderQuality = 2;
-		botplayTxt.visible = FlxG.save.data.botplay;
+		botplayTxt.visible = ClientPrefs.botplay;
 		add(botplayTxt);
 		if (scrollType == 'downscroll')
 		{
@@ -1418,7 +1418,7 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition -= Conductor.crochet * 5;
 		var swagCounter:Int = 0;
 
-		if (FlxG.save.data.msText)
+		if (ClientPrefs.msText)
 		{
 			if (scrollType == 'downscroll')
 			{
@@ -1657,7 +1657,7 @@ class PlayState extends MusicBeatState
 			+ misses, iconRPC);
 		#end
 
-		if (FlxG.save.data.songPosition /*&& !isGreetingsCutscene && !['five-nights', 'overdrive'].contains(SONG.song.toLowerCase())*/)
+		if (ClientPrefs.songPosition /*&& !isGreetingsCutscene && !['five-nights', 'overdrive'].contains(SONG.song.toLowerCase())*/)
 		{
 			songPosBG.visible = true;
 			songPosBar = new FlxBar(songPosBG.x + 4, songPosBG.y + 4, LEFT_TO_RIGHT, Std.int(songPosBG.width - 8), Std.int(songPosBG.height - 8), Conductor,
@@ -3133,7 +3133,7 @@ class PlayState extends MusicBeatState
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
 		allNotesMs += noteDiff;
 		averageMs = allNotesMs / totalNotesHit;
-		if (FlxG.save.data.msText)
+		if (ClientPrefs.msText)
 		{
 			msTimeTxt.alpha = 1;
 			msTimeTxt.text = Std.string(Math.round(noteDiff)) + "ms";
@@ -3239,7 +3239,7 @@ class PlayState extends MusicBeatState
 		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
 		var releaseArray:Array<Bool> = [leftR, downR, upR, rightR];
 
-		if (FlxG.save.data.botplay)
+		if (ClientPrefs.botplay)
 		{
 			var BOTPLAY_pressed_anything = false;
 
@@ -3539,7 +3539,7 @@ class PlayState extends MusicBeatState
 	function cameraMoveOnNote(note:Int, character:String)
 	{
 		var amount:Array<Float> = new Array<Float>();
-		var followAmount:Float = FlxG.save.data.noteCamera ? 20 : 0;
+		var followAmount:Float = ClientPrefs.noteCamera ? 20 : 0;
 		switch (note)
 		{
 			case 0:
@@ -3622,7 +3622,7 @@ class PlayState extends MusicBeatState
 			if (!note.isSustainNote)
 			{
 				popUpScore(note.strumTime, note);
-				if (FlxG.save.data.donoteclick)
+				if (ClientPrefs.doNoteClick)
 				{
 					FlxG.sound.play(Paths.sound('note_click'));
 				}

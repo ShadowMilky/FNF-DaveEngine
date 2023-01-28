@@ -89,7 +89,7 @@ class Note extends FlxSprite
 
 		if (isInState('PlayState'))
 		{
-			this.strumTime += FlxG.save.data.offset;
+			this.strumTime += ClientPrefs.offset;
 		}
 		// if ((guitarSection && inCharter && noteData < 5) || (guitarSection))
 		// {

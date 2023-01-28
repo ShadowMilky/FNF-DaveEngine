@@ -395,7 +395,7 @@ class MainMenuState extends MusicBeatState
 										}
 										FlxG.switchState(new FreeplayState());
 									case 'options':
-										FlxG.switchState(new OptionsMenu());
+										FlxG.switchState(new OptionsStateNew());
 									case 'ost':
 										FlxG.switchState(new MusicPlayerState());
 									case 'credits':

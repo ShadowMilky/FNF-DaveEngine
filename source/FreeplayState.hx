@@ -421,7 +421,7 @@ class FreeplayState extends MusicBeatState
 			if (controls.RIGHT_P && canInteract)
 			{
 				trace('why not use the main menu, dum-dum');
-				FlxG.switchState(new OptionsMenu());
+				FlxG.switchState(new OptionsStateNew());
 			}
 			if (controls.BACK && canInteract)
 			{

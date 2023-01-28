@@ -87,7 +87,7 @@ class ChangeLanguageState extends MusicBeatState
 			}
 			if (controls.BACK)
 			{
-				FlxG.switchState(new OptionsMenu());
+				FlxG.switchState(new OptionsStateNew());
 			}
 		}
 	}

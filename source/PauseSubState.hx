@@ -257,7 +257,7 @@ class PauseSubState extends MusicBeatSubstate
 				FlxG.switchState(new CharacterSelectState());
 			case "Toggle Botplay":
 				trace('botplay is on in pause');
-				FlxG.save.data.botplay = !FlxG.save.data.botplay;
+				ClientPrefs.botplay = !ClientPrefs.botplay;
 
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;

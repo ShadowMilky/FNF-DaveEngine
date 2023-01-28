@@ -1,6 +1,6 @@
 package;
 
-import Controls.Control;
+/* import Controls.Control;
 import Controls.KeyboardScheme;
 import OptionsMenu;
 import flash.system.System;
@@ -471,3 +471,4 @@ class AccountOption extends Option
 		return [FlxG.save.data.userName];
 	}
 }
+*/
