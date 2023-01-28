@@ -5,18 +5,18 @@ import flixel.util.FlxSave;
 
 class ClientPrefs {
 	//TO DO: Redo ClientPrefs in a way that isn't too stupid
-	public static var downScroll:Bool = false;
-	public static var newInput:Bool = true;
-	public static var songPosition:Bool = true;
-	public static var doNoteClick:Bool = false;
-	public static var framerate:Int = 60;
-	public static var eyesores:Bool = true;
-	public static var msText:Bool = true;
-	public static var noteCamera:Bool = true;
-	public static var botplay:Bool = false;
-	public static var offset:Int = 0;
+	public var downScroll:Bool = false;
+	public var newInput:Bool = true;
+	public var songPosition:Bool = true;
+	public var doNoteClick:Bool = false;
+	public var framerate:Int = 60;
+	public var eyesores:Bool = true;
+	public var msText:Bool = true;
+	public var noteCamera:Bool = true;
+	public var botplay:Bool = false;
+	public var offset:Int = 0;
 
-	public static function saveSettings() {
+	public function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.newInput = newInput;
 		FlxG.save.data.songPosition = songPosition;
@@ -36,7 +36,7 @@ class ClientPrefs {
 		FlxG.log.add("Settings saved!");
 	}
 
-	public static function loadPrefs() {
+	public function loadPrefs() {
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
 		}
