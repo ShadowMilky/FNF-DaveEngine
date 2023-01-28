@@ -360,11 +360,15 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'foxa down', 24, false);
 				animation.addByPrefix('singLEFT', 'foxa left', 24, false);
 
-				loadOffsetFile(curCharacter);
+				addOffset('idle', 0, -100);
+				addOffset("singUP", 10, -40);
+				addOffset("singRIGHT", -20, -100);
+				addOffset("singLEFT", 61, -110);
+				addOffset("singDOWN", 30, -160);
 
 				barColor = FlxColor.fromString(getColorCode(curCharacter));
 
-				setGraphicSize(Std.int(width * 0.8));
+				setGraphicSize(Std.int(width * 2.1));
 				updateHitbox();
 
 				playAnim('idle');
