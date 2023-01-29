@@ -32,7 +32,7 @@ using StringTools;
 // TO DO: Redo the menu creation system for not being as dumb
 class OptionsStateNew extends MusicBeatState
 {
-	var options:Array<String> = ['Controls', 'Language', 'Preferences', 'Account'];
+	var options:Array<String> = ['Language', 'Preferences', 'Account'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
@@ -101,8 +101,8 @@ class OptionsStateNew extends MusicBeatState
 
 			switch (options[curSelected])
 			{
-				case 'Controls':
-					FlxG.switchState(new ChangeKeybinds());
+				/*case 'Controls':
+					FlxG.switchState(new ChangeKeybinds());*/
 				case 'Language':
 					FlxG.switchState(new ChangeLanguageState());
 				case 'Preferences':
@@ -189,7 +189,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 			var isCentered:Bool = unselectableCheck(i);
 			var optionText:Alphabet = new Alphabet(0, 70 * i, options[i], false, false);
 			optionText.isMenuItem = true;
-			optionText.itemType = 'Vertical';
+			optionText.itemType = 'D-Shape';
 			optionText.targetY = i;
 			optionText.scrollFactor.set();
 			optionText.alpha = 0;

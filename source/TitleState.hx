@@ -66,6 +66,8 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('vsfoxa', 'PowderTeam');
 
+		ClientPrefs.loadPrefs();
+		
 		SaveDataHandler.initSave();
 		LanguageManager.init();
 
