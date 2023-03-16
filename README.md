@@ -1,7 +1,14 @@
+# THIS MOD IS CANCELLED
+[there is a new repo for Vs. Foxa, now back to being named 3.0](https://github.com/TheBeepSheepTeam/FNF-VsFoxa3.0New)
+
+I have to cancel this edition cuz the controls broke, at least in my end, and 3.0 is being worked now fr, so uhhhh have it your way with the new repo ig
+
+cheers!
+
+## Original README
+
 wnewrNING
 this mod is rated **D** for ***DEEZ NUTS***
-
-<img src="KadeEngineWitBackground.png" width="600" height="400">
 
 # VS FOXA EXPANDED
 this is foxa
